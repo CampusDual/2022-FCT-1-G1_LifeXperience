@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<JdbcEntitySetup
+	xmlns="http://www.ontimize.com/schema/jdbc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.ontimize.com/schema/jdbc http://www.ontimize.com/schema/jdbc/ontimize-jdbc-dao.xsd"
+	catalog="" schema="${mainschema}" table="tuser_role"
+	datasource="mainDataSource" sqlhandler="dbSQLStatementHandler">
+	<DeleteKeys>
+		<Column>usro_id</Column>
+	</DeleteKeys>
+	<UpdateKeys>
+		<Column>usro_id</Column>
+	</UpdateKeys>
+	<Queries>
+		<Query id="login">
+			<Sentence>
+                <![CDATA[
+                    SELECT
+                        #COLUMNS#
+                    FROM ${mainschema}.tuser
+                    #WHERE#
+                    #ORDER#
+                ]]>
+            </Sentence>
+		</Query>
+		<Query id="userRole">
+			<AmbiguousColumns>
+				<AmbiguousColumn name="user_" prefix="tu" />
+				<AmbiguousColumn name="id_rolename" prefix="tr" />
+			</AmbiguousColumns>
+			<Sentence>
+					<![CDATA[
+					select
+						#COLUMNS#
+					from
+						${mainschema}.tuser tu
+						JOIN ${mainschema}.tuser_role tur ON tu.user_ = tur.user_
+						JOIN ${mainschema}.trole tr ON tur.id_rolename = tr.id_rolename
+					#WHERE#
+					#ORDER#
+					]]>
+			</Sentence>
+		</Query>
+		<Query id="serverPermissions">
+			<AmbiguousColumns>
+				<AmbiguousColumn name="id_rolename" prefix="tr" />
+				<AmbiguousColumn name="id_server_permission" prefix="tsp" />
+			</AmbiguousColumns>
+			<Sentence>
+					<![CDATA[
+					select
+						#COLUMNS#
+					from
+						${mainschema}.trole tr
+						JOIN ${mainschema}.trole_server_permission trsp ON tr.id_rolename = trsp.id_rolename
+						JOIN ${mainschema}.tserver_permission tsp ON trsp.id_server_permission = tsp.id_server_permission
+					#WHERE#
+					#ORDER#
+					]]>
+		</Sentence>
+		</Query>
+		<Query id="clientPermissions">
+			<Sentence>
+					<![CDATA[
+					select
+						#COLUMNS#
+					from
+						${mainschema}.trole tr
+					#WHERE#
+					#ORDER#
+					]]>
+		</Sentence>
+		</Query>
+	</Queries>
+</JdbcEntitySetup>

@@ -1,0 +1,77 @@
+endpoints:
+   api:
+      enabled: true
+logging:
+   level:
+      root: info
+ontimize:
+   corsfilter:
+      enabled: true
+   globalcors:
+      cors-configurations:
+         '[/**]':
+            allowed-origins: "*"
+            allowed-headers: "*"
+            exposed-headers: ["X-Auth-Token","Content-disposition","X-Requested-With"]
+            allowed-methods:
+            - GET
+            - POST
+            - PUT
+            - OPTIONS
+            - DELETE
+   jdbc:
+      name-convention: lower
+      sqlhandler: postgres
+      sql-condition-processor:
+         uppper-string: true
+         upper-like: true
+   security:
+      mode: default
+      ignore-paths: /app/**
+      role-information-service:
+         role-repository: UserRoleDao
+         role-name-column: rolename
+         server-permission-query-id: serverPermissions
+         server-permission-name-column: permission_name
+         client-permission-query-id: clientPermissions
+         client-permission-column: xmlclientpermission
+      user-information-service:
+         user-repository: UserDao
+         user-login-column: user_
+         user-password-column: password
+         query-id: login
+         other-data:
+            - name
+            - surname
+            - email
+            - nif
+            - userblocked
+            - lastpasswordupdate
+            - firstlogin
+      user-role-information-service:
+         user-role-repository: UserRoleDao
+         query-id: userRole
+         role-login-column: user_
+         role-name-column: rolename
+server:
+   port: 33333
+   tomcat:
+      uri-encoding: UTF-8
+   compression:
+      enabled: true
+      mime-types: application/json, application/xml
+spring:
+   datasource:
+      driver-class-name: org.postgresql.Driver
+      jdbc-url: jdbc:postgresql://45.84.210.174:65432/FCT_2022_G1
+      username: FCT_2022_G1
+      password: FTCimatia.2022
+      initial-size: 10
+      test-on-borrow: true
+   main:
+      banner-mode: 'off'
+   session:
+      store-type: none
+   autoconfigure:
+      exclude: |
+         org.springframework.boot.autoconfigure.security.SecurityAutoConfiguration, org.springframework.boot.actuate.autoconfigure.ManagementWebSecurityAutoConfiguration, org.springframework.boot.autoconfigure.security.FallbackWebSecurityAutoConfiguration

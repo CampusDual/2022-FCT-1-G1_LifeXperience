@@ -3,7 +3,7 @@
 	xmlns="http://www.ontimize.com/schema/jdbc"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.ontimize.com/schema/jdbc http://www.ontimize.com/schema/jdbc/ontimize-jdbc-dao.xsd"
-	catalog="" schema="${mainschema}" table="TUSER_ROLE"
+	catalog="" schema="${mainschema}" table="tuser_role"
 	datasource="mainDataSource" sqlhandler="dbSQLStatementHandler">
 	<DeleteKeys>
 		<Column>usro_id</Column>
@@ -17,7 +17,7 @@
                 <![CDATA[
                     SELECT
                         #COLUMNS#
-                    FROM ${mainschema}.TUSER
+                    FROM ${mainschema}.tuser
                     #WHERE#
                     #ORDER#
                 ]]>
@@ -25,17 +25,17 @@
 		</Query>
 		<Query id="userRole">
 			<AmbiguousColumns>
-				<AmbiguousColumn name="USER_" prefix="tu" />
-				<AmbiguousColumn name="ID_ROLENAME" prefix="tr" />
+				<AmbiguousColumn name="user_" prefix="tu" />
+				<AmbiguousColumn name="id_rolename" prefix="tr" />
 			</AmbiguousColumns>
 			<Sentence>
 					<![CDATA[
 					select
 						#COLUMNS#
 					from
-						${mainschema}.TUSER tu
-						JOIN ${mainschema}.TUSER_ROLE tur ON tu.USER_ = tur.USER_
-						JOIN ${mainschema}.TROLE tr ON tur.ID_ROLENAME = tr.ID_ROLENAME
+						${mainschema}.tuser tu
+						JOIN ${mainschema}.tuser_role tur ON tu.user_ = tur.user_
+						JOIN ${mainschema}.trole tr ON tur.id_rolename = tr.id_rolename
 					#WHERE#
 					#ORDER#
 					]]>
@@ -43,17 +43,17 @@
 		</Query>
 		<Query id="serverPermissions">
 			<AmbiguousColumns>
-				<AmbiguousColumn name="ID_ROLENAME" prefix="tr" />
-				<AmbiguousColumn name="ID_SERVER_PERMISSION" prefix="tsp" />
+				<AmbiguousColumn name="id_rolename" prefix="tr" />
+				<AmbiguousColumn name="id_server_permission" prefix="tsp" />
 			</AmbiguousColumns>
 			<Sentence>
 					<![CDATA[
 					select
 						#COLUMNS#
 					from
-						${mainschema}.TROLE tr
-						JOIN ${mainschema}.TROLE_SERVER_PERMISSION trsp ON tr.ID_ROLENAME = trsp.ID_ROLENAME
-						JOIN ${mainschema}.TSERVER_PERMISSION tsp ON trsp.ID_SERVER_PERMISSION = tsp.ID_SERVER_PERMISSION
+						${mainschema}.trole tr
+						JOIN ${mainschema}.trole_server_permission trsp ON tr.id_rolename = trsp.id_rolename
+						JOIN ${mainschema}.tserver_permission tsp ON trsp.id_server_permission = tsp.id_server_permission
 					#WHERE#
 					#ORDER#
 					]]>
@@ -65,7 +65,7 @@
 					select
 						#COLUMNS#
 					from
-						${mainschema}.TROLE tr
+						${mainschema}.trole tr
 					#WHERE#
 					#ORDER#
 					]]>

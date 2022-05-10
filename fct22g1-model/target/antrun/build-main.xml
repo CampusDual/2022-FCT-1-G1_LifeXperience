@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="maven-antrun-" default="main">
+  <target name="main">
+    <available file="src/main/db/templateDB.script" property="database.exist" />
+    <echo message="src/main/db/templateDB.script" />
+    <copy file="src/main/db/templateDB.txt" tofile="src/main/db/templateDB.script" />
+  </target>
+</project>
