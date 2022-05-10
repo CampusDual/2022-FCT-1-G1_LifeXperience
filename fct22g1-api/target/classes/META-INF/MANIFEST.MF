@@ -1,0 +1,7 @@
+Manifest-Version: 1.0
+Build-Jdk-Spec: 15
+Implementation-Title: fct22g1-api
+Implementation-Version: 1.0.0-SNAPSHOT
+Implementation-Vendor: Imatia Innovation
+Created-By: Maven Integration for Eclipse
+
