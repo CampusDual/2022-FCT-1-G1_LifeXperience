@@ -11,8 +11,5 @@
     <UpdateKeys>
         <Column>id</Column>
     </UpdateKeys>
-<<<<<<< HEAD
     <GeneratedKey>id</GeneratedKey>
-=======
->>>>>>> main
 </JdbcEntitySetup>
