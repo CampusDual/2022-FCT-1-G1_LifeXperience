@@ -4,7 +4,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.ontimize.com/schema/jdbc http://www.ontimize.com/schema/jdbc/ontimize-jdbc-dao.xsd"
     catalog="" schema="${mainschema}" table="packages"
-    datasource="mainDataSource" sqlhandler="postgresSQLStatementHandler">
+    datasource="mainDataSource" sqlhandler="dbSQLStatementHandler">
     <DeleteKeys>
         <Column>id</Column>
     </DeleteKeys>
