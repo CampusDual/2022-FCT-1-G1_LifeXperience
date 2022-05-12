@@ -1,3 +1,9 @@
+<<<<<<< HEAD
 C:\Users\jorge\Desktop\workspaceEclipseEE\FCT-2022-G1\fct22g1-api\src\main\java\com\campusdual\fct22g1\api\core\service\IPackageService.java
 C:\Users\jorge\Desktop\workspaceEclipseEE\FCT-2022-G1\fct22g1-api\src\main\java\com\campusdual\fct22g1\api\core\service\IUserService.java
 C:\Users\jorge\Desktop\workspaceEclipseEE\FCT-2022-G1\fct22g1-api\src\main\java\com\campusdual\fct22g1\api\core\service\IExperienceService.java
+=======
+/home/mario/Escritorio/FCT-2022-G1/fct22g1-api/src/main/java/com/campusdual/fct22g1/api/core/service/IExperienceService.java
+/home/mario/Escritorio/FCT-2022-G1/fct22g1-api/src/main/java/com/campusdual/fct22g1/api/core/service/IPackageService.java
+/home/mario/Escritorio/FCT-2022-G1/fct22g1-api/src/main/java/com/campusdual/fct22g1/api/core/service/IUserService.java
+>>>>>>> 2dc6b3e6791dcb47aecac1cc79d93f1f0ebddd6c

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 C:\Users\jorge\Desktop\workspaceEclipseEE\FCT-2022-G1\fct22g1-model\src\main\java\com\campusdual\fct22g1\model\core\dao\UserRoleDao.java
 C:\Users\jorge\Desktop\workspaceEclipseEE\FCT-2022-G1\fct22g1-model\src\main\java\com\campusdual\fct22g1\model\core\service\UserService.java
 C:\Users\jorge\Desktop\workspaceEclipseEE\FCT-2022-G1\fct22g1-model\src\main\java\com\campusdual\fct22g1\model\core\dao\ExperienceDao.java
@@ -5,3 +6,12 @@ C:\Users\jorge\Desktop\workspaceEclipseEE\FCT-2022-G1\fct22g1-model\src\main\jav
 C:\Users\jorge\Desktop\workspaceEclipseEE\FCT-2022-G1\fct22g1-model\src\main\java\com\campusdual\fct22g1\model\core\dao\UserDao.java
 C:\Users\jorge\Desktop\workspaceEclipseEE\FCT-2022-G1\fct22g1-model\src\main\java\com\campusdual\fct22g1\model\core\service\ExperienceService.java
 C:\Users\jorge\Desktop\workspaceEclipseEE\FCT-2022-G1\fct22g1-model\src\main\java\com\campusdual\fct22g1\model\core\service\PackageService.java
+=======
+/home/mario/Escritorio/FCT-2022-G1/fct22g1-model/src/main/java/com/campusdual/fct22g1/model/core/dao/PackageDao.java
+/home/mario/Escritorio/FCT-2022-G1/fct22g1-model/src/main/java/com/campusdual/fct22g1/model/core/service/ExperienceService.java
+/home/mario/Escritorio/FCT-2022-G1/fct22g1-model/src/main/java/com/campusdual/fct22g1/model/core/service/UserService.java
+/home/mario/Escritorio/FCT-2022-G1/fct22g1-model/src/main/java/com/campusdual/fct22g1/model/core/service/PackageService.java
+/home/mario/Escritorio/FCT-2022-G1/fct22g1-model/src/main/java/com/campusdual/fct22g1/model/core/dao/ExperienceDao.java
+/home/mario/Escritorio/FCT-2022-G1/fct22g1-model/src/main/java/com/campusdual/fct22g1/model/core/dao/UserRoleDao.java
+/home/mario/Escritorio/FCT-2022-G1/fct22g1-model/src/main/java/com/campusdual/fct22g1/model/core/dao/UserDao.java
+>>>>>>> 2dc6b3e6791dcb47aecac1cc79d93f1f0ebddd6c
