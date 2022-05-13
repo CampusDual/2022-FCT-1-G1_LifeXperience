@@ -1,13 +1,12 @@
 package com.campusdual.fct22g1.model.core.dao;
 
 
+import com.ontimize.jee.server.dao.common.ConfigurationFile;
+import com.ontimize.jee.server.dao.jdbc.OntimizeJdbcDaoSupport;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Repository;
 
-import com.ontimize.jee.server.dao.common.ConfigurationFile;
-import com.ontimize.jee.server.dao.jdbc.OntimizeJdbcDaoSupport;
-
-
+//HOlaMundo
 @Lazy
 @Repository(value = "UserDao")
 @ConfigurationFile(
