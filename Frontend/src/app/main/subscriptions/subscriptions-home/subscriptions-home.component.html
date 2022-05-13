@@ -1,0 +1,8 @@
+<!-- TODO: Creo que hay que configurar la conexion a nuestra aplicacion de servidor-->
+<div fxFill fxLayout="column" fxLayoutAlign="start">
+    <o-table attr="subscritionsTable" service="customers" entity="customer" keys="CUSTOMERID" columns="CUSTOMERID;ID;PHOTO;NAME;SURNAME;STARTDATE;EMAIL" visible-columns="ID;PHOTO;NAME;SURNAME;STARTDATE;EMAIL" query-rows="20">
+        <o-table-column attr="PHOTO" title="PHOTO" orderable="no" searchable="no" type="image" avatar="yes" empty-image="assets/images/no-image.png" image-type="base64"></o-table-column>
+        <o-table-column attr="STARTDATE" title="STARTDATE" type="date" format="LL"></o-table-column>
+        <o-table-column attr="ID" title="ID" width="100px"></o-table-column>
+    </o-table>
+</div>
