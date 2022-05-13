@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <JdbcEntitySetup
-<<<<<<< HEAD
- xmlns="http://www.ontimize.com/schema/jdbc"
+    xmlns="http://www.ontimize.com/schema/jdbc"
  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
  xsi:schemaLocation="http://www.ontimize.com/schema/jdbc http://www.ontimize.com/schema/jdbc/ontimize-jdbc-dao.xsd"
  catalog="" schema="${mainschema}" table="packages"
@@ -13,18 +12,4 @@
   <Column>ID</Column>
  </UpdateKeys>
  <GeneratedKey>ID</GeneratedKey>
-=======
-    xmlns="http://www.ontimize.com/schema/jdbc"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://www.ontimize.com/schema/jdbc http://www.ontimize.com/schema/jdbc/ontimize-jdbc-dao.xsd"
-    catalog="" schema="${mainschema}" table="packages"
-    datasource="mainDataSource" sqlhandler="dbSQLStatementHandler">
-    <DeleteKeys>
-        <Column>id</Column>
-    </DeleteKeys>
-    <UpdateKeys>
-        <Column>id</Column>
-    </UpdateKeys>
-    <GeneratedKey>id</GeneratedKey>
->>>>>>> 2dc6b3e6791dcb47aecac1cc79d93f1f0ebddd6c
 </JdbcEntitySetup>
