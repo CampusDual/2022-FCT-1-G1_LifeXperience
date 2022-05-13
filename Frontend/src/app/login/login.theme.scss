@@ -1,0 +1,49 @@
+@import 'node_modules/@angular/material/theming';
+@mixin login-theme($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+
+  .login-outer-container {
+    background-color: mat-color($background, background);
+
+    .wrapp-login {
+      background-color: mat-color($background, dialog);
+
+      .login-inner-container {
+        background-color: mat-color($background, dialog);
+
+        .logo-container {
+          background-color: mat-color($background, dialog);
+        }
+
+        .session-expired {
+          color: #f44336;
+        }
+
+        .login_info,
+        .title_text {
+          color: mat-color($foreground, text);
+        }
+
+        .link_text {
+          color: mat-color($primary);
+        }
+      }
+
+    }
+  }
+
+  .footer-container {
+    background-color: mat-color($primary);
+
+    div {
+      span {
+        color: white;
+      }
+    }
+  }
+
+}
