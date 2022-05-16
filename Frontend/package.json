@@ -1,9 +1,9 @@
 {
-  "name": "ontimize-web-ngx-jee-seed",
+  "name": "experiencesmanager-web",
   "version": "8.2.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --port 4299",
+    "start": "ng serve --port 4299 -o --host localhost",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
