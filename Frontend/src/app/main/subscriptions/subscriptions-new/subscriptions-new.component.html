@@ -1,0 +1,36 @@
+<o-form service="subscriptions" entity="subscription" keys="SUBSCRIPTIONID" header-actions="R;I;U;D" show-header-navigation="no">
+  <o-row>
+    <o-column>
+      <o-image id="SUBSCRIPTION_PHOTO" attr="PHOTO" empty-image="assets/images/no-image.png" sql-type="OTHER"></o-image>
+    </o-column>
+    <o-column title-label="SUBSCRIPTION_PERSONAL_INFORMATION" fxFlex>
+      <o-row>
+        <o-text-input class="input-padding" attr="NAME" fxFlex="40" required="yes"></o-text-input>
+        <o-text-input class="input-padding" attr="SURNAME" fxFlex="40" required="yes"></o-text-input>
+        <o-date-input attr="STARTDATE" fxFlex="20"></o-date-input>
+      </o-row>
+      <o-row>
+        <o-nif-input attr="ID" class="input-padding" fxFlex="40" required="yes"></o-nif-input>
+        <o-integer-input attr="PHONE" class="input-padding" step="0" grouping="no" fxFlex="40"></o-integer-input>
+        <o-combo attr="SUBSCRIPTIONTYPEID" class="input-padding" fxFlex="20" service="subscriptions"
+           entity="subscriptionType" keys="SUBSCRIPTIONTYPEID" columns="SUBSCRIPTIONTYPEID;DESCRIPTION"
+           visible-columns="DESCRIPTION" value-column="SUBSCRIPTIONTYPEID"></o-combo>
+      </o-row>
+      <o-row>
+        <o-email-input attr="EMAIL" fxFlex></o-email-input>
+      </o-row>
+      <o-row>
+        <o-text-input attr="ADDRESS" fxFlex></o-text-input>
+      </o-row>
+      <o-row>
+        <o-real-input attr="LONGITUDE" decimal-separator="," max-decimal-digits="10" min-decimal-digits="0"
+          class="input-padding" fxFlex="50"></o-real-input>
+        <o-real-input attr="LATITUDE" decimal-separator="," max-decimal-digits="10" min-decimal-digits="0"
+          fxFlex="50"></o-real-input>
+      </o-row>
+      <o-row>
+          <o-textarea-input attr="COMMENTS" fxFlex></o-textarea-input>
+        </o-row>
+    </o-column>
+  </o-row>
+</o-form>

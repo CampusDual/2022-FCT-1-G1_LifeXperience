@@ -1,11 +1,20 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { SubscriptionsHomeComponent } from './subscriptions-home/subscriptions-home.component';
+import { SubscriptionsHomeComponent } from "./subscriptions-home/subscriptions-home.component";
+//import { SubscriptionsDetailComponent } from "./subscriptions-detail/subscriptions-detail.component";
+import { SubscriptionsNewComponent } from "./subscriptions-new/subscriptions-new.component";
 
-
-const routes: Routes =  [{
+const routes: Routes = [{
   path : '',
   component: SubscriptionsHomeComponent
+},
+{
+  path: "new",
+  component: SubscriptionsNewComponent
+},
+{
+  path: ":SUBSCRIPTIONID",
+  //component: SubscriptionsDetailComponent
 }];
 
 @NgModule({

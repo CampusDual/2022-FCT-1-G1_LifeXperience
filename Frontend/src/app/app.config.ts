@@ -12,13 +12,13 @@ export const CONFIG: Config = {
   // Application identifier. Is the unique package identifier of the app.
   // It is used when storing or managing temporal data related with the app.
   // By default is set as 'ontimize-web-uuid'.
-  uuid: 'com.ontimize.web.ngx.jee.seed',
+  uuid: 'com.imatia.web.experiencemanager',
 
   // Title of the app
-  title: 'JEE seed',
+  title: 'Experience Manager',
 
   //  Language of the application.
-  locale: 'en',
+  locale: 'es',
 
   // The service type used (Ontimize REST standart, Ontimize REST JEE
   // or custom implementation) in the whole application.
