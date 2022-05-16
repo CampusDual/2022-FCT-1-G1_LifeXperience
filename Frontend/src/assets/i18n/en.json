@@ -21,5 +21,14 @@
     "FOOTER_RIGHTS": "All rights reserved",
 
 
-    "SUBSCRIPTIONS": "Subscriptions"
+    "SUBSCRIPTIONS": "Subscriptions",
+    "EXPERIENCES": "Experiences",
+    "ID": "Id.",
+    "NAME": "Name",
+    "DESCRIPTION": "Surname",
+    "STARTDATE": "Start date",
+    "ENDDATE": "End date",
+    "EMAIL": "Email"
+
+
 }
