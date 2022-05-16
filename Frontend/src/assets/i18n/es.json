@@ -26,5 +26,10 @@
     "DESCRIPTION": "Descripción",
     "STARTDATE": "Fecha de inicio",
     "ENDDATE": "Fecha de fin",
-    "EMAIL": "Email"
+    "EMAIL": "Email",
+
+    "name": "Nombre",
+    "price": "Precio",
+    "duration": "Duración",
+    "description": "Descrición"
 }

@@ -28,7 +28,13 @@
     "DESCRIPTION": "Surname",
     "STARTDATE": "Start date",
     "ENDDATE": "End date",
-    "EMAIL": "Email"
+    "EMAIL": "Email",
+    "PRICE": "Price",
+
+    "name": "Name",
+    "price": "Price",
+    "duration": "Duration",
+    "description": "Description"
 
 
 }
