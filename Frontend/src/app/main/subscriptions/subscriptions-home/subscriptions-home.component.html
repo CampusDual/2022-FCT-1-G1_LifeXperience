@@ -1,6 +1,6 @@
 <!-- TODO: Creo que hay que configurar la conexion a nuestra aplicacion de servidor-->
 <div fxFill fxLayout="column" fxLayoutAlign="start">
-    <o-table attr="subscriptionsTable" service="subscriptions" entity="subscription" keys="id" columns="id,name,price,duration" visible-columns="id,name" query-rows="20">
+    <o-table attr="subscriptionsTable" service="subscriptions" entity="subscription" keys="id" columns="id;name;price;description;duration" visible-columns="id;name;price;description;duration" query-rows="20">
         <o-table-column attr="id" title="id" width="100px"></o-table-column>
         <o-table-column attr="name" title="name" width="100px"></o-table-column>
     </o-table>
