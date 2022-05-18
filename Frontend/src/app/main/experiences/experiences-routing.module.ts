@@ -8,6 +8,7 @@ import { ExperiencesDetailComponent } from './experiences-detail/experiences-det
 const routes: Routes = [{
   path : '',
   component: ExperiencesHomeComponent
+
 },
 {
   path: "new",
