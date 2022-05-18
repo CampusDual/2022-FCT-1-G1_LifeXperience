@@ -26,8 +26,8 @@
     "ID": "Id.",
     "NAME": "Name",
     "DESCRIPTION": "Surname",
-    "STARTDATE": "Start date",
-    "ENDDATE": "End date",
+    "startdate": "Start date",
+    "enddate": "End date",
     "EMAIL": "Email",
     "PRICE": "Price",
 

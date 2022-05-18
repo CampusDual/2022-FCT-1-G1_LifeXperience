@@ -24,12 +24,12 @@
     "ID": "Id.",
     "NAME": "Nombre",
     "DESCRIPTION": "Descripción",
-    "STARTDATE": "Fecha de inicio",
-    "ENDDATE": "Fecha de fin",
+    "startdate": "Fecha de inicio",
+    "enddate": "Fecha de fin",
     "EMAIL": "Email",
 
     "name": "Nombre",
     "price": "Precio",
     "duration": "Duración",
-    "description": "Descrición"
+    "description": "Descripción"
 }
