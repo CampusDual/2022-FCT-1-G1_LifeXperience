@@ -1,0 +1,14 @@
+<o-form service="experiences" entity="experience" keys="id" columns="id" show-header="yes"
+  keys-sql-types="integer">
+  <o-row>
+    <o-text-input attr="name" sql-type="STRING" fxFlex="60"></o-text-input>
+    <o-text-input attr="description" sql-type="STRING" fxFlex="60"></o-text-input>
+  </o-row>
+  <o-row>
+
+    <o-date-input attr="startdate" fxFlex="20" required="yes"></o-date-input>
+    <o-date-input attr="enddate" class="input-padding" fxFlex="20"></o-date-input>
+    <o-combo attr="subscriptionid" fxFlex="80" service="subscriptions" entity="subscription" keys="subscriptionid" columns="subscriptionid;name"
+      visible-columns="name" value-column="subscriptionid" class="input-padding" required="yes"></o-combo>
+  </o-row>
+</o-form>
