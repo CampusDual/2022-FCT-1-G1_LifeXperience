@@ -34,7 +34,8 @@
     "name": "Name",
     "price": "Price",
     "duration": "Duration",
-    "description": "Description"
+    "description": "Description",
+    "subscriptionid": "Subscription"
 
 
 }
