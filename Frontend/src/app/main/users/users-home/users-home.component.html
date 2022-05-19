@@ -1,4 +1,4 @@
-<o-form-layout-manager title="{{'Users' | oTranslate }}" separator=" " mode="tab" label-columns="name">
+<o-form-layout-manager title="{{'Users' | oTranslate }}" separator=" " mode="tab" label-columns="name,surname">
     <div fxFill fxLayout="column" fxLayoutAlign="start">
         <o-table attr="usersTable" service="users" entity="user" keys="user_" columns="user_;password;name;surname;email;nif;userblocked;lastpasswordupdate;firstlogin;down_date;subscriptionid" visible-columns="user_;name;surname;email;nif" query-rows="20" auto-adjust=yes>
             <o-table-column attr="user_" title="user" width="30px" content-align="center"></o-table-column>

@@ -1,0 +1,19 @@
+<o-form service="users" entity="user" keys="user_" header-actions="r;i;u;d" show-header-navigation="no">
+    <o-text-input attr="user_" sql-type="string" enabled="no"></o-text-input>
+    <o-row>
+        <o-column title-label="users_information" fxFlex>
+            <o-row>
+                <o-text-input class="input-padding" attr="name" fxFlex="40" required="yes" enabled="yes"></o-text-input>
+            </o-row>
+            <o-row>
+                <o-text-input class="input-padding" attr="surname" fxFlex="40" required="yes" enabled="yes"></o-text-input>
+            </o-row>
+            <o-row>
+                <o-email-input class="input-padding" attr="email" fxFlex="40" required="yes" enabled="yes"></o-email-input>
+            </o-row>
+            <o-row>
+                <o-nif-input class="input-padding" attr="nif" fxFlex="40" required="yes" enabled="yes"></o-nif-input>
+            </o-row>
+        </o-column>
+    </o-row>
+</o-form>

@@ -1,14 +1,12 @@
 <o-form-layout-manager title="{{'experiences' | oTranslate }}" separator=" " mode="tab" label-columns="name">
-<div fxFill fxLayout="column" fxLayoutAlign="start">
-  <o-table attr="experiencesTable" service="experiences" entity="experience" keys="id"
-    columns="id;name;description;startdate;enddate;subscriptionid"
-    visible-columns="id;name;description;startdate;enddate;subscriptionid" query-rows="20"auto-adjust = yes >
-    <o-table-column attr="id" title="id" type="INTEGER" width="30px"content-align="center" orderable="yes"></o-table-column>
-    <o-table-column attr="name" title="name" content-align="center"></o-table-column>
-    <o-table-column attr="description" title="description" multiline=yes max-width="300px" ></o-table-column>
-    <o-table-column attr="startdate" title="startdate" type="date" format="LL"></o-table-column>
-    <o-table-column attr="enddate" title="enddate" type="date" format="LL"></o-table-column>
-    <o-table-column attr="subscriptionid" title="subscriptionid" content-align="center" width="30px"></o-table-column>
-  </o-table>
-  </div>
+    <div fxFill fxLayout="column" fxLayoutAlign="start">
+        <o-table attr="experiencesTable" service="experiences" entity="experience" keys="id" columns="id;name;description;startdate;enddate;subscriptionid" visible-columns="id;name;description;startdate;enddate;subscriptionid" query-rows="20" auto-adjust=y es>
+            <o-table-column attr="id" title="id" type="INTEGER" width="30px" content-align="center" orderable="yes"></o-table-column>
+            <o-table-column attr="name" title="name" content-align="center"></o-table-column>
+            <o-table-column attr="description" title="description" multiline="yes"></o-table-column>
+            <o-table-column attr="startdate" title="startdate" type="date" format="LL"></o-table-column>
+            <o-table-column attr="enddate" title="enddate" type="date" format="LL"></o-table-column>
+            <o-table-column attr="subscriptionid" title="subscriptionid" content-align="center"></o-table-column>
+        </o-table>
+    </div>
 </o-form-layout-manager>
