@@ -19,8 +19,6 @@
     "FORGOT_PWD": "Forgot your password?",
     "FOOTER_CREATED_BY": "Created by Imatia Innovation",
     "FOOTER_RIGHTS": "All rights reserved",
-
-
     "SUBSCRIPTIONS": "Subscriptions",
     "EXPERIENCES": "Experiences",
     "ID": "Id.",
@@ -36,5 +34,5 @@
     "duration": "Duration",
     "description": "Description",
     "subscriptions": "Subscriptions",
-    "id": "id"
+    "id": "Id"
 }
