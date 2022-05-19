@@ -35,5 +35,6 @@
     "price": "Price",
     "duration": "Duration",
     "description": "Description",
-    "subscriptions": "Subscriptions"
+    "subscriptions": "Subscriptions",
+    "subscriptionid": "Subscription"
 }
