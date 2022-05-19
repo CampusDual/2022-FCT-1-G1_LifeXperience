@@ -1,10 +1,35 @@
-<o-form-layout-manager  separator=" " mode="tab" label-columns="name">
-  <div fxFill>
-   <o-table fxFlex attr="subscriptionsTable" service="subscriptions" entity="subscription" keys="id"
-     columns="id;name;price;description;duration"
-     visible-columns="id;name;price;description;duration" query-rows="20">
-     <o-table-column attr="id" title="id" width="100px"></o-table-column>
-     <o-table-column attr="name" title="name" width="100px"></o-table-column>
-   </o-table>
-  </div>
+<!-- TODO: Creo que hay que configurar la conexion a nuestra aplicacion de servidor -->
+<!-- <div fxFill fxLayout="column" fxLayoutAlign="start">
+    <o-table attr="subscriptionsTable" service="subscriptions" entity="subscription" keys="id" columns="id;name;price;description;duration" visible-columns="id;name;price;description;duration" query-rows="20">
+        <o-table-column attr="id" title="id" width="100px"></o-table-column>
+        <o-table-column attr="name" title="name" width="100px"></o-table-column>
+    </o-table>
+</div> -->
+
+<o-form-layout-manager title="{{'Subscriptions' | oTranslate }}" separator=" " mode="tab" label-columns="name">
+  <div fxFill fxLayout="column" fxLayoutAlign="start">
+    <o-table attr="subscriptionsTable" service="subscriptions" entity="subscription" keys="id"
+      columns="id;name;price;description;duration"
+      visible-columns="id;name;price;description;duration" query-rows="20">
+
+      <o-table-column attr="id" title="id" width="100px"></o-table-column>
+      <o-table-column attr="name" title="name" width="100px"></o-table-column>
+  </o-table>
+    </div>
  </o-form-layout-manager>
+
+ <!-- //// -->
+
+ <!-- <o-form-layout-manager title="{{'Experiences' | oTranslate }}" separator=" " mode="tab" label-columns="name">
+  <div fxFill fxLayout="column" fxLayoutAlign="start">
+    <o-table attr="experiencesTable" service="experiences" entity="experience" keys="id"
+      columns="id;name;description;startdate;enddate;subscriptionid"
+      visible-columns="id;name;description;startdate;enddate;subscriptionid" query-rows="20">
+
+      <o-table-column attr="startdate" title="startdate" type="date" format="LL"></o-table-column>
+      <o-table-column attr="enddate" title="enddate" type="date" format="LL"></o-table-column>
+      <o-table-column attr="id" title="id" width="100px"></o-table-column>
+    </o-table>
+    </div>
+  </o-form-layout-manager> -->
+

@@ -1,13 +1,20 @@
-<!-- <o-form service="subscriptions" entity="subscription" keys="subscriptionid" header-actions="R;I;U;D" show-header-navigation="no">
-  <o-text-input attr="subscriptionid" sql-type="INTEGER" enabled="no"></o-text-input>
+<o-form service="subscriptions" entity="subscription" keys="id" header-actions="r;i;u;d" show-header-navigation="no">
+  <o-text-input attr="id" sql-type="integer" enabled="no"></o-text-input>
   <o-row>
-    <o-column title-label="SUBSCRIPTION_PERSONAL_INFORMATION" fxFlex>
+    <o-column title-label="subscriptions_information" fxFlex>
       <o-row>
-        <o-column attr="id" class="input-padding" fxFlex="40" required="yes"></o-column>
+        <o-text-input class="input-padding" attr="name" fxFlex="40" required="yes" enabled ="yes"></o-text-input>
       </o-row>
       <o-row>
-        <o-text-input class="input-padding" attr="name" fxFlex="40" required="yes"></o-text-input>
+        <o-text-input class="input-padding" attr="price" fxFlex="40" required="yes" enabled ="yes"></o-text-input>
+      </o-row>
+      <o-row>
+        <o-text-input class="input-padding" attr="duration" fxFlex="40" required="yes" enabled ="yes"></o-text-input>
+      </o-row>
+      <o-row>
+        <o-textarea-input class="input-padding" attr="description" fxFlex="40" required="yes"enabled ="yes"></o-textarea-input>
       </o-row>
     </o-column>
   </o-row>
-</o-form> -->
+</o-form>
+

@@ -36,5 +36,5 @@
     "duration": "Duration",
     "description": "Description",
     "subscriptions": "Subscriptions",
-    "subscriptionid": "Subscription"
+    "id": "id"
 }
