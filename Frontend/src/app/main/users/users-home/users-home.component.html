@@ -1,1 +1,11 @@
-<p>users-home works!</p>
+<o-form-layout-manager title="{{'Users' | oTranslate }}" separator=" " mode="tab" label-columns="name">
+    <div fxFill fxLayout="column" fxLayoutAlign="start">
+        <o-table attr="usersTable" service="users" entity="user" keys="user_" columns="user_;password;name;surname;email;nif;userblocked;lastpasswordupdate;firstlogin;down_date;subscriptionid" visible-columns="user_;name;surname;email;nif" query-rows="20" auto-adjust=yes>
+            <o-table-column attr="user_" title="user" width="30px" content-align="center"></o-table-column>
+            <o-table-column attr="name" title="name" width="100px" content-align="center"></o-table-column>
+            <o-table-column attr="surname" title="surname" width="300px" content-align="center"></o-table-column>
+            <o-table-column attr="email" title="email" width="30px" content-align="center"></o-table-column>
+            <o-table-column attr="nif" title="nif" width="30px" content-align="center"></o-table-column>
+        </o-table>
+    </div>
+</o-form-layout-manager>
