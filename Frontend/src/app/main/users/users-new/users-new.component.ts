@@ -11,5 +11,4 @@ export class UsersNewComponent implements OnInit {
 
   ngOnInit() {
   }
-
 }
