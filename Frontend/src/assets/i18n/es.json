@@ -33,5 +33,6 @@
     "duration": "Duración",
     "description": "Descripción",
     "subscriptionid": "Suscripción",
-    "id": "Id"
+    "id": "Id",
+    "experiences": "Experiencias"
 }
