@@ -28,6 +28,7 @@
     "VERSION": "Version",
     "VIEW": "Views",
     "description": "Description",
+    "down_date": "Down date",
     "duration": "Duration",
     "email": "Email",
     "enddate": "End date",
