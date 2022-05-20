@@ -1,7 +1,7 @@
 <o-form-layout-manager title="{{'Subscriptions' | oTranslate }}" separator=" " mode="tab" label-columns="name">
     <div fxFill fxLayout="column" fxLayoutAlign="start">
-        <o-table attr="subscriptionsTable" service="subscriptions" entity="subscription" keys="id" columns="id;name;price;description;duration" visible-columns="id;name;price;description;duration" query-rows="20" auto-adjust=yes>
-            <o-table-column attr="id" title="id" type="INTEGER" width="30px" content-align="center" orderable="yes"></o-table-column>
+        <o-table attr="subscriptionsTable" service="subscriptions" entity="subscription" keys="id" columns="id;name;price;description;duration"
+        visible-columns="name;price;description;duration" query-rows="20" auto-adjust=yes>
             <o-table-column attr="name" title="name" width="100px" content-align="center"></o-table-column>
             <o-table-column attr="price" title="price" width="30px" content-align="center"></o-table-column>
             <o-table-column attr="description" title="description" width="300px" content-align="start"></o-table-column>
