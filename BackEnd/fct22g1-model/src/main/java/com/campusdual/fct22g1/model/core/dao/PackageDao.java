@@ -5,14 +5,13 @@ import com.ontimize.jee.server.dao.jdbc.OntimizeJdbcDaoSupport;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Repository;
 
-@Repository(value = "SubscriptionDao")
+@Repository(value = "PackageDao")
 @Lazy
-@ConfigurationFile(configurationFile = "dao/SubscriptionDao.xml", configurationFilePlaceholder = "dao/placeholders.properties")
+@ConfigurationFile(configurationFile = "dao/PackageDao.xml", configurationFilePlaceholder = "dao/placeholders.properties")
 
-public class SubscriptionDao extends OntimizeJdbcDaoSupport {
+public class PackageDao extends OntimizeJdbcDaoSupport {
     public static final String ATTR_ID = "id";
     public static final String ATTR_NAME = "name";
     public static final String ATTR_PRICE = "price";
     public static final String ATTR_DESCRIPTION = "description";
-    public static final String ATTR_DURACTION = "duration";
 }
