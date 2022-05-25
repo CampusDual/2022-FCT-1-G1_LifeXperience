@@ -1,0 +1,18 @@
+<o-form service="packages" entity="package" keys="id" header-actions="r;i;u;d" show-header-navigation="no">
+  <o-integer-input attr="id" sql-type="integer" enabled="no"></o-integer-input>
+  <o-row>
+    <o-column title-label="packages_information" fxFlex>
+      <o-row>
+        <o-text-input class="input-padding" attr="name" fxFlex="40" required="yes" enabled="yes"></o-text-input>
+      </o-row>
+      <o-row>
+        <o-real-input class="input-padding" attr="price" fxFlex="40" required="yes" enabled="yes" decimal-separator=","
+          max-decimal-digits="2"></o-real-input>
+      </o-row>
+      <o-row>
+        <o-textarea-input class="input-padding" attr="description" fxFlex="40" required="yes" enabled="yes">
+        </o-textarea-input>
+      </o-row>
+    </o-column>
+  </o-row>
+</o-form>

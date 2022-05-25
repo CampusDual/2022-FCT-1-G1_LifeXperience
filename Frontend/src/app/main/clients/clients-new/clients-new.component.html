@@ -1,0 +1,30 @@
+<o-form service="clients" entity="client" keys="id" header-actions="R;I;U;D" show-header-navigation="no">
+  <o-row>
+    <o-column title-label="clients_information" fxFlex>
+      <o-row>
+        <o-text-input class="input-padding" attr="name" fxFlex="40" required="yes"></o-text-input>
+      </o-row>
+      <o-row>
+        <o-text-input class="input-padding" attr="surname" fxFlex="40" required="yes"></o-text-input>
+      </o-row>
+      <o-row>
+        <o-text-input class="input-padding" attr="nif" fxFlex="40" required="yes"></o-text-input>
+      </o-row>
+      <o-row>
+        <o-text-input class="input-padding" attr="email" fxFlex="40" required="yes"></o-text-input>
+      </o-row>
+      <o-row>
+        <o-text-input class="input-padding" attr="birthdate" type="date" format="LL" fxFlex="40" required="yes">
+        </o-text-input>
+      </o-row>
+      <o-row>
+        <o-textarea-input class="input-padding" attr="direccion" fxFlex="40" required="yes" enabled="yes">
+        </o-textarea-input>
+      </o-row>
+      <o-row>
+        <o-text-input class="input-padding" attr="phonenumber" fxFlex="40" required="yes"></o-text-input>
+      </o-row>
+    </o-column>
+  </o-row>
+</o-form>
+
