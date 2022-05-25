@@ -62,7 +62,7 @@
         "kind-of": "6.0.3",
         "log4js": ">=6.4.0",
         "minimist": "1.2.5",
-        "moment": "^2.22.2",
+        "moment": "^2.22.0",
         "node-forge": ">=1.0.0",
         "protractor": "~7.0.0",
         "ts-node": "~7.0.0",
