@@ -1,5 +1,6 @@
 {
     "APP_TITLE": "Gestor de subscripciones de experiencias",
+    "CLIENTS":"Clientes",
     "DESCRIPTION": "Descripción",
     "EMAIL": "Email",
     "ERROR_MIN_LENGTH_REQUIRED": "El valor introducido tiene que tener una longitud mínima de 8 caracteres",
@@ -27,6 +28,7 @@
     "USERS": "Usuarios",
     "VERSION": "Versión",
     "VIEW": "Vistas",
+    "clients":"Clientes",
     "description": "Descripción",
     "down_date": "Fecha de baja",
     "duration": "Duración",
@@ -37,6 +39,7 @@
     "name": "Nombre",
     "nif": "NIF",
     "password": "Contraseña",
+    "phonenumber":"Teléfono",
     "price": "Precio",
     "startdate": "Fecha de inicio",
     "packageid": "Paquete de experiencia",

@@ -1,5 +1,6 @@
 {
     "APP_TITLE": "Experiences Subscriptions Manager",
+    "CLIENTS":"Clients",
     "DESCRIPTION": "Surname",
     "EMAIL": "Email",
     "ERROR_MIN_LENGTH_REQUIRED": "The value length entered must be at least 8 characters.",
@@ -27,6 +28,7 @@
     "USERS": "Users",
     "VERSION": "Version",
     "VIEW": "Views",
+    "clients":"Clients",
     "description": "Description",
     "down_date": "Down date",
     "duration": "Duration",
@@ -37,6 +39,7 @@
     "name": "Name",
     "nif": "NIF",
     "password": "Password",
+    "phonenumber":"Phone Number",
     "price": "Price",
     "startdate": "Start date",
     "subscriptionid": "Experience Package",
