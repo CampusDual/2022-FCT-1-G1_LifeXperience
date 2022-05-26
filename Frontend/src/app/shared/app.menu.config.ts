@@ -9,7 +9,7 @@ export const MENU_CONFIG: MenuRootItem[] = [
   {
     id: 'modules', name: 'MODULES', icon: 'remove_red_eye', opened: false,
     items: [
-            { id: 'experience_box', name: 'EXPERIENCE_BOX', icon: 'paid', route:'/main/experienceboxes'},
+            { id: 'experience_box', name: 'EXPERIENCE_BOX', icon: 'paid', route:'/main/experience-boxes'},
             { id: 'clients', name: 'CLIENTS', icon: 'people', route: '/main/clients'},
             { id: 'experiences', name: 'EXPERIENCES', icon: 'travel_explore', route: '/main/experiences'}]
   },
