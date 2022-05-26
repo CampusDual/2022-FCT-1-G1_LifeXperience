@@ -1,12 +1,27 @@
 <o-form-layout-manager title="{{'experiences' | oTranslate }}" separator=" " mode="tab" label-columns="name">
-  <div fxFill fxLayout="column" fxLayoutAlign="start">
-      <o-table attr="experiencesTable" service="experiences" entity="experience" keys="id"
-        columns="id;name;description;price;enddate;associate_image" visible-columns="name;description;price;enddate" query-rows="20"
-        auto-adjust=yes>
-        <o-table-column attr="name" title="name" content-align="center" width="100px"></o-table-column>
-        <o-table-column attr="description" title="description" multiline="yes" width="100px"></o-table-column>
-        <o-table-column attr="price" title="price" type="currency" currency-symbol="€" currency-symbol-position="right" width="30px" content-align="center"></o-table-column>
-        <o-table-column attr="enddate" title="enddate" type="date" format="LL" width="60px"></o-table-column>
-    </o-table>
-  </div>
+    <div fxFill fxLayout="column" fxLayoutAlign="start">
+        <o-button (click)="changeLayout()" attr="buttonChangeLayout" id="buttonChangeLayout" type="RAISED" label="{{buttonChangeLayoutText}}" icon="{{buttonChangeLayoutIcon}}" layout-padding color="accent"></o-button>
+
+        <o-table *ngIf="isListLayout" attr="experiencesTable" service="experiences" entity="experience" keys="id" columns="id;name;description;price;enddate;associate_image" visible-columns="name;description;price;enddate" query-rows="20" auto-adjust=yes>
+            <o-table-column attr="name" title="name" content-align="center" width="100px"></o-table-column>
+            <o-table-column attr="description" title="description" multiline="yes" width="100px"></o-table-column>
+            <o-table-column attr="price" title="price" type="currency" currency-symbol="€" currency-symbol-position="right" width="30px" content-align="center"></o-table-column>
+            <o-table-column attr="enddate" title="enddate" type="date" format="LL" width="60px"></o-table-column>
+        </o-table>
+
+
+        <o-grid #experienceGrid class="grid" *ngIf="!isListLayout" attr="experiencesTable" service="experiences" entity="experience" columns="id;name;description;price;enddate;associate_image" keys="id" cols="5" query-rows="8" show-page-size="true" orderable="true"
+            quick-filter="true" sortable-columns="name,price,enddate" sort-column="name" controls="true" gutter-size="10px" refresh-button="true" insert-button="true" pagination-controls="true" fixed-header="yes">
+            <o-grid-item *ngFor="let list of experienceGrid.dataArray" auto-fit="true">
+
+                <div class="item" fxLayout="column" fxLayoutAlign="space-evenly center">
+                    <o-image data="{{list.associate_image}}" empty-image="assets/images/no-image.png" fxFlex="30" auto-fit="true" width="290px" read-only="true" show-controls="no"></o-image>
+                    <div>{{ list.name }}</div>
+                    <div>{{ list.enddate }}</div>
+                    <div>{{ list.price }}€</div>
+                </div>
+            </o-grid-item>
+        </o-grid>
+
+    </div>
 </o-form-layout-manager>

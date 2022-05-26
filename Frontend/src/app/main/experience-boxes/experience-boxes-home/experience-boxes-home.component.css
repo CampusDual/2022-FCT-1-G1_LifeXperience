@@ -1,0 +1,16 @@
+#buttonChangeLayout {
+    width: 10%;
+    position: relative;
+    left: 89%;
+    clear: both;
+    text-align: center;
+}
+
+.item {
+    word-wrap: break-word;
+    width: 300px;
+}
+
+#associatedImage {
+    right: 0px;
+}

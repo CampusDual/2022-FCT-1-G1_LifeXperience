@@ -1,12 +1,24 @@
-<o-form-layout-manager title="{{'EXPERIENCE-BOXES' | oTranslate }}" separator=" " mode="tab" label-columns="name">
-  <div fxFill fxLayout="column" fxLayoutAlign="start">
-    <o-table attr="experienceBoxesTable" service="experienceboxes" entity="experiencebox" keys="id"
-      columns="id;name;price;description;associate_image" visible-columns="name;price;description" query-rows="20"
-      auto-adjust=yes>
-      <o-table-column attr="name" title="name" width="100px" content-align="center"></o-table-column>
-      <o-table-column attr="price" title="price" width="30px" content-align="center"type="currency"
-       currency-symbol="€" currency-symbol-position="right" width="30px" content-align="center"></o-table-column>
-      <o-table-column attr="description" title="description" width="300px" content-align="start"></o-table-column>
-    </o-table>
-  </div>
+<o-form-layout-manager title="{{'EXPERIENCE-BOXES' | oTranslate }}" separator=" " mode="tab " label-columns="name ">
+    <div fxFill fxLayout="column " fxLayoutAlign="start ">
+        <o-button (click)="changeLayout() " attr="buttonChangeLayout " id="buttonChangeLayout " type="RAISED " label="{{buttonChangeLayoutText}} " icon="{{buttonChangeLayoutIcon}} " layout-padding color="accent "></o-button>
+
+        <o-table *ngIf="!isListLayout" attr="experienceBoxesTable" service="experienceboxes" entity="experiencebox" keys="id" columns="id;name;price;description;associate_image" visible-columns="name;price;description" query-rows="20" auto-adjust=yes>
+            <o-table-column attr="name" title="name" width="100px" content-align="center"></o-table-column>
+            <o-table-column attr="price" title="price" width="30px" content-align="center" type="currency" currency-symbol="€" currency-symbol-position="right" width="30px" content-align="center"></o-table-column>
+            <o-table-column attr="description" title="description" width="300px" content-align="start"></o-table-column>
+        </o-table>
+
+
+        <o-grid #experienceBoxGrid class="grid" *ngIf="isListLayout" attr="experienceBoxesTable" service="experienceboxes" entity="experiencebox" columns="id;name;price;description;associate_image" keys="id" cols="5" query-rows="8" show-page-size="true" orderable="true"
+            quick-filter="true" sortable-columns="name,price" sort-column="name" controls="true" gutter-size="10px" refresh-button="true" insert-button="true" pagination-controls="true" fixed-header="yes">
+            <o-grid-item *ngFor="let list of experienceBoxGrid.dataArray " auto-fit="true">
+
+                <div class="item" fxLayout="column" fxLayoutAlign="space-evenly center">
+                    <o-image id="associatedImage" data="{{list.associate_image}} " empty-image="assets/images/no-image.png" fxFlex="30" auto-fit="true" width="290px" read-only="true" show-controls="no"></o-image>
+                    <div>{{ list.name }}</div>
+                    <div>{{ list.price }}€</div>
+                </div>
+            </o-grid-item>
+        </o-grid>
+    </div>
 </o-form-layout-manager>
