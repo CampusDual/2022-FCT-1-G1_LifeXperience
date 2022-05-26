@@ -1,7 +1,7 @@
 <o-form-layout-manager title="{{'experiences' | oTranslate }}" separator=" " mode="tab" label-columns="name">
   <div fxFill fxLayout="column" fxLayoutAlign="start">
       <o-table attr="experiencesTable" service="experiences" entity="experience" keys="id"
-        columns="id;name;description;price;enddate" visible-columns="name;description;price;enddate" query-rows="20"
+        columns="id;name;description;price;enddate;associate_image" visible-columns="name;description;price;enddate" query-rows="20"
         auto-adjust=yes>
         <o-table-column attr="name" title="name" content-align="center" width="100px"></o-table-column>
         <o-table-column attr="description" title="description" multiline="yes" width="100px"></o-table-column>

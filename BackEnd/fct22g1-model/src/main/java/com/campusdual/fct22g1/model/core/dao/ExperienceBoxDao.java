@@ -14,4 +14,5 @@ public class ExperienceBoxDao extends OntimizeJdbcDaoSupport {
     public static final String ATTR_NAME = "name";
     public static final String ATTR_PRICE = "price";
     public static final String ATTR_DESCRIPTION = "description";
+    public static final String ATTR_ASSOCIATE_IMAGE = "associate_image";
 }
