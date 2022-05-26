@@ -5,11 +5,11 @@ import com.ontimize.jee.server.dao.jdbc.OntimizeJdbcDaoSupport;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Repository;
 
-@Repository(value = "PackageDao")
+@Repository(value = "ExperienceBoxDao")
 @Lazy
-@ConfigurationFile(configurationFile = "dao/PackageDao.xml", configurationFilePlaceholder = "dao/placeholders.properties")
+@ConfigurationFile(configurationFile = "dao/ExperienceBoxDao.xml", configurationFilePlaceholder = "dao/placeholders.properties")
 
-public class PackageDao extends OntimizeJdbcDaoSupport {
+public class ExperienceBoxDao extends OntimizeJdbcDaoSupport {
     public static final String ATTR_ID = "id";
     public static final String ATTR_NAME = "name";
     public static final String ATTR_PRICE = "price";
