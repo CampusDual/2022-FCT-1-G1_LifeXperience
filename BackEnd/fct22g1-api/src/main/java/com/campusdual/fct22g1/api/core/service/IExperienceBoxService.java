@@ -7,12 +7,12 @@ import java.util.Map;
 
 public interface IExperienceBoxService {
 
-    public EntityResult experienceBoxQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException;
+    public EntityResult experienceboxQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException;
 
-    public EntityResult experienceBoxInsert(Map<String, Object> attrMap) throws OntimizeJEERuntimeException;
+    public EntityResult experienceboxInsert(Map<String, Object> attrMap) throws OntimizeJEERuntimeException;
 
-    public EntityResult experienceBoxUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap) throws OntimizeJEERuntimeException;
+    public EntityResult experienceboxUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap) throws OntimizeJEERuntimeException;
 
-    public EntityResult experienceBoxDelete(Map<String, Object> keyMap) throws OntimizeJEERuntimeException;
+    public EntityResult experienceboxDelete(Map<String, Object> keyMap) throws OntimizeJEERuntimeException;
 
 }

@@ -21,26 +21,26 @@ public class ExperienceBoxService implements IExperienceBoxService {
     private DefaultOntimizeDaoHelper daoHelper;
 
     @Override
-    public EntityResult experienceBoxQuery(Map<String, Object> keyMap, List<String> attrList)
+    public EntityResult experienceboxQuery(Map<String, Object> keyMap, List<String> attrList)
             throws OntimizeJEERuntimeException {
         return this.daoHelper.query(this.experienceBoxDao, keyMap, attrList);
     }
 
     @Override
-    public EntityResult experienceBoxInsert(Map<String, Object> attrMap) throws OntimizeJEERuntimeException {
+    public EntityResult experienceboxInsert(Map<String, Object> attrMap) throws OntimizeJEERuntimeException {
         // TODO Auto-generated method stub
         return this.daoHelper.insert(this.experienceBoxDao, attrMap);
     }
 
     @Override
-    public EntityResult experienceBoxUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap)
+    public EntityResult experienceboxUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap)
             throws OntimizeJEERuntimeException {
         // TODO Auto-generated method stub
         return this.daoHelper.update(this.experienceBoxDao, attrMap, keyMap);
     }
 
     @Override
-    public EntityResult experienceBoxDelete(Map<String, Object> keyMap) throws OntimizeJEERuntimeException {
+    public EntityResult experienceboxDelete(Map<String, Object> keyMap) throws OntimizeJEERuntimeException {
         // TODO Auto-generated method stub
         return this.daoHelper.delete(this.experienceBoxDao, keyMap);
     }
