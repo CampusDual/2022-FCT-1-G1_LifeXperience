@@ -9,16 +9,6 @@ export const MENU_CONFIG: MenuRootItem[] = [
   {
     id: 'modules', name: 'MODULES', icon: 'remove_red_eye', opened: false,
     items: [
-
-           /*  { id: 'packagesAll', name: 'PACKAGES', icon: 'paid',opened:false, items:[
-              {
-                 id: 'packages', name: 'LIST', icon:'paid', route: '/main/packages'
-              },
-              {
-                id: 'new-package', name: 'NEW', icon:'paid', route: '/main/packages/new'
-              }
-
-            ]}, */
             { id: 'packages', name: 'PACKAGES', icon: 'paid', route:'/main/packages'},
             { id: 'clients', name: 'CLIENTS', icon: 'people', route: '/main/clients'},
             { id: 'experiences', name: 'EXPERIENCES', icon: 'travel_explore', route: '/main/experiences'}]
