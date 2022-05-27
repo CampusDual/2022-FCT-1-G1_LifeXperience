@@ -1,15 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <JdbcEntitySetup
- xmlns="http://www.ontimize.com/schema/jdbc"
- xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
- xsi:schemaLocation="http://www.ontimize.com/schema/jdbc http://www.ontimize.com/schema/jdbc/ontimize-jdbc-dao.xsd"
- catalog="" schema="${mainschema}" table="clients_experiences"
- datasource="mainDataSource" sqlhandler="dbSQLStatementHandler">
- <DeleteKeys>
-  <Column>ID</Column>
- </DeleteKeys>
- <UpdateKeys>
-  <Column>ID</Column>
- </UpdateKeys>
- <GeneratedKey>ID</GeneratedKey>
+	xmlns="http://www.ontimize.com/schema/jdbc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.ontimize.com/schema/jdbc http://www.ontimize.com/schema/jdbc/ontimize-jdbc-dao.xsd"
+	catalog="" schema="${mainschema}" table="clients_experiences"
+	datasource="mainDataSource" sqlhandler="dbSQLStatementHandler">
+	<DeleteKeys>
+		<Column>id</Column>
+	</DeleteKeys>
+	<UpdateKeys>
+		<Column>id</Column>
+	</UpdateKeys>
+	<GeneratedKey>id</GeneratedKey>
+
+	<Queries>
+		<Query id="details">
+			<AmbiguousColumns>
+				<AmbiguousColumn name="exp_name" prefix="e"
+					databaseName="name" />
+				<AmbiguousColumn name="client_name" prefix="c"
+					databaseName="name" />
+				<AmbiguousColumn name="client_id" prefix="c"
+					databaseName="id" />
+				<AmbiguousColumn name="experience_id" prefix="e"
+					databaseName="id" />
+				<AmbiguousColumn name="relation_id" prefix="ce"
+					databaseName="id" />
+			</AmbiguousColumns>
+			<Sentence>
+   <![CDATA[
+     select
+      #COLUMNS#
+     from
+      ${mainschema}.clients_experiences ce
+      inner join ${mainschema}.clients c on
+      ce.id_client = c.id  
+     inner join ${mainschema}.experiences e on
+      ce.id_experience = e.id        
+     #WHERE#
+   ]]>
+   </Sentence>
+		</Query>
+	</Queries>
+
 </JdbcEntitySetup>
