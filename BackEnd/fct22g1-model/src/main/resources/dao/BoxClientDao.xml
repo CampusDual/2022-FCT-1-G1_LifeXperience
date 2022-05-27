@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<JdbcEntitySetup xmlns="http://www.ontimize.com/schema/jdbc"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.ontimize.com/schema/jdbc http://www.ontimize.com/schema/jdbc/ontimize-jdbc-dao.xsd" catalog="" schema="${mainschema}" table="boxclient" datasource="mainDataSource" sqlhandler="dbSQLStatementHandler">
+    <DeleteKeys>
+        <Column>id</Column>
+    </DeleteKeys>
+    <UpdateKeys>
+        <Column>id</Column>
+    </UpdateKeys>
+    <GeneratedKey>id</GeneratedKey>
+    <Queries>
+        <Query id="default">
+            <AmbiguousColumns>
+                <AmbiguousColumn name="boxexp_name" prefix="eb" databaseName="name" />
+                <AmbiguousColumn name="client_name" prefix="c" databaseName="name" />
+                <AmbiguousColumn name="client_id" prefix="c" databaseName="id" />
+                <AmbiguousColumn name="boxexp_id" prefix="eb" databaseName="id" />
+                <AmbiguousColumn name="boxclient_id" prefix="bc" databaseName="id" />
+            </AmbiguousColumns>
+            <Sentence>
+                <![CDATA[
+                    select
+                    #COLUMNS#
+                    from
+                    ${mainschema}.boxclient bc
+                    inner join ${mainschema}.clients c on
+                    bc.idclient = c.id  
+                    inner join ${mainschema}.experience_box eb on
+                    bc.idbox= eb.id        
+                    #WHERE#
+                ]]>
+            </Sentence>
+        </Query>
+    </Queries>
+</JdbcEntitySetup>
