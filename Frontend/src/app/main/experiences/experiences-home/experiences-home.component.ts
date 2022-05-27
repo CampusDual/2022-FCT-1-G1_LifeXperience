@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-experiences-home',
@@ -13,13 +15,12 @@ export class ExperiencesHomeComponent implements OnInit {
   buttonChangeLayoutIcon:String = "grid_view"
   
   
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
 
   changeLayout(){
-    console.log("Metodo ejecutado")
     this.isListLayout = !this.isListLayout;
     this.changeTitleButtonGrid();
   }
@@ -33,9 +34,13 @@ export class ExperiencesHomeComponent implements OnInit {
      }else{
       this.buttonChangeLayoutText = "List Layout";
        this.buttonChangeLayoutIcon = "view_list"
-      
      }
   }
-  
+
+  public openAccountDetailSelected(id:String) {
+      this.router.navigate(['main/experiences/' + id]);
+  }
+
+  //El cargado es muy lento
 
 }

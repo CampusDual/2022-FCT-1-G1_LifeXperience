@@ -11,11 +11,12 @@
 
 
         <o-grid #experienceGrid class="grid" *ngIf="!isListLayout" attr="experiencesTable" service="experiences" entity="experience" columns="id;name;description;price;enddate;associate_image" keys="id" cols="5" query-rows="8" show-page-size="true" orderable="true"
-            quick-filter="true" sortable-columns="name,price,enddate" sort-column="name" controls="true" gutter-size="10px" refresh-button="true" insert-button="true" pagination-controls="true" fixed-header="yes">
+            quick-filter="true" sortable-columns="name,price,enddate" sort-column="name" controls="true" gutter-size="10px" refresh-button="true" insert-button="true" pagination-controls="true" fixed-header="yes" insert-button-floatable="no" detail-mode="none">
             <o-grid-item *ngFor="let list of experienceGrid.dataArray" auto-fit="true">
 
-                <div class="item" fxLayout="column" fxLayoutAlign="space-evenly center">
-                    <o-image data="{{list.associate_image}}" empty-image="assets/images/no-image.png" fxFlex="30" auto-fit="true" width="290px" read-only="true" show-controls="no"></o-image>
+
+                <div class="item" (click)="openAccountDetailSelected(list.id)" fxLayout="column " fxLayoutAlign="space-evenly center ">
+                    <o-image data="{{list.associate_image}} " empty-image="assets/images/no-image.png" fxFlex="30" auto-fit="true" width="290px" enabled="false" show-controls="no"></o-image>
                     <div>{{ list.name }}</div>
                     <div>{{ list.enddate }}</div>
                     <div>{{ list.price }}€</div>
