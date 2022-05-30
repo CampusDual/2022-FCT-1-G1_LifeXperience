@@ -11,5 +11,4 @@ export class ClientsDetailsComponent implements OnInit {
 
   ngOnInit() {
   }
-
 }

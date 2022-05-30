@@ -1,20 +1,20 @@
 <o-form service="experiences" entity="experience" keys="id" header-actions="R;I;U;D" show-header-navigation="no">
-    <o-text-input attr="id" sql-type="integer" enabled="no" fxFlex="10"></o-text-input>
-    <o-row>
-        <o-column title-label="experiences_information" fxFlex>
-            <o-row>
-                <o-text-input class="input-padding" attr="name" fxFlex="40" required="yes" enabled="yes"></o-text-input>
-            </o-row>
-            <o-date-input attr="enddate" fxFlex="20" required="yes" enabled="yes"></o-date-input>
-            <o-row>
-                <o-currency-input attr="price" fxFlex="40" required="yes"></o-currency-input>
-            </o-row>
-            <o-row>
-                <o-textarea-input class="input-padding" attr="description" fxFlex="40" required="yes" enabled="yes"></o-textarea-input>
-            </o-row>
-            <o-row>
-                <o-image attr="associate_image" empty-image="assets/images/no-image.png" sql-type="OTHER" full-screen-button="true" auto-fit="true" fxFlex="40"></o-image>
-            </o-row>
-        </o-column>
-    </o-row>
+  <o-text-input attr="id" sql-type="integer" enabled="no" fxFlex="10"></o-text-input>
+  <o-row>
+    <o-column title-label="experiences_information" fxFlex>
+      <o-row>
+        <o-text-input class="input-padding" attr="name" fxFlex="40" required="yes" enabled="yes"></o-text-input>
+      </o-row>
+      <o-date-input attr="enddate" fxFlex="20" required="yes" enabled="yes"></o-date-input>
+      <o-row>
+        <o-currency-input attr="price" fxFlex="40" required="yes"></o-currency-input>
+      </o-row>
+      <o-row>
+        <o-textarea-input class="input-padding" attr="description" fxFlex="40" required="yes" enabled="yes">
+        </o-textarea-input>
+      </o-row>
+      <o-image id="img" attr="associate_image" empty-image="assets/images/no-image.png" sql-type="OTHER"
+      full-screen-button="true" auto-fit="true" fxFlex="40"></o-image>
+    </o-column>
+  </o-row>
 </o-form>
