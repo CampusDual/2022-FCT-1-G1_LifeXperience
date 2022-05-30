@@ -1,4 +1,5 @@
-<o-form service="experiences" entity="experience" keys="id" header-actions="R;I;U;D" show-header-navigation="no">
+<o-form  service="experiences" entity="experience" keys="id" header-actions="R;I;U;D" show-header-navigation="no"
+  (onDataLoaded)="onFormDataLoaded($event)">
   <o-text-input attr="id" sql-type="integer" enabled="no" fxFlex="10"></o-text-input>
   <o-row>
     <o-column title-label="experiences_information" fxFlex>
@@ -13,8 +14,20 @@
         <o-textarea-input class="input-padding" attr="description" fxFlex="40" required="yes" enabled="yes">
         </o-textarea-input>
       </o-row>
+      <o-row>
+        <o-real-input attr="latitude" decimal-separator="." max-decimal-digits="10" min-decimal-digits="0"
+          class="input-padding" fxFlex="20"></o-real-input>
+        <o-real-input attr="longitude" decimal-separator="." max-decimal-digits="10" min-decimal-digits="0" fxFlex="20">
+        </o-real-input>
+      </o-row>
       <o-image id="img" attr="associate_image" empty-image="assets/images/no-image.png" sql-type="OTHER"
-      full-screen-button="true" auto-fit="true" fxFlex="40"></o-image>
+        full-screen-button="true" auto-fit="true" fxFlex="40"></o-image>
     </o-column>
+    <div fxFlex="40" fxFlex.md="100" *ngIf="hasGPSPositition()">
+      <o-map class="o-map" [center]="getPositionGPS()" zoom="10" min-zoom="3" max-zoom="20" zoom-control="yes"
+        search-control="no" layer-panel-visible="no">
+        <o-map-layer layer-type="marker" layer-id="location_marker" [layer-center]="getPositionGPS()"></o-map-layer>
+      </o-map>
+    </div>
   </o-row>
 </o-form>
