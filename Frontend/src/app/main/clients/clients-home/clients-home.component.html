@@ -1,12 +1,10 @@
 <o-form-layout-manager title="{{'clients' | oTranslate }}" separator=" " mode="tab" label-columns="name">
-  <div fxFill fxLayout="column" fxLayoutAlign="start">
-    <o-table attr="clientsTable" service="clients" entity="client" keys="id"
-      columns="id;name;surname;nif;email;birthdate;address;phonenumber" visible-columns="name;surname;email;phonenumber"
-      query-rows="20" auto-adjust=yes>
-      <o-table-column attr="name" title="name" content-align="center"></o-table-column>
-      <o-table-column attr="surname" title="surname" multiline="yes"content-align="center"></o-table-column>
-      <o-table-column attr="email" title="email" multiline="yes"content-align="center"></o-table-column>
-      <o-table-column attr="phonenumber" title="phonenumber"content-align="center"></o-table-column>
-    </o-table>
-  </div>
+    <div fxFill fxLayout="column" fxLayoutAlign="start">
+        <o-table attr="clientsTable" service="clients" entity="client" keys="id" columns="id;name;surname;nif;email;birthdate;address;phonenumber" visible-columns="name;surname;email;phonenumber" query-rows="20" auto-adjust=yes>
+            <o-table-column attr="name" title="name" content-align="center"></o-table-column>
+            <o-table-column attr="surname" title="surname" multiline="yes" content-align="center"></o-table-column>
+            <o-table-column attr="email" title="email" multiline="yes" content-align="center"></o-table-column>
+            <o-table-column attr="phonenumber" title="phonenumber" content-align="center"></o-table-column>
+        </o-table>
+    </div>
 </o-form-layout-manager>

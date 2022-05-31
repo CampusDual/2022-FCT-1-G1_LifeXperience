@@ -1,44 +1,50 @@
 <o-form service="clients" entity="client" keys="id" header-actions="R;I;U;D" show-header-navigation="no">
-  <o-text-input attr="id" sql-type="integer" enabled="no" fxFlex="10"></o-text-input>
-  <o-row>
-    <o-column title-label="clients_information" fxFlex>
-      <o-row>
-        <o-text-input class="input-padding" attr="name" fxFlex="70" required="yes"></o-text-input>
-      </o-row>
-      <o-row>
-        <o-text-input class="input-padding" attr="surname" fxFlex="70" required="yes"></o-text-input>
-      </o-row>
-      <o-row>
-        <o-text-input class="input-padding" attr="nif" fxFlex="70" required="yes"></o-text-input>
-      </o-row>
-      <o-row>
-        <o-text-input class="input-padding" attr="email" fxFlex="70" required="yes"></o-text-input>
-      </o-row>
-      <o-row>
-        <o-date-input attr="birthdate" fxFlex="20" required="yes" enabled="yes" fxFlex="70"></o-date-input>
-      </o-row>
-      <o-row>
-        <o-textarea-input class="input-padding" attr="address" fxFlex="70" required="yes" enabled="yes">
-        </o-textarea-input>
-      </o-row>
-      <o-row>
-        <o-text-input class="input-padding" attr="phonenumber" fxFlex="70" required="yes"></o-text-input>
-      </o-row>
-    </o-column>
-    <o-column class="columnDiv">
-      <o-table query-on-init="no" show-title="true" title="Experiences" attr="ClientExperiencesTable"
-        auto-adjust="false" service="experiences" entity="clientExperienceDetails" insert-button="false"
-        delete-button="false" refresh-button="false" keys="client_id" parent-keys="client_id:id"
-        columns="experience_id;exp_name;description;price;enddate;associate_image;assistance"
-        visible-columns="exp_name;enddate;associate_image" grouped-columns="assistance" query-rows="10" auto-adjust=yes>
-        <o-table-columns-grouping columns="assistance"></o-table-columns-grouping>
-        <o-table-column id="img" title="Avatar" attr="associate_image" empty-image="assets/images/no-image.png" image-type="base64"
-          searchable="no" type="image" avatar="yes" full-screen-button="true" auto-fit="true" fxFlex="40">
-        </o-table-column>
-        <o-table-column attr="name" title="name" content-align="center" width="100px"></o-table-column>
-        <o-table-column attr="enddate" title="enddate" content-align="center" type="date" format="LL" width="60px">
-        </o-table-column>
-      </o-table>
-    </o-column>
-  </o-row>
+    <o-text-input attr="id" sql-type="integer" enabled="no" fxFlex="10"></o-text-input>
+    <o-row>
+        <o-column title-label="clients_information" fxFlex>
+            <o-row>
+                <o-text-input class="input-padding" attr="name" fxFlex="70" required="yes"></o-text-input>
+            </o-row>
+            <o-row>
+                <o-text-input class="input-padding" attr="surname" fxFlex="70" required="yes"></o-text-input>
+            </o-row>
+            <o-row>
+                <o-text-input class="input-padding" attr="nif" fxFlex="70" required="yes"></o-text-input>
+            </o-row>
+            <o-row>
+                <o-text-input class="input-padding" attr="email" fxFlex="70" required="yes"></o-text-input>
+            </o-row>
+            <o-row>
+                <o-date-input attr="birthdate" fxFlex="20" required="yes" enabled="yes" fxFlex="70"></o-date-input>
+            </o-row>
+            <o-row>
+                <o-textarea-input class="input-padding" attr="address" fxFlex="70" required="yes" enabled="yes">
+                </o-textarea-input>
+            </o-row>
+            <o-row>
+                <o-text-input class="input-padding" attr="phonenumber" fxFlex="70" required="yes"></o-text-input>
+            </o-row>
+        </o-column>
+        <o-column class="columnDiv">
+            <o-table query-on-init="no" show-title="true" title="Experiences" attr="ClientExperiencesTable" auto-adjust="false" service="experiences" entity="clientExperienceDetails" insert-button="false" delete-button="false" refresh-button="false" keys="client_id"
+                parent-keys="client_id:id" columns="experience_id;exp_name;description;price;enddate;associate_image;assistance" visible-columns="exp_name;enddate;associate_image" grouped-columns="assistance" query-rows="10" auto-adjust=yes>
+                <o-table-columns-grouping columns="assistance"></o-table-columns-grouping>
+                <o-table-column id="img" title="Avatar" attr="associate_image" empty-image="assets/images/no-image.png" image-type="base64" searchable="no" type="image" avatar="yes" full-screen-button="true" auto-fit="true" fxFlex="40">
+                </o-table-column>
+                <o-table-column attr="name" title="name" content-align="center" width="100px"></o-table-column>
+                <o-table-column attr="enddate" title="enddate" content-align="center" type="date" format="LL" width="60px">
+                </o-table-column>
+            </o-table>
+        </o-column>
+
+
+
+
+        <button (click)="openModal('custom-modal-1')">Open Modal 1</button>
+        <jw-modal id="custom-modal-1">
+            <h1>A Custom Modal!</h1>
+            <p>Home page text: <input type="text" [(ngModel)]="bodyText" /></p>
+            <button (click)="closeModal('custom-modal-1');">Close</button>
+        </jw-modal>
+    </o-row>
 </o-form>
