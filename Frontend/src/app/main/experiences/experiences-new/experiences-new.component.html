@@ -12,6 +12,13 @@
                 <o-textarea-input class="input-padding" attr="description" fxFlex="40" required="yes"></o-textarea-input>
             </o-row>
             <o-row>
+              <o-real-input  attr="latitude" decimal-separator="." max-decimal-digits="10" min-decimal-digits="0"
+                class="input-padding" fxFlex="19"></o-real-input>
+              <o-real-input layout-margin-left attr="longitude" decimal-separator="." max-decimal-digits="10" min-decimal-digits="0" class="input-padding"
+              fxFlex="20">
+              </o-real-input>
+            </o-row>
+            <o-row>
                 <o-image attr="associate_image" empty-image="assets/images/no-image.png" sql-type="OTHER" full-screen-button="true" auto-fit="true" fxFlex="40"></o-image>
             </o-row>
         </o-column>

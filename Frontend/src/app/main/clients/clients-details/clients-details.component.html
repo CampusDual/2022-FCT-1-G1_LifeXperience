@@ -25,10 +25,12 @@
             <o-text-input class="input-padding" attr="phonenumber" fxFlex="70" required="yes"></o-text-input>
         </o-row>
     </o-column>
+
     <o-column class="columnDiv" elevation="1">
-      <o-table show-title="true" title="Experiences" attr="ClientExperiencesTable" auto-adjust="false"
+      <o-table query-on-init="no" show-title="true" title="Experiences" attr="ClientExperiencesTable" auto-adjust="false"
+
       service="experiences" entity="clientExperienceDetails" insert-button="false" delete-button="false"
-      refresh-button="false" keys="client_id"
+      refresh-button="false" keys="client_id" parent-keys="client_id:id"
       columns="experience_id;exp_name;description;price;enddate;associate_image"
       visible-columns="exp_name;enddate;associate_image" query-rows="10" auto-adjust=yes>
 

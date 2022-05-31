@@ -1,8 +1,4 @@
-import {
-  MenuItemLocale,
-  MenuRootItem,
-
-} from 'ontimize-web-ngx';
+import {MenuItemLocale,MenuRootItem,} from 'ontimize-web-ngx';
 import { ClientsCardComponent } from './clients-card/clients-card.component';
 import { ExperienceBoxCardComponent } from './experience-box-card/experience-box-card.component';
 import { ExperienceCardComponent } from './experience-card/experience-card.component';
@@ -13,9 +9,9 @@ export const MENU_CONFIG: MenuRootItem[] = [
   {
     id: 'modules', name: 'MODULES', icon: 'remove_red_eye', opened: false,
     items: [
-            { id: 'experience_box', name: 'EXPERIENCE_BOX', icon: 'rocket_launch', route:'/main/experience-boxes'},
-            { id: 'clients', name: 'CLIENTS', icon: 'people', route: '/main/clients'},
-            { id: 'experiences', name: 'EXPERIENCES', icon: 'travel_explore', route: '/main/experiences'}]
+            { id: 'experience_box', name: 'EXPERIENCE_BOX', icon: 'rocket_launch', route:'/main/experience-boxes',component: ExperienceBoxCardComponent},
+            { id: 'clients', name: 'CLIENTS', icon: 'people', route: '/main/clients',component: ClientsCardComponent},
+            { id: 'experiences', name: 'EXPERIENCES', icon: 'travel_explore', route: '/main/experiences',component: ExperienceCardComponent}]
   },
   { id: 'logout', name: 'LOGOUT', route: '/login', icon: 'power_settings_new', confirm: 'yes' }
 ];

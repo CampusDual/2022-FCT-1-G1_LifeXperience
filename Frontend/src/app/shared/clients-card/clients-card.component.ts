@@ -1,8 +1,9 @@
 import { ChangeDetectorRef, Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { OntimizeService } from 'ontimize-web-ngx';
+import { DiscreteBarChartConfiguration } from 'ontimize-web-ngx-charts';
 
 @Component({
-  selector: 'app-clients-card',
+  selector: 'app-branch-card',
   templateUrl: './clients-card.component.html',
   styleUrls: ['./clients-card.component.css'],
   encapsulation: ViewEncapsulation.None,
@@ -12,30 +13,26 @@ import { OntimizeService } from 'ontimize-web-ngx';
 })
 export class ClientsCardComponent implements OnInit {
 
-  public clientAmount: number;
-  // public vipClients: number;
-  // public normalClients: number;
-  // public otherClients: number;
-  // public basicClients: number;
+  public clientsAmount: number;
+  public chartParameters: DiscreteBarChartConfiguration;
+  protected graphData: Array<Object>;
+
 
   constructor(
     private ontimizeService: OntimizeService,
-    private cd: ChangeDetectorRef,
+    private cd: ChangeDetectorRef
   ) {
     this.ontimizeService.configureService(this.ontimizeService.getDefaultServiceConfiguration('clients'));
-    this.ontimizeService.query(undefined, ['CLIENTID', 'CLIENTTYPEID'], 'clients').subscribe(
+    this.ontimizeService.query(void 0, ['id'], 'client').subscribe(
       res => {
-        if (res.data && res.data.length) {
-          this.clientAmount = res.data.length;
-        }else{
-          this.clientAmount = undefined;
+        if (res && res.data.length) {
+          this.clientsAmount = res.data.length;
         }
-
-        },
+      },
       err => console.log(err),
       () => this.cd.detectChanges()
     );
-   }
+  }
 
   ngOnInit() {
   }

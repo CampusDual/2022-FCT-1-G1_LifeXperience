@@ -26,10 +26,14 @@
     "PRICE": "Price",
     "REMEMBER_ME": "Remember me",
     "PACKAGES": "Packages",
+    "TOTAL_CLIENTS": "Total Clients",
+    "TOTAL_EXPERIENCES": "Total Experiences",
+    "TOTAL_EXPERIENCE_BOX": "Total Experience Boxes",
     "USERNAME": "Username",
     "USERS": "Users",
     "VERSION": "Version",
     "VIEW": "Views",
+
     "associate_image": "Image",
     "clients":"Clients",
     "description": "Description",
@@ -50,12 +54,5 @@
     "subscriptions": "Experience Packages",
     "surname": "Surname",
     "user": "User",
-    "user_": "User",
-
-
-
-
-  "TOTAL_CLIENTS": "Total clients",
-  "TOTAL_EXPERIENCES": "Total experiences",
-  "TOTAL_EXPERIENCE_BOXES": "Total experience boxes"
+    "user_": "User"
 }

@@ -26,6 +26,9 @@
     "PRICE": "Precio",
     "REMEMBER_ME": "Recuérdame",
     "PACKAGES": "Paquetes",
+    "TOTAL_CLIENTS": "Total Clientes",
+    "TOTAL_EXPERIENCES": "Total Experiencias",
+    "TOTAL_EXPERIENCE_BOX": "Total Cajas de Experiencias",
     "USERNAME": "Usuario",
     "USERS": "Usuarios",
     "VERSION": "Versión",
@@ -50,12 +53,5 @@
     "packages": "Paquete de experiencias",
     "surname": "Apellidos",
     "user": "Usuario",
-    "user_": "Usuario",
-
-
-
-
-  "TOTAL_CLIENTS": "Total clientes",
-  "TOTAL_EXPERIENCES": "Total experiencias",
-  "TOTAL_EXPERIENCE_BOXES": "Total cajas de experiencia"
+    "user_": "Usuario"
 }
