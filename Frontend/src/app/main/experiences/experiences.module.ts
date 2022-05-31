@@ -5,6 +5,7 @@ import { ExperiencesRoutingModule } from './experiences-routing.module';
 import { ExperiencesHomeComponent } from './experiences-home/experiences-home.component';
 import { ExperiencesNewComponent } from './experiences-new/experiences-new.component';
 import { ExperiencesDetailComponent } from './experiences-detail/experiences-detail.component';
+import { OMapModule } from "ontimize-web-ngx-map";
 
 
 @NgModule({
@@ -12,7 +13,8 @@ import { ExperiencesDetailComponent } from './experiences-detail/experiences-det
   imports: [
     CommonModule,
     OntimizeWebModule,
-    ExperiencesRoutingModule
+    ExperiencesRoutingModule,
+    OMapModule
   ]
 })
 export class ExperiencesModule { }
