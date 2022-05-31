@@ -37,7 +37,7 @@
       ce.id_client = c.id  
      inner join ${mainschema}.experiences e on
       ce.id_experience = e.id        
-     #WHERE#
+     #WHERE# and assistance=true
    ]]>
    </Sentence>
 		</Query>
