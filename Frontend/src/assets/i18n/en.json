@@ -35,12 +35,9 @@
     "USERS": "Users",
     "VERSION": "Version",
     "VIEW": "Views",
-<<<<<<< HEAD
-
-=======
     "address":"Address",
     "assistance":"Assistance",
->>>>>>> 9ed893625fc90fce102a9b0eb6603b9746adccb9
+
     "associate_image": "Image",
     "birthdate":"Birth Date",
     "clients":"Clients",
