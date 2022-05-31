@@ -1,14 +1,14 @@
 ﻿import { Component, ViewEncapsulation, ElementRef, Input, OnInit, OnDestroy } from '@angular/core';
-import { ModalService } from '../ui-elements/ui-modal-window/ui-modal-window.service';
+import { ModalService } from '.';
 
 
 @Component({ 
     selector: 'jw-modal', 
-    templateUrl: 'modal.component.html', 
-    styleUrls: ['modal.component.less'],
+    templateUrl: 'ui-modal-window.html', 
+    styleUrls: ['ui-modal-window.less'],
     encapsulation: ViewEncapsulation.None
 })
-export class ModalComponent implements OnInit, OnDestroy {
+export class UiModalWindowComponent implements OnInit, OnDestroy {
     @Input() id: string;
     private element: any;
 

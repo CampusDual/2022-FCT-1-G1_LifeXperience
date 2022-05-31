@@ -37,14 +37,50 @@
             </o-table>
         </o-column>
 
-
-
-
         <button (click)="openModal('custom-modal-1')">Open Modal 1</button>
         <jw-modal id="custom-modal-1">
             <h1>A Custom Modal!</h1>
-            <p>Home page text: <input type="text" [(ngModel)]="bodyText" /></p>
+
+            <div id="modal-size-grid" *ngIf="selectedItemId == -1">
+                <o-grid #experienceBoxGrid class="grid" attr="experienceBoxesTable" service="experienceboxes" entity="experiencebox" columns="id;name;price;description;associate_image" keys="id" cols="5" query-rows="8" orderable="true" quick-filter="true" sortable-columns="name;price"
+                    sort-column="name" gutter-size="10px" refresh-button="true" detail-mode="no" pagination-controls="true" fixed-header="yes">
+                    <o-grid-item *ngFor="let list of experienceBoxGrid.dataArray" auto-fit="true">
+
+                        <div class="item" fxLayout="column" fxLayoutAlign="space-evenly center" (click)="setSelectedItemId(list.id)">
+                            <o-image data="{{list.associate_image}} " empty-image="assets/images/no-image.png" fxFlex="30" auto-fit="true" width="290px" enabled="false" show-controls="no"></o-image>
+                            <div>{{ list.name }}</div>
+                            <div>{{ list.price }}€</div>
+                        </div>
+                    </o-grid-item>
+                </o-grid>
+            </div>
+            <!--
+            <div #details id="modal-size-details" *ngIf="selectedItemId != -1">
+                <o-form service="experienceboxes" entity="experiencebox" keys="id" header-actions="R" show-header-navigation="no" show-header-navigation="false" query-on-init="false">
+                    <o-integer-input attr="id" sql-type="integer" enabled="no">
+                    </o-integer-input>
+                    <o-row>
+                        <o-column title-label="experience-box_information" fxFlex>
+                            <o-row>
+                                <o-text-input class="input-padding" attr="name" fxFlex="40" required="yes" enabled="false" read-only="true"></o-text-input>
+                            </o-row>
+                            <o-row>
+                                <o-real-input class="input-padding" attr="price" fxFlex="40" required="yes" enabled="false" decimal-separator="," max-decimal-digits="2"></o-real-input>
+                            </o-row>
+                            <o-row>
+                                <o-textarea-input class="input-padding" attr="description" fxFlex="40" enabled="false">
+                                </o-textarea-input>
+                            </o-row>
+                            <o-row>
+                                <o-image attr="associate_image" empty-image="assets/images/no-image.png" enabled="false" show-controls="no" sql-type="OTHER" full-screen-button="true" auto-fit="true" fxFlex="40"></o-image>
+                            </o-row>
+                        </o-column>
+                    </o-row>
+                </o-form>
+            </div>
+            -->
             <button (click)="closeModal('custom-modal-1');">Close</button>
+            <button *ngIf="selectedItemId != -1" (click)="(setSelectedItemId(-1))">Atras</button>
         </jw-modal>
     </o-row>
 </o-form>
