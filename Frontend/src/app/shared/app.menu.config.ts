@@ -1,7 +1,9 @@
 import {
+  MenuItemLocale,
   MenuRootItem,
 
 } from 'ontimize-web-ngx';
+import { ClientsCardComponent } from './clients-card/clients-card.component';
 
 export const MENU_CONFIG: MenuRootItem[] = [
   { id: 'home', name: 'HOME', icon: 'home', route: '/main/home' },
@@ -15,3 +17,12 @@ export const MENU_CONFIG: MenuRootItem[] = [
   },
   { id: 'logout', name: 'LOGOUT', route: '/login', icon: 'power_settings_new', confirm: 'yes' }
 ];
+
+export const MENU_COMPONENTS = [
+  ClientsCardComponent
+];
+
+// export const MENU_ITEM_LOCALE: MenuItemLocale[] = [
+//   { id: 'lang_es', name: 'LOCALE_es', icon: 'language', locale: 'es' },
+//   { id: 'lang_en', name: 'LOCALE_en', icon: 'language', locale: 'en' }
+// ]

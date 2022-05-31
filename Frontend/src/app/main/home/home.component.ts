@@ -22,4 +22,8 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['../', 'login'], { relativeTo: this.actRoute });
   }
 
+  goToDocumentation() {
+    window.open("https://ontimizeweb.github.io/docs/", "_blank");
+  }
+
 }
