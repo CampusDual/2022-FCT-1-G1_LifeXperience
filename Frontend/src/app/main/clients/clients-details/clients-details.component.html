@@ -26,7 +26,7 @@
       </o-row>
     </o-column>
     <o-column class="columnDiv" elevation="1">
-      <o-table query-on-init="no" show-title="true" title="Experiences" attr="ClientExperiencesTable"
+      <o-table expand-groups-same-level="false"query-on-init="no" show-title="true" title="Experiences" attr="ClientExperiencesTable"
         auto-adjust="false" service="experiences" entity="clientExperienceDetails" insert-button="false"
         delete-button="false" refresh-button="false" keys="client_id" parent-keys="client_id:id"
         columns="experience_id;exp_name;description;price;enddate;associate_image;assistance"
