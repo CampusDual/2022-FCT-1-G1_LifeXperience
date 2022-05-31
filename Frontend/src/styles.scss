@@ -1,1 +1,39 @@
 /* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files */
+.input-padding{
+  padding-right: 6px;
+}
+
+.o-table-column-centered{
+  text-align: center;
+}
+
+.form-expanded {
+  form.inner-form {
+    height: 100%;
+  }
+}
+
+.home-card {
+  display: block !important;
+  height: 100%;
+  margin: auto;
+  overflow: hidden;
+  width: 100%;
+}
+
+.home-card-title {
+  color: #cccccc;
+  font-weight: bold;
+  margin: 0;
+  text-align: end
+}
+
+.home-card-home-amount {
+  color: #202020;
+  font-size: 30px;
+  font-weight: bold;
+  margin: 0 0 0 15px;
+  padding-top: 2px;
+  text-align: start;
+}

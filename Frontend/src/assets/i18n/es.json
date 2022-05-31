@@ -50,5 +50,12 @@
     "packages": "Paquete de experiencias",
     "surname": "Apellidos",
     "user": "Usuario",
-    "user_": "Usuario"
+    "user_": "Usuario",
+
+
+
+
+  "TOTAL_CLIENTS": "Total clientes",
+  "TOTAL_EXPERIENCES": "Total experiencias",
+  "TOTAL_EXPERIENCE_BOXES": "Total cajas de experiencia"
 }

@@ -4,14 +4,16 @@ import {
 
 } from 'ontimize-web-ngx';
 import { ClientsCardComponent } from './clients-card/clients-card.component';
+import { ExperienceBoxCardComponent } from './experience-box-card/experience-box-card.component';
+import { ExperienceCardComponent } from './experience-card/experience-card.component';
 
 export const MENU_CONFIG: MenuRootItem[] = [
   { id: 'home', name: 'HOME', icon: 'home', route: '/main/home' },
-  { id: 'users', name: 'USERS', icon: 'people', route: '/main/users' },
+  { id: 'users', name: 'USERS', icon: 'supervised_user_circle', route: '/main/users' },
   {
     id: 'modules', name: 'MODULES', icon: 'remove_red_eye', opened: false,
     items: [
-            { id: 'experience_box', name: 'EXPERIENCE_BOX', icon: 'paid', route:'/main/experience-boxes'},
+            { id: 'experience_box', name: 'EXPERIENCE_BOX', icon: 'rocket_launch', route:'/main/experience-boxes'},
             { id: 'clients', name: 'CLIENTS', icon: 'people', route: '/main/clients'},
             { id: 'experiences', name: 'EXPERIENCES', icon: 'travel_explore', route: '/main/experiences'}]
   },
@@ -19,7 +21,9 @@ export const MENU_CONFIG: MenuRootItem[] = [
 ];
 
 export const MENU_COMPONENTS = [
-  ClientsCardComponent
+  ClientsCardComponent,
+  ExperienceBoxCardComponent,
+  ExperienceCardComponent
 ];
 
 // export const MENU_ITEM_LOCALE: MenuItemLocale[] = [

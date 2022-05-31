@@ -50,5 +50,12 @@
     "subscriptions": "Experience Packages",
     "surname": "Surname",
     "user": "User",
-    "user_": "User"
+    "user_": "User",
+
+
+
+
+  "TOTAL_CLIENTS": "Total clients",
+  "TOTAL_EXPERIENCES": "Total experiences",
+  "TOTAL_EXPERIENCE_BOXES": "Total experience boxes"
 }

@@ -27,10 +27,6 @@ export class ClientsCardComponent implements OnInit {
       res => {
         if (res.data && res.data.length) {
           this.clientAmount = res.data.length;
-          // this.vipClients = res.data.filter((e: any) => e['CLIENTTYPEID'] === 2).length;
-          // this.normalClients = res.data.filter((e: any) => e['CLIENTTYPEID'] === 1).length;
-          // this.otherClients = res.data.filter((e: any) => e['CLIENTTYPEID'] === 3).length;
-          // this.basicClients = this.clientAmount - this.vipClients - this.otherClients - this.normalClients;
         }else{
           this.clientAmount = undefined;
         }
