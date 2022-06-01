@@ -1,6 +1,8 @@
-import { Component, Injector, OnInit, ViewChild} from '@angular/core';
-import { DialogService, OFormComponent, OntimizeService } from 'ontimize-web-ngx';
+import { formatDate } from '@angular/common';
+import { Component, Injector, OnInit, ViewChild,LOCALE_ID, Inject } from '@angular/core';
+import { DialogService, OFormComponent, OntimizeService, SQLTypes } from 'ontimize-web-ngx';
 import { ModalService } from '../../ui-elements/ui-modal-window';
+
 
 @Component({
   selector: 'app-clients-details',
@@ -8,13 +10,17 @@ import { ModalService } from '../../ui-elements/ui-modal-window';
   styleUrls: ['./clients-details.component.css']
 })
 export class ClientsDetailsComponent implements OnInit {
-  @ViewChild('details', { static: false }) detailBox: OFormComponent;
-    selectedItemId = -1;
-    constructor(private modalService: ModalService,private injector: Injector,private dialogService: DialogService) { }
+  @ViewChild('clientDetails', { static: false }) clientDetails: OFormComponent;
+  datePipeString : string;
+    constructor(
+        private modalService: ModalService,
+        private injector: Injector,
+        private dialogService: DialogService,
+        @Inject(LOCALE_ID) private locale: string
+      ) { }
+    
+    ngOnInit() {}
 
-    ngOnInit() {
-      
-    }
 
     openModal(id: string) {
         this.modalService.open(id);
@@ -24,16 +30,32 @@ export class ClientsDetailsComponent implements OnInit {
         this.modalService.close(id);
     }
 
-    setSelectedItemId(id){
-      this.selectedItemId = id
-    }
 
-    showConfirm(evt: any) {
+    showConfirm(boxData) {
       if (this.dialogService) {
-        this.dialogService.confirm('¿Asignar caja de experiencias?', '¿Quieres asignar la caja seleccionada al cliente?');
+        this.dialogService.confirm('¿Asignar caja de experiencias?', '¿Quieres añadir la caja seleccionada "'  + boxData.name + 'v" al cliente?');
         this.dialogService.dialogRef.afterClosed().subscribe( result => {
+          
+          
           if(result) {
-            // Actions on confirmation
+            var service = "experienceboxes";
+            var entity = "clientExperienceBox";
+            var av = {'idclient':this.clientDetails.getDataValue('id').value,
+                      'idbox':boxData.id,
+                      'paymentdate':  formatDate(Date.now(),'yyyy-MM-dd',this.locale),
+                      'amountpaid': boxData.price
+                    };
+              
+
+
+            var sqltypes = {
+              "idclient": SQLTypes.NUMERIC,
+              "idbox": SQLTypes.INTEGER,
+              "paymentdate": SQLTypes.DATE,
+              "amountpaid": SQLTypes.NUMERIC,
+            }
+
+            this.insert(service,entity,av,sqltypes)
           } else {
             // Actions on cancellation
           }
@@ -47,19 +69,17 @@ export class ClientsDetailsComponent implements OnInit {
     protected service: OntimizeService;
 
 
-    getMovements(){
+    insert(service:string,entity: string, av: Object = {}, sqltypes?: object){
+
       this.service = this.injector.get(OntimizeService);
-      const conf = this.service.getDefaultServiceConfiguration('experienceboxes');
+      const conf = this.service.getDefaultServiceConfiguration(service);
       this.service.configureService(conf);
   
-      const columns = ['id','name','price','description','associate_image'];
-      const filter = {
-        'id': this.selectedItemId
-      };
-      this.service.query(filter, columns, 'clientExperienceBox').subscribe(resp => {
+
+
+      this.service.insert(av,entity,sqltypes).subscribe(resp => {
         if (resp.code === 0) {
           console.log("Peticion realizada")
-          return resp.data
           // resp.data contains the data retrieved from the server
   
         } else {

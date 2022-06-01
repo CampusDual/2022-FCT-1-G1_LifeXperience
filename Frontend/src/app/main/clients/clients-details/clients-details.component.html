@@ -1,4 +1,4 @@
-<o-form service="clients" entity="client" keys="id" header-actions="R;I;U;D" show-header-navigation="no">
+<o-form #clientDetails service="clients" entity="client" keys="id" header-actions="R;I;U;D" show-header-navigation="no">
     <o-text-input attr="id" sql-type="integer" enabled="no" fxFlex="10"></o-text-input>
     <o-row>
         <o-column title-label="clients_information" fxFlex>
@@ -38,15 +38,18 @@
         </o-column>
 
         <button (click)="openModal('custom-modal-1')">Open Modal 1</button>
+
+
+
         <jw-modal id="custom-modal-1">
             <h1>A Custom Modal!</h1>
 
-            <div id="modal-size-grid" *ngIf="selectedItemId == -1">
+            <div id="modal-size-grid">
                 <o-grid #experienceBoxGrid class="grid" attr="experienceBoxesTable" service="experienceboxes" entity="experiencebox" columns="id;name;price;description;associate_image" keys="id" cols="5" query-rows="8" orderable="true" quick-filter="true" sortable-columns="name;price"
                     sort-column="name" gutter-size="10px" refresh-button="true" detail-mode="no" pagination-controls="true" fixed-header="yes">
                     <o-grid-item *ngFor="let list of experienceBoxGrid.dataArray" auto-fit="true">
 
-                        <div class="item" fxLayout="column" fxLayoutAlign="space-evenly center" (click)="setSelectedItemId(list.id)">
+                        <div class="item" fxLayout="column" fxLayoutAlign="space-evenly center" (click)="showConfirm(list)">
                             <o-image data="{{list.associate_image}} " empty-image="assets/images/no-image.png" fxFlex="30" auto-fit="true" width="290px" enabled="false" show-controls="no"></o-image>
                             <div>{{ list.name }}</div>
                             <div>{{ list.price }}€</div>
@@ -54,6 +57,7 @@
                     </o-grid-item>
                 </o-grid>
             </div>
+
             <!--
             <div #details id="modal-size-details" *ngIf="selectedItemId != -1">
                 <o-form service="experienceboxes" entity="experiencebox" keys="id" header-actions="R" show-header-navigation="no" show-header-navigation="false" query-on-init="false">
@@ -80,7 +84,7 @@
             </div>
             -->
             <button (click)="closeModal('custom-modal-1');">Close</button>
-            <button *ngIf="selectedItemId != -1" (click)="(setSelectedItemId(-1))">Atras</button>
+            <!-- <button *ngIf="selectedItemId != -1" (click)="(setSelectedItemId(-1))">Atras</button>-->
         </jw-modal>
     </o-row>
 </o-form>
