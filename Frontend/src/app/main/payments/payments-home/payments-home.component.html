@@ -10,8 +10,8 @@
       service="experiences"
       entity="clientExperienceDetails"
       keys="relation_id"
-      columns="relation_id;client_name;client_id;experience_id;experience_name;amountpaid;paymentdate"
-      visible-columns="client_name;experience_name;amountpaid;paymentdate"
+      columns="relation_id;client_name;client_id;experience_id;exp_name;amountpaid;paymentdate"
+      visible-columns="client_name;exp_name;amountpaid;paymentdate"
       query-rows="20"
       auto-adjust="yes"
     >
@@ -21,8 +21,8 @@
         content-align="center"
       ></o-table-column>
       <o-table-column
-        attr="experience_name"
-        title="experience_name"
+        attr="exp_name"
+        title="exp_name"
         content-align="center"
       ></o-table-column>
       <o-table-column
