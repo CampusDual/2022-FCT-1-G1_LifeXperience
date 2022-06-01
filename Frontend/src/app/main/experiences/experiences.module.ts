@@ -14,7 +14,7 @@ import { OMapModule } from "ontimize-web-ngx-map";
     CommonModule,
     OntimizeWebModule,
     ExperiencesRoutingModule,
-    OMapModule
+    OMapModule,
   ]
 })
 export class ExperiencesModule { }
