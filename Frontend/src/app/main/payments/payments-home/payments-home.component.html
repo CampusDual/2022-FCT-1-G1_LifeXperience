@@ -10,8 +10,8 @@
       service="experiences"
       entity="clientExperienceDetails"
       keys="relation_id"
-      columns="relation_id;client_name;client_id;experience_id;experience_name;paidamount;paymentdate"
-      visible-columns="client_name;experience_name;paidamount;paymentdate"
+      columns="relation_id;client_name;client_id;experience_id;experience_name;amountpaid;paymentdate"
+      visible-columns="client_name;experience_name;amountpaid;paymentdate"
       query-rows="20"
       auto-adjust="yes"
     >
@@ -26,13 +26,13 @@
         content-align="center"
       ></o-table-column>
       <o-table-column
-        attr="paidamount"
-        title="paidamount"
+        attr="amountpaid"
+        title="amountpaid"
         content-align="center"
       ></o-table-column>
       <o-table-column
-        attr="phonenumber"
-        title="phonenumber"
+        attr="paymentdate"
+        title="paymentdate"
         content-align="center"
       ></o-table-column>
     </o-table>
@@ -43,8 +43,8 @@
       service="experienceboxes"
       entity="clientExperienceBoxDefault"
       keys="boxclient_id"
-      columns="boxclient_id;client_name;client_id;boxexp_id;boxexp_name;paidamount;paymentdate"
-      visible-columns="client_name;boxexp_name;paidamount;paymentdate"
+      columns="boxclient_id;client_name;client_id;boxexp_id;boxexp_name;amountpaid;paymentdate"
+      visible-columns="client_name;boxexp_name;amountpaid;paymentdate"
       query-rows="20"
       auto-adjust="yes"
     >
@@ -59,8 +59,8 @@
         content-align="center"
       ></o-table-column>
       <o-table-column
-        attr="paidamount"
-        title="paidamount"
+        attr="amountpaid"
+        title="amountpaid"
         content-align="center"
       ></o-table-column>
       <o-table-column
