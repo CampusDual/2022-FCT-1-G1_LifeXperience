@@ -6,6 +6,7 @@ import { ClientsHomeComponent } from './clients-home/clients-home.component';
 import { ClientsDetailsComponent } from './clients-details/clients-details.component';
 import { ClientsNewComponent } from './clients-new/clients-new.component';
 
+//Set the fonts to use
 
 @NgModule({
   declarations: [ClientsHomeComponent, ClientsDetailsComponent, ClientsNewComponent],
