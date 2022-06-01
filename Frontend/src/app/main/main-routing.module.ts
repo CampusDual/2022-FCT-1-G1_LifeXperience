@@ -14,7 +14,7 @@ export const routes: Routes = [
       { path: 'experience-boxes', loadChildren: () => import('./experience-boxes/experience-boxes.module').then(m => m.ExperienceBoxesModule) },
       { path: 'experiences', loadChildren: () => import('./experiences/experiences.module').then(m => m.ExperiencesModule) },
       { path :'clients', loadChildren: () => import('./clients/clients.module').then(m => m.ClientsModule) },
-      { path: 'users', loadChildren:() => import('./users/users.module').then(m=> m.UsersModule)}
+      { path: 'payments', loadChildren: () => import('./payments/payments.module').then(m => m.PaymentsModule) },
     ]
   }
 ];
