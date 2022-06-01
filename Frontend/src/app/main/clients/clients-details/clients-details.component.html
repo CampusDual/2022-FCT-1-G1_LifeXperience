@@ -1,4 +1,4 @@
-<o-form service="clients" entity="client" keys="id" header-actions="R;I;U;D" show-header-navigation="no">
+<o-form #clientDetails service="clients" entity="client" keys="id" header-actions="R;I;U;D" show-header-navigation="no">
     <o-text-input attr="id" sql-type="integer" enabled="no" fxFlex="10"></o-text-input>
     <o-row>
         <o-column title-label="clients_information" fxFlex>
@@ -26,19 +26,56 @@
             </o-row>
         </o-column>
         <o-column class="columnDiv" elevation="1">
-            <o-table expand-groups-same-level="false" query-on-init="no" show-title="true" title="Experiences" attr="ClientExperiencesTable" auto-adjust="false" service="experiences" entity="clientExperienceDetails" insert-button="false" delete-button="false" refresh-button="false"
-                keys="client_id" parent-keys="client_id:id" columns="experience_id;exp_name;description;price;enddate;associate_image;assistance" visible-columns="exp_name;enddate;associate_image" grouped-columns="assistance" query-rows="10" auto-adjust=yes>
-                <o-table-columns-grouping columns="assistance"></o-table-columns-grouping>
-                <o-table-column id="img" title="Avatar" attr="associate_image" empty-image="assets/images/no-image.png" image-type="base64" searchable="no" type="image" avatar="yes" full-screen-button="true" auto-fit="true" fxFlex="40">
-                </o-table-column>
-                <o-table-column attr="name" title="name" content-align="center" width="100px"></o-table-column>
-                <o-table-column attr="enddate" title="enddate" content-align="center" type="date" format="LL" width="60px">
-                </o-table-column>
-            </o-table>
+
+
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        This is the expansion title
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        This is a summary of the content
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+
+                <o-table expand-groups-same-level="false" query-on-init="no" show-title="false" title="Experiences" attr="ClientExperiencesTable" auto-adjust="false" service="experiences" entity="clientExperienceDetails" insert-button="false" delete-button="false" refresh-button="false"
+                    keys="client_id" parent-keys="client_id:id" columns="experience_id;exp_name;description;price;enddate;associate_image;assistance" visible-columns="exp_name;enddate;associate_image" grouped-columns="assistance" query-rows="10" auto-adjust=yes>
+
+                    <o-table-columns-grouping columns="assistance"></o-table-columns-grouping>
+                    <o-table-column id="img" title="Avatar" attr="associate_image" empty-image="assets/images/no-image.png" image-type="base64" searchable="no" type="image" avatar="yes" full-screen-button="true" auto-fit="true" fxFlex="40">
+                    </o-table-column>
+                    <o-table-column attr="name" title="name" content-align="center" width="100px"></o-table-column>
+                    <o-table-column attr="enddate" title="enddate" content-align="center" type="date" format="LL" width="60px">
+                    </o-table-column>
+                </o-table>
+
+            </mat-expansion-panel>
+
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        This is the expansion title
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        This is a summary of the content
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+
+                <o-table #experienceBoxTable expand-groups-same-level="false" query-on-init="no" show-title="false" title="ExperiencesBox" attr="ClientExperiencesBoxTable" auto-adjust="false" service="experienceboxes" entity="clientExperienceBoxDefault" insert-button="false"
+                    delete-button="false" refresh-button="false" keys="client_id" parent-keys="idclient:id" columns="boxexp_name;description;price;associate_image" visible-columns="boxexp_name;price;associate_image" query-rows="10" auto-adjust=yes>
+
+                    <o-table-column id="img" title="Avatar" attr="associate_image" empty-image="assets/images/no-image.png" image-type="base64" searchable="no" type="image" avatar="yes" auto-fit="true" fxFlex="40">
+                    </o-table-column>
+                    <o-table-column attr="boxexp_name" title="name" width="100px" content-align="center"></o-table-column>
+                    <o-table-column attr="price" title="price" width="30px" content-align="center" type="currency" currency-symbol="€" currency-symbol-position="right" width="30px" content-align="center"></o-table-column>
+                    <o-table-column attr="description" title="description" width="300px" content-align="start"></o-table-column>
+                </o-table>
+                <o-button id="nuevoPack" attr="basic2" type="RAISED" label="Primary" layout-padding color="primary" (click)="openModal('custom-modal-1')">Nuevo</o-button>
+
+            </mat-expansion-panel>
         </o-column>
 
 
-        <button (click)="openModal('custom-modal-1')">Open Modal 1</button>
         <jw-modal id="custom-modal-1">
             <h1>A Custom Modal!</h1>
 
