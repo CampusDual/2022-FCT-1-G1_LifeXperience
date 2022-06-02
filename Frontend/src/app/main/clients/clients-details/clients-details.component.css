@@ -11,3 +11,7 @@
     right: 100%;
 }
 
+.panel{
+  margin: 5%;
+  box-shadow: 2px 2px 10px 1px black;
+}

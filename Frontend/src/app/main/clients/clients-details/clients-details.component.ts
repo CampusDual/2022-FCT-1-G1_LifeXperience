@@ -1,5 +1,5 @@
 import { formatDate } from '@angular/common';
-import { Component, Injector, OnInit, ViewChild,LOCALE_ID, Inject } from '@angular/core';
+import { Component, Injector, OnInit, ViewChild,LOCALE_ID, Inject, ElementRef, ViewChildren, QueryList } from '@angular/core';
 import { DialogService, OFormComponent, OntimizeService, OTableComponent, SQLTypes } from 'ontimize-web-ngx';
 import { ModalService } from '../../ui-elements/ui-modal-window';
 
@@ -20,14 +20,50 @@ export class ClientsDetailsComponent implements OnInit {
   @ViewChild('clientDetails', { static: false }) clientDetails: OFormComponent;
   @ViewChild('experienceBoxTable', { static: false }) expBoxTable: OTableComponent;
   datePipeString : string;
+
     constructor(
         private modalService: ModalService,
         private injector: Injector,
         private dialogService: DialogService,
         @Inject(LOCALE_ID) private locale: string
-      ) { }
+      ) {
+      }
 
-    ngOnInit() {}
+    //A partir de aqui probamos el pdf
+    @ViewChild('experienceBoxTable', {static: true}) nameAlias: OTableComponent;//ElementRef
+    @ViewChildren('nameAlias, surnameAlias') inputs: QueryList<ElementRef>
+
+    createPdf(){
+      var name: string= "Nameeeeeee";//
+      var listPrueba: Array<string> = this.nameAlias.getAllValues();
+      name = listPrueba[0].toString()
+
+      const pdfDefinition: any ={
+        content: [
+          {
+            text: 'Factura',
+            style: 'header'
+          },
+          {
+            text: "Nombre del titular: "+name
+          }
+        ],
+        styles: {
+          header: {
+            fontSize: 32,
+            bold: true,
+            alignment: 'center'
+          }
+        }
+      }
+
+      const pdf = pdfMake.createPdf(pdfDefinition);
+      pdf.open();
+    }
+
+    ngOnInit() {
+
+    }
 
     openModal(id: string) {
         this.modalService.open(id);
@@ -85,33 +121,5 @@ export class ClientsDetailsComponent implements OnInit {
           throw new Error
         }
       });
-    }
-
-    htmlToPdfmake(){//esto es una prueba
-
-    }
-
-    createPdf(){
-      const pdfDefinition: any ={
-        content: [
-          {
-            text: 'Factura',
-            style: 'header'
-          },
-          {
-            //stack: this.htmlToPdfmake()
-          }
-        ],
-        styles: {
-          header: {
-            fontSize: 32,
-            bold: true,
-            alignment: 'center'
-          }
-        }
-      }
-
-      const pdf = pdfMake.createPdf(pdfDefinition);
-      pdf.open();
     }
 }
