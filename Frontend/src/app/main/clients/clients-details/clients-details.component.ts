@@ -37,6 +37,7 @@ export class ClientsDetailsComponent implements OnInit {
 
     createPdf(){
       var name: string= "Nameeeeeee";//
+      var cad: string= "";//
       var listPrueba: Array<string> = this.nameAlias.getAllValues();
       name = listPrueba[0].toString()
 

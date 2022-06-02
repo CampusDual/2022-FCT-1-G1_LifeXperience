@@ -1,5 +1,8 @@
 <o-form #clientDetails service="clients" entity="client" keys="id" header-actions="R;I;U;D" show-header-navigation="no">
+  <div>
     <o-text-input attr="id" sql-type="integer" enabled="no" fxFlex="10"></o-text-input>
+    <o-button id="buttonGeneratePDF" (click)="createPdf()" label="Generate pdf" fxFlex="45" icon="picture_as_pdf"></o-button>
+  </div>
     <o-row>
         <o-column title-label="clients_information" fxFlex>
             <o-row>
@@ -26,7 +29,6 @@
             </o-row>
         </o-column>
         <o-column class="columnDiv">
-
             <div class="pestanhas">
                 <mat-expansion-panel>
                     <mat-expansion-panel-header>
@@ -87,11 +89,8 @@
                 </o-grid>
             </div>
 
-
             <button (click)="closeModal('custom-modal-1');">Close</button>
         </jw-modal>
-        <o-button (click)="createPdf()" label="Generate pdf" style="float: right; display: flex;" icon="picture_as_pdf"></o-button>
-
     </o-row>
 </o-form>
 
