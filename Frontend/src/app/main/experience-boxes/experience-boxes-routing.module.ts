@@ -7,13 +7,13 @@ import { ExperienceBoxesNewComponent } from './experience-boxes-new/experience-b
 const routes: Routes = [{
   path : '',
   component: ExperienceBoxesHomeComponent
+},{
+  path: "new",
+  component: ExperienceBoxesNewComponent
 },
 {
   path: ":id",
   component: ExperienceBoxesDetailComponent
-},{
-  path: "new",
-  component: ExperienceBoxesNewComponent
 }];
 
 @NgModule({
