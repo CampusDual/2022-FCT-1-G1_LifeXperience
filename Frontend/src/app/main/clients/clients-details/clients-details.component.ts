@@ -1,9 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { formatDate } from '@angular/common';
+import { Component, Injector, OnInit, ViewChild,LOCALE_ID, Inject } from '@angular/core';
+import { DialogService, OFormComponent, OntimizeService, SQLTypes } from 'ontimize-web-ngx';
+import { ModalService } from '../../ui-elements/ui-modal-window';
+
 import { Center } from 'ontimize-web-ngx-map';
 
 import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from "pdfmake/build/vfs_fonts";
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
+
 
 @Component({
   selector: 'app-clients-details',
@@ -12,36 +17,103 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs;
 })
 export class ClientsDetailsComponent implements OnInit {
 
-  constructor() { }
+  @ViewChild('clientDetails', { static: false }) clientDetails: OFormComponent;
+  datePipeString : string;
+    constructor(
+        private modalService: ModalService,
+        private injector: Injector,
+        private dialogService: DialogService,
+        @Inject(LOCALE_ID) private locale: string
+      ) { }
 
-  ngOnInit() {
-  }
+    ngOnInit() {}
 
-  htmlToPdfmake(){
+    openModal(id: string) {
+        this.modalService.open(id);
+    }
 
-  }
+    closeModal(id: string) {
+        this.modalService.close(id);
+    }
 
-  createPdf(){
-    const pdfDefinition: any ={
-      content: [
-        {
-          text: 'Factura',
-          style: 'header'
-        },
-        {
-          //stack: this.htmlToPdfmake()
-        }
-      ],
-      styles: {
-        header: {
-          fontSize: 32,
-          bold: true,
-          alignment: 'center'
-        }
+    showConfirm(boxData) {
+      if (this.dialogService) {
+        this.dialogService.confirm('¿Asignar caja de experiencias?', '¿Quieres añadir la caja seleccionada "'  + boxData.name + 'v" al cliente?');
+        this.dialogService.dialogRef.afterClosed().subscribe( result => {
+
+
+          if(result) {
+            var service = "experienceboxes";
+            var entity = "clientExperienceBox";
+            var av = {'idclient':this.clientDetails.getDataValue('id').value,
+                      'idbox':boxData.id,
+                      'paymentdate':  formatDate(Date.now(),'yyyy-MM-dd',this.locale),
+                      'amountpaid': boxData.price
+                    };
+
+
+
+            var sqltypes = {
+              "idclient": SQLTypes.NUMERIC,
+              "idbox": SQLTypes.INTEGER,
+              "paymentdate": SQLTypes.DATE,
+              "amountpaid": SQLTypes.NUMERIC,
+            }
+
+            this.insert(service,entity,av,sqltypes)
+          } else {
+            // Actions on cancellation
+          }
+        })
       }
     }
 
-    const pdf = pdfMake.createPdf(pdfDefinition);
-    pdf.open();
-  }
+    protected service: OntimizeService;
+
+    insert(service:string,entity: string, av: Object = {}, sqltypes?: object){
+
+      this.service = this.injector.get(OntimizeService);
+      const conf = this.service.getDefaultServiceConfiguration(service);
+      this.service.configureService(conf);
+
+      this.service.insert(av,entity,sqltypes).subscribe(resp => {
+        if (resp.code === 0) {
+          console.log("Peticion realizada")
+          // resp.data contains the data retrieved from the server
+
+        } else {
+          alert('Impossible to query data!');
+          console.log("Shit")
+          throw new Error
+        }
+      });
+    }
+
+    htmlToPdfmake(){//esto es una prueba
+
+    }
+
+    createPdf(){
+      const pdfDefinition: any ={
+        content: [
+          {
+            text: 'Factura',
+            style: 'header'
+          },
+          {
+            //stack: this.htmlToPdfmake()
+          }
+        ],
+        styles: {
+          header: {
+            fontSize: 32,
+            bold: true,
+            alignment: 'center'
+          }
+        }
+      }
+
+      const pdf = pdfMake.createPdf(pdfDefinition);
+      pdf.open();
+    }
 }

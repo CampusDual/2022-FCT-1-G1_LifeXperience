@@ -10,7 +10,7 @@
 
 
         <o-grid #experienceBoxGrid class="grid" *ngIf="!isListLayout" attr="experienceBoxesTable" service="experienceboxes" entity="experiencebox" columns="id;name;price;description;associate_image" keys="id" cols="5" query-rows="8" show-page-size="true" orderable="true"
-            quick-filter="true" sortable-columns="name,price" sort-column="name" controls="true" gutter-size="10px" refresh-button="true" insert-button="true" pagination-controls="true" fixed-header="yes">
+            quick-filter="true" sortable-columns="name;price" sort-column="name" controls="true" gutter-size="10px" refresh-button="true" insert-button="true" pagination-controls="true" fixed-header="yes">
             <o-grid-item *ngFor="let list of experienceBoxGrid.dataArray " auto-fit="true">
 
                 <div class="item" fxLayout="column" fxLayoutAlign="space-evenly center">
