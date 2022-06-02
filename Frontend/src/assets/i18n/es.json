@@ -62,5 +62,9 @@
     "packages": "Paquetes de Experiencias",
     "surname": "Apellidos",
     "user": "Usuario",
-    "user_": "Usuario"
+    "user_": "Usuario",
+    "amountpaid":"Cantidad pagada",
+    "paymentdate":"Fecha de pago",
+    "client_name":"Cliente",
+    "boxexp_name":"Paquete de experiencias"
 }

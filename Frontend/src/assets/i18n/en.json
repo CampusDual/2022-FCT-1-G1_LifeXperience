@@ -63,5 +63,9 @@
     "subscriptions": "Experience Packages",
     "surname": "Surname",
     "user": "User",
-    "user_": "User"
+    "user_": "User",
+    "amountpaid": "Paid Amount",
+    "paymentdate": "Payment Date",
+    "client_name": "Client Name",
+    "boxexp_name": "Experience Box"
 }
