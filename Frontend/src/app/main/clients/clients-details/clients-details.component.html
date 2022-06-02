@@ -1,15 +1,14 @@
 <o-form #clientDetails service="clients" entity="client" keys="id" header-actions="R;I;U;D" show-header-navigation="no">
   <div>
     <o-text-input attr="id" sql-type="integer" enabled="no" fxFlex="10"></o-text-input>
-    <o-button id="buttonGeneratePDF" (click)="createPdf()" label="Generate pdf" fxFlex="45" icon="picture_as_pdf"></o-button>
   </div>
     <o-row>
         <o-column title-label="clients_information" fxFlex>
             <o-row>
-                <o-text-input #nameAlias class="input-padding" attr="name" fxFlex="70" required="yes"></o-text-input>
+                <o-text-input class="input-padding" attr="name" fxFlex="70" required="yes"></o-text-input>
             </o-row>
             <o-row>
-                <o-text-input #surnameAlias class="input-padding" attr="surname" fxFlex="70" required="yes"></o-text-input>
+                <o-text-input class="input-padding" attr="surname" fxFlex="70" required="yes"></o-text-input>
             </o-row>
             <o-row>
                 <o-text-input class="input-padding" attr="nif" fxFlex="70" required="yes"></o-text-input>

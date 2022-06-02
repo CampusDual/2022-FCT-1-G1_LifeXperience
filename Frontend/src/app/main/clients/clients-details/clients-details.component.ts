@@ -3,12 +3,6 @@ import { Component, Injector, OnInit, ViewChild,LOCALE_ID, Inject, ElementRef, V
 import { DialogService, OFormComponent, OntimizeService, OTableComponent, OTranslateService, SQLTypes } from 'ontimize-web-ngx';
 import { ModalService } from '../../ui-elements/ui-modal-window';
 
-import { Center } from 'ontimize-web-ngx-map';
-import pdfMake from 'pdfmake/build/pdfmake';
-import pdfFonts from "pdfmake/build/vfs_fonts";
-import { Button } from 'protractor';
-pdfMake.vfs = pdfFonts.pdfMake.vfs;
-
 @Component({
   selector: 'app-clients-details',
   templateUrl: './clients-details.component.html',
@@ -29,41 +23,6 @@ export class ClientsDetailsComponent implements OnInit {
         @Inject(LOCALE_ID) private locale: string,
         private translator: OTranslateService
       ) { }
-
-       //A partir de aqui probamos el pdf
-    @ViewChild('experienceBoxTable', {static: true}) nameAlias: OTableComponent;
-    @ViewChild('nameAlias', {static: true}) nameAlias2: ElementRef;//ElementRef
-    @ViewChildren('nameAlias, surnameAlias') inputs: QueryList<ElementRef>
-
-    createPdf(){
-      var name: string= "Nameeeeeee";//
-      var cad: string= "";//
-      var listPrueba: Array<string> = this.nameAlias.getAllValues();
-      name = listPrueba[0].toString()
-
-      const pdfDefinition: any ={
-        content: [
-          {
-            text: 'Detalles de Compra',
-            style: 'header'
-          },
-          {
-            text: "Nombre del titular: "+name
-          }
-        ],
-        styles: {
-          header: {
-            fontSize: 24,
-            bold: true,
-            alignment: 'right',
-            margin: [0, 0, 0, 60]
-          }
-        }
-      }
-
-      const pdf = pdfMake.createPdf(pdfDefinition);
-      pdf.open();
-    }
 
     ngOnInit() {
       this.clientBoxConfirmDialogTitle = this.translator.get("client_experience_box_dialog_confirmation_title");
@@ -135,7 +94,5 @@ export class ClientsDetailsComponent implements OnInit {
         }
       });
     }
-
-
   }
 
