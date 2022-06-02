@@ -14,7 +14,7 @@ const routes: Routes = [
     component: PaymentsBoxNewComponent,
   },
   {
-    path: ':id',
+    path: ':boxclient_id',
     component: PaymentsBoxDetailsComponent,
   }
 ];
