@@ -1,55 +1,21 @@
-<o-form
-  service="experiences"
-  entity="clientExperienceDetails"
-  keys="relation_id"
-  header-actions="R"
-  show-header-navigation="no"
-  (onDataLoaded)="onFormDataLoaded($event)"
->
-  <o-text-input
-    attr="relation_id"
-    sql-type="integer"
-    enabled="no"
-    fxFlex="10"
-  ></o-text-input>
+<o-form service="experiences" entity="clientExperienceDetails" keys="relation_id" header-actions="R" show-header-navigation="no" (onDataLoaded)="onFormDataLoaded($event)">
+    <o-text-input attr="relation_id" sql-type="integer" enabled="no" fxFlex="10"></o-text-input>
 
-  <o-row>
-    <div fxFlex="70">
-      <o-column title-label="boxexperience_payments_information" fxFlex>
-        <o-row>
-          <o-text-input
-            class="input-padding"
-            attr="client_name"
-            fxFlex="50"
-            required="yes"
-            enabled="no"
-          ></o-text-input>
-        </o-row>
-        <o-row>
-          <o-text-input
-            class="input-padding"
-            attr="exp_name"
-            fxFlex="50"
-            required="yes"
-            enabled="no"
-          ></o-text-input>
-        </o-row>
-        <o-checkbox attr="assistance" label="Checkbox" read-only="no" required="yes"></o-checkbox>
-        <o-date-input
-          attr="paymentdate"
-          fxFlex="30"
-          required="yes"
-          enabled="no"
-        ></o-date-input>
-        <o-row>
-          <o-currency-input
-            attr="amountpaid"
-            fxFlex="50"
-            required="yes"
-            enabled="no"
-          ></o-currency-input>
-        </o-row>
-      </o-column>
-    </div>
-  </o-row>
+    <o-row>
+        <div fxFlex="70">
+            <o-column title-label="boxexperience_payments_information" fxFlex>
+                <o-row>
+                    <o-text-input class="input-padding" attr="client_name" fxFlex="50" required="yes" enabled="no"></o-text-input>
+                </o-row>
+                <o-row>
+                    <o-text-input class="input-padding" attr="exp_name" fxFlex="50" required="yes" enabled="no"></o-text-input>
+                </o-row>
+                <o-checkbox attr="assistance" label="Checkbox" read-only="no" required="yes"></o-checkbox>
+                <o-date-input attr="paymentdate" fxFlex="30" required="yes" enabled="no"></o-date-input>
+                <o-row>
+                    <o-currency-input attr="amountpaid" fxFlex="50" required="yes" enabled="no"></o-currency-input>
+                </o-row>
+            </o-column>
+        </div>
+    </o-row>
 </o-form>
