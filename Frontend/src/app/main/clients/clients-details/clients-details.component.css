@@ -1,12 +1,19 @@
-.columnDiv {
-    width: 48%;
-    margin-right: 1%;
-}
-
-#modal-size-grid {
-    height: 500px;
-}
-
-#boton {
-    right: 100%;
-}
+        .columnDiv {
+            width: 48%;
+            margin-right: 1%;
+        }
+        
+        #modal-size-grid {
+            height: 500px;
+        }
+        
+        mat-expansion-panel {
+            margin: 10px;
+        }
+        
+        #buttonAdd {
+            width: 10%;
+            position: relative;
+            left: 83%;
+            text-align: center;
+        }
