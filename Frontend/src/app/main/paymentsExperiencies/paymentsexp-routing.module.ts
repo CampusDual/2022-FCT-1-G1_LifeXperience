@@ -14,7 +14,7 @@ const routes: Routes = [
     component: PaymentsExpNewComponent,
   },
   {
-    path: ':id',
+    path: ':relation_id',
     component: PaymentsExpDetailsComponent,
   }
 ];

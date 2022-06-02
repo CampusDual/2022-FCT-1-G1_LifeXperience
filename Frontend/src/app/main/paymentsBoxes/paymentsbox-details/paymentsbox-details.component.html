@@ -2,7 +2,7 @@
   service="experienceboxes"
   entity="clientExperienceBoxDefault"
   keys="boxclient_id"
-  header-actions="R;I;U;D"
+  header-actions="R"
   show-header-navigation="no"
   (onDataLoaded)="onFormDataLoaded($event)"
 >
@@ -22,7 +22,7 @@
             attr="client_name"
             fxFlex="50"
             required="yes"
-            enabled="yes"
+            enabled="no"
           ></o-text-input>
         </o-row>
         <o-row>
@@ -31,20 +31,21 @@
             attr="boxexp_name"
             fxFlex="50"
             required="yes"
-            enabled="yes"
+            enabled="no"
           ></o-text-input>
         </o-row>
         <o-date-input
           attr="paymentdate"
           fxFlex="30"
           required="yes"
-          enabled="yes"
+          enabled="no"
         ></o-date-input>
         <o-row>
           <o-currency-input
             attr="amountpaid"
             fxFlex="50"
             required="yes"
+            enabled="no"
           ></o-currency-input>
         </o-row>
       </o-column>
