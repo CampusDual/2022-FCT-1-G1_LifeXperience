@@ -7,6 +7,7 @@ import { Center } from 'ontimize-web-ngx-map';
 
 import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from "pdfmake/build/vfs_fonts";
+import { Button } from 'protractor';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 
@@ -30,7 +31,8 @@ export class ClientsDetailsComponent implements OnInit {
       }
 
     //A partir de aqui probamos el pdf
-    @ViewChild('experienceBoxTable', {static: true}) nameAlias: OTableComponent;//ElementRef
+    @ViewChild('experienceBoxTable', {static: true}) nameAlias: OTableComponent;
+    @ViewChild('nameAlias', {static: true}) nameAlias2: ElementRef;//ElementRef
     @ViewChildren('nameAlias, surnameAlias') inputs: QueryList<ElementRef>
 
     createPdf(){
@@ -41,7 +43,7 @@ export class ClientsDetailsComponent implements OnInit {
       const pdfDefinition: any ={
         content: [
           {
-            text: 'Factura',
+            text: 'Detalles de Compra',
             style: 'header'
           },
           {
@@ -50,9 +52,10 @@ export class ClientsDetailsComponent implements OnInit {
         ],
         styles: {
           header: {
-            fontSize: 32,
+            fontSize: 24,
             bold: true,
-            alignment: 'center'
+            alignment: 'right',
+            margin: [0, 0, 0, 60]
           }
         }
       }
