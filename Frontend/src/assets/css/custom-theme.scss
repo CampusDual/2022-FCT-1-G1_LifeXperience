@@ -3,24 +3,25 @@
 @include mat-core();
 
 /* Color definitions */
-$mat-custom-primary: ( 50 : #FCF4F3, 100 : #F7E3E2, 200 : #F2D1CE, 300 : #ECBEBA, 400 : #E8B0AC, 500 : #E4A29D, 600 : #E19A95, 700 : #DD908B, 800 : #D98681, 900 : #D1756F, A100 : #FFFFFF, A200 : #FFFFFF, A400 : #FFE6E5, A700 : #FFCECB, contrast: ( 50 : #000000, 100 : #000000, 200 : #000000, 300 : #000000, 400 : #ffffff, 500 : #ffffff, 600 : #ffffff, 700 : #ffffff, 800 : #ffffff, 900 : #ffffff, A100 : #000000, A200 : #000000, A400 : #ffffff, A700 : #ffffff ) );
 
-$mat-custom-accent: ( 50 : #FCF4F3, 100 : #F7E3E2, 200 : #F2D1CE, 300 : #ECBEBA, 400 : #E8B0AC, 500 : #E4A29D, 600 : #E19A95, 700 : #DD908B, 800 : #D98681, 900 : #D1756F, A100 : #FFFFFF, A200 : #FFFFFF, A400 : #FFE6E5, A700 : #FFCECB, contrast: ( 50 : #000000, 100 : #000000, 200 : #000000, 300 : #000000, 400 : #ffffff, 500 : #ffffff, 600 : #ffffff, 700 : #ffffff, 800 : #ffffff, 900 : #ffffff, A100 : #000000, A200 : #000000, A400 : #ffffff, A700 : #ffffff ));
-
+$mat-custom-primary: ( 50: #FCF4F3, 100: #F7E3E2, 200: #F2D1CE, 300: #ECBEBA, 400: #E8B0AC, 500: #E4A29D, 600: #E19A95, 700: #DD908B, 800: #D98681, 900: #D1756F, A100: #FFFFFF, A200: #FFFFFF, A400: #FFE6E5, A700: #FFCECB, contrast: ( 50: #000000, 100: #000000, 200: #000000, 300: #000000, 400: #ffffff, 500: #ffffff, 600: #ffffff, 700: #ffffff, 800: #ffffff, 900: #ffffff, A100: #000000, A200: #000000, A400: #ffffff, A700: #ffffff));
+$mat-custom-accent: ( 50: #FCF4F3, 100: #F7E3E2, 200: #F2D1CE, 300: #ECBEBA, 400: #E8B0AC, 500: #E4A29D, 600: #E19A95, 700: #DD908B, 800: #D98681, 900: #D1756F, A100: #FFFFFF, A200: #FFFFFF, A400: #FFE6E5, A700: #FFCECB, contrast: ( 50: #000000, 100: #000000, 200: #000000, 300: #000000, 400: #ffffff, 500: #ffffff, 600: #ffffff, 700: #ffffff, 800: #ffffff, 900: #ffffff, A100: #000000, A200: #000000, A400: #ffffff, A700: #ffffff));
 // Define a theme.
 $primary: mat-palette($mat-custom-primary);
 $accent: mat-palette($mat-custom-accent);
 $background-color: #eae5c7;
 
 /* Light theme */
-$theme: mat-light-theme($primary, $accent);
 
+$theme: mat-light-theme($primary, $accent);
 // Insert custom background color
 $background: map-get($theme, background);
 $background: map_merge($background, (background: $background-color));
-
 $theme: map_merge($theme, (background: $background));
+
 /* Dark theme */
+
 $primary-dark: mat-palette($mat-custom-primary);
 $accent-dark: mat-palette($mat-custom-accent);
 $dark-theme: mat-dark-theme($primary-dark, $accent-dark);
+

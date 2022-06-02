@@ -1,15 +1,13 @@
 import { formatDate } from '@angular/common';
 import { Component, Injector, OnInit, ViewChild,LOCALE_ID, Inject, ElementRef, ViewChildren, QueryList } from '@angular/core';
-import { DialogService, OFormComponent, OntimizeService, OTableComponent, SQLTypes } from 'ontimize-web-ngx';
+import { DialogService, OFormComponent, OntimizeService, OTableComponent, OTranslateService, SQLTypes } from 'ontimize-web-ngx';
 import { ModalService } from '../../ui-elements/ui-modal-window';
 
 import { Center } from 'ontimize-web-ngx-map';
-
 import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from "pdfmake/build/vfs_fonts";
 import { Button } from 'protractor';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
-
 
 @Component({
   selector: 'app-clients-details',
@@ -17,20 +15,22 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs;
   styleUrls: ['./clients-details.component.css']
 })
 export class ClientsDetailsComponent implements OnInit {
-
   @ViewChild('clientDetails', { static: false }) clientDetails: OFormComponent;
   @ViewChild('experienceBoxTable', { static: false }) expBoxTable: OTableComponent;
-  datePipeString : string;
+  private clientBoxConfirmDialogTitle:string;
+  private clientBoxConfirmDialogTextBody:string;
+  private alertDialogSuccessful:string
+  private alertDialogFailed:string
 
     constructor(
         private modalService: ModalService,
         private injector: Injector,
         private dialogService: DialogService,
-        @Inject(LOCALE_ID) private locale: string
-      ) {
-      }
+        @Inject(LOCALE_ID) private locale: string,
+        private translator: OTranslateService
+      ) { }
 
-    //A partir de aqui probamos el pdf
+       //A partir de aqui probamos el pdf
     @ViewChild('experienceBoxTable', {static: true}) nameAlias: OTableComponent;
     @ViewChild('nameAlias', {static: true}) nameAlias2: ElementRef;//ElementRef
     @ViewChildren('nameAlias, surnameAlias') inputs: QueryList<ElementRef>
@@ -65,8 +65,12 @@ export class ClientsDetailsComponent implements OnInit {
     }
 
     ngOnInit() {
-
+      this.clientBoxConfirmDialogTitle = this.translator.get("client_experience_box_dialog_confirmation_title");
+      this.clientBoxConfirmDialogTextBody = this.translator.get("client_experience_box_dialog_confirmation_body_text");
+      this.alertDialogSuccessful = this.translator.get("Successful_operation")
+      this.alertDialogFailed = this.translator.get("Failed_operation")
     }
+
 
     openModal(id: string) {
         this.modalService.open(id);
@@ -76,11 +80,15 @@ export class ClientsDetailsComponent implements OnInit {
         this.modalService.close(id);
     }
 
+    //If the name of 'boxData' is changed it has necessary to change de string of the clientBoxConfirmDialog because they have a string format with this variable
     showConfirm(boxData) {
       if (this.dialogService) {
-        this.dialogService.confirm('¿Asignar caja de experiencias?', '¿Quieres añadir la caja seleccionada "'  + boxData.name + 'v" al cliente?');
+        //Mensaje de confirmacion del añadido del paquete
+        this.dialogService.confirm(this.clientBoxConfirmDialogTitle, this.clientBoxConfirmDialogTextBody.replace("${expBoxName}",boxData.name) );
         this.dialogService.dialogRef.afterClosed().subscribe( result => {
+
           if(result) {
+            //Preparacion de la query
             var service = "experienceboxes";
             var entity = "clientExperienceBox";
             var av = {'idclient':this.clientDetails.getDataValue('id').value,
@@ -88,6 +96,7 @@ export class ClientsDetailsComponent implements OnInit {
                       'paymentdate':  formatDate(Date.now(),'yyyy-MM-dd',this.locale),
                       'amountpaid': boxData.price
                     };
+
             var sqltypes = {
               "idclient": SQLTypes.NUMERIC,
               "idbox": SQLTypes.INTEGER,
@@ -97,7 +106,7 @@ export class ClientsDetailsComponent implements OnInit {
 
             this.insert(service,entity,av,sqltypes)
           } else {
-            // Actions on cancellation
+            // TODO:Comprobar si ontimize ya muestra error al salir mal la query
           }
         })
       }
@@ -105,24 +114,27 @@ export class ClientsDetailsComponent implements OnInit {
 
     protected service: OntimizeService;
 
+
     insert(service:string,entity: string, av: Object = {}, sqltypes?: object){
 
       this.service = this.injector.get(OntimizeService);
       const conf = this.service.getDefaultServiceConfiguration(service);
       this.service.configureService(conf);
 
+
+
       this.service.insert(av,entity,sqltypes).subscribe(resp => {
         if (resp.code === 0) {
-          console.log("Peticion realizada")
           this.closeModal("custom-modal-1");
           this.expBoxTable.reloadData();
-          // resp.data contains the data retrieved from the server
+          alert(this.alertDialogSuccessful);
 
         } else {
-          alert('Impossible to query data!');
-          console.log("Shit")
-          throw new Error
+          alert(this.alertDialogFailed);
         }
       });
     }
-}
+
+
+  }
+
