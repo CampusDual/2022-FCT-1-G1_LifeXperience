@@ -1,6 +1,6 @@
 import { formatDate } from '@angular/common';
 import { Component, Injector, OnInit, ViewChild,LOCALE_ID, Inject } from '@angular/core';
-import { DialogService, OFormComponent, OntimizeService, SQLTypes } from 'ontimize-web-ngx';
+import { DialogService, OFormComponent, OntimizeService, OTableComponent, SQLTypes } from 'ontimize-web-ngx';
 import { ModalService } from '../../ui-elements/ui-modal-window';
 
 
@@ -11,6 +11,7 @@ import { ModalService } from '../../ui-elements/ui-modal-window';
 })
 export class ClientsDetailsComponent implements OnInit {
   @ViewChild('clientDetails', { static: false }) clientDetails: OFormComponent;
+  @ViewChild('experienceBoxTable', { static: false }) expBoxTable: OTableComponent;
   datePipeString : string;
     constructor(
         private modalService: ModalService,
@@ -36,7 +37,6 @@ export class ClientsDetailsComponent implements OnInit {
         this.dialogService.confirm('¿Asignar caja de experiencias?', '¿Quieres añadir la caja seleccionada "'  + boxData.name + 'v" al cliente?');
         this.dialogService.dialogRef.afterClosed().subscribe( result => {
           
-          
           if(result) {
             var service = "experienceboxes";
             var entity = "clientExperienceBox";
@@ -45,8 +45,6 @@ export class ClientsDetailsComponent implements OnInit {
                       'paymentdate':  formatDate(Date.now(),'yyyy-MM-dd',this.locale),
                       'amountpaid': boxData.price
                     };
-              
-
 
             var sqltypes = {
               "idclient": SQLTypes.NUMERIC,
@@ -80,6 +78,8 @@ export class ClientsDetailsComponent implements OnInit {
       this.service.insert(av,entity,sqltypes).subscribe(resp => {
         if (resp.code === 0) {
           console.log("Peticion realizada")
+          this.closeModal("custom-modal-1");
+          this.expBoxTable.reloadData();
           // resp.data contains the data retrieved from the server
   
         } else {
