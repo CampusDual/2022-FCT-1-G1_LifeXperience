@@ -10,11 +10,13 @@ export const routes: Routes = [
     canActivate: [AuthGuardService],
     children: [
       { path: '', redirectTo: 'home', pathMatch: 'full' },
+      {path: 'users', loadChildren: () => import('./users/users.module').then(m => m.UsersModule)},
       { path: 'home', loadChildren: () => import('./home/home.module').then(m => m.HomeModule) },
       { path: 'experience-boxes', loadChildren: () => import('./experience-boxes/experience-boxes.module').then(m => m.ExperienceBoxesModule) },
       { path: 'experiences', loadChildren: () => import('./experiences/experiences.module').then(m => m.ExperiencesModule) },
       { path :'clients', loadChildren: () => import('./clients/clients.module').then(m => m.ClientsModule) },
-      { path: 'payments', loadChildren: () => import('./payments/payments.module').then(m => m.PaymentsModule) },
+      { path: 'paymentsexp', loadChildren: () => import('./paymentsExperiencies/paymentsexp.module').then(m => m.PaymentsExpModule) },
+      { path: 'paymentsbox', loadChildren: () => import('./paymentsBoxes/paymentsbox.module').then(m => m.PaymentsBoxModule) },
     ]
   }
 ];

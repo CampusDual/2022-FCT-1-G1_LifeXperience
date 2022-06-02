@@ -1,0 +1,55 @@
+<o-form
+  service="experiences"
+  entity="clientExperience"
+  keys="boxclient_id"
+  header-actions="R;I;U;D"
+  show-header-navigation="no"
+>
+  <o-row>
+    <o-column title-label="Información de pago" fxFlex>
+      <o-row>
+
+      <o-row>
+        <o-combo
+          attr="id_client"
+          fxFlex="80"
+          service="clients"
+          entity="client"
+          keys="id"
+          columns="id;name;nif"
+          visible-columns="name;nif"
+          value-column="id"
+          class="input-padding"
+          required="yes"
+        ></o-combo>
+      </o-row>
+      <o-row>
+        <o-combo
+          attr="id_experience"
+          fxFlex="80"
+          service="experiences"
+          entity="experience"
+          keys="id"
+          columns="id;name;price"
+          visible-columns="name;price"
+          value-column="id"
+          class="input-padding"
+          required="yes"
+        ></o-combo>
+      </o-row>
+      <o-text-input
+          class="input-padding"
+          attr="amountpaid"
+          fxFlex="40"
+          required="yes"
+        ></o-text-input>
+      </o-row>
+      <o-date-input
+        attr="paymentdate"
+        fxFlex="20"
+        required="yes"
+      ></o-date-input>
+      <o-checkbox attr="assistance" label="Asistencia" read-only="no" required="yes"></o-checkbox>
+    </o-column>
+  </o-row>
+</o-form>

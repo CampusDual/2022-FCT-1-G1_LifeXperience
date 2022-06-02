@@ -69,6 +69,14 @@
     "Successful_operation": "Operation completed",
     "Failed_operation": "Failed operation",
     "My_experiences": "My experiencies",
-    "My_experiences_boxes": "My experiencies boxes"
-
+    "My_experiences_boxes": "My experiencies boxes",
+    "PAYMENTS_EXP": "Experience Payments",
+    "PAYMENTS_BOX": "Experience Box Payments",
+    "id_client": "Client",
+    "idbox": "Experience Box",
+    "id_experience": "Experience",
+    "amountpaid": "Paid Amount",
+    "paymentdate": "Payment Date",
+    "client_name": "Client Name",
+    "boxexp_name": "Experience Box"
 }

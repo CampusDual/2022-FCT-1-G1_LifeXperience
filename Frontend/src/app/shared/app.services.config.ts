@@ -11,7 +11,10 @@ export const SERVICE_CONFIG: Object = {
   'experienceboxes':{
     'path':'/experienceboxes'
   },
-  'payments':{
-    'path':'/payments'
+  'paymentsexp':{
+    'path':'/paymentsexp'
+  },
+  'paymentsbox':{
+    'path':'/paymentsbox'
   }
 };

@@ -1,0 +1,54 @@
+<o-form
+  service="experienceboxes"
+  entity="clientExperienceBoxDefault"
+  keys="boxclient_id"
+  header-actions="R"
+  show-header-navigation="no"
+  (onDataLoaded)="onFormDataLoaded($event)"
+>
+  <o-text-input
+    attr="boxclient_id"
+    sql-type="integer"
+    enabled="no"
+    fxFlex="10"
+  ></o-text-input>
+
+  <o-row>
+    <div fxFlex="70">
+      <o-column title-label="boxexperience_payments_information" fxFlex>
+        <o-row>
+          <o-text-input
+            class="input-padding"
+            attr="client_name"
+            fxFlex="50"
+            required="yes"
+            enabled="no"
+          ></o-text-input>
+        </o-row>
+        <o-row>
+          <o-text-input
+            class="input-padding"
+            attr="boxexp_name"
+            fxFlex="50"
+            required="yes"
+            enabled="no"
+          ></o-text-input>
+        </o-row>
+        <o-date-input
+          attr="paymentdate"
+          fxFlex="30"
+          required="yes"
+          enabled="no"
+        ></o-date-input>
+        <o-row>
+          <o-currency-input
+            attr="amountpaid"
+            fxFlex="50"
+            required="yes"
+            enabled="no"
+          ></o-currency-input>
+        </o-row>
+      </o-column>
+    </div>
+  </o-row>
+</o-form>

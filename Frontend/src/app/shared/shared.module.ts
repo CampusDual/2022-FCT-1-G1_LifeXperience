@@ -5,10 +5,6 @@ import { OChartModule } from 'ontimize-web-ngx-charts';
 import { MENU_COMPONENTS } from './app.menu.config';
 
 
-export function intRateMonthlyFunction (rowData: Array<any>): number {
-  return rowData["INTERESRATE"]/12;
-}
-
 @NgModule({
   imports: [
     OntimizeWebModule,
