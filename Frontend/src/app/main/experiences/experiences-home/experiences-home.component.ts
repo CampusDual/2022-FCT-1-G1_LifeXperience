@@ -12,7 +12,7 @@ export class ExperiencesHomeComponent implements OnInit {
 
   isListLayout:Boolean = true;
 
-  buttonChangeLayoutText:String = "Grid Layout";
+  buttonChangeLayoutText:String = "Grid";
   buttonChangeLayoutIcon:String = "grid_view"
   
   
@@ -30,14 +30,13 @@ export class ExperiencesHomeComponent implements OnInit {
     this.changeTitleButtonGrid();
   }
 
-  //Operador ternario, igual que if-else
   changeTitleButtonGrid(){
 
      if(this.isListLayout){
-      this.buttonChangeLayoutText = "Grid Layout";
+      this.buttonChangeLayoutText = "Grid";
       this.buttonChangeLayoutIcon = "grid_view"
      }else{
-      this.buttonChangeLayoutText = "List Layout";
+      this.buttonChangeLayoutText = "List";
        this.buttonChangeLayoutIcon = "view_list"
      }
   }
@@ -50,6 +49,5 @@ export class ExperiencesHomeComponent implements OnInit {
     return formatDate(new Date(parseInt(dateMilisecondsNumber)),'yyyy-MM-dd',this.locale)
   }
 
-  //El cargado es muy lento
 
 }
