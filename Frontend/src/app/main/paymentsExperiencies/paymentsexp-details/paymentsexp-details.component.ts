@@ -45,7 +45,7 @@ export class PaymentsExpDetailsComponent implements OnInit {
             },
             {
               text: 'Información de compra',
-              style: ('subheader')
+              style: ('subheader','subheader2')
             }
           ],
           styles: {
