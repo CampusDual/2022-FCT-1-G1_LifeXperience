@@ -1,7 +1,7 @@
 import { formatDate } from '@angular/common';
 import { Component, Inject, Injector, LOCALE_ID, OnInit, ViewChild } from '@angular/core';
 import { ElementRef, ViewChildren, QueryList } from '@angular/core';
-import { OFormComponent, OntimizeService, SQLTypes } from 'ontimize-web-ngx';
+import { OFormComponent, OntimizeService, OTranslateService, SQLTypes } from 'ontimize-web-ngx';
 
 
 import pdfMake from 'pdfmake/build/pdfmake';
@@ -17,7 +17,8 @@ export class PaymentsExpDetailsComponent implements OnInit {
 
     constructor(
         protected injector: Injector,
-        @Inject(LOCALE_ID) private locale: string
+        @Inject(LOCALE_ID) private locale: string,
+        private translator: OTranslateService
         ) { }
 
       //A partir de aqui probamos el pdf
@@ -73,7 +74,7 @@ export class PaymentsExpDetailsComponent implements OnInit {
                                   //Columna
                                   [
                                        {
-                                            text:"Factura a",
+                                            text:this.translator.get("payment_exp_invoice_to"),
                                             bold:"true",
                                             fontSize: 14,
                                             margin: [0, 0, 0, 10]
@@ -102,10 +103,10 @@ export class PaymentsExpDetailsComponent implements OnInit {
                                                 //Columna 1
                                                 [
                                                     {
-                                                        text:"Factura",
+                                                        text:this.translator.get("payment_exp_invoice"),
                                                         margin: [0, 32, 0, 10]
                                                     },{
-                                                        text:"Fecha",
+                                                        text:this.translator.get("Date"),
                                                         margin: [0, 10, 0, 0]
                                                     }
                                                 ],//Columna 2
@@ -155,6 +156,7 @@ export class PaymentsExpDetailsComponent implements OnInit {
                                        
                                         {
                                             text:pdfData['description'],
+                                            margin: [0,0,5,0]
                                         }
                                     ],
                                   [
@@ -164,11 +166,11 @@ export class PaymentsExpDetailsComponent implements OnInit {
                                                 //Columna 1
                                                 [
                                                     {
-                                                        text:"Fecha caducidad",
+                                                        text:this.translator.get("enddate"),
                                                         margin: [0, 0, 0, 0]
                                                         
                                                     },{
-                                                        text:"Precio",
+                                                        text:this.translator.get("price"),
                                                         margin: [0, 10, 0, 0]
                                                     }
                                                 ],//Columna 2

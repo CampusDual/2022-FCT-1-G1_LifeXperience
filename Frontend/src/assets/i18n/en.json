@@ -1,4 +1,3 @@
-
 {
     "APP_TITLE": "Experiences Subscriptions Manager",
     "CLIENTS": "Clients",
@@ -79,6 +78,8 @@
     "amountpaid": "Paid Amount",
     "paymentdate": "Payment Date",
     "client_name": "Client Name",
-    "boxexp_name": "Experience Box"
+    "boxexp_name": "Experience Box",
+    "payment_exp_invoice_to": "Invoice to",
+    "payment_exp_invoice": "Invoice",
+    "Date": "Date"
 }
-

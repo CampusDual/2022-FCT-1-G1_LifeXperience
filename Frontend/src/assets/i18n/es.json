@@ -1,4 +1,3 @@
-
 {
     "APP_TITLE": "Gestor de subscripciones de experiencias",
     "CLIENTS": "Clientes",
@@ -45,7 +44,7 @@
     "down_date": "Fecha de baja",
     "duration": "Duración",
     "email": "Email",
-    "enddate": "Fecha de Fin",
+    "enddate": "Fecha de fin",
     "exp_name": "Nombre experiencia",
     "experiences": "Experiencias",
     "experience-box": "Paquete de Experiencias",
@@ -79,6 +78,8 @@
     "amountpaid": "Cantidad pagada",
     "paymentdate": "Fecha de pago",
     "client_name": "Cliente",
-    "boxexp_name": "Paquete de experiencias"
+    "boxexp_name": "Paquete de experiencias",
+    "payment_exp_invoice_to": "Factura a",
+    "payment_exp_invoice": "Factura",
+    "Date": "Fecha"
 }
-

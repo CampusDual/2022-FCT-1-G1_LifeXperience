@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { formatDate } from '@angular/common';
+import { Component, Inject, Injector, LOCALE_ID, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 
@@ -15,7 +16,11 @@ export class ExperiencesHomeComponent implements OnInit {
   buttonChangeLayoutIcon:String = "grid_view"
   
   
-  constructor(private router: Router) { }
+  constructor(
+    private router: Router,
+    protected injector: Injector,
+    @Inject(LOCALE_ID) private locale: string
+    ) { }
 
   ngOnInit() {
   }
@@ -39,6 +44,10 @@ export class ExperiencesHomeComponent implements OnInit {
 
   public openAccountDetailSelected(id:String) {
       this.router.navigate(['main/experiences/' + id]);
+  }
+
+  parseDate(dateMilisecondsNumber){
+    return formatDate(new Date(parseInt(dateMilisecondsNumber)),'yyyy-MM-dd',this.locale)
   }
 
   //El cargado es muy lento
