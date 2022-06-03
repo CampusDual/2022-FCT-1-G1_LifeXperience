@@ -11,10 +11,10 @@ export class ExperiencesHomeComponent implements OnInit {
 
   isListLayout:Boolean = true;
 
-  buttonChangeLayoutText:String = "Grid Layout";
+  buttonChangeLayoutText:String = "Grid";
   buttonChangeLayoutIcon:String = "grid_view"
-  
-  
+
+
   constructor(private router: Router) { }
 
   ngOnInit() {
@@ -29,10 +29,10 @@ export class ExperiencesHomeComponent implements OnInit {
   changeTitleButtonGrid(){
 
      if(this.isListLayout){
-      this.buttonChangeLayoutText = "Grid Layout";
+      this.buttonChangeLayoutText = "Grid";
       this.buttonChangeLayoutIcon = "grid_view"
      }else{
-      this.buttonChangeLayoutText = "List Layout";
+      this.buttonChangeLayoutText = "List";
        this.buttonChangeLayoutIcon = "view_list"
      }
   }
