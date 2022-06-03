@@ -76,6 +76,7 @@
     "PAYMENTS_EXP": "Experience Payments",
     "PAYMENTS_BOX": "Experience Box Payments",
     "id_client": "Client",
+    "idclient": "Client",
     "idbox": "Experience Box",
     "id_experience": "Experience",
     "amountpaid": "Paid Amount",
