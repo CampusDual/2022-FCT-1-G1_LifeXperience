@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { formatDate } from '@angular/common';
+import { Component, Inject, Injector, LOCALE_ID, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 
@@ -11,11 +12,15 @@ export class ExperiencesHomeComponent implements OnInit {
 
   isListLayout:Boolean = true;
 
-  buttonChangeLayoutText:String = "Grid Layout";
+  buttonChangeLayoutText:String = "Grid";
   buttonChangeLayoutIcon:String = "grid_view"
   
   
-  constructor(private router: Router) { }
+  constructor(
+    private router: Router,
+    protected injector: Injector,
+    @Inject(LOCALE_ID) private locale: string
+    ) { }
 
   ngOnInit() {
   }
@@ -25,14 +30,13 @@ export class ExperiencesHomeComponent implements OnInit {
     this.changeTitleButtonGrid();
   }
 
-  //Operador ternario, igual que if-else
   changeTitleButtonGrid(){
 
      if(this.isListLayout){
-      this.buttonChangeLayoutText = "Grid Layout";
+      this.buttonChangeLayoutText = "Grid";
       this.buttonChangeLayoutIcon = "grid_view"
      }else{
-      this.buttonChangeLayoutText = "List Layout";
+      this.buttonChangeLayoutText = "List";
        this.buttonChangeLayoutIcon = "view_list"
      }
   }
@@ -41,6 +45,9 @@ export class ExperiencesHomeComponent implements OnInit {
       this.router.navigate(['main/experiences/' + id]);
   }
 
-  //El cargado es muy lento
+  parseDate(dateMilisecondsNumber){
+    return formatDate(new Date(parseInt(dateMilisecondsNumber)),'yyyy-MM-dd',this.locale)
+  }
+
 
 }

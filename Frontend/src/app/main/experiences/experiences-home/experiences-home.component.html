@@ -18,7 +18,7 @@
                 <div class="item" (click)="openAccountDetailSelected(list.id)" fxLayout="column " fxLayoutAlign="space-evenly center ">
                     <o-image data="{{list.associate_image}} " empty-image="assets/images/no-image.png" fxFlex="30" auto-fit="true" width="290px" enabled="false" show-controls="no"></o-image>
                     <div>{{ list.name }}</div>
-                    <div>{{ list.enddate }}</div>
+                    <div>{{ parseDate(list.enddate) }}</div>
                     <div>{{ list.price }}€</div>
                 </div>
             </o-grid-item>

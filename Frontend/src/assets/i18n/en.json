@@ -1,4 +1,3 @@
-
 {
     "APP_TITLE": "Experiences Subscriptions Manager",
     "CLIENTS": "Clients",
@@ -50,8 +49,10 @@
     "experiences": "Experiences",
     "experience-box": "Experience Box",
     "experience-boxes": "Experience Boxes",
+    "Grid":"Grid",
     "id": "Id",
     "latitude": "Latitude",
+    "List":"List",
     "longitude": "Longitude",
     "name": "Name",
     "nif": "NIF",
@@ -64,6 +65,7 @@
     "surname": "Surname",
     "user": "User",
     "user_": "User",
+    "Users":"Users",
     "client_experience_box_dialog_confirmation_title": "Add experience box?",
     "client_experience_box_dialog_confirmation_body_text": "Do you want to add to the client the experience box: '${expBoxName}'?",
     "Add": "Add",
@@ -79,6 +81,8 @@
     "amountpaid": "Paid Amount",
     "paymentdate": "Payment Date",
     "client_name": "Client Name",
-    "boxexp_name": "Experience Box"
+    "boxexp_name": "Experience Box",
+    "payment_exp_invoice_to": "Invoice to",
+    "payment_exp_invoice": "Invoice",
+    "Date": "Date"
 }
-

@@ -1,4 +1,3 @@
-
 {
     "APP_TITLE": "Gestor de subscripciones de experiencias",
     "CLIENTS": "Clientes",
@@ -45,13 +44,15 @@
     "down_date": "Fecha de baja",
     "duration": "Duración",
     "email": "Email",
-    "enddate": "Fecha de Fin",
+    "enddate": "Fecha de fin",
     "exp_name": "Nombre experiencia",
     "experiences": "Experiencias",
     "experience-box": "Paquete de Experiencias",
     "experience-boxes": "Paquetes de Experiencias",
+    "Grid":"Mosaico",
     "id": "Id",
     "latitude": "Latitud",
+    "List":"Lista",
     "longitude": "Longitud",
     "name": "Nombre",
     "nif": "NIF",
@@ -64,6 +65,7 @@
     "surname": "Apellidos",
     "user": "Usuario",
     "user_": "Usuario",
+    "Users":"Usuarios",
     "client_experience_box_dialog_confirmation_title": "¿Añadir caja de experiencias?",
     "client_experience_box_dialog_confirmation_body_text": "¿Quieres añadir al cliente la caja seleccionada: '${expBoxName}'?",
     "Add": "Añadir",
@@ -79,6 +81,8 @@
     "amountpaid": "Cantidad pagada",
     "paymentdate": "Fecha de pago",
     "client_name": "Cliente",
-    "boxexp_name": "Paquete de experiencias"
+    "boxexp_name": "Paquete de experiencias",
+    "payment_exp_invoice_to": "Factura a",
+    "payment_exp_invoice": "Factura",
+    "Date": "Fecha"
 }
-
