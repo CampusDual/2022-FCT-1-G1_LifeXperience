@@ -85,5 +85,6 @@
     "payment_exp_invoice_to": "Factura a",
     "payment_exp_invoice": "Factura",
     "Date": "Fecha",
-    "Close": "Cerrar"
+    "Close": "Cerrar",
+    "Generate_pdf": "Generar pdf"
 }

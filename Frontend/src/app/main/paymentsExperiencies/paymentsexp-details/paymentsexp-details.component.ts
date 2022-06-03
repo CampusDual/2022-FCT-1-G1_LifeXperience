@@ -62,7 +62,7 @@ export class PaymentsExpDetailsComponent implements OnInit {
         const pdfDefinition: any ={
           content: [
               {
-                    text:"Nombre de la empresa" ,
+                    text:"Life experience" ,
                     style:"header",
                     margin: [0, 0, 0, 30]
               },{
@@ -199,7 +199,7 @@ export class PaymentsExpDetailsComponent implements OnInit {
         
           ],styles:{
               header: {
-            fontSize: 18,
+            fontSize: 20,
             bold: true
           },
           }

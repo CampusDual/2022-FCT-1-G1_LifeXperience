@@ -85,5 +85,6 @@
     "payment_exp_invoice_to": "Invoice to",
     "payment_exp_invoice": "Invoice",
     "Date": "Date",
-    "Close": "Close"
+    "Close": "Close",
+    "Generate_pdf": "Generate pdf"
 }
