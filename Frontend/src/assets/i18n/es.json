@@ -49,10 +49,10 @@
     "experiences": "Experiencias",
     "experience-box": "Paquete de Experiencias",
     "experience-boxes": "Paquetes de Experiencias",
-    "Grid":"Mosaico",
+    "Grid": "Mosaico",
     "id": "Id",
     "latitude": "Latitud",
-    "List":"Lista",
+    "List": "Lista",
     "longitude": "Longitud",
     "name": "Nombre",
     "nif": "NIF",
@@ -65,7 +65,7 @@
     "surname": "Apellidos",
     "user": "Usuario",
     "user_": "Usuario",
-    "Users":"Usuarios",
+    "Users": "Usuarios",
     "client_experience_box_dialog_confirmation_title": "¿Añadir caja de experiencias?",
     "client_experience_box_dialog_confirmation_body_text": "¿Quieres añadir al cliente la caja seleccionada: '${expBoxName}'?",
     "Add": "Añadir",
@@ -84,5 +84,6 @@
     "boxexp_name": "Paquete de experiencias",
     "payment_exp_invoice_to": "Factura a",
     "payment_exp_invoice": "Factura",
-    "Date": "Fecha"
+    "Date": "Fecha",
+    "Close": "Cerrar"
 }
