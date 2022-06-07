@@ -12,4 +12,29 @@
         <Column>id</Column>
     </UpdateKeys>
     <GeneratedKey>id</GeneratedKey>
+    
+    <Queries>
+        <Query id="experiences_that_they_are_not_in_a_box">
+            <AmbiguousColumns>
+                <AmbiguousColumn name="exp_id" prefix="exp"
+                                 databaseName="id"/>
+                <AmbiguousColumn name="expBox_id" prefix="expBox"
+                                                  databaseName="id"/>
+            </AmbiguousColumns>
+            <Sentence>
+                <![CDATA[
+                  select
+                   #COLUMNS#
+                  from
+                   ${mainschema}.experiences
+                   where id not in (
+                   select distinct idexp
+                   from ${mainschema}.experience_experience_box
+                   #WHERE#
+                 )
+                ]]>
+            </Sentence>
+        </Query>
+        
+    </Queries>
 </JdbcEntitySetup>

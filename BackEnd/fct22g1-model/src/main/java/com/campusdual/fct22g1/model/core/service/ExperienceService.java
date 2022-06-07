@@ -45,6 +45,11 @@ public class ExperienceService implements IExperienceService {
         return this.daoHelper.delete(this.experienceDao, keyMap);
     }
 
+    @Override
+    public EntityResult experiencesThatTheyAreNotInABoxQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException {
+        return this.daoHelper.query(this.experienceDao, keyMap, attrList, ExperienceDao.QUERY_EXPERIENCES_THAT_THEY_ARE_NOT_IN_A_BOX);
+    }
+
 	@Override
 	public EntityResult clientExperienceQuery(Map<String, Object> keyMap, List<String> attrList)
 			throws OntimizeJEERuntimeException {
