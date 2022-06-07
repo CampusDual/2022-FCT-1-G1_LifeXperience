@@ -18,6 +18,8 @@ public interface IExperienceService {
 
     public EntityResult experiencesThatTheyAreNotInABoxQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException;
 
+    public EntityResult experiencesOfABoxQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException;
+
     //CLIENT EXPERIENCE
     public EntityResult clientExperienceQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException;
     public EntityResult clientExperienceInsert(Map<String, Object> attrMap) throws OntimizeJEERuntimeException;

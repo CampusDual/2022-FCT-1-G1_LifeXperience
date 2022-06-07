@@ -15,12 +15,6 @@
     
     <Queries>
         <Query id="experiences_that_they_are_not_in_a_box">
-            <AmbiguousColumns>
-                <AmbiguousColumn name="exp_id" prefix="exp"
-                                 databaseName="id"/>
-                <AmbiguousColumn name="expBox_id" prefix="expBox"
-                                                  databaseName="id"/>
-            </AmbiguousColumns>
             <Sentence>
                 <![CDATA[
                   select
@@ -35,6 +29,23 @@
                 ]]>
             </Sentence>
         </Query>
-        
+
+        <Query id="experiences_of_a_box">
+            <AmbiguousColumns>
+                <AmbiguousColumn name="exp_id" prefix="exp"
+                                 databaseName="id"/>
+                                 <AmbiguousColumn name="exp_expBox_id" prefix="exp_expBox"
+                                 databaseName="id"/>
+            </AmbiguousColumns>
+            <Sentence>
+            <![CDATA[
+              select
+               #COLUMNS#
+              from
+               ${mainschema}.experiences exp join ${mainschema}.experience_experience_box exp_expBox ON exp.id = exp_expBox.idexp
+               #WHERE#
+            ]]>
+            </Sentence>
+        </Query>        
     </Queries>
 </JdbcEntitySetup>
