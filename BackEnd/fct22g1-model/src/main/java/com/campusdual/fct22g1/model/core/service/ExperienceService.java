@@ -2,6 +2,7 @@ package com.campusdual.fct22g1.model.core.service;
 
 import com.campusdual.fct22g1.api.core.service.IExperienceService;
 import com.campusdual.fct22g1.model.core.dao.ClientExperienceDao;
+import com.campusdual.fct22g1.model.core.dao.ExperienceBoxExperienceDao;
 import com.campusdual.fct22g1.model.core.dao.ExperienceDao;
 import com.ontimize.jee.common.dto.EntityResult;
 import com.ontimize.jee.common.exceptions.OntimizeJEERuntimeException;
@@ -22,6 +23,8 @@ public class ExperienceService implements IExperienceService {
     private DefaultOntimizeDaoHelper daoHelper;
     @Autowired
     private ClientExperienceDao clientExperienceDao;
+    @Autowired
+    private ExperienceBoxExperienceDao experienceBoxExperienceDao;
 
     @Override
     public EntityResult experienceQuery(Map<String, Object> keyMap, List<String> attrList)
@@ -55,38 +58,62 @@ public class ExperienceService implements IExperienceService {
         return this.daoHelper.query(this.experienceDao, keyMap, attrList, ExperienceDao.QUERY_EXPERIENCES_OF_A_BOX);
     }
 
-	@Override
-	public EntityResult clientExperienceQuery(Map<String, Object> keyMap, List<String> attrList)
-			throws OntimizeJEERuntimeException {
-		return this.daoHelper.query(this.clientExperienceDao, keyMap, attrList);
-		
-	}
+    @Override
+    public EntityResult clientExperienceQuery(Map<String, Object> keyMap, List<String> attrList)
+            throws OntimizeJEERuntimeException {
+        return this.daoHelper.query(this.clientExperienceDao, keyMap, attrList);
 
-	@Override
-	public EntityResult clientExperienceInsert(Map<String, Object> attrMap) throws OntimizeJEERuntimeException {
-		return this.daoHelper.insert(this.clientExperienceDao, attrMap);
-		
-	}
+    }
 
-	@Override
-	public EntityResult clientExperienceUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap)
-			throws OntimizeJEERuntimeException {
-		return this.daoHelper.update(this.clientExperienceDao,attrMap, keyMap);
-		
-	}
+    @Override
+    public EntityResult clientExperienceInsert(Map<String, Object> attrMap) throws OntimizeJEERuntimeException {
+        return this.daoHelper.insert(this.clientExperienceDao, attrMap);
 
-	@Override
-	public EntityResult clientExperienceDelete(Map<String, Object> keyMap) throws OntimizeJEERuntimeException {
-		return this.daoHelper.delete(this.clientExperienceDao, keyMap);
-		
-	}
+    }
 
-	@Override
-	public EntityResult clientExperienceDetailsQuery(Map<String, Object> keyMap, List<String> attrList)
-			throws OntimizeJEERuntimeException {
-		
-		return this.daoHelper.query(this.clientExperienceDao, keyMap, attrList,ClientExperienceDao.QUERY_CLIENT_EXPERIENCE);
-	}
-    	
+    @Override
+    public EntityResult clientExperienceUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap)
+            throws OntimizeJEERuntimeException {
+        return this.daoHelper.update(this.clientExperienceDao, attrMap, keyMap);
+
+    }
+
+    @Override
+    public EntityResult clientExperienceDelete(Map<String, Object> keyMap) throws OntimizeJEERuntimeException {
+        return this.daoHelper.delete(this.clientExperienceDao, keyMap);
+
+    }
+
+    @Override
+    public EntityResult clientExperienceDetailsQuery(Map<String, Object> keyMap, List<String> attrList)
+            throws OntimizeJEERuntimeException {
+
+        return this.daoHelper.query(this.clientExperienceDao, keyMap, attrList, ClientExperienceDao.QUERY_CLIENT_EXPERIENCE);
+    }
+
+    @Override
+    public EntityResult experienceBoxExperienceQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException {
+        return this.daoHelper.query(this.experienceBoxExperienceDao, keyMap, attrList);
+    }
+
+    @Override
+    public EntityResult experienceBoxExperienceInsert(Map<String, Object> attrMap) throws OntimizeJEERuntimeException {
+        return this.daoHelper.insert(this.experienceBoxExperienceDao, attrMap);
+    }
+
+    @Override
+    public EntityResult experienceBoxExperienceUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap) throws OntimizeJEERuntimeException {
+        return this.daoHelper.update(this.experienceBoxExperienceDao, attrMap, keyMap);
+    }
+
+    @Override
+    public EntityResult experienceBoxExperienceDelete(Map<String, Object> keyMap) throws OntimizeJEERuntimeException {
+        return this.daoHelper.delete(this.experienceBoxExperienceDao, keyMap);
+    }
+
+    @Override
+    public EntityResult experienceBoxExperienceDetailsQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException {
+        return this.daoHelper.query(this.experienceBoxExperienceDao, keyMap, attrList, ExperienceBoxExperienceDao.QUERY_EXPERIENCE_BOX_EXPERIENCE);
+    }
 
 }

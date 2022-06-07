@@ -26,4 +26,11 @@ public interface IExperienceService {
     public EntityResult clientExperienceUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap) throws OntimizeJEERuntimeException;
     public EntityResult clientExperienceDelete(Map<String, Object> keyMap) throws OntimizeJEERuntimeException;
     public EntityResult clientExperienceDetailsQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException;
+    
+    //EXPERIENCE BOX EXPERIENCES
+    public EntityResult experienceBoxExperienceQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException;
+    public EntityResult experienceBoxExperienceInsert(Map<String, Object> attrMap) throws OntimizeJEERuntimeException;
+    public EntityResult experienceBoxExperienceUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap) throws OntimizeJEERuntimeException;
+    public EntityResult experienceBoxExperienceDelete(Map<String, Object> keyMap) throws OntimizeJEERuntimeException;
+    public EntityResult experienceBoxExperienceDetailsQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException;
 }

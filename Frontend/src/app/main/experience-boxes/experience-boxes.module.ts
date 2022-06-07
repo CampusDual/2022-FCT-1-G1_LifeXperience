@@ -6,6 +6,7 @@ import { OntimizeWebModule } from 'ontimize-web-ngx';
 import { ExperienceBoxesHomeComponent } from './experience-boxes-home/experience-boxes-home.component';
 import { ExperienceBoxesDetailComponent } from './experience-boxes-detail/experience-boxes-detail.component';
 import { ExperienceBoxesNewComponent } from './experience-boxes-new/experience-boxes-new.component';
+import { UiElementsModule } from '../ui-elements/ui-elements.module';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { ExperienceBoxesNewComponent } from './experience-boxes-new/experience-b
   imports: [
     CommonModule,
     OntimizeWebModule,
-    ExperienceBoxesRoutingModule
+    ExperienceBoxesRoutingModule,
+    UiElementsModule
   ]
 })
 export class ExperienceBoxesModule { }

@@ -1,10 +1,9 @@
 package com.campusdual.fct22g1.model.core.dao;
 
-import org.springframework.context.annotation.Lazy;
-import org.springframework.stereotype.Repository;
-
 import com.ontimize.jee.server.dao.common.ConfigurationFile;
 import com.ontimize.jee.server.dao.jdbc.OntimizeJdbcDaoSupport;
+import org.springframework.context.annotation.Lazy;
+import org.springframework.stereotype.Repository;
 
 @Repository("ClientExperienceDao")
 @Lazy
@@ -14,6 +13,9 @@ public class ClientExperienceDao extends OntimizeJdbcDaoSupport {
     public static final String ATTR_ID = "id";
     public static final String ATTR_ID_CLIENT = "id_client";
     public static final String ATTR_ID_EXPERIENCE = "id_experience";
+    
+    public static final String ATTR_PAYMENTDATE = "paymentdate";
+    public static final String ATTR_AMOUNTPAID = "amountpaid";
     public static final String ATTR_ASSISTANCE="assistance";
     public static final String QUERY_CLIENT_EXPERIENCE = "details";
 

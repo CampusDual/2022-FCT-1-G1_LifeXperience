@@ -1,21 +1,64 @@
 <o-form service="experienceboxes" entity="experiencebox" keys="id" header-actions="R;I;U;D" show-header-navigation="no">
-    <o-integer-input attr="id" sql-type="integer" hidden enabled="no">
-    </o-integer-input>
+    <div>
+        <o-integer-input attr="id" sql-type="integer" hidden enabled="no" hidden fxFlex="10"></o-integer-input>
+    </div>
     <o-row>
         <o-column title-label="experience-box_information" fxFlex>
             <o-row>
-                <o-text-input class="input-padding" attr="name" fxFlex="40" required="yes" enabled="yes"></o-text-input>
+                <o-text-input class="input-padding" attr="name" fxFlex="70" required="yes" enabled="yes"></o-text-input>
             </o-row>
             <o-row>
-                <o-real-input class="input-padding" attr="price" fxFlex="40" required="yes" enabled="yes" decimal-separator="," max-decimal-digits="2"></o-real-input>
+                <o-real-input class="input-padding" attr="price" fxFlex="70" required="yes" enabled="yes" decimal-separator="," max-decimal-digits="2"></o-real-input>
             </o-row>
             <o-row>
-                <o-textarea-input class="input-padding" attr="description" fxFlex="40" required="yes" enabled="yes">
+                <o-textarea-input class="input-padding" attr="description" fxFlex="70" required="yes" enabled="yes">
                 </o-textarea-input>
             </o-row>
             <o-row>
-                <o-image attr="associate_image" empty-image="assets/images/no-image.png" sql-type="OTHER" full-screen-button="true" auto-fit="true" fxFlex="40"></o-image>
+                <o-image attr="associate_image" empty-image="assets/images/no-image.png" sql-type="OTHER" full-screen-button="true" auto-fit="true" fxFlex="70"></o-image>
             </o-row>
         </o-column>
+
+        <o-column class="columnDiv">
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        {{'My_experiences_boxes' | oTranslate }}
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+
+                <o-table query-on-init="no" show-title="false" title="ExperiencesBox" attr="ClientExperiencesBoxTable" auto-adjust="false" service="experiences" entity="experiencesOfABox" insert-button="false" delete-button="false" refresh-button="false" keys="exp_id"
+                    parent-keys="idpack:id" columns="exp_id;name;description;price;enddate;associate_image" visible-columns="name;description;price;enddate" query-rows="10">
+
+                    <o-table-column attr="name" title="name" content-align="center" width="100px"></o-table-column>
+                    <o-table-column attr="description" title="description" multiline="yes" width="100px"></o-table-column>
+                    <o-table-column attr="price" title="price" type="currency" currency-symbol="€" currency-symbol-position="right" width="30px" content-align="center"></o-table-column>
+                    <o-table-column attr="enddate" title="enddate" type="date" format="LL" width="60px"></o-table-column>
+                </o-table>
+                <o-button id="buttonAdd" attr="basic2" type="RAISED" label="{{'Add' | oTranslate }}" layout-padding color="primary" (click)="openModal('custom-modal-1')"></o-button>
+
+            </mat-expansion-panel>
+        </o-column>
+
+        <jw-modal id="custom-modal-1">
+
+            <div id="modal-size-grid">
+                <o-grid #experienceBoxGrid class="grid" attr="experienceBoxesTable" service="experiences" entity="experiencesThatTheyAreNotInABox" columns="id;name;description;price;enddate;associate_image" keys="id" parent-keys="idpack:id" cols="5" query-rows="8" orderable="true"
+                    quick-filter="true" sortable-columns="name;price" sort-column="name" gutter-size="10px" refresh-button="true" detail-mode="no" pagination-controls="true" fixed-header="yes">
+                    <o-grid-item *ngFor="let list of experienceBoxGrid.dataArray" auto-fit="true">
+
+                        <div class="item" fxLayout="column" fxLayoutAlign="space-evenly center" (click)="showConfirm(list)">
+                            <o-image data="{{list.associate_image}} " empty-image="assets/images/no-image.png" fxFlex="30" auto-fit="true" width="290px" enabled="false" show-controls="no"></o-image>
+                            <div>{{ list.name }}</div>
+                        </div>
+                    </o-grid-item>
+                </o-grid>
+            </div>
+
+            <o-button (click)="closeModal('custom-modal-1')" attr=" buttonChangeLayout" id="buttonChangeLayout" type="RAISED" label="{{'Close' | oTranslate }}" layout-padding color="accent">
+
+            </o-button>
+
+        </jw-modal>
     </o-row>
 </o-form>

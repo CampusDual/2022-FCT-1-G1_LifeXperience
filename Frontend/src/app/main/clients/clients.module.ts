@@ -6,7 +6,6 @@ import { ClientsHomeComponent } from './clients-home/clients-home.component';
 import { ClientsDetailsComponent } from './clients-details/clients-details.component';
 import { ClientsNewComponent } from './clients-new/clients-new.component';
 import { UiElementsModule } from '../ui-elements/ui-elements.module';
-import { ExperiencesModule } from '../experiences/experiences.module';
 
 //Set the fonts to use
 
