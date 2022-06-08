@@ -25,14 +25,14 @@ export class PaymentsExpDetailsComponent implements OnInit {
       @ViewChild('dataForm', {static: true}) dataForm: OFormComponent;
       protected service: OntimizeService;
 
-
-
       getClientExpPDFData(){
         this.service = this.injector.get(OntimizeService);
         const conf = this.service.getDefaultServiceConfiguration('experiences');
         this.service.configureService(conf);
-    
-        const columns = ['client_name','address','phonenumber','relation_id','paymentdate','amountpaid','exp_name','description','enddate','price','associate_image'];
+
+        const columns = ['client_name','address','phonenumber',
+        'relation_id','paymentdate','amountpaid','exp_name','description',
+        'enddate','price','associate_image'];
         const filter = {
             "relation_id": this.dataForm.getDataValue('relation_id').value
         };
@@ -45,16 +45,14 @@ export class PaymentsExpDetailsComponent implements OnInit {
               resp.data[0]["paymentdate"] = formatDate(new Date(parseInt(resp.data[0]["paymentdate"])),'yyyy-MM-dd',this.locale)
               resp.data[0]["enddate"] = formatDate(new Date(parseInt(resp.data[0]["enddate"])),'yyyy-MM-dd',this.locale)
             this.createPdf(resp.data[0]);
-            
-    
+
+
           } else {
             alert('Impossible to query data!');
             throw new Error
           }
         });
       }
-
-
 
       createPdf(pdfData:string[]){
 
@@ -122,10 +120,10 @@ export class PaymentsExpDetailsComponent implements OnInit {
                                                     }
                                                 ]
                                             ]
-                                        } 
+                                        }
                                   ]
                               ]
-                              
+
                          ],
                   },
                   layout: 'noBorders',
@@ -143,7 +141,7 @@ export class PaymentsExpDetailsComponent implements OnInit {
                     fontSize: 18,
                     margin: [0, 40, 0, 0]
                 },
-              
+
               {
                   //Datos de la experiencia
                   table:{
@@ -153,7 +151,7 @@ export class PaymentsExpDetailsComponent implements OnInit {
                               [
                                   //Columna
                                   [
-                                       
+
                                         {
                                             text:pdfData['description'],
                                             margin: [0,0,5,0]
@@ -168,7 +166,7 @@ export class PaymentsExpDetailsComponent implements OnInit {
                                                     {
                                                         text:this.translator.get("enddate"),
                                                         margin: [0, 0, 0, 0]
-                                                        
+
                                                     },{
                                                         text:this.translator.get("price"),
                                                         margin: [0, 10, 0, 0]
@@ -179,7 +177,7 @@ export class PaymentsExpDetailsComponent implements OnInit {
                                                         text:pdfData['enddate'],
                                                         margin: [0, 0, 40, 0],
                                                         alignment:"right",
-                                                        
+
                                                     },{
                                                         text:pdfData['price'] + " €",
                                                         margin: [0, 10, 40, 0],
@@ -187,23 +185,23 @@ export class PaymentsExpDetailsComponent implements OnInit {
                                                     }
                                                 ]
                                             ]
-                                        } 
+                                        }
                                   ]
                               ]
-                              
+
                          ],
                   },
                   layout: 'noBorders',
                   margin:[0,30,0,0]
                },
-        
+
           ],styles:{
               header: {
             fontSize: 20,
             bold: true
           },
           }
-          
+
         }
 
         const pdf = pdfMake.createPdf(pdfDefinition);
