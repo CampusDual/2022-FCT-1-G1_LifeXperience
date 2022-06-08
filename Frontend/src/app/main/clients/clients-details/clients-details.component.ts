@@ -20,6 +20,8 @@ export class ClientsDetailsComponent implements OnInit {
   private alertDialogSuccessful:string
   private alertDialogFailed:string
 
+  protected service: OntimizeService;
+  
     constructor(
         private modalService: ModalService,
         private injector: Injector,
@@ -113,7 +115,7 @@ export class ClientsDetailsComponent implements OnInit {
       }
     }
 
-    protected service: OntimizeService;
+    
 
 
     insert(service:string,entity: string, av: Object = {}, sqltypes?: object){

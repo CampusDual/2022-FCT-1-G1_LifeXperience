@@ -1,135 +1,46 @@
-<o-form
-  service="experiences"
-  entity="experience"
-  keys="id"
-  header-actions="R;I;U;D"
-  show-header-navigation="no"
-  (onDataLoaded)="onFormDataLoaded($event)"
->
-  <o-text-input
-    attr="id"
-    sql-type="integer"
-    enabled="no"
-    fxFlex="10"
-    hidden
-  ></o-text-input>
+<o-form service="experiences" entity="experience" keys="id" header-actions="R;I;U;D" show-header-navigation="no" (onDataLoaded)="onFormDataLoaded($event)">
+    <o-text-input attr="id" sql-type="integer" enabled="no" fxFlex="10" hidden></o-text-input>
 
-  <o-row>
-    <div fxFlex="50">
-      <o-column title-label="experiences_information" fxFlex>
-        <o-row>
-          <o-text-input
-            class="input-padding"
-            attr="name"
-            fxFlex="70"
-            required="yes"
-            enabled="yes"
-          ></o-text-input>
-        </o-row>
-        <o-date-input
-          attr="enddate"
-          fxFlex="50"
-          required="yes"
-          enabled="yes"
-        ></o-date-input>
-        <o-row>
-          <o-currency-input
-            attr="price"
-            fxFlex="70"
-            required="yes"
-          ></o-currency-input>
-        </o-row>
-        <o-row>
-          <o-textarea-input
-            class="input-padding"
-            attr="description"
-            fxFlex="70"
-            required="yes"
-            enabled="yes"
-            rows="4"
-          >
-          </o-textarea-input>
-        </o-row>
-        <o-row>
-          <o-real-input
-            data="{{ latitude }}"
-            attr="latitude"
-            decimal-separator=","
-            max-decimal-digits="15"
-            min-decimal-digits="14"
-            class="input-padding"
-            fxFlex="24"
-            hidden
-          ></o-real-input>
-          <o-real-input
-            data="{{ longitude }}"
-            layout-margin-left
-            attr="longitude"
-            decimal-separator=","
-            max-decimal-digits="15"
-            min-decimal-digits="14"
-            class="input-padding"
-            fxFlex="25"
-            hidden
-          >
-          </o-real-input>
-        </o-row>
-        <o-row>
-          <o-textarea-input
-            data="{{ address }}"
-            attr="address"
-            fxFlex="70"
-            rows="1"
-          ></o-textarea-input>
-        </o-row>
-        <o-image
-          id="img"
-          attr="associate_image"
-          empty-image="assets/images/no-image.png"
-          sql-type="OTHER"
-          full-screen-button="true"
-          auto-fit="true"
-          fxFlex="70"
-        ></o-image>
-      </o-column>
-    </div>
-    <div fxFlex="50" fxFlex.md="100">
-
-      <!-- Search bar and Google Maps -->
-
-        <div class="search">
-
-          <input
-
-            size="40"
-            class="search"
-            type="text"
-            (keydown.enter)="$event.preventDefault()"
-            placeholder="{{'Enter Location' | oTranslate }}"
-            autocorrect="off"
-            autocapitalize="off"
-            spellcheck="off"
-            #search
-          />
+    <o-row>
+        <div fxFlex="50">
+            <o-column title-label="experiences_information" fxFlex>
+                <o-row>
+                    <o-text-input class="input-padding" attr="name" fxFlex="70" required="yes" enabled="yes"></o-text-input>
+                </o-row>
+                <o-date-input attr="enddate" fxFlex="50" required="yes" enabled="yes"></o-date-input>
+                <o-row>
+                    <o-currency-input attr="price" fxFlex="70" required="yes"></o-currency-input>
+                </o-row>
+                <o-row>
+                    <o-textarea-input class="input-padding" attr="description" fxFlex="70" required="yes" enabled="yes" rows="4">
+                    </o-textarea-input>
+                </o-row>
+                <o-row>
+                    <o-real-input data="{{ latitude }}" attr="latitude" decimal-separator="," max-decimal-digits="15" min-decimal-digits="14" class="input-padding" fxFlex="24" hidden></o-real-input>
+                    <o-real-input data="{{ longitude }}" layout-margin-left attr="longitude" decimal-separator="," max-decimal-digits="15" min-decimal-digits="14" class="input-padding" fxFlex="25" hidden>
+                    </o-real-input>
+                </o-row>
+                <o-row>
+                    <o-textarea-input data="{{ address }}" attr="address" fxFlex="70" rows="1"></o-textarea-input>
+                </o-row>
+                <o-image id="img" attr="associate_image" empty-image="assets/images/no-image.png" sql-type="OTHER" full-screen-button="true" auto-fit="true" fxFlex="70"></o-image>
+            </o-column>
         </div>
-        <div class="map">
-          <agm-map
-            [latitude]="latitude"
-            [longitude]="longitude"
-            (mapClick)="onMapClicked($event)"
-          >
-            <agm-marker
-              [latitude]="latitude"
-              [longitude]="longitude"
-              [markerDraggable]="true"
-              [markerClickable]="true"
-              (mapClick)="onMapClicked($event)"
-              (dragEnd)="markerDragEnd($event)"
-            ></agm-marker>
-          </agm-map>
-          <h5 id="address">{{'Address' | oTranslate }}:  {{ address }}</h5>
-        </div>
-      </div>
+        <div fxFlex="50" fxFlex.md="100">
 
-  </o-row>
+            <!-- Search bar and Google Maps -->
+
+            <div class="search">
+
+                <input size="40" class="search" type="text" (keydown.enter)="$event.preventDefault()" placeholder="{{'Enter Location' | oTranslate }}" autocorrect="off" autocapitalize="off" spellcheck="off" #search />
+            </div>
+            <div class="map">
+                <agm-map [latitude]="latitude" [longitude]="longitude" (mapClick)="onMapClicked($event)">
+                    <agm-marker [latitude]="latitude" [longitude]="longitude" [markerDraggable]="true" [markerClickable]="true" (mapClick)="onMapClicked($event)" (dragEnd)="markerDragEnd($event)"></agm-marker>
+                </agm-map>
+                <h5 id="address">{{'Address' | oTranslate }}: {{ address }}</h5>
+            </div>
+        </div>
+
+    </o-row>
 </o-form>

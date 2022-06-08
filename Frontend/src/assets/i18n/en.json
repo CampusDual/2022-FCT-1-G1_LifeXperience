@@ -35,7 +35,7 @@
     "USERS": "Users",
     "VERSION": "Version",
     "VIEW": "Views",
-    "Address":"Address",
+    "Address": "Address",
     "address": "Address",
     "assistance": "Assistance",
     "associate_image": "Image",
@@ -46,7 +46,7 @@
     "duration": "Duration",
     "email": "Email",
     "enddate": "End Date",
-    "Enter Location":"Enter Location",
+    "Enter Location": "Enter Location",
     "expirationdate": "Expiration Date",
     "exp_name": "Experience Name",
     "experiences": "Experiences",
@@ -63,7 +63,7 @@
     "phonenumber": "Phone Number",
     "price": "Price",
     "startdate": "Start Date",
-    "Search":"Search",
+    "Search": "Search",
     "subscriptionid": "Experience Box",
     "subscriptions": "Experience Box",
     "surname": "Surname",
@@ -93,5 +93,7 @@
     "payment_exp_invoice": "Invoice",
     "Date": "Date",
     "Close": "Close",
-    "Generate_pdf": "Generate pdf"
+    "Generate_pdf": "Generate pdf",
+    "experience_experience_box_dialog_confirmation_title": "Add experence?",
+    "experience_experience_box_dialog_confirmation_body": "Do you want to add to the box the experience: '${expName}'?"
 }

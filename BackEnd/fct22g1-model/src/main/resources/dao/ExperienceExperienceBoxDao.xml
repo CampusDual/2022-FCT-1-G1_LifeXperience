@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<JdbcEntitySetup
+    xmlns="http://www.ontimize.com/schema/jdbc"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.ontimize.com/schema/jdbc http://www.ontimize.com/schema/jdbc/ontimize-jdbc-dao.xsd"
+    catalog="" schema="${mainschema}" table="experience_experience_box"
+    datasource="mainDataSource" sqlhandler="dbSQLStatementHandler">
+    <DeleteKeys>
+        <Column>id</Column>
+    </DeleteKeys>
+    <UpdateKeys>
+        <Column>id</Column>
+    </UpdateKeys>
+    <GeneratedKey>id</GeneratedKey>
+
+    <Queries>
+        <Query id="details">
+            <AmbiguousColumns>
+                            
+                <AmbiguousColumn name="exp_id" prefix="exp" databaseName="id"/>                
+                <AmbiguousColumn name="expBox_id" prefix="expBox" databaseName="id"/>                
+                <AmbiguousColumn name="expExpBox_id" prefix="expExpBox" databaseName="id"/>
+                
+                <AmbiguousColumn name="exp_name" prefix="exp" databaseName="name"/>
+                <AmbiguousColumn name="expBox_name" prefix="expBox" databaseName="name"/>>                                        
+                                                        <AmbiguousColumn name="exp_description" prefix="exp" databaseName="description"/>
+                <AmbiguousColumn name="expBox_description" prefix="expBox" databaseName="description"/>>                
+                <AmbiguousColumn name="exp_price" prefix="exp" databaseName="description"/>                
+                <AmbiguousColumn name="expBox_price" prefix="expBox" databaseName="description"/>
+                                
+                <AmbiguousColumn name="exp_associate_image" prefix="exp" databaseName="associate_image"/>                
+                <AmbiguousColumn name="expBox_associate_image" prefix="expBox" databaseName="associate_image"/>
+                                
+            </AmbiguousColumns>
+            <Sentence>
+   <![CDATA[
+   
+    select
+    #COLUMNS#
+    from ${mainschema}.experiences exp join ${mainschema}.experience_experience_box expExpBox on exp.id = expexpbox.idexp 
+        join ${mainschema}.experience_box expBox on expexpbox.idpack  = expBox.id  
+     #WHERE#
+   ]]>
+            </Sentence>
+        </Query>
+    </Queries>
+
+</JdbcEntitySetup>

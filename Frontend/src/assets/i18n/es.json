@@ -35,7 +35,7 @@
     "USERS": "Usuarios",
     "VERSION": "Versión",
     "VIEW": "Vistas",
-    "Address":"Dirección",
+    "Address": "Dirección",
     "address": "Dirección",
     "assistance": "Asistencia",
     "associate_image": "Imagen",
@@ -46,7 +46,7 @@
     "duration": "Duración",
     "email": "Email",
     "enddate": "Fecha de fin",
-    "Enter Location":"Introduce un sitio",
+    "Enter Location": "Introduce un sitio",
     "expirationdate": "Fecha de caducidad",
     "exp_name": "Nombre experiencia",
     "experiences": "Experiencias",
@@ -93,5 +93,8 @@
     "payment_exp_invoice": "Factura",
     "Date": "Fecha",
     "Close": "Cerrar",
-    "Generate_pdf": "Generar pdf"
+    "Generate_pdf": "Generar pdf",
+    "experience_experience_box_dialog_confirmation_title": "¿Añadir experiencia?",
+    "experience_experience_box_dialog_confirmation_body": "¿Quieres añadir a la caja la experiencia seleccionada: '${expName}'?"
+
 }
