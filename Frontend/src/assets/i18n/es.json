@@ -79,6 +79,7 @@
     "PAYMENTS_EXP": "Pagos de Experiencias",
     "PAYMENTS_BOX": "Pagos de Caja de Experiencias",
     "id_client": "Cliente",
+    "idclient": "Cliente",
     "idbox": "Caja de Experiencias",
     "id_experience": "Experiencia",
     "amountpaid": "Cantidad pagada",
