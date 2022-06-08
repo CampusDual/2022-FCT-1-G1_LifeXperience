@@ -81,8 +81,6 @@ export class ClientsDetailsComponent implements OnInit {
       const conf = this.service.getDefaultServiceConfiguration(service);
       this.service.configureService(conf);
 
-
-
       this.service.insert(av,entity,sqltypes).subscribe(resp => {
         if (resp.code === 0) {
           this.closeModal("custom-modal-1");
