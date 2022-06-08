@@ -53,7 +53,12 @@ export class ExperienceBoxesDetailComponent implements OnInit {
     this.alertDialogFailed = this.translator.get("Failed_operation");
 
   }
+  //Metodos para el context menu
+  getVisible(data: any): boolean {
+    return true;
+  }
 
+  //Metodos del modal
   openModal(id: string) {
     this.modalService.open(id);
   }
@@ -62,7 +67,8 @@ export class ExperienceBoxesDetailComponent implements OnInit {
     this.modalService.close(id);
   }
 
-  showConfirm(experienceData) {
+  //Metodos para añadir la experiencia a la caja
+  showAddExperienceToBoxConfirmDialog(experienceData) {
     if (this.dialogService) {
       //Mensaje de confirmacion del añadido del paquete
       this.dialogService.confirm(
@@ -88,8 +94,6 @@ export class ExperienceBoxesDetailComponent implements OnInit {
           };
 
           this.insert(service, entity, av, sqltypes);
-        } else {
-          // TODO:Comprobar si ontimize ya muestra error al salir mal la query
         }
       });
     }
@@ -113,4 +117,55 @@ export class ExperienceBoxesDetailComponent implements OnInit {
       }
     });
   }
+
+  //Metodos para borrar la experiencia a la caja
+  showDeleteExperienceToBoxConfirmDialog() {
+    if (this.dialogService) {
+      var experienceData = this.expOfexpBoxTable.getSelectedItems()[0]
+
+      //Mensaje de confirmacion del añadido del paquete
+      this.dialogService.confirm(
+        "Borrar experiencia?",
+        "Quieres borrar la experiencia '${expName}' de la caja?".replace(
+          "${expName}",
+          experienceData.name
+        )
+      );
+      this.dialogService.dialogRef.afterClosed().subscribe((result) => {
+        if (result) {
+          //Preparacion de la query
+          var service = "experiences";
+          var entity = "experienceBoxExperience";
+         
+          var kv = {
+            idpack: this.expBoxDetailForm.getDataValue("id").value,
+            idexp: experienceData.exp_id,
+          };
+
+          var sqltypes = {
+            idclient: SQLTypes.INTEGER,
+            idbox: SQLTypes.INTEGER,
+          };
+          this.delete(service,entity,kv,sqltypes);
+        } 
+      });
+    }
+  }
+
+  delete(service: string, entity: string,kv: Object = {}, sqltypes?: Object) {
+    this.service = this.injector.get(OntimizeService);
+    const conf = this.service.getDefaultServiceConfiguration(service);
+    this.service.configureService(conf);
+
+    this.service.delete(kv, entity, sqltypes).subscribe((resp) => {
+      if (resp.code === 0) {
+        this.expOfexpBoxTable.reloadData();
+        alert(this.alertDialogSuccessful);
+      } else {
+        alert(this.alertDialogFailed);
+      }
+    });
+  }
+
+  
 }
