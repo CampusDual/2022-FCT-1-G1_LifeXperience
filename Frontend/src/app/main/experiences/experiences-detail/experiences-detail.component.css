@@ -1,1 +1,13 @@
-
+agm-map {
+  height: 600px;
+}
+.search{
+  margin-bottom: 10px;
+  margin-top: 5px;
+}
+.map {
+  box-shadow: 2px 2px 20px;
+}
+#address{
+  margin-left: 20px;
+}

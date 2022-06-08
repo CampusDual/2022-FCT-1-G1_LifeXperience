@@ -43,7 +43,7 @@ export class PaymentsBoxDetailsComponent implements OnInit {
           //Hay que parsear las fechas al formato que nos interesa o aparecen en el formato de milisengundos de UNIX, un nuemro de 13 digitos
           resp.data[0]["paymentdate"] = formatDate(new Date(parseInt(resp.data[0]["paymentdate"])),'yyyy-MM-dd',this.locale)
         this.createPdf(resp.data[0]);
-        
+
 
       } else {
         alert('Impossible to query data!');
@@ -118,10 +118,10 @@ export class PaymentsBoxDetailsComponent implements OnInit {
                                                 }
                                             ]
                                         ]
-                                    } 
+                                    }
                               ]
                           ]
-                          
+
                      ],
               },
               layout: 'noBorders',
@@ -139,7 +139,7 @@ export class PaymentsBoxDetailsComponent implements OnInit {
                 fontSize: 18,
                 margin: [0, 40, 0, 0]
             },
-          
+
           {
               //Datos de la experiencia
               table:{
@@ -149,7 +149,7 @@ export class PaymentsBoxDetailsComponent implements OnInit {
                           [
                               //Columna
                               [
-                                   
+
                                     {
                                         text:pdfData['description'],
                                         margin: [0,0,5,0]
@@ -174,23 +174,23 @@ export class PaymentsBoxDetailsComponent implements OnInit {
                                                 }
                                             ]
                                         ]
-                                    } 
+                                    }
                               ]
                           ]
-                          
+
                      ],
               },
               layout: 'noBorders',
               margin:[0,30,0,0]
            },
-    
+
       ],styles:{
           header: {
         fontSize: 20,
         bold: true
       },
       }
-      
+
     }
 
     const pdf = pdfMake.createPdf(pdfDefinition);

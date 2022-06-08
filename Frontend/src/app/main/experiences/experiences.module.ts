@@ -6,6 +6,7 @@ import { ExperiencesHomeComponent } from './experiences-home/experiences-home.co
 import { ExperiencesNewComponent } from './experiences-new/experiences-new.component';
 import { ExperiencesDetailComponent } from './experiences-detail/experiences-detail.component';
 import { OMapModule } from "ontimize-web-ngx-map";
+import { AgmCoreModule } from '@agm/core';
 
 
 @NgModule({
@@ -15,6 +16,10 @@ import { OMapModule } from "ontimize-web-ngx-map";
     OntimizeWebModule,
     ExperiencesRoutingModule,
     OMapModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'INSERTAR API KEY',
+      libraries: ['places']
+    })
   ]
 })
 export class ExperiencesModule { }
