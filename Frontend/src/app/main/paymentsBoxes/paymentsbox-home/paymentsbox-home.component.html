@@ -1,43 +1,11 @@
-
-<o-form-layout-manager
-  title="{{'Pagos' | oTranslate }}"
-  separator=" "
-  mode="tab"
-  label-columns="name"
->
-  <div fxFill fxLayout="column" fxLayoutAlign="start">
-    <o-table
-      attr="clientsTable"
-      service="experienceboxes"
-      entity="clientExperienceBoxDefault"
-      keys="boxclient_id"
-      columns="boxclient_id;client_name;client_id;boxexp_id;boxexp_name;amountpaid;paymentdate"
-      visible-columns="client_name;boxexp_name;amountpaid;paymentdate"
-      query-rows="20"
-      auto-adjust="yes"
-    >
-      <o-table-column
-        attr="client_name"
-        title="client_name"
-        content-align="center"
-      ></o-table-column>
-      <o-table-column
-        attr="boxexp_name"
-        title="boxexp_name"
-        content-align="center"
-      ></o-table-column>
-      <o-table-column
-        attr="amountpaid"
-        title="amountpaid"
-        type="currency"
-        content-align="center"
-      ></o-table-column>
-      <o-table-column
-        attr="paymentdate"
-        title="paymentdate"
-        type="date"
-        content-align="center"
-      ></o-table-column>
-    </o-table>
-  </div>
+<o-form-layout-manager title="{{'Pagos' | oTranslate }}" separator=" " mode="tab" label-columns="name">
+    <div fxFill fxLayout="column" fxLayoutAlign="start">
+        <o-table attr="clientsTable" service="experienceboxes" entity="clientExperienceBoxDefault" keys="boxclient_id" columns="boxclient_id;client_name;client_id;boxexp_id;boxexp_name;amountpaid;paymentdate" visible-columns="client_name;boxexp_name;amountpaid;paymentdate"
+            query-rows="20" auto-adjust="yes">
+            <o-table-column attr="client_name" title="client_name" content-align="center"></o-table-column>
+            <o-table-column attr="boxexp_name" title="boxexp_name" content-align="center"></o-table-column>
+            <o-table-column attr="amountpaid" title="amountpaid" type="currency" content-align="center"></o-table-column>
+            <o-table-column attr="paymentdate" title="paymentdate" type="date" content-align="center"></o-table-column>
+        </o-table>
+    </div>
 </o-form-layout-manager>

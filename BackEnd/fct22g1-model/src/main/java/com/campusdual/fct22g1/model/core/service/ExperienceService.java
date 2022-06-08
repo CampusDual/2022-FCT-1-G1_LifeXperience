@@ -74,7 +74,6 @@ public class ExperienceService implements IExperienceService {
 	@Override
 	public EntityResult clientExperienceDetailsQuery(Map<String, Object> keyMap, List<String> attrList)
 			throws OntimizeJEERuntimeException {
-		
 		return this.daoHelper.query(this.clientExperienceDao, keyMap, attrList,ClientExperienceDao.QUERY_CLIENT_EXPERIENCE);
 	}
     	

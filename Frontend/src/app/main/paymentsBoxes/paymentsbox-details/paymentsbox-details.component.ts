@@ -31,7 +31,7 @@ export class PaymentsBoxDetailsComponent implements OnInit {
     const conf = this.service.getDefaultServiceConfiguration('experienceboxes');
     this.service.configureService(conf);
 
-    const columns = ['client_name','address','phonenumber','boxclient_id','paymentdate','amountpaid','exp_name','description','enddate','price','associate_image'];
+    const columns = ['client_name','address','phonenumber','boxclient_id','paymentdate','amountpaid','boxexp_name','description','price','associate_image'];
     const filter = {
         "boxclient_id": this.dataForm.getDataValue('boxclient_id').value
     };
@@ -42,7 +42,6 @@ export class PaymentsBoxDetailsComponent implements OnInit {
 
           //Hay que parsear las fechas al formato que nos interesa o aparecen en el formato de milisengundos de UNIX, un nuemro de 13 digitos
           resp.data[0]["paymentdate"] = formatDate(new Date(parseInt(resp.data[0]["paymentdate"])),'yyyy-MM-dd',this.locale)
-          resp.data[0]["enddate"] = formatDate(new Date(parseInt(resp.data[0]["enddate"])),'yyyy-MM-dd',this.locale)
         this.createPdf(resp.data[0]);
 
 
@@ -59,7 +58,7 @@ export class PaymentsBoxDetailsComponent implements OnInit {
     const pdfDefinition: any ={
       content: [
           {
-                text:"Nombre de la empresa" ,
+                text:"Life experience" ,
                 style:"header",
                 margin: [0, 0, 0, 30]
           },{
@@ -135,7 +134,7 @@ export class PaymentsBoxDetailsComponent implements OnInit {
           },
             {
                 //Nombre descripcion
-                text:pdfData['exp_name'],
+                text:pdfData['boxexp_name'],
                 bold:"true",
                 fontSize: 18,
                 margin: [0, 40, 0, 0]
@@ -163,23 +162,14 @@ export class PaymentsBoxDetailsComponent implements OnInit {
                                             //Columna 1
                                             [
                                                 {
-                                                    text:this.translator.get("enddate"),
-                                                    margin: [0, 0, 0, 0]
-
-                                                },{
                                                     text:this.translator.get("price"),
-                                                    margin: [0, 10, 0, 0]
+                                                    margin: [0, 0, 0, 0]
                                                 }
                                             ],//Columna 2
                                             [
-                                                {
-                                                    text:pdfData['enddate'],
-                                                    margin: [0, 0, 40, 0],
-                                                    alignment:"right",
-
-                                                },{
+                                               {
                                                     text:pdfData['price'] + " €",
-                                                    margin: [0, 10, 40, 0],
+                                                    margin: [0, 0, 40, 0],
                                                     alignment:"right"
                                                 }
                                             ]
@@ -196,7 +186,7 @@ export class PaymentsBoxDetailsComponent implements OnInit {
 
       ],styles:{
           header: {
-        fontSize: 18,
+        fontSize: 20,
         bold: true
       },
       }
