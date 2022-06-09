@@ -35,8 +35,9 @@
                         {{'My_experiences' | oTranslate }}
                     </mat-panel-title>
                 </mat-expansion-panel-header>
-                <o-table expand-groups-same-level="false" query-on-init="no" show-title="false" title="Experiences" attr="ClientExperiencesTable" auto-adjust="false" service="experiences" entity="clientExperienceDetails" insert-button="false" delete-button="false" refresh-button="false"
-                    keys="client_id" parent-keys="client_id:id" columns="experience_id;exp_name;description;price;enddate;associate_image;assistance" visible-columns="exp_name;enddate;associate_image" grouped-columns="assistance" query-rows="10" auto-adjust=yes>
+                <o-table #experiencesTable expand-groups-same-level="false" query-on-init="no" show-title="false" title="Experiences" attr="ClientExperiencesTable" auto-adjust="false" service="experiences" entity="clientExperienceDetails" insert-button="false" delete-button="false"
+                    refresh-button="false" keys="client_id" parent-keys="client_id:id" columns="experience_id;exp_name;description;price;enddate;associate_image;assistance" visible-columns="exp_name;enddate;associate_image" grouped-columns="assistance" query-rows="10"
+                    auto-adjust=yes>
 
                     <o-table-columns-grouping columns="assistance"></o-table-columns-grouping>
                     <o-table-column id="img" title="Avatar" attr="associate_image" empty-image="assets/images/no-image.png" image-type="base64" searchable="no" type="image" avatar="yes" full-screen-button="true" auto-fit="true" fxFlex="40">
