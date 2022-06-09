@@ -79,6 +79,7 @@
     "client_experience_dialog_confirmation_body_text": "¿Quieres añadir al cliente la experiencia seleccionada: '${expName}'?",
     "Add": "Añadir",
     "Successful_operation": "Operación completada",
+    "Experiences history": "Historial de experiencias",
     "Failed_operation": "Operación fallida",
     "My_experiences": "Mis experiencias",
     "My_experiences_boxes": "Mis cajas de experiencias",
