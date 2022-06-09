@@ -32,8 +32,8 @@ export class ExperienceBoxesDetailComponent implements OnInit {
   @ViewChild("experienceBoxGrid", { static: false })
   expThatTheyAreNotInTheBoxGrid: OGridComponent;
 
-  private experienceExperienceBoxConfirmDialogTitle:string;
-  private experienceExperienceBoxConfirmDialogBody:string;
+  private experienceExperienceBoxConfirmDialogTitle: string;
+  private experienceExperienceBoxConfirmDialogBody: string;
   private alertDialogSuccessful: string;
   private alertDialogFailed: string;
   protected service: OntimizeService;
@@ -44,7 +44,7 @@ export class ExperienceBoxesDetailComponent implements OnInit {
     private dialogService: DialogService,
     @Inject(LOCALE_ID) private locale: string,
     private translator: OTranslateService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.experienceExperienceBoxConfirmDialogTitle = this.translator.get("experience_experience_box_dialog_confirmation_title");
@@ -109,8 +109,7 @@ export class ExperienceBoxesDetailComponent implements OnInit {
         this.expOfexpBoxTable.reloadData();
         this.closeModal("custom-modal-0");
         this.expThatTheyAreNotInTheBoxGrid.reloadData()
-        
-        
+
         alert(this.alertDialogSuccessful);
       } else {
         alert(this.alertDialogFailed);
@@ -125,8 +124,8 @@ export class ExperienceBoxesDetailComponent implements OnInit {
 
       //Mensaje de confirmacion del añadido del paquete
       this.dialogService.confirm(
-        "Borrar experiencia?",
-        "Quieres borrar la experiencia '${expName}' de la caja?".replace(
+        this.experienceExperienceBoxConfirmDialogTitle,
+        this.experienceExperienceBoxConfirmDialogBody.replace(
           "${expName}",
           experienceData.name
         )
@@ -136,23 +135,21 @@ export class ExperienceBoxesDetailComponent implements OnInit {
           //Preparacion de la query
           var service = "experiences";
           var entity = "experienceBoxExperience";
-         
+
           var kv = {
-            idpack: this.expBoxDetailForm.getDataValue("id").value,
-            idexp: experienceData.exp_id,
+            id: experienceData.exp_expBox_id,
           };
 
           var sqltypes = {
-            idclient: SQLTypes.INTEGER,
-            idbox: SQLTypes.INTEGER,
+            exp_expBox_id: SQLTypes.INTEGER,
           };
-          this.delete(service,entity,kv,sqltypes);
-        } 
+          this.delete(service, entity, kv, sqltypes);
+        }
       });
     }
   }
 
-  delete(service: string, entity: string,kv: Object = {}, sqltypes?: Object) {
+  delete(service: string, entity: string, kv: Object = {}, sqltypes?: Object) {
     this.service = this.injector.get(OntimizeService);
     const conf = this.service.getDefaultServiceConfiguration(service);
     this.service.configureService(conf);
@@ -160,6 +157,7 @@ export class ExperienceBoxesDetailComponent implements OnInit {
     this.service.delete(kv, entity, sqltypes).subscribe((resp) => {
       if (resp.code === 0) {
         this.expOfexpBoxTable.reloadData();
+        this.expThatTheyAreNotInTheBoxGrid.reloadData();
         alert(this.alertDialogSuccessful);
       } else {
         alert(this.alertDialogFailed);
@@ -167,5 +165,5 @@ export class ExperienceBoxesDetailComponent implements OnInit {
     });
   }
 
-  
+
 }

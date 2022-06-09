@@ -25,7 +25,7 @@
     "MODULES": "Modules",
     "NAME": "Name",
     "PASSWORD": "Password",
-    "PAYMENTS":"Payments",
+    "PAYMENTS": "Payments",
     "PRICE": "Price",
     "REMEMBER_ME": "Remember me",
     "PACKAGES": "Packages",
@@ -96,5 +96,6 @@
     "Close": "Close",
     "Generate_pdf": "Generate pdf",
     "experience_experience_box_dialog_confirmation_title": "Add experence?",
-    "experience_experience_box_dialog_confirmation_body": "Do you want to add to the box the experience: '${expName}'?"
+    "experience_experience_box_dialog_confirmation_body": "Do you want to add to the box the experience: '${expName}'?",
+    "Delete": "Delete"
 }
