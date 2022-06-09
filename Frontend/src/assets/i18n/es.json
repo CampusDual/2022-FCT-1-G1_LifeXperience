@@ -58,6 +58,8 @@
     "List": "Lista",
     "longitude": "Longitud",
     "name": "Nombre",
+    "minage":"Edad mínima",
+    "maxage":"Edad máxima",
     "nif": "NIF",
     "password": "Contraseña",
     "phonenumber": "Teléfono",
