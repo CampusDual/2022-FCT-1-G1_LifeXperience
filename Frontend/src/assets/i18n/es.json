@@ -25,7 +25,7 @@
     "MODULES": "Módulos",
     "NAME": "Nombre",
     "PASSWORD": "Contraseña",
-    "PAYMENTS":"Pagos",
+    "PAYMENTS": "Pagos",
     "PRICE": "Precio",
     "REMEMBER_ME": "Recuérdame",
     "PACKAGES": "Paquetes",
@@ -99,6 +99,7 @@
     "Close": "Cerrar",
     "Generate_pdf": "Generar pdf",
     "experience_experience_box_dialog_confirmation_title": "¿Añadir experiencia?",
-    "experience_experience_box_dialog_confirmation_body": "¿Quieres añadir a la caja la experiencia seleccionada: '${expName}'?"
+    "experience_experience_box_dialog_confirmation_body": "¿Quieres añadir a la caja la experiencia seleccionada: '${expName}'?",
+    "Delete": "Borrar"
 
 }
