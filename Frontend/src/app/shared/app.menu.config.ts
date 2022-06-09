@@ -11,10 +11,12 @@ export const MENU_CONFIG: MenuRootItem[] = [
     items: [
             { id: 'experience_box', name: 'EXPERIENCE_BOX', icon: 'rocket_launch', route:'/main/experience-boxes',component: ExperienceBoxCardComponent},
             { id: 'clients', name: 'CLIENTS', icon: 'people', route: '/main/clients',component: ClientsCardComponent},
-            { id: 'experiences', name: 'EXPERIENCES', icon: 'travel_explore', route: '/main/experiences',component: ExperienceCardComponent},
+            { id: 'experiences', name: 'EXPERIENCES', icon: 'travel_explore', route: '/main/experiences',component: ExperienceCardComponent}]
+
+  }, {id:'Payments', name: 'PAYMENTS', icon: 'attach_money', opened:false,
+      items:[
             { id: 'paymentsexp', name: 'PAYMENTS_EXP', icon: 'attach_money', route: '/main/paymentsexp' },
-            { id: 'paymentsbox', name: 'PAYMENTS_BOX', icon: 'attach_money', route: '/main/paymentsbox' },]
-  },
+            { id: 'paymentsbox', name: 'PAYMENTS_BOX', icon: 'attach_money', route: '/main/paymentsbox' }]},
   { id: 'logout', name: 'LOGOUT', route: '/login', icon: 'power_settings_new', confirm: 'yes' }
 ];
 
