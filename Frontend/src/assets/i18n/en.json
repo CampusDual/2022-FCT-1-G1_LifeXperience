@@ -25,6 +25,7 @@
     "MODULES": "Modules",
     "NAME": "Name",
     "PASSWORD": "Password",
+    "PAYMENTS":"Payments",
     "PRICE": "Price",
     "REMEMBER_ME": "Remember me",
     "PACKAGES": "Packages",
