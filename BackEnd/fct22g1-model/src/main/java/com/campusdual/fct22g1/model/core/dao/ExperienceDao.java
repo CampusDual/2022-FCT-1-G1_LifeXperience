@@ -19,6 +19,8 @@ public class ExperienceDao extends OntimizeJdbcDaoSupport {
     public static final String ATTR_LATITUDE="latitude";
     public static final String ATTR_LONGITUDE="longitude";
     public static final String ATTR_ADDRESS="address";
+    public static final String ATTR_MINAGE="minage";
+    public static final String ATTR_MAXAGE="maxage";
 
     public static final String QUERY_EXPERIENCES_OF_A_BOX = "experiences_of_a_box";
     public static final String QUERY_EXPERIENCES_THAT_THEY_ARE_NOT_IN_A_BOX = "experiences_that_they_are_not_in_a_box";

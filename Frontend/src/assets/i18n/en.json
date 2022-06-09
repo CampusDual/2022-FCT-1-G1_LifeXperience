@@ -59,6 +59,8 @@
     "List": "List",
     "longitude": "Longitude",
     "name": "Name",
+    "minage": "Minimum Age",
+    "maxage": "Maximum Age",
     "nif": "NIF",
     "password": "Password",
     "phonenumber": "Phone Number",

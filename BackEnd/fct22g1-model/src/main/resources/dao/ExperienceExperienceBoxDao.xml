@@ -22,9 +22,9 @@
                 <AmbiguousColumn name="expExpBox_id" prefix="expExpBox" databaseName="id"/>
                 
                 <AmbiguousColumn name="exp_name" prefix="exp" databaseName="name"/>
-                <AmbiguousColumn name="expBox_name" prefix="expBox" databaseName="name"/>>                                        
+                <AmbiguousColumn name="expBox_name" prefix="expBox" databaseName="name"/>                                       
                                                         <AmbiguousColumn name="exp_description" prefix="exp" databaseName="description"/>
-                <AmbiguousColumn name="expBox_description" prefix="expBox" databaseName="description"/>>                
+                <AmbiguousColumn name="expBox_description" prefix="expBox" databaseName="description"/>         
                 <AmbiguousColumn name="exp_price" prefix="exp" databaseName="description"/>                
                 <AmbiguousColumn name="expBox_price" prefix="expBox" databaseName="description"/>
                                 

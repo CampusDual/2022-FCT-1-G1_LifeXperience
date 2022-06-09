@@ -40,6 +40,22 @@
           ></o-textarea-input>
         </o-row>
         <o-row>
+          <o-integer-input
+          attr="minage"
+          fxFlex="70"
+          required="yes"
+          min="1">
+          </o-integer-input>
+        </o-row>
+        <o-row>
+          <o-integer-input
+          attr="maxage"
+          fxFlex="70"
+          required="yes"
+          max="99">
+          </o-integer-input>
+        </o-row>
+        <o-row>
           <o-real-input
             data="{{ latitude }}"
             attr="latitude"
