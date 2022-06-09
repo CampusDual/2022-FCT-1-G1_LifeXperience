@@ -4,8 +4,11 @@
             query-rows="20" auto-adjust="yes">
             <o-table-column attr="client_name" title="client_name" content-align="center"></o-table-column>
             <o-table-column attr="boxexp_name" title="boxexp_name" content-align="center"></o-table-column>
-            <o-table-column attr="amountpaid" title="amountpaid" type="currency" content-align="center"></o-table-column>
+            <o-table-column attr="amountpaid" title="amountpaid" type="currency"currency-symbol="€"
+            currency-symbol-position="right" ></o-table-column>
             <o-table-column attr="paymentdate" title="paymentdate" type="date" content-align="center"></o-table-column>
+            <o-table-column-aggregate attr="amountpaid" title="(Total)" content-align="center"></o-table-column-aggregate>
+
         </o-table>
     </div>
 </o-form-layout-manager>
