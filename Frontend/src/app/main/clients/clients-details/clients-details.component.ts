@@ -15,9 +15,11 @@ import {
   ODateInputComponent,
   OFormComponent,
   OntimizeService,
+  OSnackBarConfig,
   OTableComponent,
   OTextInputComponent,
   OTranslateService,
+  SnackBarService,
   SQLTypes,
 } from "ontimize-web-ngx";
 import { ModalService } from "../../ui-elements/ui-modal-window";
@@ -55,6 +57,7 @@ export class ClientsDetailsComponent implements OnInit {
     private modalService: ModalService,
     private injector: Injector,
     private dialogService: DialogService,
+    private snackBarService: SnackBarService,
     @Inject(LOCALE_ID) private locale: string,
     private translator: OTranslateService
   ) {}
@@ -193,10 +196,20 @@ export class ClientsDetailsComponent implements OnInit {
       }
     }
   }
+
   insert(service: string, entity: string, av: Object = {}, sqltypes?: object) {
     this.service = this.injector.get(OntimizeService);
     const conf = this.service.getDefaultServiceConfiguration(service);
     this.service.configureService(conf);
+
+    const config: OSnackBarConfig = {
+      action: this.translator.get(
+        "Done"
+      ),
+      milliseconds: 5000,
+      icon: 'done',
+      iconPosition: 'left'
+    };
 
     this.service.insert(av, entity, sqltypes).subscribe((resp) => {
       if (resp.code === 0) {
@@ -204,12 +217,12 @@ export class ClientsDetailsComponent implements OnInit {
           this.closeModal("custom-modal-0");
           this.expTable.reloadData();
           this.expHistorialTable.reloadData();
+          this.snackBarService.open(this.translator.get("Added_experience"), config);
         } else if (service == "experienceboxes") {
           this.closeModal("custom-modal-1");
           this.expBoxTable.reloadData();
-
+          this.snackBarService.open(this.translator.get("Added_box"), config);
         }
-        alert(this.alertDialogSuccessful);
       } else {
         alert(this.alertDialogFailed);
       }

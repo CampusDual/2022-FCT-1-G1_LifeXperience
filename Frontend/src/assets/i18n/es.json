@@ -102,6 +102,10 @@
     "Generate_pdf": "Generar pdf",
     "experience_experience_box_dialog_confirmation_title": "¿Añadir experiencia?",
     "experience_experience_box_dialog_confirmation_body": "¿Quieres añadir a la caja la experiencia seleccionada: '${expName}'?",
-    "Delete": "Borrar"
+    "Delete": "Borrar",
+    "Successful_add_operation": "Operación exitosa",
+    "Added_experience": "Experiencia añadida",
+    "Added_box": "Caja añadida",
+    "Done": "Hecho"
 
 }
