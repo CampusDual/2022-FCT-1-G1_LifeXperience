@@ -1,5 +1,6 @@
 {
     "APP_TITLE": "Experiences Subscriptions Manager",
+    "Assistance_date": "Assistance date",
     "CLIENTS": "Clients",
     "DESCRIPTION": "Surname",
     "EMAIL": "Email",
@@ -82,7 +83,7 @@
     "Experiences history": "Experiences history",
     "Failed_operation": "Failed operation",
     "My_experiences": "My experiencies",
-    "My_experiences_Assistance_False": "Experiences pending to enjoy",
+    "My_experiences_Assistance_False": "Experiences pending to exchange",
     "My_experiences_boxes": "My experiencies boxes",
     "PAYMENTS_EXP": "Experience Payments",
     "PAYMENTS_BOX": "Experience Box Payments",
@@ -103,5 +104,10 @@
     "experience_experience_box_dialog_confirmation_body": "Do you want to add to the box the experience: '${expName}'?",
     "Delete": "Delete",
     "Warning!":"Warning!",
-    "The_date_is_wrong":"The date is wrong, so intruduce a date between the actual date and date of expiration"
+    "The_date_is_wrong":"The date is wrong, so intruduce a date between the actual date and date of expiration",
+    "Successful_add_operation": "Successful operation",
+    "Added_experience": "Added experience",
+    "Added_box": "Added box",
+    "Done": "Done"
+
 }
