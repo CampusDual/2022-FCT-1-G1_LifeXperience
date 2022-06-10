@@ -1,6 +1,7 @@
 <o-form #clientDetails service="clients" entity="client" keys="id" header-actions="R;I;U;D" show-header-navigation="no">
     <div>
         <o-text-input attr="id" sql-type="integer" enabled="no" hidden fxFlex="10"></o-text-input>
+
     </div>
     <o-row>
         <o-column title-label="clients_information" fxFlex>
@@ -33,10 +34,11 @@
             <mat-expansion-panel>
                 <mat-expansion-panel-header>
                     <mat-panel-title>
-                        {{'My_experiences' | oTranslate }}
+                        {{'My_experiences_Assistance_False' | oTranslate }}
                     </mat-panel-title>
                 </mat-expansion-panel-header>
-                <o-table #experiencesTable expand-groups-same-level="false" query-on-init="no" show-title="false" title="Experiences" attr="ClientExperiencesTable" auto-adjust="false" service="experiences" entity="clientExperienceDetails" insert-button="false" delete-button="false"
+                <o-table #experiencesTable expand-groups-same-level="false" query-on-init="no" show-title="false" title="Experiences" attr="ClientExperiencesTable"
+                auto-adjust="false" service="experiences" entity="clientExperienceAssistanceFalse" insert-button="false" delete-button="false"
                     refresh-button="false" keys="client_id" parent-keys="client_id:id" columns="experience_id;exp_name;description;price;enddate;associate_image;assistance" visible-columns="exp_name;enddate;associate_image" query-rows="10"
                     auto-adjust=yes>
 
@@ -76,7 +78,7 @@
         <!-- Historial Experiences Modal -->
         <jw-modal id="custom-modal-2">
           <div class="modal-size-grid">
-            <o-table #experiencesTable expand-groups-same-level="false" query-on-init="no" show-title="true" title="{{'Experiences history' | oTranslate }}" attr="ClientExperiencesTable" auto-adjust="false" service="experiences" entity="clientExperienceDetails" insert-button="false" delete-button="false"
+            <o-table #experiencesHistorialTable expand-groups-same-level="false" query-on-init="no" show-title="true" title="{{'Experiences history' | oTranslate }}" attr="ClientExperiencesTable" auto-adjust="false" service="experiences" entity="clientExperienceDetails" insert-button="false" delete-button="false"
             refresh-button="false" keys="client_id" parent-keys="client_id:id" columns="experience_id;exp_name;description;price;enddate;associate_image;assistance" visible-columns="exp_name;enddate;associate_image" query-rows="10"
             auto-adjust=yes>
 
@@ -91,7 +93,6 @@
             </o-button>
 
           </div>
-
       </jw-modal>
 
         <!-- Experience Modal -->

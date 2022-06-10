@@ -12,6 +12,7 @@ export class ClientsDetailsComponent implements OnInit {
   @ViewChild('clientDetails', { static: false }) clientDetails: OFormComponent;
   @ViewChild('experienceBoxTable', { static: false }) expBoxTable: OTableComponent;
   @ViewChild('experiencesTable', { static: false }) expTable: OTableComponent;
+  @ViewChild('experiencesHistorialTable', { static: false }) expHistorialTable: OTableComponent;
 
   private clientBoxConfirmDialogTitle:string;
   private clientBoxConfirmDialogTextBody:string;
@@ -21,7 +22,7 @@ export class ClientsDetailsComponent implements OnInit {
   private alertDialogFailed:string
 
   protected service: OntimizeService;
-  
+
     constructor(
         private modalService: ModalService,
         private injector: Injector,
@@ -41,7 +42,7 @@ export class ClientsDetailsComponent implements OnInit {
 
 
     openModal(id: string) {
-        this.modalService.open(id);
+      this.modalService.open(id);
     }
 
     closeModal(id: string) {
@@ -115,7 +116,7 @@ export class ClientsDetailsComponent implements OnInit {
       }
     }
 
-    
+
 
 
     insert(service:string,entity: string, av: Object = {}, sqltypes?: object){
@@ -129,6 +130,7 @@ export class ClientsDetailsComponent implements OnInit {
           if(service=='experiences'){
             this.closeModal("custom-modal-0");
             this.expTable.reloadData();
+            this.expHistorialTable.reloadData();
           }else if(service=='experienceboxes'){
             this.closeModal("custom-modal-1");
             this.expBoxTable.reloadData();
