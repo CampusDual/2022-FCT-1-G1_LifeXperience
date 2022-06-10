@@ -3,8 +3,8 @@
     margin-right: 1%;
 }
 
-#modal-size-grid {
-    height: 780px;
+.modal-size-grid {
+    height: 700px;
 }
 #custom-modal-calendar {
   height:200;

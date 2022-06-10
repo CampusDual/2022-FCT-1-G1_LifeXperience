@@ -35,6 +35,7 @@ export class ClientsDetailsComponent implements OnInit {
   @ViewChild("calendarAssistanceInput", { static: false })
   calAssistance: OFormComponent;
   @ViewChild("#experienceNameModalTxtInput", { static: false }) expNameModalTxtInput:OTextInputComponent;
+  @ViewChild('experiencesHistorialTable', { static: false }) expHistorialTable: OTableComponent;
 
   private clientBoxConfirmDialogTitle: string;
   private clientBoxConfirmDialogTextBody: string;
@@ -202,9 +203,11 @@ export class ClientsDetailsComponent implements OnInit {
         if (service == "experiences") {
           this.closeModal("custom-modal-0");
           this.expTable.reloadData();
+          this.expHistorialTable.reloadData();
         } else if (service == "experienceboxes") {
           this.closeModal("custom-modal-1");
           this.expBoxTable.reloadData();
+
         }
         alert(this.alertDialogSuccessful);
       } else {
