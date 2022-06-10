@@ -101,6 +101,7 @@
     "Generate_pdf": "Generar pdf",
     "experience_experience_box_dialog_confirmation_title": "¿Añadir experiencia?",
     "experience_experience_box_dialog_confirmation_body": "¿Quieres añadir a la caja la experiencia seleccionada: '${expName}'?",
-    "Delete": "Borrar"
-
+    "Delete": "Borrar",
+    "Warning!":"Alerta!",
+    "The_date_is_wrong":"Fecha errónea, introduzca una fecha que esté entre la fecha actual y la fecha de vencimiento"
 }

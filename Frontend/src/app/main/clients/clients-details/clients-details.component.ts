@@ -48,6 +48,7 @@ export class ClientsDetailsComponent implements OnInit {
   public experienceRowData;
   public experienceName="experienceDummy";
   public clientExp="clientDummy";
+  private currentDate:Date=new Date();
 
   protected service: OntimizeService;
 
@@ -74,6 +75,7 @@ export class ClientsDetailsComponent implements OnInit {
     );
     this.alertDialogSuccessful = this.translator.get("Successful_operation");
     this.alertDialogFailed = this.translator.get("Failed_operation");
+
   }
 
   openModal(id: string) {
@@ -159,11 +161,12 @@ export class ClientsDetailsComponent implements OnInit {
           break;
 
         case "updateAssistanceDate":
-          //Mensaje de confirmacion del añadido de experiencia
+          if(this.checkDate())  {
           this.dialogService.confirm(
             "¿Asignar Fecha de Experiencia?",
             "Asignar fecha de disfrute de la experiencia"
           );
+
           this.dialogService.dialogRef.afterClosed().subscribe((result) => {
             if (result) {
               //Preparacion de la query
@@ -187,12 +190,12 @@ export class ClientsDetailsComponent implements OnInit {
               // TODO:Comprobar si ontimize ya muestra error al salir mal la query
             }
           });
-          break;
-        default:
+
+
           break;
       }
     }
-  }
+  }}
   insert(service: string, entity: string, av: Object = {}, sqltypes?: object) {
     this.service = this.injector.get(OntimizeService);
     const conf = this.service.getDefaultServiceConfiguration(service);
@@ -245,5 +248,17 @@ export class ClientsDetailsComponent implements OnInit {
     this.experienceName=this.experienceRowData.exp_name;
     this.openModal("custom-modal-calendar");
   }
-
+ checkDate():boolean{
+   if(this.currentDate>this.calAssistance.getFieldValue("calendarAssistance")||this.calAssistance.getFieldValue("calendarAssistance")>this.calAssistance.getFieldValue("enddate")){
+    this.dialogService.error(
+    this.translator.get(
+      "Warning!"
+    ), this.translator.get(
+      "The_date_is_wrong"
+    ));
+      return false;
+   }else{
+     return true;
+   }
+ }
 }
