@@ -36,8 +36,8 @@
                     </mat-panel-title>
                 </mat-expansion-panel-header>
                 <o-table #experiencesTable expand-groups-same-level="false" query-on-init="no" show-title="false" title="Experiences" attr="ClientExperiencesTable" auto-adjust="false" service="experiences" entity="clientExperienceDetails" insert-button="false" delete-button="false"
-                    refresh-button="false" keys="client_id" parent-keys="client_id:id" columns="experience_id;exp_name;description;price;enddate;associate_image;assistance" visible-columns="exp_name;enddate;associate_image" grouped-columns="assistance" query-rows="10"
-                    auto-adjust=yes>
+                    refresh-button="false" keys="client_id" parent-keys="client_id:id" columns="experience_id;exp_name;description;price;enddate;associate_image;assistance;relation_id" visible-columns="exp_name;enddate;associate_image" grouped-columns="assistance" query-rows="10"
+                    auto-adjust=yes selection-mode="simple">
 
                     <o-table-columns-grouping columns="assistance"></o-table-columns-grouping>
                     <o-table-column id="img" title="Avatar" attr="associate_image" empty-image="assets/images/no-image.png" image-type="base64" searchable="no" type="image" avatar="yes" full-screen-button="true" auto-fit="true" fxFlex="40">
@@ -45,7 +45,12 @@
                     <o-table-column attr="name" title="name" content-align="center" width="100px"></o-table-column>
                     <o-table-column attr="enddate" title="enddate" content-align="center" type="date" format="LL" width="60px">
                     </o-table-column>
+                    <o-table-context-menu [context-menu]="myContextMenu" data="id" insert="no" edit="no" delete="no" view-detail="no" select-all="no" filter="no"></o-table-context-menu>
                 </o-table>
+                <o-context-menu #myContextMenu>
+                    <o-context-menu-item icon="buttonAdd" label="{{ 'Confirm-Assistance' | oTranslate }}" (execute)='asignDataToExperience()'></o-context-menu-item>
+                </o-context-menu>
+
                 <o-button id="buttonAdd" attr="basic2" type="RAISED" label="{{'Add' | oTranslate }}" layout-padding color="primary" (click)="openModal('custom-modal-0')"></o-button>
             </mat-expansion-panel>
 
@@ -114,5 +119,19 @@
             </o-button>
 
         </jw-modal>
+        <jw-modal id="custom-modal-calendar">
+          <div id="modal-size-grid">
+                   <o-form #calendarAssistanceInput>
+                     <h1>{{experienceName}}</h1>
+                    <o-date-input  attr="calendarAssistance" label="Date" read-only="no" format="LL" required="yes"
+                      min="01/01/2020" max="01/01/2023" text-input-enabled="no" ></o-date-input>
+
+                  </o-form>
+          </div>
+
+          <o-button (click)="closeModal('custom-modal-calendar')" attr="buttonChangeLayout" id="buttonChangeLayout" type="RAISED" label="{{'Close' | oTranslate }}" layout-padding color="accent">
+          </o-button>
+          <o-button (click)="showConfirm(null ,'updateAssistanceDate')" attr="buttonChangeLayout" id="buttonChangeLayout" type="RAISED" label="{{'Add' | oTranslate }}" layout-padding color="accent"></o-button>
+      </jw-modal>
     </o-row>
 </o-form>
