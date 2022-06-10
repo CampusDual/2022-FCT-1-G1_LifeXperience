@@ -50,7 +50,7 @@
                     <o-table-context-menu [context-menu]="myContextMenu" data="id" insert="no" edit="no" delete="no" view-detail="no" select-all="no" filter="no"></o-table-context-menu>
                 </o-table>
                 <o-context-menu #myContextMenu>
-                    <o-context-menu-item icon="buttonAdd" label="{{ 'Confirm-Assistance' | oTranslate }}" (execute)='asignDataToExperience()'></o-context-menu-item>
+                    <o-context-menu-item icon="star_rate" label="{{ 'Set-Assistance' | oTranslate }}" (execute)='asignDataToExperience()'></o-context-menu-item>
                 </o-context-menu>
 
                 <o-button id="buttonAdd" attr="basic2" type="RAISED" label="{{'Add' | oTranslate }}" layout-padding color="primary" (click)="openModal('custom-modal-0')"></o-button>
@@ -146,10 +146,10 @@
 
         </jw-modal>
         <jw-modal id="custom-modal-calendar">
-          <div id="modal-size-grid">
-                   <o-form #calendarAssistanceInput>
+          <div id="modal-calendar-size">
+                   <o-form fxFlex="50" #calendarAssistanceInput>
                      <h1>{{experienceName}}</h1>
-                    <o-date-input  attr="calendarAssistance" label="Date" read-only="no" format="LL" required="yes"
+                    <o-date-input fxFlex="100" attr="calendarAssistance" label="Date" read-only="no" format="LL" required="yes"
                       min="01/01/2020" max="01/01/2023" text-input-enabled="no" ></o-date-input>
 
                   </o-form>

@@ -103,8 +103,11 @@
     "experience_experience_box_dialog_confirmation_title": "Add experence?",
     "experience_experience_box_dialog_confirmation_body": "Do you want to add to the box the experience: '${expName}'?",
     "Delete": "Delete",
+    "Warning!":"Warning!",
+    "The_date_is_wrong":"The date is wrong, so intruduce a date between the actual date and date of expiration",
     "Successful_add_operation": "Successful operation",
     "Added_experience": "Added experience",
     "Added_box": "Added box",
     "Done": "Done"
+
 }
