@@ -1,5 +1,6 @@
 {
     "APP_TITLE": "Gestor de subscripciones de experiencias",
+    "Assistance_date": "Fecha de asistencia",
     "CLIENTS": "Clientes",
     "DESCRIPTION": "Descripción",
     "EMAIL": "Email",
@@ -82,7 +83,7 @@
     "Experiences history": "Historial de experiencias",
     "Failed_operation": "Operación fallida",
     "My_experiences": "Mis experiencias",
-    "My_experiences_Assistance_False": "Experiencias pendientes de disfrutar",
+    "My_experiences_Assistance_False": "Experiencias pendientes de canjear",
     "My_experiences_boxes": "Mis cajas de experiencias",
     "PAYMENTS_EXP": "Pagos de Experiencias",
     "PAYMENTS_BOX": "Pagos de Caja de Experiencias",
