@@ -30,7 +30,7 @@ export class PaymentsExpDetailsComponent implements OnInit {
         const conf = this.service.getDefaultServiceConfiguration('experiences');
         this.service.configureService(conf);
 
-        const columns = ['client_name','address','phonenumber',
+        const columns = ['client_name','client_address','phonenumber',
         'relation_id','paymentdate','amountpaid','exp_name','description',
         'enddate','price','associate_image'];
         const filter = {
@@ -84,7 +84,7 @@ export class PaymentsExpDetailsComponent implements OnInit {
                                                     listType: 'none',
                                                         margin: [0, 0, 0, 10]
                                                 },{
-                                                    text:pdfData['address'],
+                                                    text:pdfData['client_address'],
                                                     listType: 'none',
                                                         margin: [0, 0, 0, 10]
                                                 },{
