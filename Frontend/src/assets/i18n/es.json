@@ -104,9 +104,11 @@
     "experience_experience_box_dialog_confirmation_body": "¿Quieres añadir a la caja la experiencia seleccionada: '${expName}'?",
     "Delete": "Borrar",
     "Warning!":"Alerta!",
-    "The_date_is_wrong":"Fecha errónea, introduzca una fecha que esté entre la fecha actual y la fecha de vencimiento",
+    "The_date_is_wrong":"Fecha errónea, introduzca una fecha que esté entre la fecha actual '${currentDate}' y la fecha de vencimiento '${dateExpiration}'",
     "Successful_add_operation": "Operación exitosa",
     "Added_experience": "Experiencia añadida",
     "Added_box": "Caja añadida",
-    "Done": "Hecho"
+    "Done": "Hecho",
+    "Empty_date_field": "Debe seleccionar una fecha para disfrutar de la experiencia",
+    "Exchange_experience": "Experiencia canjeada"
 }

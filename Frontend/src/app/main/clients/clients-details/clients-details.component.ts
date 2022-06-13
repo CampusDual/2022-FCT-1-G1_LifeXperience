@@ -43,6 +43,7 @@ export class ClientsDetailsComponent implements OnInit {
   private clientBoxConfirmDialogTextBody: string;
   private clientExperienceConfirmDialogTitle: string;
   private clientExperienceConfirmDialogTextBody: string;
+  private experienceDate: string;
   private alertDialogSuccessful: string;
   private alertDialogFailed: string;
   private dateValue: Date;
@@ -51,6 +52,14 @@ export class ClientsDetailsComponent implements OnInit {
   public experienceName="experienceDummy";
   public clientExp="clientDummy";
   private currentDate:Date=new Date();
+  private readonly config: OSnackBarConfig = {
+      action: this.translator.get(
+        "Done"
+      ),
+      milliseconds: 5000,
+      icon: 'done',
+      iconPosition: 'left'
+  };
 
   protected service: OntimizeService;
 
@@ -60,7 +69,7 @@ export class ClientsDetailsComponent implements OnInit {
     private dialogService: DialogService,
     private snackBarService: SnackBarService,
     @Inject(LOCALE_ID) private locale: string,
-    private translator: OTranslateService
+    private translator: OTranslateService,
   ) {}
 
   ngOnInit() {
@@ -78,7 +87,7 @@ export class ClientsDetailsComponent implements OnInit {
     );
     this.alertDialogSuccessful = this.translator.get("Successful_operation");
     this.alertDialogFailed = this.translator.get("Failed_operation");
-
+    this.experienceDate = this.translator.get("The_date_is_wrong");
   }
 
   openModal(id: string) {
@@ -199,19 +208,20 @@ export class ClientsDetailsComponent implements OnInit {
       }
     }
   }}
+
   insert(service: string, entity: string, av: Object = {}, sqltypes?: object) {
     this.service = this.injector.get(OntimizeService);
     const conf = this.service.getDefaultServiceConfiguration(service);
     this.service.configureService(conf);
 
-    const config: OSnackBarConfig = {
-      action: this.translator.get(
-        "Done"
-      ),
-      milliseconds: 5000,
-      icon: 'done',
-      iconPosition: 'left'
-    };
+    // const config: OSnackBarConfig = {
+    //   action: this.translator.get(
+    //     "Done"
+    //   ),
+    //   milliseconds: 5000,
+    //   icon: 'done',
+    //   iconPosition: 'left'
+    // };
 
     this.service.insert(av, entity, sqltypes).subscribe((resp) => {
       if (resp.code === 0) {
@@ -219,11 +229,11 @@ export class ClientsDetailsComponent implements OnInit {
           this.closeModal("custom-modal-0");
           this.expTable.reloadData();
           this.expHistorialTable.reloadData();
-          this.snackBarService.open(this.translator.get("Added_experience"), config);
+          this.snackBarService.open(this.translator.get("Added_experience"), this.config);
         } else if (service == "experienceboxes") {
           this.closeModal("custom-modal-1");
           this.expBoxTable.reloadData();
-          this.snackBarService.open(this.translator.get("Added_box"), config);
+          this.snackBarService.open(this.translator.get("Added_box"), this.config);
         }
       } else {
         alert(this.alertDialogFailed);
@@ -247,30 +257,41 @@ export class ClientsDetailsComponent implements OnInit {
         this.closeModal("custom-modal-calendar");
         this.expTable.reloadData();
 
-        alert(this.alertDialogSuccessful);
+        this.snackBarService.open(this.translator.get("Exchange_experience"), this.config);
       } else {
         alert(this.alertDialogFailed);
       }
     });
   }
 
-
   asignDataToExperience() {
     this.experienceRowData = this.expTable.getSelectedItems()[0];
     this.experienceName=this.experienceRowData.exp_name;
     this.openModal("custom-modal-calendar");
   }
+
  checkDate():boolean{
-   if(this.currentDate>this.calAssistance.getFieldValue("calendarAssistance")||this.calAssistance.getFieldValue("calendarAssistance")>this.calAssistance.getFieldValue("enddate")){
+  if(this.calAssistance.getFieldValue("calendarAssistance")!=null){
+    if(this.currentDate>this.calAssistance.getFieldValue("calendarAssistance")||this.calAssistance.getFieldValue("calendarAssistance")>this.experienceRowData.enddate){
+      this.dialogService.error(
+      this.translator.get(
+        "Warning!"
+      ), this.experienceDate.replace("${currentDate}",this.parseDate(this.currentDate.getTime())).replace("${dateExpiration}",this.parseDate(this.experienceRowData.enddate)));
+        return false;
+     }else{
+       return true;
+     }
+  }else{
     this.dialogService.error(
-    this.translator.get(
-      "Warning!"
-    ), this.translator.get(
-      "The_date_is_wrong"
-    ));
-      return false;
-   }else{
-     return true;
-   }
+      this.translator.get(
+        "Warning!"
+      ), "Empty_date_field");
+  }
+
  }
+
+  parseDate(dateMilisecondsNumber){
+    return formatDate(new Date(parseInt(dateMilisecondsNumber)),'yyyy-MM-dd',this.locale)
+  }
+
 }
