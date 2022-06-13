@@ -4,11 +4,11 @@ import { ModalService } from '.';
 
 @Component({ 
     selector: 'jw-modal', 
-    templateUrl: 'ui-modal-window.html', 
-    styleUrls: ['ui-modal-window.less'],
+    templateUrl: 'jw-modal-window.html', 
+    styleUrls: ['jw-modal-window.less'],
     encapsulation: ViewEncapsulation.None
 })
-export class UiModalWindowComponent implements OnInit, OnDestroy {
+export class JwModalWindowComponent implements OnInit, OnDestroy {
     @Input() id: string;
     private element: any;
 

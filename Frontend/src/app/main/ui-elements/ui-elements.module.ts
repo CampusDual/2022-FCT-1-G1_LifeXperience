@@ -1,17 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { UiModalWindowComponent } from './ui-modal-window';
+import { JwModalWindowComponent } from './jw-modal-window';
+import { JWModalAttributesDirective } from './jw-modal-window-attributes.directive';
 
 
 
 @NgModule({
   declarations: [
-    UiModalWindowComponent
+    JwModalWindowComponent,
+    JWModalAttributesDirective
   ],
   imports: [
     CommonModule
   ],exports:[
-    UiModalWindowComponent
+    JwModalWindowComponent,
+    JWModalAttributesDirective
   ]
 })
 export class UiElementsModule { }

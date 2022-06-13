@@ -1,163 +1,172 @@
 <o-form #clientDetails service="clients" entity="client" keys="id" header-actions="R;I;U;D" show-header-navigation="no">
-    <div>
-        <o-text-input attr="id" sql-type="integer" enabled="no" hidden fxFlex="10"></o-text-input>
+  <div>
+    <o-text-input attr="id" sql-type="integer" enabled="no" hidden fxFlex="10"></o-text-input>
+  </div>
+  <o-row>
+    <o-column title-label="clients_information" fxFlex>
+      <o-row>
+        <o-text-input class="input-padding" attr="name" fxFlex="70" required="yes"></o-text-input>
+      </o-row>
+      <o-row>
+        <o-text-input class="input-padding" attr="surname" fxFlex="70" required="yes"></o-text-input>
+      </o-row>
+      <o-row>
+        <o-text-input class="input-padding" attr="nif" fxFlex="70" required="yes"></o-text-input>
+      </o-row>
+      <o-row>
+        <o-text-input class="input-padding" attr="email" fxFlex="70" required="yes"></o-text-input>
+      </o-row>
+      <o-row>
+        <o-date-input attr="birthdate" fxFlex="20" required="yes" enabled="yes" fxFlex="70"></o-date-input>
+      </o-row>
+      <o-row>
+        <o-textarea-input class="input-padding" attr="address" fxFlex="70" required="yes" enabled="yes">
+        </o-textarea-input>
+      </o-row>
+      <o-row>
+        <o-text-input class="input-padding" attr="phonenumber" fxFlex="70" required="yes"></o-text-input>
+      </o-row>
+    </o-column>
 
-    </div>
-    <o-row>
-        <o-column title-label="clients_information" fxFlex>
-            <o-row>
-                <o-text-input class="input-padding" attr="name" fxFlex="70" required="yes"></o-text-input>
-            </o-row>
-            <o-row>
-                <o-text-input class="input-padding" attr="surname" fxFlex="70" required="yes"></o-text-input>
-            </o-row>
-            <o-row>
-                <o-text-input class="input-padding" attr="nif" fxFlex="70" required="yes"></o-text-input>
-            </o-row>
-            <o-row>
-                <o-text-input class="input-padding" attr="email" fxFlex="70" required="yes"></o-text-input>
-            </o-row>
-            <o-row>
-                <o-date-input attr="birthdate" fxFlex="20" required="yes" enabled="yes" fxFlex="70"></o-date-input>
-            </o-row>
-            <o-row>
-                <o-textarea-input class="input-padding" attr="address" fxFlex="70" required="yes" enabled="yes">
-                </o-textarea-input>
-            </o-row>
-            <o-row>
-                <o-text-input class="input-padding" attr="phonenumber" fxFlex="70" required="yes"></o-text-input>
-            </o-row>
-        </o-column>
+    <o-column class="columnDiv">
+      <!-- Experiences -->
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            {{ "My_experiences_Assistance_False" | oTranslate }}
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <o-table #experiencesTable expand-groups-same-level="false" query-on-init="no" show-title="false"
+          title="Experiences" attr="ClientExperiencesTable" auto-adjust="false" service="experiences"
+          entity="clientExperienceAssistanceFalse" insert-button="false" delete-button="false" refresh-button="false"
+          keys="client_id" parent-keys="client_id:id"
+          columns="experience_id;exp_name;description;price;enddate;associate_image;assistance;relation_id"
+          visible-columns="exp_name;enddate;associate_image" query-rows="10" auto-adjust="yes" selection-mode="simple">
+          <o-table-column id="img" title="Avatar" attr="associate_image" empty-image="assets/images/no-image.png"
+            image-type="base64" searchable="no" type="image" avatar="yes" full-screen-button="true" auto-fit="true"
+            fxFlex="40">
+          </o-table-column>
+          <o-table-column attr="name" title="name" content-align="center" width="100px"></o-table-column>
+          <o-table-column attr="enddate" title="enddate" content-align="center" type="date" format="LL" width="60px">
+          </o-table-column>
+          <o-table-context-menu [context-menu]="myContextMenu" data="id" insert="no" edit="no" delete="no"
+            view-detail="no" select-all="no" filter="no"></o-table-context-menu>
+        </o-table>
+        <o-context-menu #myContextMenu>
+          <o-context-menu-item icon="star_rate" label="{{ 'Set-Assistance' | oTranslate }}"
+            (execute)="asignDataToExperience()"></o-context-menu-item>
+        </o-context-menu>
 
-        <o-column class="columnDiv">
-          <!-- Experiences -->
-            <mat-expansion-panel>
-                <mat-expansion-panel-header>
-                    <mat-panel-title>
-                        {{'My_experiences_Assistance_False' | oTranslate }}
-                    </mat-panel-title>
-                </mat-expansion-panel-header>
-                <o-table #experiencesTable expand-groups-same-level="false" query-on-init="no" show-title="false" title="Experiences" attr="ClientExperiencesTable"
-                auto-adjust="false" service="experiences" entity="clientExperienceAssistanceFalse" insert-button="false" delete-button="false"
-                    refresh-button="false" keys="client_id" parent-keys="client_id:id" columns="experience_id;exp_name;description;price;enddate;associate_image;assistance;relation_id" visible-columns="exp_name;enddate;associate_image" query-rows="10"
-                    auto-adjust=yes selection-mode="simple">
+        <o-button id="buttonAdd" attr="basic2" type="RAISED" label="{{ 'Add' | oTranslate }}" layout-padding
+          color="primary" (click)="openModal('custom-modal-0')"></o-button>
+        <o-button id="buttonHistorial" attr="" type="RAISED" label="{{ 'Experiences history' | oTranslate }}"
+          layout-padding color="primary" (click)="openModal('custom-modal-2')"></o-button>
+      </mat-expansion-panel>
 
-                    <o-table-column id="img" title="Avatar" attr="associate_image" empty-image="assets/images/no-image.png" image-type="base64" searchable="no" type="image" avatar="yes" full-screen-button="true" auto-fit="true" fxFlex="40">
-                    </o-table-column>
-                    <o-table-column attr="name" title="name" content-align="center" width="100px"></o-table-column>
-                    <o-table-column attr="enddate" title="enddate" content-align="center" type="date" format="LL" width="60px">
-                    </o-table-column>
-                    <o-table-context-menu [context-menu]="myContextMenu" data="id" insert="no" edit="no" delete="no" view-detail="no" select-all="no" filter="no"></o-table-context-menu>
-                </o-table>
-                <o-context-menu #myContextMenu>
-                    <o-context-menu-item icon="star_rate" label="{{ 'Set-Assistance' | oTranslate }}" (execute)='asignDataToExperience()'></o-context-menu-item>
-                </o-context-menu>
+      <!-- Experience Boxes -->
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            {{ "My_experiences_boxes" | oTranslate }}
+          </mat-panel-title>
+        </mat-expansion-panel-header>
 
-                <o-button id="buttonAdd" attr="basic2" type="RAISED" label="{{'Add' | oTranslate }}" layout-padding color="primary" (click)="openModal('custom-modal-0')"></o-button>
-                <o-button id="buttonHistorial" attr="" type="RAISED" label="{{'Experiences history' | oTranslate }}" layout-padding color="primary" (click)="openModal('custom-modal-2')"></o-button>
+        <o-table #experienceBoxTable expand-groups-same-level="false" query-on-init="no" show-title="false"
+          title="ExperiencesBox" attr="ClientExperiencesBoxTable" auto-adjust="false" service="experienceboxes"
+          entity="clientExperienceBoxDefault" insert-button="false" delete-button="false" refresh-button="false"
+          keys="client_id" parent-keys="idclient:id" columns="boxexp_name;description;price;associate_image"
+          visible-columns="boxexp_name;price;associate_image" query-rows="10">
+          <o-table-column id="img" title="Avatar" attr="associate_image" empty-image="assets/images/no-image.png"
+            image-type="base64" searchable="no" type="image" avatar="yes" auto-fit="true" fxFlex="40">
+          </o-table-column>
+          <o-table-column attr="boxexp_name" title="name" width="100px" content-align="center"></o-table-column>
+          <o-table-column attr="price" title="price" width="30px" content-align="center" type="currency"
+            currency-symbol="€" currency-symbol-position="right" width="30px" content-align="center"></o-table-column>
+          <o-table-column attr="description" title="description" width="300px" content-align="start"></o-table-column>
+        </o-table>
+        <o-button id="buttonAdd" attr="basic2" type="RAISED" label="{{ 'Add' | oTranslate }}" layout-padding
+          color="primary" (click)="openModal('custom-modal-1')"></o-button>
+      </mat-expansion-panel>
+    </o-column>
 
-              </mat-expansion-panel>
+    <!-- Historial Experiences Modal -->
+    <jw-modal id="custom-modal-2" modal-height="700px">
+      <o-table #experiencesHistorialTable expand-groups-same-level="false" query-on-init="no" show-title="true"
+        title="{{ 'Experiences history' | oTranslate }}" attr="ClientExperiencesTable" auto-adjust="false"
+        service="experiences" entity="clientExperienceDetails" insert-button="false" delete-button="false"
+        refresh-button="false" keys="client_id" parent-keys="client_id:id"
+        columns="associate_image;experience_id;exp_name;description;price;enddate;assistance;assistance_date"
+        visible-columns="associate_image;exp_name;enddate;assistance_date" query-rows="10" auto-adjust="yes">
+        <o-table-column id="img" title="Avatar" attr="associate_image" empty-image="assets/images/no-image.png"
+          image-type="base64" searchable="no" type="image" avatar="yes" full-screen-button="true" auto-fit="true"
+          fxFlex="40">
+        </o-table-column>
+        <o-table-column attr="name" title="name" content-align="center" width="100px"></o-table-column>
+        <o-table-column attr="enddate" title="enddate" content-align="center" type="date" format="LL" width="60px">
+        </o-table-column>
+        <o-table-column attr="assistance_date" title="{{ 'Assistance_date' | oTranslate }}" content-align="center"
+          type="date" format="LL" width="60px">
+        </o-table-column>
+      </o-table>
 
-            <!-- Experience Boxes -->
-            <mat-expansion-panel>
-                <mat-expansion-panel-header>
-                    <mat-panel-title>
-                        {{'My_experiences_boxes' | oTranslate }}
-                    </mat-panel-title>
-                </mat-expansion-panel-header>
+      <o-button (click)="closeModal('custom-modal-2')" attr="buttonChangeLayout" id="buttonChangeLayout" type="RAISED"
+        label="{{ 'Close' | oTranslate }}" layout-padding color="accent">
+      </o-button>
+    </jw-modal>
 
-                <o-table #experienceBoxTable expand-groups-same-level="false" query-on-init="no" show-title="false" title="ExperiencesBox" attr="ClientExperiencesBoxTable" auto-adjust="false" service="experienceboxes" entity="clientExperienceBoxDefault" insert-button="false"
-                    delete-button="false" refresh-button="false" keys="client_id" parent-keys="idclient:id" columns="boxexp_name;description;price;associate_image" visible-columns="boxexp_name;price;associate_image" query-rows="10">
-
-                    <o-table-column id="img" title="Avatar" attr="associate_image" empty-image="assets/images/no-image.png" image-type="base64" searchable="no" type="image" avatar="yes" auto-fit="true" fxFlex="40">
-                    </o-table-column>
-                    <o-table-column attr="boxexp_name" title="name" width="100px" content-align="center"></o-table-column>
-                    <o-table-column attr="price" title="price" width="30px" content-align="center" type="currency" currency-symbol="€" currency-symbol-position="right" width="30px" content-align="center"></o-table-column>
-                    <o-table-column attr="description" title="description" width="300px" content-align="start"></o-table-column>
-                </o-table>
-                <o-button id="buttonAdd" attr="basic2" type="RAISED" label="{{'Add' | oTranslate }}" layout-padding color="primary" (click)="openModal('custom-modal-1')"></o-button>
-
-            </mat-expansion-panel>
-        </o-column>
-
-        <!-- Historial Experiences Modal -->
-        <jw-modal id="custom-modal-2">
-          <div class="modal-size-grid">
-            <o-table #experiencesHistorialTable expand-groups-same-level="false" query-on-init="no" show-title="true" title="{{'Experiences history' | oTranslate }}" attr="ClientExperiencesTable" auto-adjust="false" service="experiences" entity="clientExperienceDetails" insert-button="false" delete-button="false"
-            refresh-button="false" keys="client_id" parent-keys="client_id:id"
-            columns="associate_image;experience_id;exp_name;description;price;enddate;assistance;assistance_date"
-            visible-columns="associate_image;exp_name;enddate;assistance_date" query-rows="10"
-            auto-adjust=yes>
-
-            <o-table-column id="img" title="Avatar" attr="associate_image" empty-image="assets/images/no-image.png" image-type="base64" searchable="no" type="image" avatar="yes" full-screen-button="true" auto-fit="true" fxFlex="40">
-            </o-table-column>
-            <o-table-column attr="name" title="name" content-align="center" width="100px"></o-table-column>
-            <o-table-column attr="enddate" title="enddate" content-align="center" type="date" format="LL" width="60px"></o-table-column>
-            <o-table-column attr="assistance_date" title="{{'Assistance_date' | oTranslate }}" content-align="center" type="date" format="LL" width="60px">
-            </o-table-column>
-            </o-table>
-
-            <o-button (click)="closeModal('custom-modal-2')" attr="buttonChangeLayout" id="buttonChangeLayout" type="RAISED" label="{{'Close' | oTranslate }}" layout-padding color="accent">
-            </o-button>
-
+    <!-- Experience Modal -->
+    <jw-modal id="custom-modal-0" modal-height="700px">
+      <o-grid #experienceGrid class="grid" attr="experiencesTable" service="experiences" entity="experience"
+        columns="id;name;description,enddate;price;associate_image" keys="id" cols="5" query-rows="8" orderable="true"
+        quick-filter="true" sortable-columns="name;price" sort-column="name" gutter-size="10px" refresh-button="true"
+        detail-mode="no" pagination-controls="true" fixed-header="yes">
+        <o-grid-item *ngFor="let list of experienceGrid.dataArray" auto-fit="true">
+          <div class="item" fxLayout="column" fxLayoutAlign="space-evenly center" (click)="showConfirm(list, 'exp')">
+            <o-image data="{{ list.associate_image }} " empty-image="assets/images/no-image.png" fxFlex="30"
+              auto-fit="true" width="290px" enabled="false" show-controls="no"></o-image>
+            <div>{{ list.name }}</div>
+            <div>{{ list.price }}€</div>
           </div>
-      </jw-modal>
+        </o-grid-item>
+      </o-grid>
+      <o-button (click)="closeModal('custom-modal-0')" attr="buttonChangeLayout" id="buttonChangeLayout" type="RAISED"
+        label="{{ 'Close' | oTranslate }}" layout-padding color="accent">
+      </o-button>
+    </jw-modal>
 
-        <!-- Experience Modal -->
-        <jw-modal id="custom-modal-0">
-
-            <div class="modal-size-grid">
-                <o-grid #experienceGrid class="grid" attr="experiencesTable" service="experiences" entity="experience" columns="id;name;description,enddate;price;associate_image" keys="id" cols="5" query-rows="8" orderable="true" quick-filter="true" sortable-columns="name;price"
-                    sort-column="name" gutter-size="10px" refresh-button="true" detail-mode="no" pagination-controls="true" fixed-header="yes">
-                    <o-grid-item *ngFor="let list of experienceGrid.dataArray" auto-fit="true">
-
-                        <div class="item" fxLayout="column" fxLayoutAlign="space-evenly center" (click)="showConfirm(list,'exp')">
-                            <o-image data="{{list.associate_image}} " empty-image="assets/images/no-image.png" fxFlex="30" auto-fit="true" width="290px" enabled="false" show-controls="no"></o-image>
-                            <div>{{ list.name }}</div>
-                            <div>{{ list.price }}€</div>
-                        </div>
-                    </o-grid-item>
-                </o-grid>
-                <o-button (click)="closeModal('custom-modal-0')" attr="buttonChangeLayout" id="buttonChangeLayout" type="RAISED" label="{{'Close' | oTranslate }}" layout-padding color="accent">
-                </o-button>
-              </div>
-
-        </jw-modal>
-
-
-        <!-- Experience Box Modal -->
-        <jw-modal id="custom-modal-1">
-
-            <div class="modal-size-grid">
-                <o-grid #experienceBoxGrid class="grid" attr="experienceBoxesTable" service="experienceboxes" entity="experiencebox" columns="id;name;price;description;associate_image" keys="id" cols="5" query-rows="8" orderable="true" quick-filter="true" sortable-columns="name;price"
-                    sort-column="name" gutter-size="10px" refresh-button="true" detail-mode="no" pagination-controls="true" fixed-header="yes">
-                    <o-grid-item *ngFor="let list of experienceBoxGrid.dataArray" auto-fit="true">
-
-                        <div class="item" fxLayout="column" fxLayoutAlign="space-evenly center" (click)="showConfirm(list,'box')">
-                            <o-image data="{{list.associate_image}} " empty-image="assets/images/no-image.png" fxFlex="30" auto-fit="true" width="290px" enabled="false" show-controls="no"></o-image>
-                            <div>{{ list.name }}</div>
-                            <div>{{ list.price }}€</div>
-                        </div>
-                    </o-grid-item>
-                </o-grid>
-                <o-button (click)="closeModal('custom-modal-1')" attr="buttonChangeLayout" id="buttonChangeLayout" type="RAISED" label="{{'Close' | oTranslate }}" layout-padding color="accent">
-                </o-button>
-              </div>
-
-        </jw-modal>
-        <jw-modal id="custom-modal-calendar">
-          <div id="modal-calendar-size">
-                   <o-form fxFlex="50" #calendarAssistanceInput>
-                     <h1>{{experienceName}}</h1>
-                    <o-date-input fxFlex="100" attr="calendarAssistance" label="Date" read-only="no" format="LL" required="yes"
-                      min="01/01/2020" max="01/01/2023" text-input-enabled="no" ></o-date-input>
-
-                  </o-form>
+    <!-- Experience Box Modal -->
+    <jw-modal id="custom-modal-1" modal-height="700px">
+      <o-grid #experienceBoxGrid class="grid" attr="experienceBoxesTable" service="experienceboxes"
+        entity="experiencebox" columns="id;name;price;description;associate_image" keys="id" cols="5" query-rows="8"
+        orderable="true" quick-filter="true" sortable-columns="name;price" sort-column="name" gutter-size="10px"
+        refresh-button="true" detail-mode="no" pagination-controls="true" fixed-header="yes">
+        <o-grid-item *ngFor="let list of experienceBoxGrid.dataArray" auto-fit="true">
+          <div class="item" fxLayout="column" fxLayoutAlign="space-evenly center" (click)="showConfirm(list, 'box')">
+            <o-image data="{{ list.associate_image }} " empty-image="assets/images/no-image.png" fxFlex="30"
+              auto-fit="true" width="290px" enabled="false" show-controls="no"></o-image>
+            <div>{{ list.name }}</div>
+            <div>{{ list.price }}€</div>
           </div>
+        </o-grid-item>
+      </o-grid>
+      <o-button (click)="closeModal('custom-modal-1')" attr="buttonChangeLayout" id="buttonChangeLayout" type="RAISED"
+        label="{{ 'Close' | oTranslate }}" layout-padding color="accent">
+      </o-button>
+    </jw-modal>
 
-          <o-button (click)="closeModal('custom-modal-calendar')" attr="buttonChangeLayout" id="buttonChangeLayout" type="RAISED" label="{{'Close' | oTranslate }}" layout-padding color="accent">
-          </o-button>
-          <o-button (click)="showConfirm(null ,'updateAssistanceDate')" attr="buttonChangeLayout" id="buttonChangeLayout" type="RAISED" label="{{'Add' | oTranslate }}" layout-padding color="accent"></o-button>
-      </jw-modal>
-    </o-row>
+    <!-- Assign assistance date modal-->
+    <jw-modal id="custom-modal-calendar" modal-width="700px" modal-margin="40px auto">
+      <o-form fxFlex="50" #calendarAssistanceInput>
+        <h1>{{ experienceName }}</h1>
+        <o-date-input fxFlex="100" attr="calendarAssistance" label="Date" read-only="no" format="LL" required="yes"
+          min="01/01/2020" max="01/01/2023" text-input-enabled="no"></o-date-input>
+      </o-form>
+
+      <o-button (click)="closeModal('custom-modal-calendar')" attr="buttonChangeLayout" id="buttonChangeLayout"
+        type="RAISED" label="{{ 'Close' | oTranslate }}" layout-padding color="accent">
+      </o-button>
+      <o-button (click)="showConfirm(null, 'updateAssistanceDate')" attr="buttonChangeLayout" id="buttonChangeLayout"
+        type="RAISED" label="{{ 'Add' | oTranslate }}" layout-padding color="accent"></o-button>
+    </jw-modal>
+  </o-row>
 </o-form>
