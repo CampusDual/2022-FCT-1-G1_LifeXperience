@@ -1,6 +1,7 @@
 <o-form service="clients" entity="client" keys="id" header-actions="R;I;U;D" show-header-navigation="no">
     <o-row>
         <o-column title-label="clients_information" fxFlex>
+
             <o-row>
                 <o-text-input class="input-padding" attr="name" fxFlex="40" required="yes"></o-text-input>
             </o-row>
@@ -23,6 +24,11 @@
             <o-row>
                 <o-text-input class="input-padding" attr="phonenumber" fxFlex="40" required="yes"></o-text-input>
             </o-row>
+            <o-row>
+            <o-image attr="associate_image_client"
+                auto-fit="true" enabled="true" read-only="false" show-controls="true" sql-type="OTHER" full-screen-button="true" auto-fit="true" fxFlex="70"
+                full-screen-button="false" empty-image="./assets/images/no-image.png"></o-image>
+          </o-row>
         </o-column>
     </o-row>
 </o-form>
