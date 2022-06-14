@@ -17,7 +17,7 @@ import {
   SnackBarService,
   SQLTypes,
 } from "ontimize-web-ngx";
-import { ModalService } from "../../ui-elements/ui-modal-window";
+import { ModalService } from "../../ui-elements/jw-modal-window";
 
 @Component({
   selector: "app-experience-boxes-detail",
@@ -47,14 +47,17 @@ export class ExperienceBoxesDetailComponent implements OnInit {
     private snackBarService: SnackBarService,
     @Inject(LOCALE_ID) private locale: string,
     private translator: OTranslateService
-  ) { }
+  ) {}
 
   ngOnInit() {
-    this.experienceExperienceBoxConfirmDialogTitle = this.translator.get("experience_experience_box_dialog_confirmation_title");
-    this.experienceExperienceBoxConfirmDialogBody = this.translator.get("experience_experience_box_dialog_confirmation_body");
+    this.experienceExperienceBoxConfirmDialogTitle = this.translator.get(
+      "experience_experience_box_dialog_confirmation_title"
+    );
+    this.experienceExperienceBoxConfirmDialogBody = this.translator.get(
+      "experience_experience_box_dialog_confirmation_body"
+    );
     this.alertDialogSuccessful = this.translator.get("Successful_operation");
     this.alertDialogFailed = this.translator.get("Failed_operation");
-
   }
   //Metodos para el context menu
   getVisible(data: any): boolean {
@@ -108,21 +111,22 @@ export class ExperienceBoxesDetailComponent implements OnInit {
     this.service.configureService(conf);
 
     const config: OSnackBarConfig = {
-      action: this.translator.get(
-        "Done"
-      ),
+      action: this.translator.get("Done"),
       milliseconds: 5000,
-      icon: 'done',
-      iconPosition: 'left'
+      icon: "done",
+      iconPosition: "left",
     };
 
     this.service.insert(av, entity, sqltypes).subscribe((resp) => {
       if (resp.code === 0) {
         this.expOfexpBoxTable.reloadData();
         this.closeModal("custom-modal-0");
-        this.expThatTheyAreNotInTheBoxGrid.reloadData()
+        this.expThatTheyAreNotInTheBoxGrid.reloadData();
 
-        this.snackBarService.open(this.translator.get("Added_experience"), config);
+        this.snackBarService.open(
+          this.translator.get("Added_experience"),
+          config
+        );
       } else {
         alert(this.alertDialogFailed);
       }
@@ -132,7 +136,7 @@ export class ExperienceBoxesDetailComponent implements OnInit {
   //Metodos para borrar la experiencia a la caja
   showDeleteExperienceToBoxConfirmDialog() {
     if (this.dialogService) {
-      var experienceData = this.expOfexpBoxTable.getSelectedItems()[0]
+      var experienceData = this.expOfexpBoxTable.getSelectedItems()[0];
 
       //Mensaje de confirmacion del añadido del paquete
       this.dialogService.confirm(
@@ -176,6 +180,4 @@ export class ExperienceBoxesDetailComponent implements OnInit {
       }
     });
   }
-
-
 }
