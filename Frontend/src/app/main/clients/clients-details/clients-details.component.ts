@@ -22,6 +22,7 @@ import {
   SnackBarService,
   SQLTypes,
 } from "ontimize-web-ngx";
+import { ValidatorFn, ValidationErrors, FormControl } from '@angular/forms';
 import { ModalService } from "../../ui-elements/ui-modal-window";
 
 @Component({
@@ -36,7 +37,7 @@ export class ClientsDetailsComponent implements OnInit {
   @ViewChild("experiencesTable", { static: false }) expTable: OTableComponent;
   @ViewChild("calendarAssistanceInput", { static: false })
   calAssistance: OFormComponent;
-  @ViewChild("#experienceNameModalTxtInput", { static: false }) expNameModalTxtInput:OTextInputComponent;
+  @ViewChild("#experienceNameModalTxtInput", { static: false }) expNameModalTxtInput: OTextInputComponent;
   @ViewChild('experiencesHistorialTable', { static: false }) expHistorialTable: OTableComponent;
 
   private clientBoxConfirmDialogTitle: string;
@@ -49,16 +50,18 @@ export class ClientsDetailsComponent implements OnInit {
   private dateValue: Date;
   private calendarResult: Date;
   public experienceRowData;
-  public experienceName="experienceDummy";
-  public clientExp="clientDummy";
-  private currentDate:Date=new Date();
+  public experienceName = "experienceDummy";
+  public clientExp = "clientDummy";
+  validatorsArray: ValidatorFn[] = [];
+  private currentDate: Date = new Date();
+
   private readonly config: OSnackBarConfig = {
-      action: this.translator.get(
-        "Done"
-      ),
-      milliseconds: 5000,
-      icon: 'done',
-      iconPosition: 'left'
+    action: this.translator.get(
+      "Done"
+    ),
+    milliseconds: 5000,
+    icon: 'done',
+    iconPosition: 'left'
   };
 
   protected service: OntimizeService;
@@ -70,7 +73,9 @@ export class ClientsDetailsComponent implements OnInit {
     private snackBarService: SnackBarService,
     @Inject(LOCALE_ID) private locale: string,
     private translator: OTranslateService,
-  ) {}
+  ) {
+    this.validatorsArray.push(this.aValidator);
+  }
 
   ngOnInit() {
     this.clientBoxConfirmDialogTitle = this.translator.get(
@@ -89,7 +94,18 @@ export class ClientsDetailsComponent implements OnInit {
     this.alertDialogFailed = this.translator.get("Failed_operation");
     this.experienceDate = this.translator.get("The_date_is_wrong");
   }
-
+  aValidator(control: FormControl): ValidationErrors {
+    let result = {};
+    const currentDateMilliseconds: number = new Date().getTime();
+    const eighteenYearsAgo: number = new Date().getFullYear() - 18;
+    const eighteenYearsAgoMilliseconds: number = eighteenYearsAgo * 365 * 24 * 60 * 60 * 1000;
+    const dateselected = control.value;
+    console.log(dateselected, eighteenYearsAgo, eighteenYearsAgoMilliseconds, currentDateMilliseconds);
+    if (control.value && currentDateMilliseconds -  dateselected < eighteenYearsAgoMilliseconds) {
+      result['requiredLowercaseA'] = true;
+    }
+    return result;
+  }
   openModal(id: string) {
     this.modalService.open(id);
   }
@@ -173,41 +189,42 @@ export class ClientsDetailsComponent implements OnInit {
           break;
 
         case "updateAssistanceDate":
-          if(this.checkDate())  {
-          this.dialogService.confirm(
-            "¿Asignar Fecha de Experiencia?",
-            "Asignar fecha de disfrute de la experiencia"
-          );
+          if (this.checkDate()) {
+            this.dialogService.confirm(
+              "¿Asignar Fecha de Experiencia?",
+              "Asignar fecha de disfrute de la experiencia"
+            );
 
-          this.dialogService.dialogRef.afterClosed().subscribe((result) => {
-            if (result) {
-              //Preparacion de la query
-              var service = "experiences";
-              var entity = "clientExperience";
-              var av = {
-                assistance_date:
-                  this.calAssistance.getFieldValue("calendarAssistance"),
-                assistance: true,
-              };
-              var kv = {
-                id: this.experienceRowData.relation_id
-              };
+            this.dialogService.dialogRef.afterClosed().subscribe((result) => {
+              if (result) {
+                //Preparacion de la query
+                var service = "experiences";
+                var entity = "clientExperience";
+                var av = {
+                  assistance_date:
+                    this.calAssistance.getFieldValue("calendarAssistance"),
+                  assistance: true,
+                };
+                var kv = {
+                  id: this.experienceRowData.relation_id
+                };
 
-              var sqltypes = {
-                assistance_date: SQLTypes.DATE,
-              };
+                var sqltypes = {
+                  assistance_date: SQLTypes.DATE,
+                };
 
-              this.update(service, entity, kv, av, sqltypes);
-            } else {
-              // TODO:Comprobar si ontimize ya muestra error al salir mal la query
-            }
-          });
+                this.update(service, entity, kv, av, sqltypes);
+              } else {
+                // TODO:Comprobar si ontimize ya muestra error al salir mal la query
+              }
+            });
 
 
-          break;
+            break;
+          }
       }
     }
-  }}
+  }
 
   insert(service: string, entity: string, av: Object = {}, sqltypes?: object) {
     this.service = this.injector.get(OntimizeService);
@@ -266,32 +283,32 @@ export class ClientsDetailsComponent implements OnInit {
 
   asignDataToExperience() {
     this.experienceRowData = this.expTable.getSelectedItems()[0];
-    this.experienceName=this.experienceRowData.exp_name;
+    this.experienceName = this.experienceRowData.exp_name;
     this.openModal("custom-modal-calendar");
   }
 
- checkDate():boolean{
-  if(this.calAssistance.getFieldValue("calendarAssistance")!=null){
-    if(this.currentDate>this.calAssistance.getFieldValue("calendarAssistance")||this.calAssistance.getFieldValue("calendarAssistance")>this.experienceRowData.enddate){
-      this.dialogService.error(
-      this.translator.get(
-        "Warning!"
-      ), this.experienceDate.replace("${currentDate}",this.parseDate(this.currentDate.getTime())).replace("${dateExpiration}",this.parseDate(this.experienceRowData.enddate)));
+  checkDate(): boolean {
+    if (this.calAssistance.getFieldValue("calendarAssistance") != null) {
+      if (this.currentDate > this.calAssistance.getFieldValue("calendarAssistance") || this.calAssistance.getFieldValue("calendarAssistance") > this.experienceRowData.enddate) {
+        this.dialogService.error(
+          this.translator.get(
+            "Warning!"
+          ), this.experienceDate.replace("${currentDate}", this.parseDate(this.currentDate.getTime())).replace("${dateExpiration}", this.parseDate(this.experienceRowData.enddate)));
         return false;
-     }else{
-       return true;
-     }
-  }else{
-    this.dialogService.error(
-      this.translator.get(
-        "Warning!"
-      ), "Empty_date_field");
+      } else {
+        return true;
+      }
+    } else {
+      this.dialogService.error(
+        this.translator.get(
+          "Warning!"
+        ), "Empty_date_field");
+    }
+
   }
 
- }
-
-  parseDate(dateMilisecondsNumber){
-    return formatDate(new Date(parseInt(dateMilisecondsNumber)),'yyyy-MM-dd',this.locale)
+  parseDate(dateMilisecondsNumber) {
+    return formatDate(new Date(parseInt(dateMilisecondsNumber)), 'yyyy-MM-dd', this.locale)
   }
 
 }
