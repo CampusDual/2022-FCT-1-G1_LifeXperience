@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { NgModule } from '@angular/core';
+import { Injector,NgModule } from '@angular/core';
 import { OntimizeWebModule } from 'ontimize-web-ngx';
 import { OChartModule } from 'ontimize-web-ngx-charts';
 import { MENU_COMPONENTS } from './app.menu.config';
@@ -17,6 +17,7 @@ import { MENU_COMPONENTS } from './app.menu.config';
     CommonModule,
     OChartModule,
     ...MENU_COMPONENTS,
+    OChartModule
   ],
   entryComponents: [...MENU_COMPONENTS],
 })
