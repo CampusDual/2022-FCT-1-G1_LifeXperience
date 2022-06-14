@@ -61,7 +61,7 @@ export class HomeComponent implements OnInit {
     this.service.configureService(conf);
 
     this.service
-      .query(void 0, ["amountpaid", "paymentdate"], "clientExperienceDetails")
+      .query(void 0, ["total"], "clientExperienceTotalAmountsOfTheMonthsOfAYear")
       .subscribe((resp) => {
         if (resp.code === 0) {
           this.candlestick.setDataArray(

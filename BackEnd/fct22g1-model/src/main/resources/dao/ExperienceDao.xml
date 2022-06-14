@@ -46,6 +46,7 @@
                #WHERE#
             ]]>
             </Sentence>
-        </Query>        
+        </Query>       
+        
     </Queries>
 </JdbcEntitySetup>
