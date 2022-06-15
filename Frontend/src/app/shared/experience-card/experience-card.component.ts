@@ -1,19 +1,23 @@
-import { ChangeDetectorRef, Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { OntimizeService } from 'ontimize-web-ngx';
-import { DiscreteBarChartConfiguration } from 'ontimize-web-ngx-charts';
+import {
+  ChangeDetectorRef,
+  Component,
+  OnInit,
+  ViewEncapsulation,
+} from "@angular/core";
+import { OntimizeService } from "ontimize-web-ngx";
+import { DiscreteBarChartConfiguration } from "ontimize-web-ngx-charts";
 import { D3LocaleService } from "src/app/shared/d3-locale/d3Locale.service";
 
 @Component({
-  selector: 'app-branch-card',
-  templateUrl: './experience-card.component.html',
-  styleUrls: ['./experience-card.component.css'],
+  selector: "app-branch-card",
+  templateUrl: "./experience-card.component.html",
+  styleUrls: ["./experience-card.component.css"],
   encapsulation: ViewEncapsulation.None,
   host: {
-    '[class.home-card]': 'true'
-  }
+    "[class.home-card]": "true",
+  },
 })
 export class ExperienceCardComponent implements OnInit {
-
   private d3Locale;
   experiencesAmount: any;
   experiencesGainAmount: any;
@@ -26,24 +30,28 @@ export class ExperienceCardComponent implements OnInit {
     private cd: ChangeDetectorRef
   ) {
     this.d3Locale = this.d3LocaleService.getD3LocaleConfiguration();
-    this.ontimizeService.configureService(this.ontimizeService.getDefaultServiceConfiguration('experiences'));
-    this.ontimizeService.query(void 0, ['total'], 'lastThreeMonthsGainExperiences').subscribe(
-      res => {
-        if (res && res.data.length && res.code === 0) {
-          this.adaptResult(res.data);
-        }
-      },
-      err => console.log(err),
-      () => this.cd.detectChanges()
+    this.ontimizeService.configureService(
+      this.ontimizeService.getDefaultServiceConfiguration("experiences")
     );
+    this.ontimizeService
+      .query(void 0, ["total"], "lastThreeMonthsGainExperiences")
+      .subscribe(
+        (res) => {
+          if (res && res.data.length && res.code === 0) {
+            this.adaptResult(res.data);
+          }
+        },
+        (err) => console.log(err),
+        () => this.cd.detectChanges()
+      );
 
-    this.ontimizeService.query(void 0, ['id'], 'experience').subscribe(
-      res => {
+    this.ontimizeService.query(void 0, ["id"], "experience").subscribe(
+      (res) => {
         if (res && res.data.length && res.code === 0) {
           this.experiencesAmount = res.data.length;
         }
       },
-      err => console.log(err),
+      (err) => console.log(err),
       () => this.cd.detectChanges()
     );
 
@@ -60,36 +68,49 @@ export class ExperienceCardComponent implements OnInit {
       // chart data
       this.graphData = [
         {
-          'key': 'Discrete serie',
-          'values': values
-        }
-      ]
+          key: "Discrete serie",
+          values: values,
+        },
+      ];
     }
   }
 
   processValues(data: any) {
     let values = [];
-    const mes= new Date().getMonth()+1;
+    const mes = new Date().getMonth() + 1;
 
-    data.forEach((item: any, index: number) => {
+    //Bucle que recorre lo meses
+    for (let i = mes - 2; i <= mes; i++) {
+      var flag = true;
 
-      for (let i = mes-2; i <= mes; i++) {
-        if (item['x'] == i ) {
+      //Bucle que recorre los datos 
+      for (let j = 0; j < data.length && flag; j++) {
+        var item = data[j];
+        //Si esta el mas lo añadimos a los nuevos valores y cambiamos al boolena para que no lo añada abajo
+        if (item["x"] == i) {
           values.push({
-            'x': item['x'],
-            'y': item['y']
-          })
-        }else if(item['x'] != i && !values.includes(item['x'])){
-          values.push({
-            'x': i,
-            'y': 0
-          })
+            x: item["x"],
+            y: item["y"],
+          });
+
+          flag = false;
         }
       }
 
-      console.log(item['x']);
-      item['x'] = this.d3Locale['shortMonths'][item['x'] - 1];
-      console.log(item['x']);
+      //Si despues de buscar en los datos de la peticion no encontramos el mes
+      //Lo añadimos a 0. 
+      if (flag) {
+        values.push({
+          x: i,
+          y: 0,
+        });
+      }
+    }
+
+    data.forEach((item: any, index: number) => {
+      console.log(item["x"]);
+      item["x"] = this.d3Locale["shortMonths"][item["x"] - 1];
+      console.log(item["x"]);
     });
 
     // let thirdMonth = {
@@ -113,8 +134,5 @@ export class ExperienceCardComponent implements OnInit {
     return values;
   }
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }
-
