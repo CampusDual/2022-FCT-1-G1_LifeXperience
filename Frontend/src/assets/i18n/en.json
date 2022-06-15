@@ -74,6 +74,7 @@
     "subscriptions": "Experience Box",
     "surname": "Surname",
     "user": "User",
+    "adultage": "Client's age needs to be higher than 18 years old",
     "user_": "User",
     "Users": "Users",
     "client_experience_box_dialog_confirmation_title": "Add experience box?",

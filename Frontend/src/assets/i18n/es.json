@@ -74,6 +74,7 @@
     "Set-Assistance":"Fijar Asistencia",
     "surname": "Apellidos",
     "user": "Usuario",
+    "adultage": "El cliente debe ser mayor de edad",
     "user_": "Usuario",
     "Users": "Usuarios",
     "client_experience_box_dialog_confirmation_title": "¿Añadir caja de experiencias?",
