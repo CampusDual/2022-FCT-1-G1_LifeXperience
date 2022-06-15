@@ -5,6 +5,8 @@ import com.campusdual.fct22g1.model.core.dao.BoxClientDao;
 import com.ontimize.jee.common.dto.EntityResult;
 import com.ontimize.jee.common.exceptions.OntimizeJEERuntimeException;
 import com.ontimize.jee.server.dao.DefaultOntimizeDaoHelper;
+import com.ontimize.jee.server.dao.jdbc.OntimizeJdbcDaoSupport;
+
 import java.util.List;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -83,5 +85,13 @@ public class ExperienceBoxService implements IExperienceBoxService {
         return this.daoHelper.query(this.boxClientDao, keyMap, attrList,
                 BoxClientDao.QUERY_CLIENT_BOX_EXPERIENCE);
     }
+
+	@Override
+	public EntityResult clientExperienceBoxTotalAmountsQuery(Map<String, Object> keyMap, List<String> attrList)
+			throws OntimizeJEERuntimeException {
+		
+		return this.daoHelper.query(this.boxClientDao, keyMap, attrList,
+                BoxClientDao.QUERY_TOTAL_AMOUNTS_BOXES);
+	}
 
 }
