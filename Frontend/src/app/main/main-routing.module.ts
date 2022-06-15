@@ -17,6 +17,7 @@ export const routes: Routes = [
       { path :'clients', loadChildren: () => import('./clients/clients.module').then(m => m.ClientsModule) },
       { path: 'paymentsexp', loadChildren: () => import('./paymentsExperiencies/paymentsexp.module').then(m => m.PaymentsExpModule) },
       { path: 'paymentsbox', loadChildren: () => import('./paymentsBoxes/paymentsbox.module').then(m => m.PaymentsBoxModule) },
+      { path: 'statistics', loadChildren: () => import('./statistics/statistics.module').then(m => m.StatisticsModule) },
     ]
   }
 ];
