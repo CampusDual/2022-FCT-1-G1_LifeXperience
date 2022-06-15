@@ -13,28 +13,47 @@ import { DiscreteBarChartConfiguration } from 'ontimize-web-ngx-charts';
 })
 export class ExperienceCardComponent implements OnInit {
 
-  public experiencesAmount: number;
+  experiencesAmount: any;
   public chartParameters: DiscreteBarChartConfiguration;
   protected graphData: Array<Object>;
-
 
   constructor(
     private ontimizeService: OntimizeService,
     private cd: ChangeDetectorRef
   ) {
     this.ontimizeService.configureService(this.ontimizeService.getDefaultServiceConfiguration('experiences'));
-    this.ontimizeService.query(void 0, ['id'], 'experience').subscribe(
+    this.ontimizeService.query(void 0, ['total'], 'lastThreeMonthsGainExperiences').subscribe(
       res => {
-        if (res && res.data.length) {
-          this.experiencesAmount = res.data.length;
+        if (res && res.data.length && res.code === 0) {
+          //this.experiencesAmount = res.data.length;
+          this.adaptResult(res.data);
         }
       },
       err => console.log(err),
       () => this.cd.detectChanges()
     );
+
+    this.chartParameters = new DiscreteBarChartConfiguration();
+    this.chartParameters.height = 130;
+    this.chartParameters.showLegend = false;
+    this.chartParameters.y1Axis.showMaxMin = false;
+    this.chartParameters.x1Axis.showMaxMin = false;
+  }
+
+  adaptResult(data: any) {
+    if (data && data.length) {
+      // chart data
+      this.graphData = [
+        {
+          'key': 'Discrete serie',
+          'values': data
+        }
+      ]
+    }
   }
 
   ngOnInit() {
   }
 
 }
+
