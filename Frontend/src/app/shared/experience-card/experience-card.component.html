@@ -4,8 +4,8 @@
     <p class="home-card-home-amount" fxFlex>{{ experiencesAmount }}</p>
   </div>
   <div fxLayoutAlign="space-between center">
-    <p class="home-card-title" fxFlex>{{ 'experiences' | oTranslate }}</p>
-    <p class="home-card-home-amount" fxFlex>Gráfica</p>
+    <p class="home-card-title" fxFlex>{{ 'Income_last_3_months' | oTranslate }}</p>
+    <p class="home-card-home-amount" fxFlex style="size: 2%;">300€</p>
   </div>
 </div>
 <o-chart type="discreteBar" x-label="Axis x" y-label="Axis Y" [data]="graphData" [chart-parameters]="chartParameters" fxFlex></o-chart>

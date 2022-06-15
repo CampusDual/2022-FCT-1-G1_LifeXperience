@@ -19,7 +19,8 @@ public class ClientExperienceDao extends OntimizeJdbcDaoSupport {
     public static final String ATTR_ASSISTANCE="assistance";
     public static final String QUERY_CLIENT_EXPERIENCE = "details";
     
-    public static final String QUERY_CLIENT_EXPERIENCE_ASSISTANCE = "client_experience_assistance_false";
+    public static final String QUERY_CLIENT_EXPERIENCE_ASSISTANCE = "client_experience_assistance_false";  
+    public static final String QUERY_LAST_THREE_MONTHS_GAIN_EXPERIENCES = "last_three_months_gain_experiences";
 
 
 }

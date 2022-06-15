@@ -98,8 +98,13 @@ public class ExperienceService implements IExperienceService {
         return this.daoHelper.query(this.clientExperienceDao, keyMap, attrList, ClientExperienceDao.QUERY_CLIENT_EXPERIENCE_ASSISTANCE);
     }
     
-    
+    @Override
+    public EntityResult lastThreeMonthsGainExperiencesQuery(Map<String, Object> keyMap, List<String> attrList)
+            throws OntimizeJEERuntimeException {
 
+        return this.daoHelper.query(this.clientExperienceDao, keyMap, attrList, ClientExperienceDao.QUERY_LAST_THREE_MONTHS_GAIN_EXPERIENCES);
+    }
+    
     @Override
     public EntityResult experienceBoxExperienceQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException {
         return this.daoHelper.query(this.experienceBoxExperienceDao, keyMap, attrList);

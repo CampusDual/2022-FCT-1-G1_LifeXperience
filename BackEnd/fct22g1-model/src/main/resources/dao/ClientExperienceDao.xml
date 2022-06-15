@@ -73,6 +73,21 @@
    ]]>
    </Sentence>
 		</Query>
+		
+		<Query id="last_three_months_gain_experiences">
+			<ValidColumns>
+				<Column>total</Column>
+				<Column>month</Column>
+			</ValidColumns>
+			<Sentence>
+   <![CDATA[
+    select EXTRACT(month FROM ce.paymentdate) as x, SUM(ce.amountpaid) as y
+	from clients_experiences ce
+	where ce.paymentdate >= current_date - interval '3 month'
+	group by EXTRACT(month FROM ce.paymentdate) order by x asc;
+   ]]>
+   </Sentence>
+		</Query>
 	</Queries>
 
 </JdbcEntitySetup>

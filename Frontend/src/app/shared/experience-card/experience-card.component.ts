@@ -13,22 +13,17 @@ import { DiscreteBarChartConfiguration } from 'ontimize-web-ngx-charts';
 })
 export class ExperienceCardComponent implements OnInit {
 
-  experiencesAmount: any;
   public chartParameters: DiscreteBarChartConfiguration;
   protected graphData: Array<Object>;
-  // protected criteriaValue = 5000;
-
-
 
   constructor(
     private ontimizeService: OntimizeService,
     private cd: ChangeDetectorRef
   ) {
     this.ontimizeService.configureService(this.ontimizeService.getDefaultServiceConfiguration('experiences'));
-    this.ontimizeService.query(void 0, ['id'], 'experience').subscribe(
+    this.ontimizeService.query(void 0, ['total'], 'lastThreeMonthsGainExperiences').subscribe(
       res => {
         if (res && res.data.length && res.code === 0) {
-          this.experiencesAmount = res.data.length;
           this.adaptResult(res.data);
         }
       },
@@ -45,47 +40,14 @@ export class ExperienceCardComponent implements OnInit {
 
   adaptResult(data: any) {
     if (data && data.length) {
-      let values = this.processValues(data);
       // chart data
       this.graphData = [
         {
           'key': 'Discrete serie',
-          'values': values
+          'values': data
         }
       ]
     }
-  }
-
-  processValues(data: any) {
-    let values = [];
-
-    data.forEach((item: any, index: number) => {
-      // if (item['BALANCE'] >= this.criteriaValue){
-      //   majorValue++;
-      // }else{
-      //   minorValue++;
-      // }
-    });
-
-    let lowerCrit = {
-      'x': 'Abril',
-      'y': 7
-    }
-
-    let upperCrit = {
-      'x': 'Mayo',
-      'y': 5
-    }
-
-    let actualMonth = {
-      'x': 'Junio',
-      'y': 6
-    }
-
-    values.push(lowerCrit);
-    values.push(upperCrit);
-    values.push(actualMonth);
-    return values;
   }
 
   ngOnInit() {

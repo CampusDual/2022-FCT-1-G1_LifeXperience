@@ -214,15 +214,6 @@ export class ClientsDetailsComponent implements OnInit {
     const conf = this.service.getDefaultServiceConfiguration(service);
     this.service.configureService(conf);
 
-    // const config: OSnackBarConfig = {
-    //   action: this.translator.get(
-    //     "Done"
-    //   ),
-    //   milliseconds: 5000,
-    //   icon: 'done',
-    //   iconPosition: 'left'
-    // };
-
     this.service.insert(av, entity, sqltypes).subscribe((resp) => {
       if (resp.code === 0) {
         if (service == "experiences") {
