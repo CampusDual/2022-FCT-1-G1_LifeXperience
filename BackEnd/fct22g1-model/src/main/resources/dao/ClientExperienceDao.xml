@@ -1,48 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <JdbcEntitySetup
-	xmlns="http://www.ontimize.com/schema/jdbc"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.ontimize.com/schema/jdbc http://www.ontimize.com/schema/jdbc/ontimize-jdbc-dao.xsd"
-	catalog="" schema="${mainschema}" table="clients_experiences"
-	datasource="mainDataSource" sqlhandler="dbSQLStatementHandler">
-	<DeleteKeys>
-		<Column>id</Column>
-	</DeleteKeys>
-	<UpdateKeys>
-		<Column>id</Column>
-	</UpdateKeys>
-	<GeneratedKey>id</GeneratedKey>
+    xmlns="http://www.ontimize.com/schema/jdbc"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.ontimize.com/schema/jdbc http://www.ontimize.com/schema/jdbc/ontimize-jdbc-dao.xsd"
+    catalog="" schema="${mainschema}" table="clients_experiences"
+    datasource="mainDataSource" sqlhandler="dbSQLStatementHandler">
+    <DeleteKeys>
+        <Column>id</Column>
+    </DeleteKeys>
+    <UpdateKeys>
+        <Column>id</Column>
+    </UpdateKeys>
+    <GeneratedKey>id</GeneratedKey>
 
-	<Queries>
-		<Query id="details">
-			<AmbiguousColumns>
-				<AmbiguousColumn name="exp_name" prefix="e"
-					databaseName="name" />
-				<AmbiguousColumn name="client_name" prefix="c"
-					databaseName="name" />
-				<AmbiguousColumn name="client_id" prefix="c"
-					databaseName="id" />
-				<AmbiguousColumn name="experience_id" prefix="e"
-					databaseName="id" />
-				<AmbiguousColumn name="relation_id" prefix="ce"
-					databaseName="id" />
-				<AmbiguousColumn name="client_address" prefix="c"
-					databaseName="address" />				
-			</AmbiguousColumns>
-			<Sentence>
-   <![CDATA[
-     select
-      #COLUMNS#
-     from
-      ${mainschema}.clients_experiences ce
-      inner join ${mainschema}.clients c on
-      ce.id_client = c.id  
-     inner join ${mainschema}.experiences e on
-      ce.id_experience = e.id        
-     #WHERE#
-   ]]>
-   </Sentence>
-		</Query>
+    <Queries>
+        <Query id="details">
+            <AmbiguousColumns>
+                <AmbiguousColumn name="exp_name" prefix="e"
+                                 databaseName="name" />
+                <AmbiguousColumn name="client_name" prefix="c"
+                                 databaseName="name" />
+                <AmbiguousColumn name="client_id" prefix="c"
+                                 databaseName="id" />
+                <AmbiguousColumn name="experience_id" prefix="e"
+                                 databaseName="id" />
+                <AmbiguousColumn name="relation_id" prefix="ce"
+                                 databaseName="id" />
+                <AmbiguousColumn name="client_address" prefix="c"
+                                 databaseName="address" />				
+            </AmbiguousColumns>
+            <Sentence>
+                <![CDATA[
+                  select
+                   #COLUMNS#
+                  from
+                   ${mainschema}.clients_experiences ce
+                   inner join ${mainschema}.clients c on
+                   ce.id_client = c.id  
+                  inner join ${mainschema}.experiences e on
+                   ce.id_experience = e.id        
+                  #WHERE#
+                ]]>
+            </Sentence>
+        </Query>
 		
 		<Query id="client_experience_assistance_false">
 			<AmbiguousColumns>
@@ -88,6 +88,21 @@
    ]]>
    </Sentence>
 		</Query>
+
+        <Query id="total_amounts_of_the_months_of_a_year">
+            <ValidColumns>
+                <Column>total</Column>
+                <Column>month</Column>
+            </ValidColumns>
+            <Sentence>
+                <![CDATA[
+                    select EXTRACT(month FROM ce.paymentdate) as month, SUM(ce.amountpaid) as total
+                    from clients_experiences ce 
+                    where EXTRACT(year FROM ce.paymentdate) = EXTRACT(year FROM current_date)
+                    group by EXTRACT(month FROM ce.paymentdate);
+                ]]>
+            </Sentence>
+        </Query>
 	</Queries>
 
 </JdbcEntitySetup>

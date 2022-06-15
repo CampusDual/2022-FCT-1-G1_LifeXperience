@@ -15,7 +15,11 @@
                 <o-text-input class="input-padding" attr="email" fxFlex="40" required="yes"></o-text-input>
             </o-row>
             <o-row>
-                <o-date-input attr="birthdate" fxFlex="20" required="yes" enabled="yes" fxFlex="40"></o-date-input>
+                <o-date-input attr="birthdate" fxFlex="20" required="yes" enabled="yes" fxFlex="40">
+                  <o-validator [validator-function] = "ageValidator">
+                    <o-error name="adult" text="adultage"></o-error>
+                  </o-validator>
+                </o-date-input>
             </o-row>
             <o-row>
                 <o-textarea-input class="input-padding" attr="address" fxFlex="40" required="yes" enabled="yes">

@@ -23,7 +23,7 @@ import {
   SQLTypes,
 } from "ontimize-web-ngx";
 import { ModalService } from "../../ui-elements/jw-modal-window";
-
+import { ValidatorFn, ValidationErrors, FormControl } from '@angular/forms';
 @Component({
   selector: "app-clients-details",
   templateUrl: "./clients-details.component.html",
@@ -70,7 +70,8 @@ export class ClientsDetailsComponent implements OnInit {
     private snackBarService: SnackBarService,
     @Inject(LOCALE_ID) private locale: string,
     private translator: OTranslateService
-  ) {}
+  ) {
+  }
 
   ngOnInit() {
     this.clientBoxConfirmDialogTitle = this.translator.get(
@@ -96,6 +97,16 @@ export class ClientsDetailsComponent implements OnInit {
 
   closeModal(id: string) {
     this.modalService.close(id);
+  }
+  ageValidator(control: FormControl): ValidationErrors {
+    let result = {};
+    let currentdateYear = new Date().getFullYear();
+    let selectedDateYear = new Date(control.value).getFullYear();
+    console.log(currentdateYear, selectedDateYear, (currentdateYear - selectedDateYear < 18));
+    if (control.value && (currentdateYear - selectedDateYear < 18)) {
+      result['adult'] = true;
+    }
+    return result;
   }
 
   //If the name of 'iData' is changed it has necessary to change de string of the clientBoxConfirmDialog because they have a string format with this variable
