@@ -31,5 +31,19 @@
                 ]]>
             </Sentence>
         </Query>
+        <Query id="total_amounts_boxes">
+            <ValidColumns>
+                <Column>total</Column>
+                <Column>month</Column>
+            </ValidColumns>
+            <Sentence>
+                <![CDATA[
+                    select EXTRACT(month FROM bc.paymentdate) as month, SUM(bc.amountpaid) as total
+                    from boxclient bc 
+                    where EXTRACT(year FROM bc.paymentdate) = EXTRACT(year FROM current_date)
+                    group by EXTRACT(month FROM bc.paymentdate);
+                ]]>
+            </Sentence>
+        </Query>
     </Queries>
 </JdbcEntitySetup>

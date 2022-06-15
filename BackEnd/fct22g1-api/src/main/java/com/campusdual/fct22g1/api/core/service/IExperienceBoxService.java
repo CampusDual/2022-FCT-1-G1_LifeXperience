@@ -29,5 +29,7 @@ public interface IExperienceBoxService {
 
     public EntityResult clientExperienceBoxDefaultQuery(Map<String, Object> keyMap, List<String> attrList)
             throws OntimizeJEERuntimeException;
+    public EntityResult clientExperienceBoxTotalAmountsQuery(Map<String, Object> keyMap, List<String> attrList)
+            throws OntimizeJEERuntimeException;
 
 }
