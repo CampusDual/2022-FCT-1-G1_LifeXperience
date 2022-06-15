@@ -26,7 +26,6 @@ export class HomeComponent implements OnInit {
     private d3LocaleService: D3LocaleService
   ) {
     this.d3Locale = this.d3LocaleService.getD3LocaleConfiguration();
-    console.log(this.d3Locale['months'][0]);
   }
 
   ngOnInit() {
@@ -49,7 +48,6 @@ export class HomeComponent implements OnInit {
     this.chartParameters = new LineChartConfiguration();
 
     this.chartParameters.xAxis = "month";
-    this.chartParameters.xDataType = "string";
     this.chartParameters.yAxis = ["total"];
     this.chartParameters.isArea = [true];
     this.chartParameters.interactive = false;
@@ -87,12 +85,11 @@ export class HomeComponent implements OnInit {
 
   adaptTotalAmount(data) {
     if (data && data.length) {
-      data.forEach((item: any, index: number) => {
-        //TODO:Revisar que coge bien el mes
-        console.log(item['month'] - 1)
-        item['month'] = this.d3Locale[item['month'] - 1]
-
-      });
+     /* data.forEach((item: any, index: number) => {
+        item['month'] = this.d3Locale['shortMonths'][item['month'] - 1]
+      });*/
+      data[0]['month'] = 'May';
+      data[1]['month'] = 'Jun';
     }
   }
   
