@@ -4,7 +4,7 @@ import { connectableObservableDescriptor } from 'rxjs/internal/observable/Connec
 
 import { D3Locales } from './locales';
 //TODO:Mirar para que sirve la variable d3 y el método locale()
-declare var d3: any;
+//declare var d3: any;
 
 @Injectable({
   providedIn: 'root'
@@ -16,8 +16,8 @@ export class D3LocaleService {
   ) { }
 
   public getD3LocaleConfiguration(): any {
-    return d3.locale(D3Locales[this.translateService.getCurrentLang().toUpperCase()])
-    //return D3Locales[this.translateService.getCurrentLang().toUpperCase()];
+    //d3.locale(D3Locales[this.translateService.getCurrentLang().toUpperCase()])
+   return D3Locales[this.translateService.getCurrentLang().toUpperCase()];
   }
 
 }

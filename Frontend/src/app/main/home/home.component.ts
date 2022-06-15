@@ -4,6 +4,7 @@ import { OntimizeService, SQLTypes } from "ontimize-web-ngx";
 import {
   CandlestickChartConfiguration,
   DataAdapterUtils,
+  DiscreteBarChartConfiguration,
   LineChartConfiguration,
   OChartComponent,
   PieChartConfiguration,
@@ -29,7 +30,6 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    // nothing to do
   }
 
   navigate() {
@@ -42,16 +42,13 @@ export class HomeComponent implements OnInit {
 
   @ViewChild("candlestick", { static: false }) candlestick: OChartComponent;
 
-  chartParameters: LineChartConfiguration;
+  chartParameters: DiscreteBarChartConfiguration;
 
   ngAfterViewInit() {
-    this.chartParameters = new LineChartConfiguration();
+    this.chartParameters = new DiscreteBarChartConfiguration();
 
     this.chartParameters.xAxis = "month";
     this.chartParameters.yAxis = ["total"];
-    this.chartParameters.isArea = [true];
-    this.chartParameters.interactive = false;
-    this.chartParameters.useInteractiveGuideline = false;
 
     DataAdapterUtils.createDataAdapter(this.chartParameters);
 
@@ -85,11 +82,9 @@ export class HomeComponent implements OnInit {
 
   adaptTotalAmount(data) {
     if (data && data.length) {
-     /* data.forEach((item: any, index: number) => {
+      data.forEach((item: any, index: number) => {
         item['month'] = this.d3Locale['shortMonths'][item['month'] - 1]
-      });*/
-      data[0]['month'] = 'May';
-      data[1]['month'] = 'Jun';
+      });
     }
   }
   
