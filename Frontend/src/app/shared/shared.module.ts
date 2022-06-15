@@ -8,6 +8,7 @@ import { MENU_COMPONENTS } from './app.menu.config';
 @NgModule({
   imports: [
     OntimizeWebModule,
+    OChartModule
   ],
   declarations: [
     ...MENU_COMPONENTS,
