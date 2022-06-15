@@ -1,11 +1,3 @@
-<div>
-    <o-card-menu-layout parent-menu-id="modules">
-    </o-card-menu-layout>
-</div>
-<div>
-    <o-form #dataForm service="experiences" entity="clientExperienceDetails" keys="relation_id" header-actions="R"
-        show-header-navigation="no" (onDataLoaded)="onFormDataLoaded($event)">
-        <o-chart #candlestick type="discreteBar" chart-widtht="200"  chart-height="600" [chart-parameters]="chartParameters">
-        </o-chart>
-    </o-form>
-</div>
+
+<o-card-menu-layout parent-menu-id="modules">
+</o-card-menu-layout>
