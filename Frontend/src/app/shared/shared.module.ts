@@ -15,7 +15,6 @@ import { MENU_COMPONENTS } from './app.menu.config';
   ],
   exports: [
     CommonModule,
-    OChartModule,
     ...MENU_COMPONENTS,
     OChartModule
   ],
