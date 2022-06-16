@@ -11,20 +11,25 @@ import {
 import { D3LocaleService } from "src/app/shared/d3-locale/d3Locale.service";
 
 @Component({
-  selector: 'app-statistics-home',
-  templateUrl: './statistics-home.component.html',
-  styleUrls: ['./statistics-home.component.css']
+  selector: "app-statistics-home",
+  templateUrl: "./statistics-home.component.html",
+  styleUrls: ["./statistics-home.component.css"],
 })
 export class StatisticsHomeComponent implements OnInit {
   private d3Locale;
   protected service: OntimizeService;
 
-  @ViewChild("discreteBarChartTotalAmountsOfTheMonthsOfAYear", { static: false }) discreteBarChartdiscreteBarChartTotalAmountsOfTheMonthsOfAYear: OChartComponent;
-  @ViewChild("discreteBarChartClientBox", { static: false }) discreteBarChartClientBox: OChartComponent;
-  @ViewChild("multiBarChartExpAndBoxTotalMonthComparation", { static: false }) multiBarChartExpAndBoxTotalMonthComparation: OChartComponent;
+  @ViewChild("discreteBarChartTotalAmountsOfTheMonthsOfAYear", {
+    static: false,
+  })
+  discreteBarChartdiscreteBarChartTotalAmountsOfTheMonthsOfAYear: OChartComponent;
+  @ViewChild("discreteBarChartClientBox", { static: false })
+  discreteBarChartClientBox: OChartComponent;
+  @ViewChild("multiBarChartExpAndBoxTotalMonthComparation", { static: false })
+  multiBarChartExpAndBoxTotalMonthComparation: OChartComponent;
 
   private chartAdapterTotalMonthAdapter: DiscreteBarDataAdapter;
-  private chartAdapterCombinedExpAndBoxTotalMonthAdapter: MultiBarDataAdapter
+  private chartAdapterCombinedExpAndBoxTotalMonthAdapter: MultiBarDataAdapter;
 
   constructor(
     private d3LocaleService: D3LocaleService,
@@ -33,23 +38,31 @@ export class StatisticsHomeComponent implements OnInit {
     this.d3Locale = this.d3LocaleService.getD3LocaleConfiguration();
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   ngAfterViewInit() {
-
-
-    var chartParametersAdapterTotalMonthAdapter = new DiscreteBarChartConfiguration();
+    var chartParametersAdapterTotalMonthAdapter =
+      new DiscreteBarChartConfiguration();
     chartParametersAdapterTotalMonthAdapter.xAxis = "month";
     chartParametersAdapterTotalMonthAdapter.yAxis = ["total"];
-    this.chartAdapterTotalMonthAdapter = new DiscreteBarDataAdapter(chartParametersAdapterTotalMonthAdapter)
+    this.chartAdapterTotalMonthAdapter = new DiscreteBarDataAdapter(
+      chartParametersAdapterTotalMonthAdapter
+    );
 
-    var chartParametersAdapterCombinedExpAndBoxTotalMonthAdapter = new MultiBarChartConfiguration();
+    var chartParametersAdapterCombinedExpAndBoxTotalMonthAdapter =
+      new MultiBarChartConfiguration();
     chartParametersAdapterCombinedExpAndBoxTotalMonthAdapter.xAxis = "month";
-    chartParametersAdapterCombinedExpAndBoxTotalMonthAdapter.yAxis = ["totalExp", "totalExpBox"];
+    chartParametersAdapterCombinedExpAndBoxTotalMonthAdapter.yAxis = [
+      "totalExp",
+      "totalExpBox",
+    ];
     //El siguiente parametro hace que se muestren todo las labels del eje x, en este caso deberia de mostrar todos los meses
-    chartParametersAdapterCombinedExpAndBoxTotalMonthAdapter.reduceXTicks = false;
-    this.chartAdapterCombinedExpAndBoxTotalMonthAdapter = new MultiBarDataAdapter(chartParametersAdapterCombinedExpAndBoxTotalMonthAdapter)
+    chartParametersAdapterCombinedExpAndBoxTotalMonthAdapter.reduceXTicks =
+      false;
+    this.chartAdapterCombinedExpAndBoxTotalMonthAdapter =
+      new MultiBarDataAdapter(
+        chartParametersAdapterCombinedExpAndBoxTotalMonthAdapter
+      );
 
     this.getExpPayments();
     this.getExpBoxPayments();
@@ -68,7 +81,6 @@ export class StatisticsHomeComponent implements OnInit {
       )
       .subscribe((resp) => {
         if (resp.code === 0) {
-
           this.adaptTotalAmount(resp.data);
 
           this.discreteBarChartdiscreteBarChartTotalAmountsOfTheMonthsOfAYear.setDataArray(
@@ -85,14 +97,9 @@ export class StatisticsHomeComponent implements OnInit {
     this.service.configureService(conf);
 
     this.service
-      .query(
-        void 0,
-        ["total"],
-        "clientExperienceBoxTotalAmounts"
-      )
+      .query(void 0, ["total"], "clientExperienceBoxTotalAmounts")
       .subscribe((resp) => {
         if (resp.code === 0) {
-
           this.adaptTotalAmount(resp.data);
 
           this.discreteBarChartClientBox.setDataArray(
@@ -107,7 +114,6 @@ export class StatisticsHomeComponent implements OnInit {
   getComparation() {
     var expData;
     var expBoxData;
-    var interruptor = true;
 
     this.service = this.injector.get(OntimizeService);
     var conf = this.service.getDefaultServiceConfiguration("experiences");
@@ -122,36 +128,38 @@ export class StatisticsHomeComponent implements OnInit {
       .subscribe((resp) => {
         if (resp.code === 0) {
           expData = resp.data;
-          interruptor = false;
-          console.log("Llegamos a experience");
+
+          //Segunda peticion
+          conf = this.service.getDefaultServiceConfiguration("experienceboxes");
+          this.service.configureService(conf);
+          this.service
+            .query(void 0, ["total"], "clientExperienceBoxTotalAmounts")
+            .subscribe((resp) => {
+              if (resp.code === 0) {
+                expBoxData = resp.data;
+                var finalData = this.adapData(expData, expBoxData);
+                this.adaptTotalAmount(finalData);
+
+                this.multiBarChartExpAndBoxTotalMonthComparation.setDataArray(
+                  this.chartAdapterCombinedExpAndBoxTotalMonthAdapter.adaptResult(
+                    finalData
+                  )
+                );
+              } else {
+                console.log("Error");
+              }
+            });
+
+
+
+
         } else {
+          //Caso erroneo de la primera peticion
           console.log("Error");
         }
       });
 
-    conf = this.service.getDefaultServiceConfiguration("experienceboxes");
-    this.service.configureService(conf);
-    this.service
-      .query(void 0, ["total"], "clientExperienceBoxTotalAmounts")
-      .subscribe((resp) => {
-        if (resp.code === 0) {
-          expBoxData = resp.data;
-          while (interruptor) { }
-
-          var finalData = this.adapData(expData, expBoxData);
-          this.adaptTotalAmount(finalData)
-
-          this.multiBarChartExpAndBoxTotalMonthComparation.setDataArray(
-            this.chartAdapterCombinedExpAndBoxTotalMonthAdapter.adaptResult(finalData)
-          );
-
-        } else {
-          console.log("Error");
-        }
-      });
   }
-
-
 
   adapData(dataExp, dataExpBox) {
     var finalMonth: number = new Date().getMonth() + 1;
@@ -169,18 +177,15 @@ export class StatisticsHomeComponent implements OnInit {
     }
 
     return finalData;
-
-
   }
 
   adaptTotalAmount(data) {
     if (data && data.length) {
       data.forEach((item: any, index: number) => {
-        item['month'] = this.d3Locale['shortMonths'][item['month'] - 1]
+        item["month"] = this.d3Locale["shortMonths"][item["month"] - 1];
       });
     }
   }
-
 
   //TODO:Estaria bien optimizar el moetodo para pasarle las columnas de los resultados del total y el mes
   validMonths(data, inicialMonth, finalMonth) {
@@ -214,5 +219,4 @@ export class StatisticsHomeComponent implements OnInit {
     }
     return values;
   }
-
 }
