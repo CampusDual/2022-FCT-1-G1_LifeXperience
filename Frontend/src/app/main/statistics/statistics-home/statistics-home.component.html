@@ -1,6 +1,11 @@
-
-<h2>Experience Total Amount</h2>
-<div>
-    <o-chart #discreteBarChartTotalAmountsOfTheMonthsOfAYear type="discreteBar" chart-height="300" [chart-parameters]="chartParameters">
+    <h2>{{'Experience Total Amount' | oTranslate }}</h2>
+<div class="chartStyle">
+    <o-chart #discreteBarChartTotalAmountsOfTheMonthsOfAYear type="discreteBar" chart-height="300" [chart-parameters]="chartParameters1">
     </o-chart>
 </div>
+    <h2>{{'ExperienceBox Total Amount' | oTranslate }}</h2>
+<div class="chartStyle">
+    <o-chart #discreteBarChartClientBox type="discreteBar" chart-height="300" [chart-parameters]="chartParameters2">
+    </o-chart>
+</div>
+

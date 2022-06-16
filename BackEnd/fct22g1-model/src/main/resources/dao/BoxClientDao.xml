@@ -41,7 +41,7 @@
                     select EXTRACT(month FROM bc.paymentdate) as month, SUM(bc.amountpaid) as total
                     from boxclient bc 
                     where EXTRACT(year FROM bc.paymentdate) = EXTRACT(year FROM current_date)
-                    group by EXTRACT(month FROM bc.paymentdate);
+                    group by EXTRACT(month FROM bc.paymentdate) order by month asc;
                 ]]>
             </Sentence>
         </Query>

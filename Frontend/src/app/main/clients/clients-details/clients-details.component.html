@@ -155,18 +155,19 @@
     </jw-modal>
 
     <!-- Assign assistance date modal-->
-    <jw-modal id="custom-modal-calendar" modal-width="700px" modal-margin="40px auto">
-      <o-form fxFlex="50" #calendarAssistanceInput>
+    <jw-modal id="custom-modal-calendar" modal-width="350px" modal-margin="40px auto">
+      <o-form fxFlex="100" #calendarAssistanceInput>
         <h1>{{ experienceName }}</h1>
         <o-date-input fxFlex="100" attr="calendarAssistance" label="Date" read-only="no" format="LL" required="yes"
           min="01/01/2020" max="01/01/2023" text-input-enabled="no"></o-date-input>
+          <o-button fxFlex="50" (click)="closeModal('custom-modal-calendar')" attr="buttonChangeLayout" id="buttonChangeLayout"
+        type="RAISED" label="{{ 'Close' | oTranslate }}" layout-padding color="accent">
+        </o-button>
+        <o-button fxFlex="50"(click)="showConfirm(null, 'updateAssistanceDate')" attr="buttonChangeLayout" id="buttonChangeLayout"
+        type="RAISED" label="{{ 'Add' | oTranslate }}" layout-padding color="accent"></o-button>
       </o-form>
 
-      <o-button (click)="closeModal('custom-modal-calendar')" attr="buttonChangeLayout" id="buttonChangeLayout"
-        type="RAISED" label="{{ 'Close' | oTranslate }}" layout-padding color="accent">
-      </o-button>
-      <o-button (click)="showConfirm(null, 'updateAssistanceDate')" attr="buttonChangeLayout" id="buttonChangeLayout"
-        type="RAISED" label="{{ 'Add' | oTranslate }}" layout-padding color="accent"></o-button>
+
     </jw-modal>
   </o-row>
 </o-form>
