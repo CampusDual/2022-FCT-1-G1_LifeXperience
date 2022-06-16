@@ -51,13 +51,25 @@
                 <Column>month</Column>
             </ValidColumns>
             <Sentence>
-            <![CDATA[
+                <![CDATA[
                 select EXTRACT(month FROM bc.paymentdate) as month, SUM(bc.amountpaid) as total
                 from boxclient bc
                 where bc.paymentdate  >  CURRENT_DATE - INTERVAL '3 months'
                 group by EXTRACT(month FROM bc.paymentdate) 
                 order by EXTRACT(month FROM bc.paymentdate) asc;
             ]]>
+            </Sentence>
+        </Query>
+        <Query id="benefits_last_3_months_sold_boxes">
+            <ValidColumns>
+                <Column>total</Column>
+            </ValidColumns>
+            <Sentence>
+                <![CDATA[ 
+                select SUM(bc.amountpaid) as total
+from boxclient bc
+     where bc.paymentdate  >  CURRENT_DATE - INTERVAL '3 months'
+                ]]>
             </Sentence>
         </Query>
     </Queries>

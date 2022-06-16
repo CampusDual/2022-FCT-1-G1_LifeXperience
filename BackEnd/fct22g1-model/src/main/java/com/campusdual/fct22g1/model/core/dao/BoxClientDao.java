@@ -15,4 +15,5 @@ public class BoxClientDao extends OntimizeJdbcDaoSupport {
     public static final String QUERY_CLIENT_BOX_EXPERIENCE = "default";
     public static final String QUERY_TOTAL_AMOUNTS_BOXES = "total_amounts_boxes";
     public static final String QUERY_LAST_3_MONTHS_BOXES_SOLD = "last_three_months_sold_boxes";
+    public static final String QUERY_LAST_3_MONTHS_BOXES_BENEFITS = "benefits_last_3_months_sold_boxes";
 }
