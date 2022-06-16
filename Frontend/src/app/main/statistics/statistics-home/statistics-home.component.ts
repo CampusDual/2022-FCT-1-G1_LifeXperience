@@ -3,6 +3,7 @@ import { OntimizeService } from "ontimize-web-ngx";
 import {
   DataAdapterUtils,
   DiscreteBarChartConfiguration,
+  DiscreteBarDataAdapter,
   MultiBarChartConfiguration,
   MultiBarDataAdapter,
   OChartComponent,
@@ -20,41 +21,35 @@ export class StatisticsHomeComponent implements OnInit {
 
   @ViewChild("discreteBarChartTotalAmountsOfTheMonthsOfAYear", { static: false }) discreteBarChartdiscreteBarChartTotalAmountsOfTheMonthsOfAYear: OChartComponent;
   @ViewChild("discreteBarChartClientBox", { static: false }) discreteBarChartClientBox: OChartComponent;
-  @ViewChild("discreteBarChartComparation", { static: false }) discreteBarChartComparation: OChartComponent;
+  @ViewChild("multiBarChartExpAndBoxTotalMonthComparation", { static: false }) multiBarChartExpAndBoxTotalMonthComparation: OChartComponent;
 
-  chartParameters1: DiscreteBarChartConfiguration;
-  chartParameters2: DiscreteBarChartConfiguration;
-  chartParameters3: MultiBarChartConfiguration;
-
-  
+  private chartAdapterTotalMonthAdapter: DiscreteBarDataAdapter;
+  private chartAdapterCombinedExpAndBoxTotalMonthAdapter: MultiBarDataAdapter
 
   constructor(
     private d3LocaleService: D3LocaleService,
     private injector: Injector
   ) {
     this.d3Locale = this.d3LocaleService.getD3LocaleConfiguration();
-   }
+  }
 
   ngOnInit() {
   }
 
   ngAfterViewInit() {
-    this.chartParameters3 = new MultiBarChartConfiguration();
-    this.chartParameters3.xAxis = "month";
-    this.chartParameters3.yAxis = ["totalExp","totalExpBox"];
-
-    this.chartParameters1 = new DiscreteBarChartConfiguration();
-    this.chartParameters1.xAxis = "month";
-    this.chartParameters1.yAxis = ["total"];
-    DataAdapterUtils.createDataAdapter(this.chartParameters1);
-
-
-    this.chartParameters2 = new DiscreteBarChartConfiguration();
-    this.chartParameters2.xAxis = "month";
-    this.chartParameters2.yAxis = ["total"];
-    DataAdapterUtils.createDataAdapter(this.chartParameters2);
 
     
+    var chartParametersAdapterTotalMonthAdapter = new DiscreteBarChartConfiguration();
+    chartParametersAdapterTotalMonthAdapter.xAxis = "month";
+    chartParametersAdapterTotalMonthAdapter.yAxis = ["total"];
+    this.chartAdapterTotalMonthAdapter = new DiscreteBarDataAdapter(chartParametersAdapterTotalMonthAdapter)
+
+    var chartParametersAdapterCombinedExpAndBoxTotalMonthAdapter = new MultiBarChartConfiguration();
+    chartParametersAdapterCombinedExpAndBoxTotalMonthAdapter.xAxis = "month";
+    chartParametersAdapterCombinedExpAndBoxTotalMonthAdapter.yAxis = ["totalExp", "totalExpBox"];
+    //El siguiente parametro hace que se muestren todo las labels del eje x, en este caso deberia de mostrar todos los meses
+    chartParametersAdapterCombinedExpAndBoxTotalMonthAdapter.reduceXTicks = false;
+    this.chartAdapterCombinedExpAndBoxTotalMonthAdapter = new MultiBarDataAdapter(chartParametersAdapterCombinedExpAndBoxTotalMonthAdapter)
 
     this.getExpPayments();
     this.getExpBoxPayments();
@@ -77,7 +72,7 @@ export class StatisticsHomeComponent implements OnInit {
           this.adaptTotalAmount(resp.data);
 
           this.discreteBarChartdiscreteBarChartTotalAmountsOfTheMonthsOfAYear.setDataArray(
-            DataAdapterUtils.adapter.adaptResult(resp.data)
+            this.chartAdapterTotalMonthAdapter.adaptResult(resp.data)
           );
         } else {
           console.log("Error");
@@ -101,23 +96,13 @@ export class StatisticsHomeComponent implements OnInit {
           this.adaptTotalAmount(resp.data);
 
           this.discreteBarChartClientBox.setDataArray(
-            DataAdapterUtils.adapter.adaptResult(resp.data)
+            this.chartAdapterTotalMonthAdapter.adaptResult(resp.data)
           );
         } else {
           console.log("Error");
         }
       });
   }
-
-  adaptTotalAmount(data) {
-    if (data && data.length) {
-      data.forEach((item: any, index: number) => {
-        item['month'] = this.d3Locale['shortMonths'][item['month'] - 1]
-      });
-    }
-  }
-
-
 
   getComparation() {
     var expData;
@@ -151,13 +136,13 @@ export class StatisticsHomeComponent implements OnInit {
       .subscribe((resp) => {
         if (resp.code === 0) {
           expBoxData = resp.data;
-          while (interruptor) {}
+          while (interruptor) { }
 
-          var finalData =  this.adapData(expData, expBoxData);
+          var finalData = this.adapData(expData, expBoxData);
+          this.adaptTotalAmount(finalData)
 
-          var adapterData = new MultiBarDataAdapter(this.chartParameters3).adaptResult(finalData)
-          this.discreteBarChartComparation.setDataArray(
-            adapterData
+          this.multiBarChartExpAndBoxTotalMonthComparation.setDataArray(
+            this.chartAdapterCombinedExpAndBoxTotalMonthAdapter.adaptResult(finalData)
           );
 
         } else {
@@ -186,6 +171,14 @@ export class StatisticsHomeComponent implements OnInit {
     return finalData;
 
 
+  }
+
+  adaptTotalAmount(data) {
+    if (data && data.length) {
+      data.forEach((item: any, index: number) => {
+        item['month'] = this.d3Locale['shortMonths'][item['month'] - 1]
+      });
+    }
   }
 
 
