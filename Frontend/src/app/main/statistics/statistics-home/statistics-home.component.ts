@@ -38,7 +38,7 @@ export class StatisticsHomeComponent implements OnInit {
 
   ngAfterViewInit() {
 
-    
+
     var chartParametersAdapterTotalMonthAdapter = new DiscreteBarChartConfiguration();
     chartParametersAdapterTotalMonthAdapter.xAxis = "month";
     chartParametersAdapterTotalMonthAdapter.yAxis = ["total"];

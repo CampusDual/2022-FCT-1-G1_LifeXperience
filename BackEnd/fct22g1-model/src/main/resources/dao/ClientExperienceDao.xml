@@ -96,7 +96,7 @@
             </ValidColumns>
             <Sentence>
                 <![CDATA[
-                    select EXTRACT(month FROM ce.paymentdate) as month, SUM(ce.amountpaid) as total
+                    select EXTRACT(month FROM ce.paymentdate) as month, SUM(ce.amountpaid) as total, Count(ce.amountpaid) as totalSum
                     from clients_experiences ce 
                     where EXTRACT(year FROM ce.paymentdate) = EXTRACT(year FROM current_date)
                     group by EXTRACT(month FROM ce.paymentdate);
