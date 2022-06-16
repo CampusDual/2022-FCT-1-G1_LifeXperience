@@ -20,7 +20,7 @@ import { D3LocaleService } from "src/app/shared/d3-locale/d3Locale.service";
 export class ExperienceCardComponent implements OnInit {
   private d3Locale;
   experiencesAmount: any;
-  experiencesGainAmount: any;
+  public experiencesGainAmount= 0;
   public chartParameters: DiscreteBarChartConfiguration;
   protected graphData: Array<Object>;
 
@@ -56,7 +56,7 @@ export class ExperienceCardComponent implements OnInit {
     );
 
     this.chartParameters = new DiscreteBarChartConfiguration();
-    this.chartParameters.height = 130;
+    this.chartParameters.height = 150;
     this.chartParameters.showLegend = false;
     this.chartParameters.y1Axis.showMaxMin = false;
     this.chartParameters.x1Axis.showMaxMin = false;
@@ -83,25 +83,25 @@ export class ExperienceCardComponent implements OnInit {
     for (let i = mes - 2; i <= mes; i++) {
       var flag = true;
 
-      //Bucle que recorre los datos 
+      //Bucle que recorre los datos
       for (let j = 0; j < data.length && flag; j++) {
         var item = data[j];
         //Si esta el mas lo añadimos a los nuevos valores y cambiamos al boolena para que no lo añada abajo
         if (item["x"] == i) {
           values.push({
-            x: item["x"],
+            x: this.d3Locale["shortMonths"][item["x"] - 1],
             y: item["y"],
           });
-
+          this.experiencesGainAmount+=item["y"];
           flag = false;
         }
       }
 
       //Si despues de buscar en los datos de la peticion no encontramos el mes
-      //Lo añadimos a 0. 
+      //Lo añadimos a 0.
       if (flag) {
         values.push({
-          x: i,
+          x: this.d3Locale["shortMonths"][i - 1],
           y: 0,
         });
       }
@@ -113,24 +113,6 @@ export class ExperienceCardComponent implements OnInit {
       console.log(item["x"]);
     });
 
-    // let thirdMonth = {
-    //   'x': 'Under',
-    //   'y': 10
-    // }
-
-    // let lastMonth = {
-    //   'x': 'Over',
-    //   'y': 80
-    // }
-
-    // let actualMonth = {
-    //   'x': 'Over2',
-    //   'y': 50
-    // }
-
-    // values.push(thirdMonth);
-    // values.push(lastMonth);
-    // values.push(actualMonth);
     return values;
   }
 
