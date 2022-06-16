@@ -94,4 +94,12 @@ public class ExperienceBoxService implements IExperienceBoxService {
                 BoxClientDao.QUERY_TOTAL_AMOUNTS_BOXES);
 	}
 
+    @Override
+    public EntityResult clientExperienceBoxLastThreeMonthSoldBoxesQuery(Map<String, Object> keyMap,
+            List<String> attrList) throws OntimizeJEERuntimeException {
+        // TODO Auto-generated method stub
+        return this.daoHelper.query(this.boxClientDao, keyMap, attrList,
+                BoxClientDao.QUERY_LAST_3_MONTHS_BOXES_SOLD);
+    }
+
 }

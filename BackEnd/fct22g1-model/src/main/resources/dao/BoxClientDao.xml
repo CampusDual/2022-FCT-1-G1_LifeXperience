@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<JdbcEntitySetup xmlns="http://www.ontimize.com/schema/jdbc"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.ontimize.com/schema/jdbc http://www.ontimize.com/schema/jdbc/ontimize-jdbc-dao.xsd" catalog="" schema="${mainschema}" table="boxclient" datasource="mainDataSource" sqlhandler="dbSQLStatementHandler">
+<JdbcEntitySetup xmlns="http://www.ontimize.com/schema/jdbc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.ontimize.com/schema/jdbc http://www.ontimize.com/schema/jdbc/ontimize-jdbc-dao.xsd" catalog="" schema="${mainschema}" table="boxclient" datasource="mainDataSource" sqlhandler="dbSQLStatementHandler">
     <DeleteKeys>
         <Column>id</Column>
     </DeleteKeys>
@@ -41,8 +40,24 @@
                     select EXTRACT(month FROM bc.paymentdate) as month, SUM(bc.amountpaid) as total
                     from boxclient bc 
                     where EXTRACT(year FROM bc.paymentdate) = EXTRACT(year FROM current_date)
-                    group by EXTRACT(month FROM bc.paymentdate) order by month asc;
+                    group by EXTRACT(month FROM bc.paymentdate) 
+                    order by month asc;
                 ]]>
+            </Sentence>
+        </Query>
+        <Query id="last_three_months_sold_boxes">
+            <ValidColumns>
+                <Column>total</Column>
+                <Column>month</Column>
+            </ValidColumns>
+            <Sentence>
+            <![CDATA[
+                select EXTRACT(month FROM bc.paymentdate) as month, SUM(bc.amountpaid) as total
+                from boxclient bc
+                where bc.paymentdate  >  CURRENT_DATE - INTERVAL '3 months'
+                group by EXTRACT(month FROM bc.paymentdate) 
+                order by EXTRACT(month FROM bc.paymentdate) asc;
+            ]]>
             </Sentence>
         </Query>
     </Queries>

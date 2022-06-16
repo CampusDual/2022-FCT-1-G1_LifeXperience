@@ -98,16 +98,6 @@ public class ExperienceService implements IExperienceService {
         return this.daoHelper.query(this.clientExperienceDao, keyMap, attrList, ClientExperienceDao.QUERY_CLIENT_EXPERIENCE_ASSISTANCE);
     }
     
-    @Override
-    public EntityResult lastThreeMonthsGainExperiencesQuery(Map<String, Object> keyMap, List<String> attrList)
-        throws OntimizeJEERuntimeException {
-            return this.daoHelper.query(this.clientExperienceDao, keyMap, attrList, ClientExperienceDao.QUERY_LAST_THREE_MONTHS_GAIN_EXPERIENCES);
-    }
-
-    public EntityResult clientExperienceTotalAmountsOfTheMonthsOfAYearQuery(Map<String, Object> keyMap, List<String> attrList)
-            throws OntimizeJEERuntimeException {
-        return this.daoHelper.query(this.clientExperienceDao, keyMap, attrList, ClientExperienceDao.QUERY_TOTAL_AMOUNTS_OF_THE_MONTHS_OF_A_YEAR);
-    }
 
     @Override
     public EntityResult experienceBoxExperienceQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException {
@@ -132,6 +122,20 @@ public class ExperienceService implements IExperienceService {
     @Override
     public EntityResult experienceBoxExperienceDetailsQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException {
         return this.daoHelper.query(this.experienceBoxExperienceDao, keyMap, attrList, ExperienceBoxExperienceDao.QUERY_EXPERIENCE_BOX_EXPERIENCE);
+    }
+
+    @Override
+    public EntityResult lastThreeMonthsGainExperiencesQuery(Map<String, Object> keyMap, List<String> attrList)
+            throws OntimizeJEERuntimeException {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public EntityResult clientExperienceTotalAmountsOfTheMonthsOfAYearQuery(Map<String, Object> keyMap,
+            List<String> attrList) throws OntimizeJEERuntimeException {
+        // TODO Auto-generated method stub
+        return null;
     }
 
 }
