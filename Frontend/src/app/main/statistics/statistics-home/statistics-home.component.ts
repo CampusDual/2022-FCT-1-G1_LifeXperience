@@ -38,7 +38,7 @@ export class StatisticsHomeComponent implements OnInit {
     this.d3Locale = this.d3LocaleService.getD3LocaleConfiguration();
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   ngAfterViewInit() {
     var chartParametersAdapterTotalMonthAdapter =
@@ -139,7 +139,7 @@ export class StatisticsHomeComponent implements OnInit {
                 expBoxData = resp.data;
                 var finalData = this.adapData(expData, expBoxData);
                 this.adaptTotalAmount(finalData);
-      
+
                 this.multiBarChartExpAndBoxTotalMonthComparation.setDataArray(
                   this.chartAdapterCombinedExpAndBoxTotalMonthAdapter.adaptResult(
                     finalData
@@ -149,16 +149,11 @@ export class StatisticsHomeComponent implements OnInit {
                 console.log("Error");
               }
             });
-
-
-
-
         } else {
           //Caso erroneo de la primera peticion
           console.log("Error");
         }
       });
-
   }
 
   adapData(dataExp, dataExpBox) {
@@ -170,7 +165,7 @@ export class StatisticsHomeComponent implements OnInit {
 
     for (var i = 0; i < finalMonth; i++) {
       finalData.push({
-        month: i,
+        month: i + 1,
         totalExp: dataExp[i]["total"],
         totalExpBox: dataExpBox[i]["total"],
       });
