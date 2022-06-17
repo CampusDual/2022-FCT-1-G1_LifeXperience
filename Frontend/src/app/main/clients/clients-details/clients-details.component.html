@@ -6,7 +6,11 @@
     <o-row>
         <o-column title-label="clients_information" fxFlex>
 
-
+            <o-row>
+              <o-image id="client_image" attr="associate_image_client"
+                       enabled="true" read-only="false" show-controls="false" sql-type="OTHER" auto-fit="true" fxFlex="20"
+                      full-screen-button="false" empty-image="./assets/images/no-image.png"></o-image>
+            </o-row>
             <o-row>
                 <o-text-input class="input-padding" attr="name" fxFlex="70" required="yes"></o-text-input>
             </o-row>
@@ -33,11 +37,7 @@
             <o-row>
                 <o-text-input class="input-padding" attr="phonenumber" fxFlex="70" required="yes"></o-text-input>
             </o-row>
-            <o-row>
-              <o-image attr="associate_image_client"
-                       enabled="true" read-only="false" show-controls="true" sql-type="OTHER" auto-fit="true" fxFlex="20"
-                      full-screen-button="false" empty-image="./assets/images/no-image.png"></o-image>
-            </o-row>
+
         </o-column>
 
         <o-column class="columnDiv">
