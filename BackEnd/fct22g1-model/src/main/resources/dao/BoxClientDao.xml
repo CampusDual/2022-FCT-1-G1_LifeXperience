@@ -52,11 +52,11 @@
             </ValidColumns>
             <Sentence>
                 <![CDATA[
-                select EXTRACT(month FROM bc.paymentdate) as month, SUM(bc.amountpaid) as total
+                select EXTRACT(month FROM bc.paymentdate) as x, SUM(bc.amountpaid) as y
                 from boxclient bc
                 where bc.paymentdate  >  CURRENT_DATE - INTERVAL '3 months'
                 group by EXTRACT(month FROM bc.paymentdate) 
-                order by EXTRACT(month FROM bc.paymentdate) asc;
+                order by x asc;
             ]]>
             </Sentence>
         </Query>

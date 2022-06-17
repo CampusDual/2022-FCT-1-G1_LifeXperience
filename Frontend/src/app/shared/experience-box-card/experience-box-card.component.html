@@ -1,13 +1,12 @@
 <div fxLayout="column">
   <div fxLayoutAlign="space-between center" >
     <p class="home-card-title" fxFlex>{{ 'TOTAL_EXPERIENCE_BOX' | oTranslate }}</p>
-    <p class="home-card-home-amount" fxFlex>{{ experiencesBoxesAmount }}</p>
+    <p class="home-card-home-amount" fxFlex>{{ boxesAmount }}</p>
   </div>
   <div fxLayoutAlign="space-between center">
     <p class="home-card-title" fxFlex>{{ 'Income_last_3_months' | oTranslate }}</p>
-    <p class="home-card-home-amount" fxFlex style="size: 2%;">{{totalSum}}€</p>
+    <p class="home-card-home-amount" fxFlex style="size: 2%;">{{boxesGainAmount}}€</p>
   </div>
-    <o-chart #discreteBarChartLast3MonthsBoxes type="discreteBar" [chart-parameters]="chartParameters" fxFlex>
-    </o-chart>
+  <o-chart type="discreteBar" x-label="Axis x" y-label="Axis Y" [data]="graphData" [chart-parameters]="chartParameters" fxFlex></o-chart>
 </div>
 

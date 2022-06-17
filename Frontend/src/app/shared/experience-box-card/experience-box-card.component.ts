@@ -11,31 +11,39 @@ import { D3LocaleService } from "src/app/shared/d3-locale/d3Locale.service";
     '[class.home-card]': 'true'
   }
 })
-export class ExperienceBoxCardComponent implements OnInit {Ç
+export class ExperienceBoxCardComponent implements OnInit {
   private d3Locale;
-  protected service: OntimizeService;
-  private totalSum = 0;
-  public experiencesBoxesAmount: number;
+  boxesAmount: any;
+  public boxesGainAmount= 0;
   public chartParameters: DiscreteBarChartConfiguration;
   protected graphData: Array<Object>;
-  @ViewChild("discreteBarChartLast3MonthsBoxes", { static: false })
-  discreteBarChartLast3MonthsBoxes: OChartComponent;
-  private chartAdapterLast3MonthsBoxExpBoughtAdapter: DiscreteBarDataAdapter;
+
   constructor(
     private d3LocaleService: D3LocaleService,
-    private injector: Injector,
     private ontimizeService: OntimizeService,
     private cd: ChangeDetectorRef
   ) {
     this.d3Locale = this.d3LocaleService.getD3LocaleConfiguration();
-    this.ontimizeService.configureService(this.ontimizeService.getDefaultServiceConfiguration('experienceboxes'));
-    this.ontimizeService.query(void 0, ['id'], 'experiencebox').subscribe(
-      res => {
-        if (res && res.data.length) {
-          this.experiencesBoxesAmount = res.data.length;
+    this.ontimizeService.configureService(this.ontimizeService.getDefaultServiceConfiguration("experienceboxes"));
+    this.ontimizeService
+      .query(void 0, ["total"], "clientExperienceBoxLastThreeMonthSoldBoxes")
+      .subscribe(
+        (res) => {
+          if (res && res.data.length && res.code === 0) {
+            this.adaptResult(res.data);
+          }
+        },
+        (err) => console.log(err),
+        () => this.cd.detectChanges()
+      );
+
+    this.ontimizeService.query(void 0, ["id"], "experiencebox").subscribe(
+      (res) => {
+        if (res && res.data.length && res.code === 0) {
+          this.boxesAmount = res.data.length;
         }
       },
-      err => console.log(err),
+      (err) => console.log(err),
       () => this.cd.detectChanges()
     );
 
@@ -44,83 +52,61 @@ export class ExperienceBoxCardComponent implements OnInit {Ç
     this.chartParameters.showLegend = false;
     this.chartParameters.y1Axis.showMaxMin = false;
     this.chartParameters.x1Axis.showMaxMin = false;
-    var chartParametersAdapter3LastMonthsAdapter =
-      new DiscreteBarChartConfiguration();
-      chartParametersAdapter3LastMonthsAdapter.xAxis = "month";
-      chartParametersAdapter3LastMonthsAdapter.yAxis = ["total"];
-    this.chartAdapterLast3MonthsBoxExpBoughtAdapter = new DiscreteBarDataAdapter(
-      chartParametersAdapter3LastMonthsAdapter
-    );
-
-    this.ontimizeService
-    .query(void 0, ["total"], "clientExperienceBoxLastThreeMonthSoldBoxes")
-    .subscribe((resp) => {
-      if (resp.code === 0) {
-        this.adaptTotalAmount(resp.data);
-
-        this.discreteBarChartLast3MonthsBoxes.setDataArray(
-          this.chartAdapterLast3MonthsBoxExpBoughtAdapter.adaptResult(resp.data)
-        );
-      } else {
-        console.log("Error");
-      }
-    });
-    this.ontimizeService
-    .query(void 0, ["total"], "clientExperienceBoxLastThreeMonthBenefitsBoxes")
-    .subscribe((resp) => {
-      if (resp.code === 0) {
-        this.totalSum = resp.data[0]["total"];
-      } else {
-        console.log("Error");
-      }
-    });
-    // this.getLast3MonthsBoxExpBought();
-    // this.getLast3MonthsBoxExpBenefits();
   }
-  getLast3MonthsBoxExpBought(){
-    this.ontimizeService = this.injector.get(OntimizeService);
-    const conf = this.ontimizeService.getDefaultServiceConfiguration("experienceboxes");
-    this.ontimizeService.configureService(conf);
 
-    this.ontimizeService
-      .query(void 0, ["total"], "clientExperienceBoxLastThreeMonthSoldBoxes")
-      .subscribe((resp) => {
-        if (resp.code === 0) {
-          this.adaptTotalAmount(resp.data);
-
-          this.discreteBarChartLast3MonthsBoxes.setDataArray(
-            this.chartAdapterLast3MonthsBoxExpBoughtAdapter.adaptResult(resp.data)
-          );
-        } else {
-          console.log("Error");
-        }
-      });
-
-  }
-  getLast3MonthsBoxExpBenefits(){
-    this.ontimizeService = this.injector.get(OntimizeService);
-    const conf = this.ontimizeService.getDefaultServiceConfiguration("experienceboxes");
-    this.ontimizeService.configureService(conf);
-
-    this.ontimizeService
-      .query(void 0, ["total"], "clientExperienceBoxLastThreeMonthBenefitsBoxes")
-      .subscribe((resp) => {
-        if (resp.code === 0) {
-          this.totalSum = resp.data[0]["total"];
-        } else {
-          console.log("Error");
-        }
-      });
-  }
-  adaptTotalAmount(data) {
+  adaptResult(data: any) {
     if (data && data.length) {
-      data.forEach((item: any, index: number) => {
-        item["month"] = this.d3Locale["shortMonths"][item["month"] - 1];
-      });
+      let values = this.processValues(data);
+      // chart data
+      this.graphData = [
+        {
+          key: "Discrete serie",
+          values: values,
+        },
+      ];
     }
   }
-  ngOnInit() {
 
+  processValues(data: any) {
+    let values = [];
+    const mes = new Date().getMonth() + 1;
+
+    //Bucle que recorre lo meses
+    for (let i = mes - 2; i <= mes; i++) {
+      var flag = true;
+
+      //Bucle que recorre los datos
+      for (let j = 0; j < data.length && flag; j++) {
+        var item = data[j];
+        //Si esta el mas lo añadimos a los nuevos valores y cambiamos al boolena para que no lo añada abajo
+        if (item["x"] == i) {
+          values.push({
+            x: this.d3Locale["shortMonths"][item["x"] - 1],
+            y: item["y"],
+          });
+          this.boxesGainAmount+=item["y"];
+          flag = false;
+        }
+      }
+
+      //Si despues de buscar en los datos de la peticion no encontramos el mes
+      //Lo añadimos a 0.
+      if (flag) {
+        values.push({
+          x: this.d3Locale["shortMonths"][i - 1],
+          y: 0,
+        });
+      }
+    }
+
+    data.forEach((item: any, index: number) => {
+      console.log(item["x"]);
+      item["x"] = this.d3Locale["shortMonths"][item["x"] - 1];
+      console.log(item["x"]);
+    });
+
+    return values;
   }
 
+  ngOnInit() {}
 }
