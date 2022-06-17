@@ -35,5 +35,8 @@ public interface IExperienceBoxService {
 
         public EntityResult clientExperienceBoxLastThreeMonthSoldBoxesQuery(Map<String, Object> keyMap, List<String> attrList)
                         throws OntimizeJEERuntimeException;
+        public EntityResult clientExperienceBoxLastThreeMonthBenefitsBoxesQuery(Map<String, Object> keyMap, List<String> attrList)
+                        throws OntimizeJEERuntimeException;
+                
 
 }
