@@ -27,11 +27,8 @@ export class StatisticsHomeComponent implements OnInit {
   discreteBarChartClientBox: OChartComponent;
   @ViewChild("multiBarChartExpAndBoxTotalMonthComparation", { static: false })
   multiBarChartExpAndBoxTotalMonthComparation: OChartComponent;
-  @ViewChild("discreteBarChartLast3MonthsBoxes", { static: false })
-  discreteBarChartLast3MonthsBoxes: OChartComponent;
 
   private chartAdapterTotalMonthAdapter: DiscreteBarDataAdapter;
-  private chartAdapterLast3MonthsBoxExpBoughtAdapter: DiscreteBarDataAdapter;
   private chartAdapterCombinedExpAndBoxTotalMonthAdapter: MultiBarDataAdapter;
 
   constructor(
@@ -52,14 +49,6 @@ export class StatisticsHomeComponent implements OnInit {
       chartParametersAdapterTotalMonthAdapter
     );
 
-    var chartParametersAdapter3LastMonthsAdapter =
-      new DiscreteBarChartConfiguration();
-      chartParametersAdapter3LastMonthsAdapter.xAxis = "month";
-      chartParametersAdapter3LastMonthsAdapter.yAxis = ["total"];
-    this.chartAdapterLast3MonthsBoxExpBoughtAdapter = new DiscreteBarDataAdapter(
-      chartParametersAdapter3LastMonthsAdapter
-    );
-
     var chartParametersAdapterCombinedExpAndBoxTotalMonthAdapter =
       new MultiBarChartConfiguration();
     chartParametersAdapterCombinedExpAndBoxTotalMonthAdapter.xAxis = "month";
@@ -77,7 +66,6 @@ export class StatisticsHomeComponent implements OnInit {
 
     this.getExpPayments();
     this.getExpBoxPayments();
-    this.getLast3MonthsBoxExpBought();
     this.getComparation();
   }
   getExpPayments() {
@@ -122,25 +110,7 @@ export class StatisticsHomeComponent implements OnInit {
         }
       });
   }
-  getLast3MonthsBoxExpBought(){
-    this.service = this.injector.get(OntimizeService);
-    const conf = this.service.getDefaultServiceConfiguration("experienceboxes");
-    this.service.configureService(conf);
 
-    this.service
-      .query(void 0, ["total"], "clientExperienceBoxLastThreeMonthSoldBoxes")
-      .subscribe((resp) => {
-        if (resp.code === 0) {
-          this.adaptTotalAmount(resp.data);
-
-          this.discreteBarChartLast3MonthsBoxes.setDataArray(
-            this.chartAdapterLast3MonthsBoxExpBoughtAdapter.adaptResult(resp.data)
-          );
-        } else {
-          console.log("Error");
-        }
-      });
-  }
   getComparation() {
     var expData;
     var expBoxData;
