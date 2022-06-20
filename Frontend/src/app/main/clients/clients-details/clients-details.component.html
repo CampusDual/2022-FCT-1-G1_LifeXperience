@@ -41,14 +41,23 @@
         </o-column>
 
         <o-column class="columnDiv">
-          <!-- Experiences -->
-            <mat-expansion-panel>
-                <mat-expansion-panel-header>
-                    <mat-panel-title>
-                        {{'My_experiences_Assistance_False' | oTranslate }}
-                    </mat-panel-title>
-                </mat-expansion-panel-header>
-                <o-table #experiencesTable expand-groups-same-level="false" query-on-init="no" show-title="false" title="Experiences" attr="ClientExperiencesTable"
+
+<mat-tab-group oTabGroup="ontimize">
+          <mat-tab label="{{'My_experiences_boxes' | oTranslate }}">
+
+            <o-table id="tabs" #experienceBoxTable expand-groups-same-level="false" query-on-init="no" show-title="false" title="ExperiencesBox" attr="ClientExperiencesBoxTable" auto-adjust="false" service="experienceboxes" entity="clientExperienceBoxDefault" insert-button="false"
+                    delete-button="false" refresh-button="false" keys="client_id" parent-keys="idclient:id" columns="boxexp_name;description;price;associate_image" visible-columns="boxexp_name;price;associate_image" query-rows="10">
+
+                    <o-table-column id="img" title="Avatar" attr="associate_image" empty-image="assets/images/no-image.png" image-type="base64" searchable="no" type="image" avatar="yes" auto-fit="true" fxFlex="20">
+                    </o-table-column>
+                    <o-table-column attr="boxexp_name" title="name" fxFlex="20" content-align="center"></o-table-column>
+                    <o-table-column attr="price" title="price"  content-align="center" type="currency" currency-symbol="€" currency-symbol-position="right"  content-align="center"></o-table-column>
+                </o-table>
+                <o-button id="buttonAdd" attr="basic2" type="RAISED" label="{{'Add' | oTranslate }}" layout-padding color="primary" (click)="openModal('custom-modal-1')"></o-button>
+          </mat-tab>
+          <mat-tab label="{{'My_experiences_Assistance_False' | oTranslate }}">
+
+            <o-table id="tabs" #experiencesTable expand-groups-same-level="false" query-on-init="no" show-title="false" title="Experiences" attr="ClientExperiencesTable"
                 auto-adjust="false" service="experiences" entity="clientExperienceAssistanceFalse" insert-button="false" delete-button="false"
                     refresh-button="false" keys="client_id" parent-keys="client_id:id" columns="experience_id;exp_name;description;price;enddate;associate_image;assistance;relation_id" visible-columns="exp_name;enddate;associate_image" query-rows="10"
                     auto-adjust=yes selection-mode="simple">
@@ -67,28 +76,8 @@
                 <o-button id="buttonAdd" attr="basic2" type="RAISED" label="{{'Add' | oTranslate }}" layout-padding color="primary" (click)="openModal('custom-modal-0')"></o-button>
                 <o-button id="buttonHistorial" attr="" type="RAISED" label="{{'Experiences history' | oTranslate }}" layout-padding color="primary" (click)="openModal('custom-modal-2')"></o-button>
 
-              </mat-expansion-panel>
-
-            <!-- Experience Boxes -->
-            <mat-expansion-panel>
-                <mat-expansion-panel-header>
-                    <mat-panel-title>
-                        {{'My_experiences_boxes' | oTranslate }}
-                    </mat-panel-title>
-                </mat-expansion-panel-header>
-
-                <o-table #experienceBoxTable expand-groups-same-level="false" query-on-init="no" show-title="false" title="ExperiencesBox" attr="ClientExperiencesBoxTable" auto-adjust="false" service="experienceboxes" entity="clientExperienceBoxDefault" insert-button="false"
-                    delete-button="false" refresh-button="false" keys="client_id" parent-keys="idclient:id" columns="boxexp_name;description;price;associate_image" visible-columns="boxexp_name;price;associate_image" query-rows="10">
-
-                    <o-table-column id="img" title="Avatar" attr="associate_image" empty-image="assets/images/no-image.png" image-type="base64" searchable="no" type="image" avatar="yes" auto-fit="true" fxFlex="40">
-                    </o-table-column>
-                    <o-table-column attr="boxexp_name" title="name" width="100px" content-align="center"></o-table-column>
-                    <o-table-column attr="price" title="price" width="30px" content-align="center" type="currency" currency-symbol="€" currency-symbol-position="right" width="30px" content-align="center"></o-table-column>
-                    <o-table-column attr="description" title="description" width="300px" content-align="start"></o-table-column>
-                </o-table>
-                <o-button id="buttonAdd" attr="basic2" type="RAISED" label="{{'Add' | oTranslate }}" layout-padding color="primary" (click)="openModal('custom-modal-1')"></o-button>
-
-            </mat-expansion-panel>
+          </mat-tab>
+        </mat-tab-group>
         </o-column>
 
         <!-- Historial Experiences Modal -->
