@@ -14,5 +14,7 @@ public interface IClientService {
     public EntityResult clientUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap) throws OntimizeJEERuntimeException;
 
     public EntityResult clientDelete(Map<String, Object> keyMap) throws OntimizeJEERuntimeException;
+    
+    public EntityResult detailsHighDateQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException;
 
 }

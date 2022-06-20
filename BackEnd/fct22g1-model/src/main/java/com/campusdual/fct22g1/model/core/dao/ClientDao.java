@@ -19,5 +19,8 @@ public class ClientDao extends OntimizeJdbcDaoSupport {
     public static final String ATTR_PHONE = "phonenumber";
     public static final String ATTR_ADDRESS = "address";
     public static final String ATTR_ASSOCIATE_IMAGE_CLIENT="associate_image_client";
+    public static final String ATTR_HIGH_DATE = "high_date";
+    
+    public static final String QUERY_HIGH_DATE = "details_high_date";
 
 }

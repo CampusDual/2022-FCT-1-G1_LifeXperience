@@ -8,4 +8,22 @@
       <Column>id</Column>
    </UpdateKeys>
    <GeneratedKey>id</GeneratedKey>
+   
+   <Queries>
+        <Query id="details_high_date">
+        <ValidColumns>
+                <Column>month</Column>
+                <Column>totalSum</Column>
+            </ValidColumns>
+        
+            <Sentence>
+                <![CDATA[
+                  select EXTRACT(month FROM c.high_date) as x,Count(c.id) as y
+                    from clients c 
+                    where EXTRACT(year FROM c.high_date) = EXTRACT(year FROM current_date)
+                    group by EXTRACT(month FROM c.high_date);
+                ]]>
+            </Sentence>
+        </Query>
+    </Queries>
 </JdbcEntitySetup>

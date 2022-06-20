@@ -1,6 +1,10 @@
 <div fxLayout="column">
-  <div fxLayoutAlign="space-between center" >
+  <div fxLayoutAlign="space-between center">
     <p class="home-card-title" fxFlex>{{ 'TOTAL_CLIENTS' | oTranslate }}</p>
     <p class="home-card-home-amount" fxFlex>{{ clientsAmount }}</p>
   </div>
+  <div fxLayoutAlign="space-between center">
+    <p class="home-card-title" fxFlex>{{ 'NEW_CLIENTS' | oTranslate }}</p>
+  </div>
 </div>
+<o-chart type="discreteBar" x-label="Axis x" y-label="Axis Y" [data]="graphData" [chart-parameters]="chartParameters" fxFlex></o-chart>

@@ -5,6 +5,7 @@ import java.util.Map;
 
 import com.campusdual.fct22g1.api.core.service.IClientService;
 import com.campusdual.fct22g1.model.core.dao.ClientDao;
+import com.campusdual.fct22g1.model.core.dao.ClientExperienceDao;
 import com.ontimize.jee.common.dto.EntityResult;
 import com.ontimize.jee.common.exceptions.OntimizeJEERuntimeException;
 import com.ontimize.jee.server.dao.DefaultOntimizeDaoHelper;
@@ -45,6 +46,12 @@ public class ClientService implements IClientService {
     public EntityResult clientDelete(Map<String, Object> keyMap) throws OntimizeJEERuntimeException {
         // TODO Auto-generated method stub
         return this.daoHelper.delete(this.ClientDao, keyMap);
+    }
+    
+    @Override
+    public EntityResult detailsHighDateQuery(Map<String, Object> keyMap, List<String> attrList)
+        throws OntimizeJEERuntimeException {
+            return this.daoHelper.query(this.ClientDao, keyMap, attrList, ClientDao.QUERY_HIGH_DATE);
     }
 
 }
