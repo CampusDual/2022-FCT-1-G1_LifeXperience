@@ -110,6 +110,7 @@
     "experience_experience_box_dialog_confirmation_title": "¿Añadir experiencia?",
     "experience_experience_box_dialog_confirmation_body": "¿Quieres añadir a la caja la experiencia seleccionada: '${expName}'?",
     "Delete": "Borrar",
+    "Experience_deleted": "Experiencia borrada",
     "Warning!":"Alerta!",
     "The_date_is_wrong":"Fecha errónea, introduzca una fecha que esté entre la fecha actual '${currentDate}' y la fecha de vencimiento '${dateExpiration}'",
     "Successful_add_operation": "Operación exitosa",

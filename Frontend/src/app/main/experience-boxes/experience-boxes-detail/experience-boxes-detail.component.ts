@@ -40,6 +40,13 @@ export class ExperienceBoxesDetailComponent implements OnInit {
   private alertDialogFailed: string;
   protected service: OntimizeService;
 
+  private readonly config: OSnackBarConfig = {
+    action: this.translator.get("Done"),
+    milliseconds: 5000,
+    icon: "done",
+    iconPosition: "left",
+  };
+
   constructor(
     private modalService: ModalService,
     private injector: Injector,
@@ -174,7 +181,10 @@ export class ExperienceBoxesDetailComponent implements OnInit {
       if (resp.code === 0) {
         this.expOfexpBoxTable.reloadData();
         this.expThatTheyAreNotInTheBoxGrid.reloadData();
-        alert(this.alertDialogSuccessful);
+        this.snackBarService.open(
+          this.translator.get("Experience_deleted"),
+          this.config
+        );
       } else {
         alert(this.alertDialogFailed);
       }
