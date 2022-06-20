@@ -2,9 +2,8 @@
     <div fxFill fxLayout="column" fxLayoutAlign="start">
         <o-button (click)="changeLayout()" attr="buttonChangeLayout" id="buttonChangeLayout" type="RAISED" label="{{buttonChangeLayoutText}}" icon="{{buttonChangeLayoutIcon}}" layout-padding color="accent"></o-button>
 
-        <o-table *ngIf="isListLayout" attr="experiencesTable" service="experiences" entity="experience" keys="id" columns="id;name;description;price;enddate;associate_image" visible-columns="name;description;price;enddate" query-rows="20" auto-adjust=yes>
+        <o-table *ngIf="isListLayout" attr="experiencesTable" service="experiences" entity="experience" keys="id" columns="id;name;description;price;enddate;associate_image" visible-columns="name;price;enddate" query-rows="20" auto-adjust=yes>
             <o-table-column attr="name" title="name" content-align="center" width="100px"></o-table-column>
-            <o-table-column attr="description" title="description" multiline="yes" width="100px"></o-table-column>
             <o-table-column attr="price" title="price" type="currency" currency-symbol="€" currency-symbol-position="right" width="30px" content-align="center"></o-table-column>
             <o-table-column attr="enddate" title="enddate" type="date" format="LL" width="60px"></o-table-column>
         </o-table>
