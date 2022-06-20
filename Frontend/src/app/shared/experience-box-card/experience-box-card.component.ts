@@ -100,9 +100,7 @@ export class ExperienceBoxCardComponent implements OnInit {
     }
 
     data.forEach((item: any, index: number) => {
-      console.log(item["x"]);
       item["x"] = this.d3Locale["shortMonths"][item["x"] - 1];
-      console.log(item["x"]);
     });
 
     return values;
