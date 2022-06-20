@@ -138,7 +138,7 @@ export class StatisticsHomeComponent implements OnInit {
               if (resp.code === 0) {
                 expBoxData = resp.data;
                 var finalData = this.adapData(expData, expBoxData);
-                this.adaptTotalAmount(finalData);
+               // this.adaptTotalAmount(finalData);
 
                 this.multiBarChartExpAndBoxTotalMonthComparation.setDataArray(
                   this.chartAdapterCombinedExpAndBoxTotalMonthAdapter.adaptResult(

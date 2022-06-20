@@ -92,7 +92,7 @@
         </o-column>
 
         <!-- Historial Experiences Modal -->
-        <jw-modal id="custom-modal-2" modal-height="700px">
+        <jw-modal id="custom-modal-2" modal-height="600px">
             <o-table #experiencesHistorialTable expand-groups-same-level="false" query-on-init="no" show-title="true" title="{{'Experiences history' | oTranslate }}" attr="ClientExperiencesTable" auto-adjust="false" service="experiences" entity="clientExperienceDetails" insert-button="false" delete-button="false"
             refresh-button="false" keys="client_id" parent-keys="client_id:id"
             columns="associate_image;experience_id;exp_name;description;price;enddate;assistance;assistance_date"
@@ -115,7 +115,7 @@
           </jw-modal>
 
           <!-- Experience Modal -->
-          <jw-modal id="custom-modal-0" modal-height="700px">
+          <jw-modal id="custom-modal-0" modal-height="620px">
             <o-grid #experienceGrid class="grid" attr="experiencesTable" service="experiences" entity="experience"
               columns="id;name;description,enddate;price;associate_image" keys="id" cols="5" query-rows="8" orderable="true"
               quick-filter="true" sortable-columns="name;price" sort-column="name" gutter-size="10px" refresh-button="true"
@@ -135,7 +135,7 @@
     </jw-modal>
 
     <!-- Experience Box Modal -->
-    <jw-modal id="custom-modal-1" modal-height="700px">
+    <jw-modal id="custom-modal-1" modal-height="620px">
       <o-grid #experienceBoxGrid class="grid" attr="experienceBoxesTable" service="experienceboxes"
         entity="experiencebox" columns="id;name;price;description;associate_image" keys="id" cols="5" query-rows="8"
         orderable="true" quick-filter="true" sortable-columns="name;price" sort-column="name" gutter-size="10px"
