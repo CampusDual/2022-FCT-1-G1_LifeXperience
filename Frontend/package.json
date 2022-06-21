@@ -33,6 +33,7 @@
         "@angular/service-worker": "~8.2.14",
         "@angular/upgrade": "^8.2.14",
         "core-js": "^3.6.4",
+        "d3-axis": "^3.0.0",
         "ngx-material-timepicker": "5.4.3",
         "ontimize-web-ngx": "8.5.10",
         "ontimize-web-ngx-charts": "^8.0.1",

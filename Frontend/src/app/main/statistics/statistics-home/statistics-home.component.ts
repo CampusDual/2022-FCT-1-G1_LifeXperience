@@ -1,4 +1,5 @@
 import { Component, Injector, OnInit, ViewChild } from "@angular/core";
+import { BaseDirective2 } from "@angular/flex-layout";
 import { OntimizeService } from "ontimize-web-ngx";
 import {
   DataAdapterUtils,
@@ -10,6 +11,7 @@ import {
 } from "ontimize-web-ngx-charts";
 import { D3LocaleService } from "src/app/shared/d3-locale/d3Locale.service";
 
+declare var d3: any;
 @Component({
   selector: "app-statistics-home",
   templateUrl: "./statistics-home.component.html",
@@ -38,9 +40,10 @@ export class StatisticsHomeComponent implements OnInit {
     this.d3Locale = this.d3LocaleService.getD3LocaleConfiguration();
   }
 
-  ngOnInit() { }
+  ngOnInit() {}
 
   ngAfterViewInit() {
+    //Adaptador para Total/Mes sin comparar
     var chartParametersAdapterTotalMonthAdapter =
       new DiscreteBarChartConfiguration();
     chartParametersAdapterTotalMonthAdapter.xAxis = "month";
@@ -49,9 +52,11 @@ export class StatisticsHomeComponent implements OnInit {
       chartParametersAdapterTotalMonthAdapter
     );
 
+    //Adaptador Total/Mes comparacion
     var chartParametersAdapterCombinedExpAndBoxTotalMonthAdapter =
       new MultiBarChartConfiguration();
     chartParametersAdapterCombinedExpAndBoxTotalMonthAdapter.xAxis = "month";
+
     chartParametersAdapterCombinedExpAndBoxTotalMonthAdapter.yAxis = [
       "totalExp",
       "totalExpBox",
@@ -63,6 +68,14 @@ export class StatisticsHomeComponent implements OnInit {
       new MultiBarDataAdapter(
         chartParametersAdapterCombinedExpAndBoxTotalMonthAdapter
       );
+
+    //Configuracion del formato de las label en el eje x
+    var charConf = this.multiBarChartExpAndBoxTotalMonthComparation
+      .getChartService()
+      .getChartOptions();
+    charConf["xAxis"]["tickFormat"] = function (d) {
+      return this.d3Locale["shortMonths"][d - 1];
+    }.bind(this);
 
     this.getExpPayments();
     this.getExpBoxPayments();
@@ -81,10 +94,14 @@ export class StatisticsHomeComponent implements OnInit {
       )
       .subscribe((resp) => {
         if (resp.code === 0) {
-          this.adaptTotalAmount(resp.data);
+
+          var finalMonth: number = new Date().getMonth() + 1;
+          var dataExp = this.validDataOfArrayOfMonthsOfYear(resp.data, 1, finalMonth);
+          this.adaptTotalAmount(dataExp);
+
 
           this.discreteBarChartdiscreteBarChartTotalAmountsOfTheMonthsOfAYear.setDataArray(
-            this.chartAdapterTotalMonthAdapter.adaptResult(resp.data)
+            this.chartAdapterTotalMonthAdapter.adaptResult(dataExp)
           );
         } else {
           console.log("Error");
@@ -98,12 +115,15 @@ export class StatisticsHomeComponent implements OnInit {
 
     this.service
       .query(void 0, ["total"], "clientExperienceBoxTotalAmounts")
+
       .subscribe((resp) => {
         if (resp.code === 0) {
-          this.adaptTotalAmount(resp.data);
-
+          
+          var finalMonth: number = new Date().getMonth() + 1;
+          var dataExpBox = this.validDataOfArrayOfMonthsOfYear(resp.data, 1, finalMonth);
+          this.adaptTotalAmount(dataExpBox);
           this.discreteBarChartClientBox.setDataArray(
-            this.chartAdapterTotalMonthAdapter.adaptResult(resp.data)
+            this.chartAdapterTotalMonthAdapter.adaptResult(dataExpBox)
           );
         } else {
           console.log("Error");
@@ -137,8 +157,7 @@ export class StatisticsHomeComponent implements OnInit {
             .subscribe((resp) => {
               if (resp.code === 0) {
                 expBoxData = resp.data;
-                var finalData = this.adapData(expData, expBoxData);
-               // this.adaptTotalAmount(finalData);
+                var finalData = this.adaptComparationData(expData, expBoxData);
 
                 this.multiBarChartExpAndBoxTotalMonthComparation.setDataArray(
                   this.chartAdapterCombinedExpAndBoxTotalMonthAdapter.adaptResult(
@@ -156,12 +175,12 @@ export class StatisticsHomeComponent implements OnInit {
       });
   }
 
-  adapData(dataExp, dataExpBox) {
+  adaptComparationData(dataExp, dataExpBox) {
     var finalMonth: number = new Date().getMonth() + 1;
     var finalData = [];
 
-    dataExp = this.validMonths(dataExp, 1, finalMonth);
-    dataExpBox = this.validMonths(dataExpBox, 1, finalMonth);
+    dataExp = this.validDataOfArrayOfMonthsOfYear(dataExp, 1, finalMonth);
+    dataExpBox = this.validDataOfArrayOfMonthsOfYear(dataExpBox, 1, finalMonth);
 
     for (var i = 0; i < finalMonth; i++) {
       finalData.push({
@@ -183,7 +202,7 @@ export class StatisticsHomeComponent implements OnInit {
   }
 
   //TODO:Estaria bien optimizar el moetodo para pasarle las columnas de los resultados del total y el mes
-  validMonths(data, inicialMonth, finalMonth) {
+  validDataOfArrayOfMonthsOfYear(data, inicialMonth, finalMonth) {
     let values = [];
 
     //Bucle que recorre lo meses
@@ -215,4 +234,3 @@ export class StatisticsHomeComponent implements OnInit {
     return values;
   }
 }
-
