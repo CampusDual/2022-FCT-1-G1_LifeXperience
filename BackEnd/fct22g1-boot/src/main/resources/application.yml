@@ -27,7 +27,7 @@ ontimize:
          upper-like: true
    security:
       mode: default
-      ignore-paths: /app/**
+      ignorePaths: /portalService/**
       role-information-service:
          role-repository: UserRoleDao
          role-name-column: rolename
