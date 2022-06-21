@@ -83,7 +83,7 @@
    <![CDATA[
     select EXTRACT(month FROM ce.paymentdate) as x, SUM(ce.amountpaid) as y
 	from clients_experiences ce
-	where ce.paymentdate >= current_date - interval '3 month'
+	where ce.paymentdate >= cast(date_trunc('month', current_date - INTERVAL '2 months') as date)
 	group by EXTRACT(month FROM ce.paymentdate) order by x asc;
    ]]>
    </Sentence>

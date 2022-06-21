@@ -1,8 +1,6 @@
 import { Component, Injector, OnInit, ViewChild } from "@angular/core";
-import { BaseDirective2 } from "@angular/flex-layout";
 import { OntimizeService } from "ontimize-web-ngx";
 import {
-  DataAdapterUtils,
   DiscreteBarChartConfiguration,
   DiscreteBarDataAdapter,
   MultiBarChartConfiguration,
@@ -33,9 +31,10 @@ export class StatisticsHomeComponent implements OnInit {
   private chartAdapterTotalMonthAdapter: DiscreteBarDataAdapter;
   private chartAdapterCombinedExpAndBoxTotalMonthAdapter: MultiBarDataAdapter;
 
+
   constructor(
     private d3LocaleService: D3LocaleService,
-    private injector: Injector
+    private injector: Injector,
   ) {
     this.d3Locale = this.d3LocaleService.getD3LocaleConfiguration();
   }
@@ -58,8 +57,8 @@ export class StatisticsHomeComponent implements OnInit {
     chartParametersAdapterCombinedExpAndBoxTotalMonthAdapter.xAxis = "month";
 
     chartParametersAdapterCombinedExpAndBoxTotalMonthAdapter.yAxis = [
-      "totalExp",
-      "totalExpBox",
+      "Exp",
+      "Exp Box",
     ];
     //El siguiente parametro hace que se muestren todo las labels del eje x, en este caso deberia de mostrar todos los meses
     chartParametersAdapterCombinedExpAndBoxTotalMonthAdapter.reduceXTicks =
@@ -76,6 +75,11 @@ export class StatisticsHomeComponent implements OnInit {
     charConf["xAxis"]["tickFormat"] = function (d) {
       return this.d3Locale["shortMonths"][d - 1];
     }.bind(this);
+
+    charConf["reduceXTicks"] = false;
+
+
+    
 
     this.getExpPayments();
     this.getExpBoxPayments();
@@ -181,12 +185,11 @@ export class StatisticsHomeComponent implements OnInit {
 
     dataExp = this.validDataOfArrayOfMonthsOfYear(dataExp, 1, finalMonth);
     dataExpBox = this.validDataOfArrayOfMonthsOfYear(dataExpBox, 1, finalMonth);
-
     for (var i = 0; i < finalMonth; i++) {
       finalData.push({
         month: i + 1,
-        totalExp: dataExp[i]["total"],
-        totalExpBox: dataExpBox[i]["total"],
+        "Exp": dataExp[i]["total"],
+        "Exp Box": dataExpBox[i]["total"],
       });
     }
 

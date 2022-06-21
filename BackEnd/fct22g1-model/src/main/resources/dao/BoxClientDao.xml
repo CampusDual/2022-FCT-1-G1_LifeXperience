@@ -54,7 +54,7 @@
                 <![CDATA[
                 select EXTRACT(month FROM bc.paymentdate) as x, SUM(bc.amountpaid) as y
                 from boxclient bc
-                where bc.paymentdate  >  CURRENT_DATE - INTERVAL '3 months'
+                where bc.paymentdate  >=  cast(date_trunc('month', CURRENT_DATE - INTERVAL '2 months') as date)
                 group by EXTRACT(month FROM bc.paymentdate) 
                 order by x asc;
             ]]>
@@ -68,7 +68,7 @@
                 <![CDATA[ 
                 select SUM(bc.amountpaid) as total
 from boxclient bc
-     where bc.paymentdate  >  CURRENT_DATE - INTERVAL '3 months'
+     where bc.paymentdate  >  cast(date_trunc('month', CURRENT_DATE - INTERVAL '2 months') as date)
                 ]]>
             </Sentence>
         </Query>
