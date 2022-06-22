@@ -6,13 +6,9 @@ import {
   ViewChild,
   LOCALE_ID,
   Inject,
-  ElementRef,
-  ViewChildren,
-  QueryList,
 } from "@angular/core";
 import {
   DialogService,
-  ODateInputComponent,
   OFormComponent,
   OntimizeService,
   OSnackBarConfig,
