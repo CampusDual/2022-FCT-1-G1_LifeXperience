@@ -1,5 +1,6 @@
 import { Component, Inject, Injector, OnInit, ViewEncapsulation } from '@angular/core';
 import { OntimizeService } from 'ontimize-web-ngx';
+import { ModalService } from 'src/app/main/ui-elements/jw-modal-window';
 
 @Component({
   selector: 'portal-web',
@@ -18,6 +19,7 @@ export class PortalWebComponent implements OnInit {
 
   constructor(
     private injector: Injector,
+    private modalService: ModalService
   ){}
 
   getExperiences() {
@@ -40,6 +42,14 @@ export class PortalWebComponent implements OnInit {
 
   prepareImg(base64Img:string){
     return "data:image/png;base64," + base64Img
+  }
+
+  openModal(id: string) {
+    this.modalService.open(id);
+  }
+
+  closeModal(id: string) {
+    this.modalService.close(id);
   }
 
 }
