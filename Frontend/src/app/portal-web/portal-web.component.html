@@ -53,15 +53,17 @@
 
           <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" >
             <!--Tarjeta-->
+
             <div class="col"  *ngFor="let experience of experienceList">
-              <a href="#" class="cardLink"><div class="card shadow-sm">
+              <div class="card shadow-sm c">
                 <img src="{{prepareImg(experience.associate_image)}}" alt="Girl in a jacket" class="bd-placeholder-img card-img-top" width="100%" height="225">
-                <div class="card-body">
+                <div class="card-body card-effect">
                   <h5 class="card-title">{{experience.name}}</h5>
                   <p class="card-text">{{experience.description}}</p>
                 </div>
-              </div></a>
+              </div>
             </div>
+
           </div>
         </div>
       </div>
