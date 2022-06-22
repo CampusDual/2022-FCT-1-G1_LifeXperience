@@ -23,7 +23,20 @@
   background-color: #EAE5C7;
 }
 
+.cardLink{
+  text-decoration: none;
+  color: black;
+}
 
+.cardLink:hover{//borrador
+ //background-color: black;
+  color: black;
+  //box-shadow: 20px 50px 100px rgba(0, 0, 0, 0.5);
+}
+
+.col:hover{//borrador
+
+}
 
 .full-page {
   width: 100%;
