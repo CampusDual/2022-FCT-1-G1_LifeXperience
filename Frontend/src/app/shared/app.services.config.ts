@@ -16,6 +16,9 @@ export const SERVICE_CONFIG: Object = {
   },
   'paymentsbox':{
     'path':'/paymentsbox'
+  },
+  'portalService':{
+    'path':'/portalService'
   }
 };
 
