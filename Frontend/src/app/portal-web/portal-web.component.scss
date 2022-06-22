@@ -7,10 +7,14 @@
 .m-top-24 {
   margin-top: 24px;
 }
-
+.my-prueba{
+  margin-top:3rem!important;
+}
 .imagecont{
-  background-color: #faf6f5;
+  //background-color: #faf6f5;
  // background-repeat: no-repeat;
+ background: rgb(228,162,157);
+background: linear-gradient(180deg, rgba(228,162,157,1) 10%, rgba(234,229,199,1) 100%);
 
 }
 
