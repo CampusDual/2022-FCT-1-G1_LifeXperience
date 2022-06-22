@@ -52,11 +52,11 @@
         <div class="container ">
 
           <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" >
-            <!--Tarjeta-->
 
-            <div class="col"  *ngFor="let experience of experienceList">
-              <div class="card shadow-sm c">
-                <img src="{{prepareImg(experience.associate_image)}}" alt="Girl in a jacket" class="bd-placeholder-img card-img-top" width="100%" height="225">
+            <!--Tarjeta-->
+            <div class="col" *ngFor="let experience of experienceList">
+              <div class="card shadow-sm c" (click)="loadExperienceDetails(experience)">
+                <img src="{{prepareImg(experience.associate_image)}}" alt="Experience Image" class="bd-placeholder-img card-img-top" width="100%" height="225">
                 <div class="card-body card-effect">
                   <h5 class="card-title">{{experience.name}}</h5>
                   <p class="card-text">{{experience.description}}</p>
@@ -73,7 +73,6 @@
     <footer class="text-muted py-5">
       <div class="container">
         <p class="float-end mb-1">
-          <a href="#">Back to top</a>
         </p>
         <p class="mb-1">Album example is &copy; Bootstrap, but please download and customize it for yourself!</p>
         <p class="mb-0">New to Bootstrap? <a href="/">Visit the homepage</a> or read our <a href="../getting-started/introduction/">getting started guide</a>.</p>
@@ -81,4 +80,24 @@
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
   </body>
+
+
+
+  <jw-modal  id="custom-modal-1" modal-height="900px" modal-margin="100px">
+    <div class="px-4 pt-5 my-5 text-center border-bottom">
+      <div class="container px-5">
+          <img src="{{prepareImg(modalExperienceData.associate_image)}}" class="img-fluid border rounded-3 shadow-lg mb-4" alt="Example image" width="700" height="500" loading="lazy">
+        </div>
+      <h1 class="display-4 fw-bold">{{modalExperienceData.name}}</h1>
+      <div class="col-lg-6 mx-auto">
+        <p class="lead mb-4">{{modalExperienceData.description}}</p>
+
+      </div>
+      <div class="overflow-hidden" style="max-height: 30vh;">
+
+      </div>
+    </div>
+    </jw-modal>
+
+
 </html>
