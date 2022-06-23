@@ -1,103 +1,118 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Portal Life Xperience</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-  </head>
-  <body>
-    <header>
-      <nav class="navigationbar navbar navbar-expand-md navbar-dark fixed-top">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="assets/images/login_bg.png"></a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <img src="../assets/images/vanLogin.png" style="width: 2.5%; height: 100%; margin-right: 1%;">
-          <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav me-auto mb-2 mb-md-0">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active" href="#">Link</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active" href="#">Disabled</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-    </header>
 
-    <main>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Portal Life Xperience</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
 
-      <div class="px-4 py-5 custom-style1 text-center background-gradient-style">
-        <img class="imgelevation d-block mx-auto mb-4" src="assets/images/van.png" alt="" >
-        <h1 class="display-5 fw-bold">LIFE XPERIENCE</h1>
-        <div class="col-lg-6 mx-auto">
-          <p class="lead mb-4">Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful JavaScript plugins.</p>
-          <div class="heromargin d-grid gap-2 d-sm-flex justify-content-sm-center">
-
-            <a href="#" class=" btn btn-light btn-outline-dark my-2 custombuttons">Main call to action</a>
-              <a href="#" class=" btn btn-light btn-outline-dark my-2 custombuttons">Secondary action</a>
-          </div>
+<body>
+  <header>
+    <nav class="navigationbar navbar navbar-expand-md navbar-dark fixed-top">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="assets/images/login_bg.png"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+          aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <img src="../assets/images/vanLogin.png" style="width: 2.5%; height: 100%; margin-right: 1%;">
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav me-auto mb-2 mb-md-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="#">Disabled</a>
+            </li>
+          </ul>
         </div>
       </div>
+    </nav>
+  </header>
+
+  <main>
+
+    <div class="px-4 py-5 custom-style1 text-center background-gradient-style">
+      <img class="imgelevation d-block mx-auto mb-4" src="assets/images/van.png" alt="">
+      <h1 class="display-5 fw-bold">LIFE XPERIENCE</h1>
+      <div class="col-lg-6 mx-auto">
+        <p class="lead mb-4">Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most
+          popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive
+          prebuilt components, and powerful JavaScript plugins.</p>
+        <div class="heromargin d-grid gap-2 d-sm-flex justify-content-sm-center">
+
+          <a href="#" class=" btn btn-light btn-outline-dark my-2 custombuttons">Main call to action</a>
+          <a href="#" class=" btn btn-light btn-outline-dark my-2 custombuttons">Secondary action</a>
+        </div>
+      </div>
+    </div>
 
 
-      <div class=" album py-5 albumbg">
-        <div class="container ">
+    <div class=" album py-5 albumbg">
+      <div class="container ">
 
-          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" >
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
 
-            <!--Tarjeta-->
-            <div class="col" *ngFor="let experience of experienceList">
-              <div class="card shadow-sm c" (click)="loadExperienceDetails(experience)">
-                <img src="{{prepareImg(experience.associate_image)}}" alt="Experience Image" class="bd-placeholder-img card-img-top" width="100%" height="225">
-                <div class="card-body card-effect">
-                  <h5 class="card-title">{{experience.name}}</h5>
-                  <p class="card-text">{{experience.description}}</p>
-                </div>
+          <!--Tarjeta-->
+          <div class="col" *ngFor="let experience of showedExperiencesList">
+            <div class="card shadow-sm c" (click)="loadExperienceDetails(experience)">
+              <img src="{{prepareImg(experience.associate_image)}}" alt="Experience Image"
+                class="bd-placeholder-img card-img-top" width="100%" height="225">
+              <div class="card-body card-effect">
+                <h5 class="card-title">{{experience.name}}</h5>
+                <p class="card-text">{{experience.description}}</p>
               </div>
             </div>
-
           </div>
+
         </div>
-      </div>
-
-    </main>
-
-    <footer class="text-muted py-5">
-      <div class="container">
-        <p class="float-end mb-1">
-        </p>
-        <p class="mb-1">Album example is &copy; Bootstrap, but please download and customize it for yourself!</p>
-        <p class="mb-0">New to Bootstrap? <a href="/">Visit the homepage</a> or read our <a href="../getting-started/introduction/">getting started guide</a>.</p>
-      </div>
-    </footer>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
-  </body>
-
-
-
-  <jw-modal  id="custom-modal-1" modal-height="900px" modal-margin="100px">
-    <div class="px-4 pt-5 my-5 text-center border-bottom">
-      <div class="container px-5">
-          <img src="{{prepareImg(modalExperienceData.associate_image)}}" class="img-fluid border rounded-3 shadow-lg mb-4" alt="Example image" width="700" height="500" loading="lazy">
-        </div>
-      <h1 class="display-4 fw-bold">{{modalExperienceData.name}}</h1>
-      <div class="col-lg-6 mx-auto">
-        <p class="lead mb-4">{{modalExperienceData.description}}</p>
-
-      </div>
-      <div class="overflow-hidden" style="max-height: 30vh;">
+        
+        <!--Paginador-->
+        <app-list-paginator (actualPageChange)="onActualPageChange($event)" [actual-page]="actualPage" [number-page]="numberOfPages"></app-list-paginator>
 
       </div>
     </div>
-    </jw-modal>
+
+  </main>
+
+  <footer class="text-muted py-5">
+    <div class="container">
+      <p class="float-end mb-1">
+      </p>
+      <p class="mb-1">Album example is &copy; Bootstrap, but please download and customize it for yourself!</p>
+      <p class="mb-0">New to Bootstrap? <a href="/">Visit the homepage</a> or read our <a
+          href="../getting-started/introduction/">getting started guide</a>.</p>
+    </div>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+    crossorigin="anonymous"></script>
+</body>
+
+
+
+<jw-modal id="custom-modal-1" modal-height="900px" modal-margin="100px">
+  <div class="px-4 pt-5 my-5 text-center border-bottom">
+    <div class="container px-5">
+      <img src="{{prepareImg(modalExperienceData.associate_image)}}" class="img-fluid border rounded-3 shadow-lg mb-4"
+        alt="Example image" width="700" height="500" loading="lazy">
+    </div>
+    <h1 class="display-4 fw-bold">{{modalExperienceData.name}}</h1>
+    <div class="col-lg-6 mx-auto">
+      <p class="lead mb-4">{{modalExperienceData.description}}</p>
+
+    </div>
+    <div class="overflow-hidden" style="max-height: 30vh;">
+
+    </div>
+  </div>
+</jw-modal>
 
 
 </html>

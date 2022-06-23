@@ -1,0 +1,26 @@
+<nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+
+        <!--Directivas de métodos?-->
+        <li class="page-item" *ngIf="buttonState[0]" (click)="changeNextOrPreviousPage(-1)">
+            <a class="page-link" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+
+        <!--Generacion de los botones de las tarjetas
+        dos if como si fueran if-else para mostrar cual es la actual-->
+        <div *ngFor="let pageNumber of paginatorNumbers">
+            <li class="page-item"        *ngIf="pageNumber != actualPage" (click)="changePage(pageNumber)"><a class="page-link">{{pageNumber + 1}}</a></li>
+            <li class="page-item active" *ngIf="pageNumber == actualPage" (click)="changePage(pageNumber)"><a
+                    class="page-link">{{pageNumber + 1}}</a></li>
+        </div>
+
+
+        <li class="page-item" *ngIf="buttonState[1]" (click)="changeNextOrPreviousPage(1)">
+            <a class="page-link" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+        </li>
+    </ul>
+</nav>
