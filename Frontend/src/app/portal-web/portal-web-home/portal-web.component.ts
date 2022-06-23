@@ -17,24 +17,35 @@ import { ModalService } from "src/app/main/ui-elements/jw-modal-window";
 export class PortalWebComponent implements OnInit {
   private service: OntimizeService;
   private allExperiencesList;
+  private allExperiencesBoxesList;
   private showedExperiencesList;
+  private showedExperiencesBoxesList;
+
+  private numberOfPageOfExperienceList;
+  private numberOfPageOfExperienceBoxesList;
 
   private paginatorSize = 3;
   private numberOfShowedItems = 6;
-  private numberOfPages;
-  private actualPage = 0;
+  private actualPageOfExperienceList = 0;
+  private actualPageOfExperienceBoxesList = 0;
 
   private modalExperienceData = [];
 
   //Evento para comunicar el paginador con las lista
-  onActualPageChange(newPage:number) {
-    this.actualPage = newPage;
-    this.loadExperienceOfAPage(this.actualPage);
+  //TODO:Hacer otro evento para las cajas
+  onActualPageOfExperienceListChange(newPage:number) {
+    this.actualPageOfExperienceList = newPage;
+    this.showedExperiencesList = this.getElementsOfAPage(this.actualPageOfExperienceList,this.allExperiencesList,this.numberOfShowedItems,this.numberOfPageOfExperienceList);
+  }
+
+  onActualPageOfExperienceBoxesListChange(newPage:number) {
+    this.actualPageOfExperienceBoxesList = newPage;
+    this.showedExperiencesBoxesList = this.getElementsOfAPage(this.actualPageOfExperienceBoxesList,this.allExperiencesBoxesList,this.numberOfShowedItems,this.numberOfPageOfExperienceBoxesList);
   }
 
   ngOnInit(): void {
-    console.log("Constructor del nonPortalUser");
     this.getExperiences();
+    this.getExperiencesBoxes();
   }
 
   constructor(private injector: Injector, private modalService: ModalService) {}
@@ -50,11 +61,11 @@ export class PortalWebComponent implements OnInit {
     this.service.query(null, columns, "experience").subscribe((resp) => {
       if (resp.code === 0) {
         this.allExperiencesList = resp.data;
-        this.numberOfPages = Math.ceil((this.allExperiencesList.length + 0.0) / this.numberOfShowedItems);
-      //  this.paginatorNumber = new Array<number>(this.getPaginatorSizeForAArray(this.defaultPaginatorSize,this.allExperiencesList));
 
-        this.loadExperienceOfAPage(this.actualPage)
-      //  this.changePaginatorNumbers(this.actualPage,this.numberOfPages,this.paginatorNumber)
+        //Es necesario redondear hacia arriba
+        this.numberOfPageOfExperienceList = Math.ceil((this.allExperiencesList.length + 0.0) / this.numberOfShowedItems);
+        this.showedExperiencesList = this.getElementsOfAPage(this.actualPageOfExperienceList,this.allExperiencesList,this.numberOfShowedItems,this.numberOfPageOfExperienceList);
+
       } else {
         alert("Impossible to query data!");
         throw new Error();
@@ -62,34 +73,58 @@ export class PortalWebComponent implements OnInit {
     });
   }
 
-  loadExperienceOfAPage(targetPage: number) {
+  getExperiencesBoxes() {
+    this.service = this.injector.get(OntimizeService);
+    const conf = this.service.getDefaultServiceConfiguration("portalService");
+    this.service.configureService(conf);
+
+    const columns = ['associate_image','name','description','price'];
+
+    this.service.query(null, columns, "experiencebox").subscribe((resp) => {
+      if (resp.code === 0) {
+        this.allExperiencesBoxesList = resp.data;
+
+        //Es necesario redondear hacia arriba
+        this.numberOfPageOfExperienceBoxesList = Math.ceil((this.allExperiencesBoxesList.length + 0.0) / this.numberOfShowedItems);
+
+        this.showedExperiencesBoxesList = this.getElementsOfAPage(this.actualPageOfExperienceBoxesList,this.allExperiencesBoxesList,this.numberOfShowedItems,this.numberOfPageOfExperienceBoxesList);
+      } else {
+        alert("Impossible to query data!");
+        throw new Error();
+      }
+    });
+  }
+
+  getElementsOfAPage(targetPage: number,targetList:Array<any>,numberOfShowedItems,numberOfPages:number) {
     var firstShowedElement;
     var lastShowedElement;
+    
+    firstShowedElement = targetPage * numberOfShowedItems;
+    lastShowedElement = firstShowedElement + numberOfShowedItems;
 
-    //Es necesario redondear hacia arriba
-    firstShowedElement = targetPage *this.numberOfShowedItems;
-    lastShowedElement = firstShowedElement + this.numberOfShowedItems;
-
-    if(targetPage == this.numberOfPages - 1){
-      lastShowedElement = this.allExperiencesList.length
+    if(targetPage == numberOfPages - 1){
+      lastShowedElement = targetList.length
     }
-
-    this.getExperienceOfAllExperienceList(firstShowedElement,lastShowedElement);
+    return this.getElementsOfAList(targetList,firstShowedElement,lastShowedElement);
     
   }
 
-  getExperienceOfAllExperienceList(firstElement: number, lastElement: number) {
-    this.showedExperiencesList = this.allExperiencesList.slice(
-      firstElement,
-      lastElement
-    );
-  }
-  
+
 
   loadExperienceDetails(experienceData) {
     this.modalExperienceData = experienceData;
     this.openModal("custom-modal-1");
   }
+
+
+  //Metodo generico para devolver listas
+  getElementsOfAList(targetList:Array<any>,firstElement: number, lastElement: number){
+    return targetList.slice(
+      firstElement,
+      lastElement
+    );
+  }
+
 
   prepareImg(base64Img: string) {
     return "data:image/png;base64," + base64Img;

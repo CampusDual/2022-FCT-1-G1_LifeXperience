@@ -126,8 +126,44 @@
       </div>
     </div>
 
+   
 
+
+
+    <!--Album  cajas experiencias-->
     <div class=" album py-5 albumbg">
+      <div class="container ">
+        <div class="shadow p-3 mb-5 bg-body rounded bg-transparent ">
+          <h2 class="text-center">Cajas de experiencias</h2>
+        </div>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+          <!--Tarjeta-->
+          <div class="col" *ngFor="let experienceBox of showedExperiencesBoxesList">
+            <!--TODO:Añadir evento a las cajas de experiencias para abrir el modal-->
+            <div class="card shadow-sm c" >
+              <img src="{{prepareImg(experienceBox.associate_image)}}" alt="Experience box image"
+                class="bd-placeholder-img card-img-top" width="100%" height="225">
+              <div class="card-body card-effect">
+                <h5 class="card-title">{{experienceBox.name}}</h5>
+                <p class="card-text">{{experienceBox.description}}</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!--Paginador-->
+        <app-list-paginator (actualPageChange)="onActualPageOfExperienceBoxesListChange($event)" [actual-page]="actualPageOfExperienceBoxesList"
+          [number-page]="numberOfPageOfExperienceBoxesList"></app-list-paginator>
+
+      </div>
+    </div>
+
+
+
+     <!--Album experiencias-->
+     <div class=" album py-5 albumbg">
       <div class="container ">
         <div class="shadow p-3 mb-5 bg-body rounded bg-transparent ">
           <h2 class="text-center">Experiencias</h2>
@@ -149,11 +185,14 @@
         </div>
 
         <!--Paginador-->
-        <app-list-paginator (actualPageChange)="onActualPageChange($event)" [actual-page]="actualPage"
-          [number-page]="numberOfPages"></app-list-paginator>
+        <app-list-paginator (actualPageChange)="onActualPageOfExperienceListChange($event)" [actual-page]="actualPageOfExperienceList"
+          [number-page]="numberOfPageOfExperienceList"></app-list-paginator>
 
       </div>
     </div>
+
+
+
     <div class="container">
       <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
         <div class="col-md-4 d-flex align-items-center">
