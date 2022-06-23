@@ -27,7 +27,7 @@ export class PortalWebComponent implements OnInit {
     const conf = this.service.getDefaultServiceConfiguration("portalService");
     this.service.configureService(conf);
 
-    const columns = ['associate_image','name','description','price'];
+    const columns = ['associate_image','name','description','price', 'minage', 'maxage'];
 
     this.service.query(null, columns, 'experience').subscribe(resp => {
       if (resp.code === 0) {

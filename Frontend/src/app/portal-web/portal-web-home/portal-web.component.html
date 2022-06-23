@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Portal Life Xperience</title>
+    <title id="index">Portal Life Xperience</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
   </head>
   <body>
@@ -18,13 +18,10 @@
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav me-auto mb-2 mb-md-0">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                <a class="nav-link active" aria-current="page" href="index">Inicio</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" href="#">Link</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active" href="#">Disabled</a>
+                <a class="nav-link active" href="http://localhost:4299/main/home">Administración</a>
               </li>
             </ul>
           </div>
@@ -39,12 +36,9 @@
         <img class="imgelevation d-block mx-auto mb-4" src="assets/images/logoTxt.png" alt="" >
         <!--h1 class="display-5 fw-bold">LIFE XPERIENCE</h1-->
         <div class="col-lg-6 mx-auto">
-          <p class="lead mb-4">Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful JavaScript plugins.</p>
-          <div class="heromargin d-grid gap-2 d-sm-flex justify-content-sm-center">
-
-            <a href="#" class=" btn btn-light btn-outline-dark my-2 custombuttons">Main call to action</a>
-              <a href="#" class=" btn btn-light btn-outline-dark my-2 custombuttons">Secondary action</a>
-          </div>
+          <h3>Bienvenidos a Life Xperience!</h3>
+          <p class="lead mb-1">En Life Xperience ofrecemos las mejores experiencias para que disfrutes solo o con la familia.</p>
+          <p class="lead">Nuestra gran variedad de experiencias nos permiten acomodar todos tus gustos y preferencias!</p>
         </div>
       </div>
 
@@ -72,11 +66,12 @@
     </main>
 
     <footer class="text-muted py-5">
-      <div class="container">
-        <p class="float-end mb-1">
-        </p>
-        <p class="mb-1">Album example is &copy; Bootstrap, but please download and customize it for yourself!</p>
-        <p class="mb-0">New to Bootstrap? <a href="/">Visit the homepage</a> or read our <a href="../getting-started/introduction/">getting started guide</a>.</p>
+      <div class="container d-flex justify-content-around">
+        <p class="lead mb-4"><span class="bold">Tlf Contacto</span>: 472834559</p>
+        <div>
+          <a href="http://facebook.com"> <img src="../../../assets/icons/facebook.png" alt="facebook icon" width="50px" height="50px" class="m-2"/></a>
+          <a href="http://twitter.com"><img src="../../../assets/icons/gorjeo.png" alt="twitter icon" width="50px" height="50px" class="m-2"/></a>
+        </div>
       </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
@@ -92,6 +87,8 @@
       <h1 class="display-4 fw-bold">{{modalExperienceData.name}}</h1>
       <div class="col-lg-6 mx-auto">
         <p class="lead mb-4">{{modalExperienceData.description}}</p>
+        <p class="lead mb-4"><span class="bold">Precio:</span> {{modalExperienceData.price}}€</p>
+        <p class="lead mb-4"><span class="bold">Edad recomendada:</span> {{modalExperienceData.minage}} - {{modalExperienceData.maxage}} años</p>
 
       </div>
       <div class="overflow-hidden" style="max-height: 30vh;">
