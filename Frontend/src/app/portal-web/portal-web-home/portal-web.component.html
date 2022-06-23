@@ -46,6 +46,13 @@
       <path
         d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5v-3zM2.5 2a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zm6.5.5A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zM1 10.5A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zm6.5.5A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3z" />
     </symbol>
+    <symbol id="price" viewBox="0 0 16 16">
+      <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
+    </symbol>
+    <symbol id="location" viewBox="0 0 16 16">
+      <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z"/>
+      <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+    </symbol>
   </svg>
 
   <header>
@@ -190,25 +197,32 @@
 
 
 
-<jw-modal id="custom-modal-1" modal-margin="100px">
-  <div class="px-4 pt-5 my-5 text-center border-bottom">
-    <div class="container px-5">
-      <img src="{{prepareImg(modalExperienceData.associate_image)}}" class="img-fluid border rounded-3 shadow-lg mb-4"
-        alt="Example image" width="700" height="500" loading="lazy">
-    </div>
-    <h1 class="display-4 fw-bold">{{modalExperienceData.name}}</h1>
-    <div class="col-lg-6 mx-auto">
-      <p class="lead mb-4">{{modalExperienceData.description}}</p>
-      <p class="lead mb-4"><span class="bold">Precio:</span> {{modalExperienceData.price}}€</p>
-      <p class="lead mb-4"><span class="bold">Edad recomendada:</span> {{modalExperienceData.minage}} -
-        {{modalExperienceData.maxage}} años</p>
-
-    </div>
-    <div class="overflow-hidden" style="max-height: 30vh;">
-
+<jw-modal  id="custom-modal-1" modal-height="82%" modal-margin="6%">
+  <div class="text-center border-bottom">
+    <div class=" img-modal-div">
+      <div class="feature col">
+        <div class="feature-icon d-inline-flex align-items-center justify-content-center bg-gradient text-white fs-2 mb-3 icon-modal">
+          <svg class="bi" width="1em" height="1em"><use xlink:href="#location"/></svg>
+        </div>
+        <h2>Localización</h2>
+        <p class="loc">{{modalExperienceData.address}}</p>
+      </div>
+        <img src="{{prepareImg(modalExperienceData.associate_image)}}"
+        class="img-fluid rounded-3 im" alt="Example image" loading="lazy">
+      <div class="feature col">
+        <div class="feature-icon d-inline-flex align-items-center justify-content-center bg-gradient text-white fs-2 mb-3 icon-modal">
+          <svg class="bi" width="1em" height="1em"><use xlink:href="#price"/></svg>
+        </div>
+        <h2>Por tan solo:</h2>
+        <h3 class="fw-bold name-div">{{modalExperienceData.price}}€</h3>
+      </div>
+      </div>
+    <h1 class="fw-bold name-div">{{modalExperienceData.name}}</h1>
+    <div class="description-div">
+      <p class="lead">{{modalExperienceData.description}}</p>
     </div>
   </div>
-</jw-modal>
+  </jw-modal>
 
 
 </html>

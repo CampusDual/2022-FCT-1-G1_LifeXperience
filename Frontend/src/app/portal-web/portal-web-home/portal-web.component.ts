@@ -45,7 +45,7 @@ export class PortalWebComponent implements OnInit {
     const conf = this.service.getDefaultServiceConfiguration("portalService");
     this.service.configureService(conf);
 
-    const columns = ['associate_image','name','description','price', 'minage', 'maxage'];
+    const columns = ['associate_image','name','description','price', 'minage', 'maxage','address'];
 
     this.service.query(null, columns, "experience").subscribe((resp) => {
       if (resp.code === 0) {
@@ -75,7 +75,7 @@ export class PortalWebComponent implements OnInit {
     }
 
     this.getExperienceOfAllExperienceList(firstShowedElement,lastShowedElement);
-    
+
   }
 
   getExperienceOfAllExperienceList(firstElement: number, lastElement: number) {
@@ -84,7 +84,7 @@ export class PortalWebComponent implements OnInit {
       lastElement
     );
   }
-  
+
 
   loadExperienceDetails(experienceData) {
     this.modalExperienceData = experienceData;
