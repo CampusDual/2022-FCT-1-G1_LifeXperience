@@ -149,7 +149,7 @@
           <!--Tarjeta-->
           <div class="col" *ngFor="let experienceBox of showedExperiencesBoxesList">
             <!--TODO:Añadir evento a las cajas de experiencias para abrir el modal-->
-            <div class="card shadow-sm c" >
+            <div class="card shadow-sm c" (click)="loadExperienceBoxDetails(experienceBox)">
               <img src="{{prepareImg(experienceBox.associate_image)}}" alt="Experience box image"
                 class="bd-placeholder-img card-img-top" width="100%" height="225">
               <div class="card-body card-effect">
@@ -193,7 +193,7 @@
         </div>
 
         <!--Paginador-->
-        <app-list-paginator (actualPageChange)="onActualPageOfExperienceListChange($event)" [actual-page]="actualPageOfExperienceList"
+        <app-list-paginator class="pag" (actualPageChange)="onActualPageOfExperienceListChange($event)" [actual-page]="actualPageOfExperienceList"
           [number-page]="numberOfPageOfExperienceList"></app-list-paginator>
 
       </div>
@@ -236,33 +236,38 @@
 </body>
 
 
-
+<!--Tanto cajas como experiencias usan el mismo modal ya que tienen los miemos datos a excepcion de la localizacion.
+Para resolver eso el elemento de localizacion es comprobado con un ngIf que en caso de existir el valor lo mostrará-->
 <jw-modal  id="custom-modal-1" modal-height="82%" modal-margin="6%">
   <div class="text-center border-bottom">
     <div class=" img-modal-div">
-      <div class="feature col">
+
+      <div *ngIf="modalData.address" class="feature col">
         <div class="feature-icon d-inline-flex align-items-center justify-content-center bg-gradient text-white fs-2 mb-3 icon-modal">
           <svg class="bi" width="1em" height="1em"><use xlink:href="#location"/></svg>
         </div>
         <h2>Localización</h2>
-        <p class="loc">{{modalExperienceData.address}}</p>
+        <p class="loc">{{modalData.address}}</p>
       </div>
-        <img src="{{prepareImg(modalExperienceData.associate_image)}}"
+
+        <img src="{{prepareImg(modalData.associate_image)}}"
         class="img-fluid rounded-3 im" alt="Example image" loading="lazy">
       <div class="feature col">
         <div class="feature-icon d-inline-flex align-items-center justify-content-center bg-gradient text-white fs-2 mb-3 icon-modal">
           <svg class="bi" width="1em" height="1em"><use xlink:href="#price"/></svg>
         </div>
         <h2>Por tan solo:</h2>
-        <h3 class="fw-bold name-div">{{modalExperienceData.price}}€</h3>
+        <h3 class="fw-bold name-div">{{modalData.price}}€</h3>
       </div>
       </div>
-    <h1 class="fw-bold name-div">{{modalExperienceData.name}}</h1>
+    <h1 class="fw-bold name-div">{{modalData.name}}</h1>
     <div class="description-div">
-      <p class="lead">{{modalExperienceData.description}}</p>
+      <p class="lead">{{modalData.description}}</p>
     </div>
   </div>
   </jw-modal>
+
+  
 
 
 </html>

@@ -29,7 +29,7 @@ export class PortalWebComponent implements OnInit {
   private actualPageOfExperienceList = 0;
   private actualPageOfExperienceBoxesList = 0;
 
-  private modalExperienceData = [];
+  private modalData = [];
 
   //Evento para comunicar el paginador con las lista
   //TODO:Hacer otro evento para las cajas
@@ -112,7 +112,13 @@ export class PortalWebComponent implements OnInit {
 
 
   loadExperienceDetails(experienceData) {
-    this.modalExperienceData = experienceData;
+    this.modalData = experienceData;
+    this.openModal("custom-modal-1");
+  }
+
+
+  loadExperienceBoxDetails(experienceBoxData) {
+    this.modalData = experienceBoxData;
     this.openModal("custom-modal-1");
   }
 
