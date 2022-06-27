@@ -2,6 +2,7 @@
     "APP_TITLE": "Experiences Subscriptions Manager",
     "Assistance_date": "Assistance date",
     "CLIENTS": "Clients",
+    "PORTAL": "Web Portal",
     "DESCRIPTION": "Surname",
     "EMAIL": "Email",
     "ERROR_MIN_LENGTH_REQUIRED": "The value length entered must be at least 8 characters.",
