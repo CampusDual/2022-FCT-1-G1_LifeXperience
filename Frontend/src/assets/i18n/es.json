@@ -2,6 +2,7 @@
     "APP_TITLE": "Gestor de subscripciones de experiencias",
     "Assistance_date": "Fecha de asistencia",
     "CLIENTS": "Clientes",
+    "PORTAL": "Portal Web",
     "DESCRIPTION": "Descripción",
     "EMAIL": "Email",
     "ERROR_MIN_LENGTH_REQUIRED": "El valor introducido tiene que tener una longitud mínima de 8 caracteres",

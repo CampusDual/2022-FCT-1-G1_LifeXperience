@@ -18,6 +18,7 @@ export const MENU_CONFIG: MenuRootItem[] = [
             { id: 'paymentsexp', name: 'PAYMENTS_EXP', icon: 'attach_money', route: '/main/paymentsexp' },
             { id: 'paymentsbox', name: 'PAYMENTS_BOX', icon: 'attach_money', route: '/main/paymentsbox' }]},
   { id: 'statistics', name: 'STATISTICS', icon: 'equalizer', route: '/main/statistics' },
+  {id : 'portal', name: 'PORTAL', icon:'dashboard', route:''},
   { id: 'logout', name: 'LOGOUT', route: '/login', icon: 'power_settings_new', confirm: 'yes' }
 ];
 
