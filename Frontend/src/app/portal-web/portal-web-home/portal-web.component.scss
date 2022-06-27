@@ -19,6 +19,51 @@
   background-color:#EDDAD9 ;
   color:#E4A29D ;
 }
+
+// .im{//PRUEBA SE PUEDE BORRAR CUANDO EL MODAL ESTE FINALIZADO
+//   border: 1px solid red;
+// }
+
+// .e{//PRUEBA SE PUEDE BORRAR CUANDO EL MODAL ESTE FINALIZADO
+//   border: 1px solid cadetblue;
+// }
+
+.loc{
+  margin-left: 2%;
+  margin-right: 2%;
+}
+
+.feature-icon {
+  width: 4rem;
+  height: 4rem;
+  border-radius: .75rem;
+}
+
+.icon-modal{
+  background-color: #EAE5C7;
+}
+
+.img-modal-div{
+  //border: 1px solid black;
+  height: 20%;
+  display: flex;
+  align-items: center;
+}
+
+.description-div{
+  //border: 1px solid black;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.name-div{
+  margin-top: 1%;
+}
+
+.img-fluid{
+  width: 45%;
+}
+
 .albumbg{
   background-color: #EAE5C7;
 }
